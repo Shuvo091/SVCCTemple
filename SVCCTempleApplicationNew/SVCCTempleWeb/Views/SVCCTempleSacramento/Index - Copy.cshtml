@@ -1,0 +1,181 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@{
+    ViewBag.Title = "Index";
+    string imageTitleHanumanJayanthi = "5pm Sun 5/14 Hanuman Jayanthi - Abhishekam, Vadamala, Hanuman Chalisa... SVCC Temple Sacramento";
+}
+<div class="col-md-12" style="font-family: Arial; font-size: 18px; font-weight: bold; text-align: left;">
+    <img src="https://www.svcctemple.org/Images/Sacramento/HanumanJayanthi_20230514.jpg" usemap="#hanumanjayanthi-map" alt="@imageTitleHanumanJayanthi" title="@imageTitleHanumanJayanthi" />
+    <map name="hanumanjayanthi-map">
+        <area target="_blank" alt="@imageTitleHanumanJayanthi" title="@imageTitleHanumanJayanthi" href="https://www.svcctemple.org/SVCCTempleSacramento//Sponsorship/1076" coords="690,105,777,163" shape="rect">
+        <area target="_blank" alt="@imageTitleHanumanJayanthi" title="@imageTitleHanumanJayanthi" href="https://www.facebook.com/svcctemple" coords="690,171,780,234" shape="rect">
+    </map>
+    <br />
+    <div class="col-md-7" style="float: left;">
+        <span style="color: #0000ff;">Hanuman Jayanthi - May 14 2023 - Sunday</span><br />
+        <span style="color: #ff0000;">5pm - Hanuman Abhishekam</span><br />
+        <span style="color: #0000ff;">Hanuman Chalisa Patanam</span><br />
+        <span style="color: #ff0000;">Vadamala Seva</span><br />
+        <span style="color: #0000ff;">Archana</span>
+        <br /><br />
+        <span style="color: #000000;">Mantra Pushpam</span><br />
+        <span style="color: #a54000;">Maha Mangala Aarthi</span><br />
+        <span style="color: #0000ff;">Theertha Prasada Viniyogam</span>
+        <br /><br />
+        <a href="https://www.svcctemple.org/Files/HanumadJayanthi_1.html" style="color: #000000; font-family: Arial; font-size: 20px; font-weight: bold; text-decoration: underline;" target="_blank" alt="@imageTitleHanumanJayanthi" title="@imageTitleHanumanJayanthi">Click to read more about Hanuman Jayanthi</a>
+    </div>
+    <div class="col-md-5" style="float: left; padding-left: 15px;">
+        <a href="https://www.svcctemple.org/SVCCTempleSacramento/Sponsorship/1076" style="color: #0000ff; font-size: 20px; font-weight: bold; text-decoration: underline;" target="_blank">Please click here to enter Sankalpam</a><br />
+        <a alt="Scan QR code to enter Sankalpam @imageTitleHanumanJayanthi" title="Scan QR code to enter Sankalpam @imageTitleHanumanJayanthi" href="/SVCCTempleSacramento/Sponsorship/1076" target="_blank">
+            <img src="https://www.svcctemple.org/Images/Sacramento/QRCodes/HanumanJayanthi_20230514_QRCode.png" alt="Scan QR code to enter Sankalpam @imageTitleHanumanJayanthi" title="Scan QR code to enter Sankalpam @imageTitleHanumanJayanthi" style="height: 189px; width: 189px;" />
+        </a>
+        <br style="clear: both;" />
+        <a href="https://www.facebook.com/svcctemplesacramento" style="color: #0000ff; font-size: 20px; font-weight: bold; text-decoration: underline;" target="_blank" alt="@imageTitleHanumanJayanthi" title="@imageTitleHanumanJayanthi">Click to watch live !!!</a>
+    </div>
+</div>
+<br style="clear: both;" />
+<hr style="border-color: #000000; border-style: solid; border-width: 1px;">
+<table style="margin-left: auto; margin-right: auto; padding: 0px;">
+    <tr>
+        <td colspan="3">
+            <a href="@Url.Action("TempleInfoDates", "SVCCTempleSacramento")" style="color: #0000ff; font-size: 18px; font-weight: bold; text-decoration: underline;" target="_blank">Click to view more dates & daily Sankalpam</a>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[0].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoData", Model.TempleInfoDatesModel.TempleInfoDateModels[0])
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[1].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoData", Model.TempleInfoDatesModel.TempleInfoDateModels[1])
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[2].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoData", Model.TempleInfoDatesModel.TempleInfoDateModels[2])
+        </td>
+    </tr>
+</table>
+<!--Begin Daily Info Email-->
+<table style="margin-left: auto; margin-right: auto; padding: 0px;">
+    <tr>
+        <td colspan="3" style="text-align: center; vertical-align: top;">
+            <a href="@Url.Action("TempleInfoDates", "SVCCTempleSacramento")" style="color: #0000ff; font-size: 18px; font-weight: bold; text-decoration: underline;" target="_blank">Click to view more dates & daily Sankalpam</a>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[0].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[0])
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[1].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[1])
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[2].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[2])
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[3].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[3])
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[4].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[4])
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[5].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[5])
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[6].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[6])
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[7].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[7])
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-weight: bold;">@DateTime.Parse(Model.TempleInfoDatesModel.TempleInfoDateModels[8].TempleInfoDate).ToString("ddd MMM-dd-yyyy")</span>
+            @Html.Partial("_DailyInfoDataEmail", Model.TempleInfoDatesModel.TempleInfoDateModels[8])
+        </td>
+    </tr>
+</table>
+<!--End Daily Info Email-->
+<hr style="border-color: #000000; border-style: solid; border-width: 1px;">
+@Html.Partial("_ImportantDates0")
+<hr style="border-color: #000000; border-style: solid; border-width: 1px;">
+@Html.Partial("_ImportantDates", Model.ImportantDatesModels)
+<hr style="border-color: #000000; border-style: solid; border-width: 1px;">
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin: auto 0; padding: 5px;">
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Daily 9:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gangadhareshwara (Shiva) Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Tuesday 7pm</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gakara Ganapathy Sahasranamam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Friday 10am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Saraswahti Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Friday 10:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Lakshmi Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Saturday 9am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Venkateswara Suprabatham</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Saturday 10am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Navagraha Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Saturday 11am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Venkateshwara Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Saturday 5pm</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Aanjaneya (Hanuman) Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Every Poornima</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">6:30pm Satyanarayana Puja</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Every Sankasht Chathurthi<br />Chathurthi after Poornima</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Ganapathy Abhishekam<br />6am on Weekdays<br />7:30am on Weekends<br />6:30pm Ganapathy Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Sashti - Shukla & Krishna</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">6:30pm Subhramanya Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Pradosham - Shukla & Krishna<br />Trayodashi</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gangadhareshwara (Shiva) Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Sunday 10:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Ganapathy Abhishekam</span>
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function window_onload() {
+    }
+</script>

@@ -1,0 +1,54 @@
+﻿@model SVCCTempleWeb.Models.SankalpamInfoDetailModel
+
+<table style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; font-weight: bold; margin: auto; padding: 5px;">
+    <tr>
+        <th colspan="8" style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center; vertical-align: top;">
+            <span style="color: #ff0000; font-size: 15px;">@Model.SankalpamDate.ToString("dddd MMMM d yyyy")</span>
+        </th>
+    </tr>
+    <tr>
+        <th style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: left; vertical-align: top;">
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: left; vertical-align: top;">
+        </th>
+        <th colspan="3" style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center; vertical-align: top;">
+            Start
+        </th>
+        <th colspan="3" style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center; vertical-align: top;">
+            Finish
+        </th>
+    </tr>
+    @foreach (var calendarData in Model.CalendarDatas)
+    {
+        if (calendarData.CodeTypeNameId != 7700 && calendarData.CodeTypeNameId != 7800)
+        {
+            <tr>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: left; vertical-align: top;">
+                    @calendarData.CodeDataDesc0
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: left; vertical-align: top;">
+                    @calendarData.CodeTypeDesc1
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: left; vertical-align: top;">
+                    @calendarData.StartDate.ToString("ddd")
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: left; vertical-align: top;">
+                    @calendarData.StartDate.ToString("MMM dd yyyy")
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: left; vertical-align: top;">
+                    @DateTime.Parse(calendarData.StartTime).ToString("hh:mm tt")
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #a40000; padding: 5px; text-align: left; vertical-align: top;">
+                    @calendarData.FinishDate.ToString("ddd")
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #a40000; padding: 5px; text-align: left; vertical-align: top;">
+                    @calendarData.FinishDate.ToString("MMM dd yyyy")
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-style: solid; border-width: 1px; color: #a40000; padding: 5px; text-align: left; vertical-align: top;">
+                    @DateTime.Parse(calendarData.FinishTime).ToString("hh:mm tt")
+                </td>
+            </tr>
+        }
+    }
+</table>
+

@@ -1,0 +1,109 @@
+﻿@model List<SVCCTempleWeb.Models.SponsorListDataModel>
+@{
+    if (Model != null)
+    {
+        double totalAmount = 0;
+        <table class="table-bordered table-striped" style="margin: auto; padding: 5px;">
+            <tr>
+                <td colspan="9" style="font-size: 18px; font-weight: bold; text-align: center;">
+                    @(HttpContext.Current.Request.QueryString["fromDate"] + " - " + HttpContext.Current.Request.QueryString["toDate"] + " " + DateTime.Now.ToString("MMM-dd-yyyy hh:mm tt"))
+                </td>
+            </tr>
+            <tr>
+                <th style="padding: 5px;">#</th>
+                <th style="padding: 5px;"></th>
+                <th style="padding: 5px;">Sankalpam</th>
+                <th style="padding: 5px;">Id</th>
+                <th style="padding: 5px;">Date</th>
+                <th style="padding: 5px;">Location</th>
+                <th style="padding: 5px;">Email</th>
+                @*<th style="padding: 5px;">First Name</th>
+                    <th style="padding: 5px;">Last Name</th>
+                    <th style="padding: 5px;">Tel#</th>
+                    <th style="padding: 5px;">Amount</th>*@
+                <th style="padding: 5px;">Comments</th>
+                <th style="padding: 0px;">Sponsorship</th>
+            </tr>
+            @{
+                int i = 0, seqNum = 0;
+                long sponsorshipId;
+                SVCCTempleWeb.Models.SponsorListDataModel x;
+                while (i < Model.Count)
+                {
+                    x = Model[i];
+                    totalAmount += x.ShoppingCartAmount;
+                    <tr>
+                        <td style="padding: 5px; text-align: center; vertical-align: top;">@(seqNum + 1)</td>
+                        <td style="padding: 5px; text-align: center; vertical-align: top;"><input id="sankalpamDateTime@(seqNum)" type="checkbox" value="@x.SponsorshipId" /></td>
+                        <td style="padding: 5px; text-align: center; vertical-align: top;">@x.SankalpamDateTime</td>
+                        <td style="padding: 5px; text-align: center; vertical-align: top;">@x.SponsorshipId</td>
+                        <td style="padding: 5px; text-align: center; vertical-align: top;">
+                            @DateTime.Parse(x.AddDateTime).ToString("yyyy-MM-dd HH:mm:ss")
+                            <span style="display: none;">@x.EmailAddress</span>
+                        </td>
+                        <td style="padding: 5px; text-align: left; vertical-align: top;">
+                            @x.LocationNameDesc
+                        </td>
+                        <td style="padding: 5px; text-align: left; vertical-align: top; width: 90px;">
+                            @x.EmailAddress
+                        </td>
+                        @*<td style="padding: 5px; text-align: left; vertical-align: top;">
+                                @x.FirstName
+                            </td>
+                            <td style="padding: 5px; text-align: left; vertical-align: top;">
+                                @x.LastName
+                            </td>
+                            <td style="padding: 5px; text-align: right; vertical-align: top;">
+                                @x.PrimaryTelephoneNum
+                            </td>
+                            <td style="padding: 5px; text-align: right; vertical-align: top;">
+                                @x.ShoppingCartAmount.ToString("c")
+                            </td>*@
+                        <td style="padding: 5px; text-align: left; vertical-align: top; width: 270px;">
+                            @Html.Raw(x.ShoppingCartComments.Replace(Environment.NewLine, "<br />"))
+                            @*<div style="height: auto; max-height: 117px; overflow: auto; width: 98%;">
+                                </div>*@
+                        </td>
+                        <td style="padding: 0px; text-align: right; vertical-align: top; width: 270px;">
+                            <table class="table-striped" style="margin: auto; padding: 5px; table-layout: fixed;">
+                                @{
+                                    sponsorshipId = x.SponsorshipId;
+                                    while (i < Model.Count && sponsorshipId == x.SponsorshipId)
+                                    {
+                                        <tr>
+                                            <td style="padding: 5px; text-align: right; vertical-align: top;">
+                                                @x.ItemId
+                                            </td>
+                                            <td style="padding: 5px; text-align: left; vertical-align: top;">
+                                                @x.SponsorshipGroupDesc
+                                            </td>
+                                            <td style="padding: 5px; text-align: left; vertical-align: top;">
+                                                @x.ItemDesc
+                                            </td>
+                                            @*<td style="padding: 5px; text-align: right; vertical-align: top;">
+                                                    @x.OrderAmount.ToString("c")
+                                                </td>*@
+                                        </tr>
+                                        i++;
+                                        if (i < Model.Count)
+                                        {
+                                            x = Model[i];
+                                        }
+                                    }
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                    seqNum++;
+                }
+            }
+            <tr style="display: none;">
+                <td colspan="4"></td>
+                <td style="font-size: 18px; font-weight: bold; padding: 5px; text-align: right; vertical-align: top;">
+                    @totalAmount.ToString("c")
+                </td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    }
+}

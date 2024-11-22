@@ -1,0 +1,1 @@
+﻿Please confirm your registration @@##RegisterEmailAddress##@@

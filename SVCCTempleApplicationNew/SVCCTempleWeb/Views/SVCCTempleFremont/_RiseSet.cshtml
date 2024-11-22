@@ -1,0 +1,53 @@
+﻿@model List<SVCCTempleWeb.Models.RiseSetModel>
+@{ 
+    int index = 0;
+}
+<table class="table table-bordered table-condensed table-responsive" style="width: 63%;">
+    <tr>
+        <th>
+            #
+        </th>
+        <th class="text-center">
+            Date
+        </th>
+        <th class="text-center" colspan="2">
+            Sun Rise / Set
+        </th>
+        <th class="text-center" colspan="2">
+            Rahu Kalam
+        </th>
+        <th class="text-center" colspan="2">
+            Yama Gandam
+        </th>
+    </tr>
+    @foreach (var riseSetModel in Model)
+    {
+        index++;
+    <tr>
+        <td class="text-right">
+            @index
+        </td>
+        <td>
+            @DateTime.Parse(riseSetModel.GregorianDate).ToString("MMM-dd-yyyy ddd")
+        </td>
+        <td>
+            @riseSetModel.SunRise
+        </td>
+        <td>
+            @riseSetModel.SunSet
+        </td>
+        <td>
+            @riseSetModel.RKStart
+        </td>
+        <td>
+            @riseSetModel.RKFinish
+        </td>
+        <td>
+            @riseSetModel.YGStart
+        </td>
+        <td>
+            @riseSetModel.YGFinish
+        </td>
+    </tr>
+    }
+</table>

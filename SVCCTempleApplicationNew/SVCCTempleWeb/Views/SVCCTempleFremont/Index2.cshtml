@@ -1,0 +1,106 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@{
+    ViewBag.Title = "Index2";
+    Layout = "_Layout6.cshtml";
+    int i;
+    List<string> tabTexts = new List<string>
+{
+"Today's Info" + "<br />" + Model.StartDate.ToString("ddd M / d") + "<br />" + "Sankalpam"
+,"Important<br />Dates"
+,"Festivals"
+,"Varalakshmi<br />Vratham<br />Fri Aug 5"
+,"Kids Ganesha<br />Puja<br />Aug 21"
+};
+    List<string> tabWidths = new List<string>
+{
+"117px"
+,"135px"
+,"99px"
+,"117px"
+,"135px"
+};
+    string imageTitle0 = "Varalakshmi Vratham - Aug 5 - Fri - SVCC Temple Fremont";
+    string imageTitle1 = "Ganesha Puja by Kids - 10:30am Aug 21 - Sun - SVCC Temple Fremont";
+}
+<a href="@ApplicationInstance.Application["FremontBaseURL"]/KioskOrder" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank"><span style="color: #ff0000;">Donate</span> through our <span style="color: #a54000; font-size: 23px;">KIOSK</span></a>
+<span style="padding-right: 27px;">&nbsp;</span>
+<a href="https://www.facebook.com/svcctemple" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank">Click to watch live !!!</a>
+<span style="padding-left: 27px;">&nbsp;</span>
+<a href="@ApplicationInstance.Application["FremontBaseURL"]/Sponsorship" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank"><span style="color: #0000ff;">Donate</span> & enter Sankalpam info</a>
+<br style="clear: both;" />
+@for (i = 0; i < tabTexts.Count; i++)
+{
+    <div style="background: #ddc385; border-top-left-radius: 25px; border-top-right-radius: 25px; float: left; height: 72px; margin-left: auto; margin-right: auto; padding: 8px; text-align: center; width: @tabWidths[i];">
+        @if (i == Model.TabIndex)
+        {
+            <span style="color: #000000; font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 15px; font-weight: bold;">@Html.Raw(tabTexts[i])</span>
+        }
+        else
+        {
+            <a id="divTab@(i)" href="@ApplicationInstance.Application["FremontBaseURL"]Index2/@(i)" style="color: #0000ff; font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 15px; font-weight: bold; text-decoration: underline;">@Html.Raw(tabTexts[i])</a>
+        }
+    </div>
+    if (i < tabTexts.Count - 1)
+    {
+        <div style="float: left; width: 9px;">&nbsp;</div>
+    }
+}
+<br style="clear: both;" />
+@switch (Model.TabIndex)
+{
+    case 0: //Daily Info (Today's Info) & Sankalpam
+        @Html.Partial("_DailyInfo", Model)
+        @Html.Partial("_SankalpamInfoSummary", Model)
+        break;
+    case 1: //Important Dates
+        @Html.Partial("_ImportantDates", Model)
+        break;
+    case 2: //Festivals
+        @Html.Partial("_FestivalInfo", Model)
+        break;
+    case 3: //Varalakshmi Vratam
+        <div class="col-md-9">
+            <img class="img-responsive" style="height: auto; max-width: 800px; width: 100%;" src="~/Images/Fremont/VaralakshmiVratham_20220805.jpg" alt="@imageTitle0" title="@imageTitle0" usemap="#varalakshmi-vratham-map" /><br />
+            <map name="varalakshmi-vratham-map">
+                <area target="_blank" alt="@imageTitle0" title="@imageTitle0" href="~/SVCCTempleFremont/KioskOrder" coords="729,45,794,107" shape="rect">
+                <area target="_blank" alt="@imageTitle0" title="@imageTitle0" href="https://www.facebook.com/svcctemple" coords="730,117,789,180" shape="rect">
+            </map>
+            <a href="https://www.facebook.com/svcctemple" style="color: #0000ff; font-family: Arial; font-size: 23px; font-weight: bold; text-decoration: underline;" target="_blank" title="@imageTitle0">Please click here to watch live</a><br />
+            <a href="~/SVCCTempleFremont/KioskOrder" style="color: #ff0000; font-family: Arial; font-size: 23px; font-weight: bold; text-decoration: underline;" target="_blank" title="@imageTitle0">Please click here to donate</a><br />
+            <a href="~/Files/VaralakshmiVratam_1.html" style="color: #0000ff; font-family: Arial; font-size: 23px; font-weight: bold; text-decoration: underline;" target="_blank" alt="@imageTitle0" title="@imageTitle0">Click to read about Varalakshmi Vratham</a><br />
+            <span style="font-size: 20px; font-weight: bold;">
+                Varalakshmi Vratham - Aug 5 2022 - Fri - 8/5/2022<br />
+                6pm - 8pm<br />
+                Mahalakshmi Abhishekam<br />
+                Sahasranama Kumkumarchana<br />
+                Mantra Pushpam, Maha Mangala Aarthi, Theertha Prasada Viniyogaga
+            </span>
+        </div>
+        break;
+    case 4: //Kids Ganesha Puja
+        <div class="col-md-9 text-left" style="font-size: 15px; font-weight: bold;">
+            <span style="color: #0000ff;">Kids Ganesha Puja - Sunday - Aug 21 - 10:30am</span><br />
+            Ayyappa Samaaj & SVCC Temple Fremont welcomes all to register their kids to participate in the upcoming Kids Ganesha Puja. This very popular annual event will be hosted at <span style="color: #a54000;">SVCC Temple, Fremont, CA</span> on <span style="color: #0000ff;">Sunday August 21, 2022</span> from 10:30am onwards.
+            <br /><br />
+            As in years past, please register your kids using the link below. Walk-ins are discouraged as we have strict limits on seating inside the temple. We continue to take precautions due to Covid situation and will require masking at the event. Online participation option is available at registration.
+            <br /><br />
+            We encourage you to register today as the event usually fills out fast.
+            <br /><br />
+            Program:<br />
+            10:30am - Checkin<br />
+            11:00am - Sankalpam followed by Puja<br />
+            12:00noon - Arathi, Prasadam<br /><br />
+            <a target="_blank" style="color: #ff0000; font-family: Arial; font-size: 18px; font-weight: bold; text-decoration: underline;" href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001U5Vs8GLPlDwFWvs1vC9apgFHUDxG8uWaAHZjd6lhHHT7IZpxU7XvxQYEl2umrcu1ww2X9djFbPQWPwea9MoHGiNabuqlpVNgm0cheCwsX1pYPRS8AMAAe4cz8l0PqzuAZTkckTGGXVvlnXZUTZmm1pXBMm9jyDQmXqfkfMu1GHmUasQc8I3cLtweMUicjD5w0pJ5A17gSKzJ3SdWin_j2w%3D%3D%26c%3Debhm6l8hC-VFuqM6PB6S5OtbMONlOqTiO7bGkHOY0lFRXq0KcFYCsw%3D%3D%26ch%3DJHJNLNBNwrTqtfRT5mLqDZSH1Mn4SZzoaKxzCqjFibsU0PZxUdVZ9w%3D%3D&data=05%7C01%7C%7C34b49623e91a49efe59908da6b89318f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637940534300123452%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=Dx0t5i%2BX58ISmp1M00pInpSnqxH7eFjBZvi31NTnFCE%3D&reserved=0">CLICK HERE TO REGISTER</a><br />
+            <a target="_blank" href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001U5Vs8GLPlDwFWvs1vC9apgFHUDxG8uWaAHZjd6lhHHT7IZpxU7XvxQYEl2umrcu1ww2X9djFbPQWPwea9MoHGiNabuqlpVNgm0cheCwsX1pYPRS8AMAAe4cz8l0PqzuAZTkckTGGXVvlnXZUTZmm1pXBMm9jyDQmXqfkfMu1GHmUasQc8I3cLtweMUicjD5w0pJ5A17gSKzJ3SdWin_j2w%3D%3D%26c%3Debhm6l8hC-VFuqM6PB6S5OtbMONlOqTiO7bGkHOY0lFRXq0KcFYCsw%3D%3D%26ch%3DJHJNLNBNwrTqtfRT5mLqDZSH1Mn4SZzoaKxzCqjFibsU0PZxUdVZ9w%3D%3D&data=05%7C01%7C%7C34b49623e91a49efe59908da6b89318f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637940534300123452%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=Dx0t5i%2BX58ISmp1M00pInpSnqxH7eFjBZvi31NTnFCE%3D&reserved=0">
+                <img alt="@imageTitle1" title="@imageTitle1" class="img-responsive" style="height: auto; max-width: 225px; width: 100%;" src="https://www.svcctemple.org/Images/GaneshaPujaByKids.jpg" alt="Ganesha Puja by Kids - 10:30am Aug 21 - Sun - SVCC Temple Fremont" title="Ganesha Puja by Kids - 10:30am Aug 21 - Sun - SVCC Temple Fremont1" />
+            </a>
+            <a target="_blank" href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001U5Vs8GLPlDwFWvs1vC9apgFHUDxG8uWaAHZjd6lhHHT7IZpxU7XvxQYEl2umrcu1ww2X9djFbPQWPwea9MoHGiNabuqlpVNgm0cheCwsX1pYPRS8AMAAe4cz8l0PqzuAZTkckTGGXVvlnXZUTZmm1pXBMm9jyDQmXqfkfMu1GHmUasQc8I3cLtweMUicjD5w0pJ5A17gSKzJ3SdWin_j2w%3D%3D%26c%3Debhm6l8hC-VFuqM6PB6S5OtbMONlOqTiO7bGkHOY0lFRXq0KcFYCsw%3D%3D%26ch%3DJHJNLNBNwrTqtfRT5mLqDZSH1Mn4SZzoaKxzCqjFibsU0PZxUdVZ9w%3D%3D&data=05%7C01%7C%7C34b49623e91a49efe59908da6b89318f%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637940534300123452%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=Dx0t5i%2BX58ISmp1M00pInpSnqxH7eFjBZvi31NTnFCE%3D&reserved=0">
+                <img alt="@imageTitle1" title="@imageTitle1" class="img-responsive" style="height: auto; max-width: 1200px; width: 100%;" src="https://www.svcctemple.org/Images/AyyappaSamaj.jpg" alt="Ganesha Puja by Kids - 10:30am Aug 21 - Sun - SVCC Temple Fremont" title="Ganesha Puja by Kids - 10:30am Aug 21 - Sun - SVCC Temple Fremont1" />
+            </a>
+        </div>
+        break;
+}
+<script type="text/javascript">
+    function window_onload() {
+    }
+</script>

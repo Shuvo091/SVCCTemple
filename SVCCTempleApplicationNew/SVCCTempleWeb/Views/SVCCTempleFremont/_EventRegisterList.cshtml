@@ -1,0 +1,47 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+<h2>Request List</h2>
+@{
+    string databaseConnectionString = ApplicationInstance.Application["DatabaseConnectionString"].ToString();
+    SqlConnection sqlConnection = new SqlConnection(databaseConnectionString);
+    sqlConnection.Open();
+    SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Eventregister ORDER BY AddDateTime DESC", sqlConnection);
+    //sqlCommand.Parameters.Add("@LocationNameDesc", SqlDbType.VarChar, 50);
+    //sqlCommand.Parameters["@LocationNameDesc"].Value = "FREMONT";
+    //sqlCommand.Parameters["@StartDate"].Value = DateTime.Now.ToString("yyyy-MM-dd");
+    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+    <table class="table table-bordered table-condensed table-responsive" style="width: 81%;">
+        @while (sqlDataReader.Read())
+        {
+            <tr>
+                <td class="text-left" style="vertical-align: top;">
+                    @sqlDataReader["EventRegisterId"].ToString()
+                </td>
+                <td class="text-left" style="vertical-align: top;">
+                    @sqlDataReader["EmailAddress"].ToString()
+                </td>
+                <td class="text-left" style="vertical-align: top;">
+                    @sqlDataReader["FirstName"].ToString()
+                </td>
+                <td class="text-left" style="vertical-align: top;">
+                    @sqlDataReader["LastName"].ToString()
+                </td>
+                <td class="text-left" style="vertical-align: top;">
+                    @sqlDataReader["TelephoneNumber"].ToString()
+                </td>
+                <td class="text-left" style="vertical-align: top;">
+                    @sqlDataReader["SessionDesc"].ToString()
+                </td>
+                <td class="text-left" style="vertical-align: top;">
+                    @Html.Raw(sqlDataReader["Comments"].ToString().Replace(Environment.NewLine, "<br />"))
+                </td>
+                <td class="text-left" style="vertical-align: top;">
+                    @DateTime.Parse(sqlDataReader["AddDateTime"].ToString()).ToString("MMM-dd-yyyy hh:mm:ss tt")
+                </td>
+            </tr>
+        }
+    </table>
+    sqlDataReader.Close();
+    sqlConnection.Close();
+}
+

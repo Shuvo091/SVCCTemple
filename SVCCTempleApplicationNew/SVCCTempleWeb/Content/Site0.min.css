@@ -1,0 +1,32 @@
+﻿.menuitem {
+    flex-wrap: wrap;
+    float: none;
+    justify-content: center;
+}
+
+    .menuitem a {
+        border-right: 1px solid grey;
+        border-top: 1px solid grey;
+        border-left: 1px solid rgb(232, 183, 64);
+        color: black;
+        display: inline-block;
+        font-family: Lato, Arial, Tahoma, sans-serif;
+        font-size: 18px;
+        font-stretch: expanded;
+        font-weight: bold;
+        padding: 9px;
+        text-align: center;
+        text-decoration: none;
+        width: 180px;
+    }
+
+        .menuitem a:hover {
+            border-top: 3px solid rgb(232, 183, 64);
+            color: #e8b740;
+        }
+
+        .menuitem a.active {
+            background-color: #f5f5f5;
+            border-top: 3px solid rgb(232, 183, 64);
+            color: #e8b740;
+        }

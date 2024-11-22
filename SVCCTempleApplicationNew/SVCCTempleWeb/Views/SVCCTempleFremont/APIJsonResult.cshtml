@@ -1,0 +1,511 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SVCC Temple Fremont API Json Result</title>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    @Html.Partial("_Top")
+    <div>
+        <table>
+            <tr>
+                <td>
+                    Date (yyyy-mm-dd) :
+                </td>
+                <td>
+                    <input id="dailyInfoDate" placeholder="yyyy-mm-dd" value="" />
+                </td>
+                <td>
+                    <input id="dailyInfo" type="button" value="Daily Info" onclick="javascript: return dailyInfo();" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Date (yyyy-mm-dd) :
+                </td>
+                <td>
+                    <input id="sankalpamDate" placeholder="yyyy-mm-dd" value="" />
+                </td>
+                <td>
+                    <input type="button" value="Sankalpam Info" onclick="javascript: return sankalpamInfo();" />
+                </td>
+            </tr>
+            <tr>
+                <td>Year Month (yyyy-mm)</td>
+                <td>
+                    <input id="calendarInfoDate" placeholder="yyyy-mm" value="" />
+                </td>
+                <td>
+                    <input type="button" value="Calendar Info" onclick="javascript: return calendarInfo();" />
+                </td>
+            </tr>
+            <tr>
+                <td>Kiosk Payment</td>
+                <td></td>
+                <td>
+                    <input type="button" value="Kiosk Payment" onclick="javascript: return aPIKioskPayment();" />
+                </td>
+            </tr>
+            @*<tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" value="Sponsorship Info" onclick="javascript: return sponsorshipInfo();" />
+                </td>
+            </tr>*@
+            <tr>
+                <td>Kiosk Order</td>
+                <td>
+                    @*<input id="apiKioskOrderId" value="" />*@
+                </td>
+                <td>
+                    <input type="button" value="Kiosk Order" onclick="javascript: return apiKioskOrder();" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="resultsDiv" style="margin: 0 auto; text-align: center; width: 100%;"></div>
+    <script type="text/javascript">
+        var baseURL = "@ApplicationInstance.Application["FremontBaseURL"]";
+        function dailyInfo() {
+            console.log("dailyInfo " + baseURL + "APIDailyInfo/" + document.getElementById("dailyInfoDate").value);
+            $.ajax({
+                url: baseURL + "APIDailyInfo/" + document.getElementById("dailyInfoDate").value,
+                type: "GET",
+                success: function (responseData, textStatus, request) {
+                    console.log("SUCCESS!!!");
+                    document.getElementById("resultsDiv").innerHTML = responseData.HtmlString;
+                    var jsonObject = JSON.parse(responseData.JsonObject);
+                    console.log(jsonObject);
+                },
+                error: function (xhr, exception) {
+                    console.log("ERROR???", xhr.status);
+                    console.log(xhr);
+                    console.log(xhr.responseText);
+                    console.log(exception);
+                }
+            });
+            return false;
+        }
+        function aPIKioskPayment() {
+            console.log("aPIKioskPayment " + baseURL + "APIKioskPayment");
+            $.ajax({
+                url: baseURL + "APIKioskPayment",
+                type: "GET",
+                success: function (responseData, textStatus, request) {
+                    console.log("SUCCESS!!!");
+                    //document.getElementById("resultsDiv").innerHTML = responseData.HtmlString;
+                    var jsonObject = JSON.parse(responseData.JsonObject);
+                    console.log(jsonObject);
+                },
+                error: function (xhr, exception) {
+                    console.log("ERROR???", xhr.status);
+                    console.log(xhr);
+                    console.log(xhr.responseText);
+                    console.log(exception);
+                }
+            });
+            return false;
+        }
+        function dailyInfoSave() {
+            console.log("dailyInfo " + baseURL + "APIDailyInfo/" + document.getElementById("dailyInfoDate").value);
+            $.ajax({
+                url: baseURL + "APIDailyInfo/" + document.getElementById("dailyInfoDate").value,
+                type: "GET",
+                success: function (responseData, textStatus, request) {
+                    console.log("SUCCESS!!!");
+                    var jsonObject = JSON.parse(responseData);
+                    var tableObject = document.getElementById("resultsTable"), tr, td, text;
+                    while (tableObject.rows.length > 0) {
+                        tableObject.deleteRow(0);
+                    }
+                    tr = document.createElement('tr');
+
+                    td = document.createElement('th');
+                    td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                    text = document.createTextNode("Type");
+                    td.appendChild(text);
+                    tr.appendChild(td);
+
+                    td = document.createElement('th');
+                    td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                    text = document.createTextNode("Desc");
+                    td.appendChild(text);
+                    tr.appendChild(td);
+
+                    td = document.createElement('th');
+                    td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                    text = document.createTextNode("Start Date");
+                    td.appendChild(text);
+                    tr.appendChild(td);
+
+                    td = document.createElement('th');
+                    td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                    text = document.createTextNode("Start Time");
+                    td.appendChild(text);
+                    tr.appendChild(td);
+
+                    td = document.createElement('th');
+                    td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                    text = document.createTextNode("Finish Date");
+                    td.appendChild(text);
+                    tr.appendChild(td);
+
+                    td = document.createElement('th');
+                    td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                    text = document.createTextNode("Finish Time");
+                    td.appendChild(text);
+                    tr.appendChild(td);
+
+                    tableObject.appendChild(tr);
+
+                    for (var key in jsonObject) {
+                        tr = document.createElement('tr');
+
+                        td = document.createElement('td');
+                        td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                        text = document.createTextNode(jsonObject[key].InfoType);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+
+                        td = document.createElement('td');
+                        td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                        text = document.createTextNode(jsonObject[key].InfoDesc);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+
+                        td = document.createElement('td');
+                        td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                        text = document.createTextNode(jsonObject[key].StartDate);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+
+                        td = document.createElement('td');
+                        td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                        text = document.createTextNode(jsonObject[key].StartTime);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+
+                        td = document.createElement('td');
+                        td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                        text = document.createTextNode(jsonObject[key].FinishDate);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+
+                        td = document.createElement('td');
+                        td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+                        text = document.createTextNode(jsonObject[key].FinishTime);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+
+                        tableObject.appendChild(tr);
+                    }
+                },
+                error: function (xhr, exception) {
+                    console.log("ERROR???", xhr.status);
+                    console.log(xhr);
+                    console.log(xhr.responseText);
+                    console.log(exception);
+                }
+            });
+            return false;
+        }
+        function sankalpamInfo() {
+            console.log("sankalpamInfo " + baseURL + "APISankalpamInfo/" + document.getElementById("sankalpamDate").value);
+            $.ajax({
+                url: baseURL + "APISankalpamInfo/" + document.getElementById("sankalpamDate").value,
+                type: "GET",
+                success: function (responseData, textStatus, request) {
+                    console.log("SUCCESS!!!");
+                    document.getElementById("resultsDiv").innerHTML = responseData.HtmlString;
+                    var jsonObject = JSON.parse(responseData.JsonObject);
+                    console.log(jsonObject);
+                },
+                error: function (xhr, exception) {
+                    console.log("ERROR???", xhr.status);
+                    console.log(xhr);
+                    console.log(xhr.responseText);
+                    console.log(exception);
+                }
+            });
+            return false;
+        }
+        function importantDatesInfo() {
+            //console.log("importantDatesInfo");
+            //$.ajax({
+            //    url: baseURL + "ImportantDatesInfo/",
+            //    type: "GET",
+            //    success: function (responseData, textStatus, request) {
+            //        console.log("SUCCESS!!!");
+            //        console.log(textStatus);
+            //        console.log(request);
+            //        console.log(responseData);
+            //        //console.log(Object.keys(responseData));
+            //        //console.log(Object.values(responseData));
+            //        var jsonObject = JSON.parse(responseData);
+            //        console.log(jsonObject);
+            //        console.log(jsonObject[0].BeginDate, jsonObject[0].EndDate);
+            //        var tableObject = document.getElementById("resultsDiv"), tr, td, text;
+            //        while (tableObject.rows.length > 0) {
+            //            tableObject.deleteRow(0);
+            //        }
+            //        tr = document.createElement('tr');
+
+            //        td = document.createElement('th');
+            //        td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+            //        td.colSpan = "16";
+            //        text = document.createTextNode(jsonObject[0].BeginDate + " till " + jsonObject[0].EndDate);
+            //        td.appendChild(text);
+            //        tr.appendChild(td);
+
+            //        tableObject.appendChild(tr);
+
+            //        //var tableObject = document.getElementById("resultsDiv"), tr, td, text;
+            //        //for (var key in jsonObject) {
+            //        //    //console.log(key, jsonObject[key]);
+            //        //    console.log(key, jsonObject[key].InfoType, jsonObject[key].InfoDesc, jsonObject[key].StartDate, jsonObject[key].StartTime, jsonObject[key].FinishDate, jsonObject[key].FinishTime);
+            //        //    tr = document.createElement('tr');
+
+            //        //    td = document.createElement('td');
+            //        //    text = document.createTextNode(jsonObject[key].InfoType);
+            //        //    td.appendChild(text);
+            //        //    tr.appendChild(td);
+
+            //        //    td = document.createElement('td');
+            //        //    text = document.createTextNode(jsonObject[key].InfoDesc);
+            //        //    td.appendChild(text);
+            //        //    tr.appendChild(td);
+
+            //        //    td = document.createElement('td');
+            //        //    text = document.createTextNode(jsonObject[key].StartDate);
+            //        //    td.appendChild(text);
+            //        //    tr.appendChild(td);
+
+            //        //    td = document.createElement('td');
+            //        //    text = document.createTextNode(jsonObject[key].StartTime);
+            //        //    td.appendChild(text);
+            //        //    tr.appendChild(td);
+
+            //        //    td = document.createElement('td');
+            //        //    text = document.createTextNode(jsonObject[key].FinishDate);
+            //        //    td.appendChild(text);
+            //        //    tr.appendChild(td);
+
+            //        //    td = document.createElement('td');
+            //        //    text = document.createTextNode(jsonObject[key].FinishTime);
+            //        //    td.appendChild(text);
+            //        //    tr.appendChild(td);
+
+            //        //    tableObject.appendChild(tr);
+            //        //}
+            //    },
+            //    error: function (xhr, exception) {
+            //        console.log("ERROR???", xhr.status);
+            //        console.log(xhr);
+            //        console.log(xhr.responseText);
+            //        console.log(exception);
+            //    }
+            //});
+            return false;
+        }
+        function sponsorshipInfo() {
+            //console.log("sponsorshipInfo");
+            //$.ajax({
+            //    url: baseURL + "SponsorshipInfo",
+            //    type: "GET",
+            //    success: function (responseData, textStatus, request) {
+            //        console.log(9, "SUCCESS!!!");
+            //        //console.log(textStatus);
+            //        //console.log(request);
+            //        //console.log(responseData);
+            //        var jsonObject = JSON.parse(responseData);
+            //        console.log(jsonObject);
+            //        //console.log(jsonObject[0].BeginDate, jsonObject[0].EndDate);
+            //        //var tableObject = document.getElementById("resultsDiv"), tr, td, text;
+            //        //while (tableObject.rows.length > 0) {
+            //        //    tableObject.deleteRow(0);
+            //        //}
+            //        //tr = document.createElement('tr');
+
+            //        //td = document.createElement('th');
+            //        //td.style = "border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;";
+            //        //td.colSpan = "16";
+            //        //text = document.createTextNode(jsonObject[0].BeginDate + " till " + jsonObject[0].EndDate);
+            //        //td.appendChild(text);
+            //        //tr.appendChild(td);
+
+            //        //tableObject.appendChild(tr);
+            //        console.log(9.9, "SUCCESS!!!");
+            //    },
+            //    error: function (xhr, exception) {
+            //        console.log("ERROR???", xhr.status);
+            //        console.log(xhr);
+            //        console.log(xhr.responseText);
+            //        console.log(exception);
+            //    }
+            //});
+            return false;
+        }
+        function calendarInfo() {
+            console.log("calendarInfo " + baseURL + "APICalendarInfo/");// + document.getElementById("dailyInfoDate").value);
+            $.ajax({
+                url: baseURL + "APICalendarInfo/" + document.getElementById("calendarInfoDate").value,
+                type: "GET",
+                success: function (responseData, textStatus, request) {
+                    console.log("SUCCESS!!!");
+                    document.getElementById("resultsDiv").innerHTML = responseData.HtmlString;
+                    var jsonObject = JSON.parse(responseData.JsonObject);
+                    console.log(jsonObject);
+                },
+                error: function (xhr, exception) {
+                    console.log("ERROR???", xhr.status);
+                    console.log(xhr);
+                    console.log(xhr.responseText);
+                    console.log(exception);
+                }
+            });
+            return false;
+        }
+        function apiKioskOrder() {
+            console.log("apiKioskOrder", "00000000", "ENTER");
+            console.log("apiKioskOrder", "00001000", baseURL);//, "APIKioskOrder", document.getElementById("apiKioskOrderId").value);
+            $.ajax({
+                url: baseURL + "APIKioskOrder/",// + document.getElementById("apiKioskOrderId").value,
+                type: "GET",
+                success: function (responseData, textStatus, request) {
+                    console.log("apiKioskOrder", "00090000", "SUCCESS!!!");
+                    document.getElementById("resultsDiv").innerHTML = responseData.HtmlString;
+                    var jsonObject = JSON.parse(responseData.JsonObject);
+                    console.log(jsonObject);
+                },
+                error: function (xhr, exception) {
+                    console.log("apiKioskOrder", "00099000", "ERROR???");
+                    console.log("apiKioskOrder", "00099100", xhr, exception);
+                    document.getElementById("resultsDiv").innerHTML = "";
+                }
+            });
+            return false;
+        }
+        function updateShoppingCart() {
+            document.getElementById("kioskOrderedItemIds").value = "";
+            var prefixString = "";
+            var documentElementById, orderCount = 0, orderAmount = 0;
+            for (var i = 0; ; i++) {
+                try {
+                    documentElementById = document.getElementById("kioskItemId" + i);
+                    if (documentElementById.checked) {
+                        orderCount++;
+                        orderAmount += parseFloat(document.getElementById("itemRate" + i).innerHTML);
+                        document.getElementById("kioskOrderedItemIds").value += prefixString + documentElementById.value;
+                        prefixString = ",";
+                    }
+                }
+                catch (err) {
+                    break;
+                }
+            }
+            var generalDonationDescription, generalDonationAmount;
+            try {
+                generalDonationAmount = parseFloat(document.getElementById("GeneralDonationAmount").value);
+                if (isNaN(generalDonationAmount)) {
+                    generalDonationAmount = 0;
+                }
+            }
+            catch (err) {
+                generalDonationAmount = 0;
+            }
+            try {
+                generalDonationDescription = document.getElementById("GeneralDonationDescription").value.trim();
+            }
+            catch (err) {
+                generalDonationDescription = "";
+            }
+            if (generalDonationDescription == "" && generalDonationAmount > 0) {
+                generalDonationDescription = "General Donation";
+            }
+            if (generalDonationDescription != "" && generalDonationAmount > 0) {
+                orderCount++;
+                orderAmount += parseFloat(generalDonationAmount);
+            }
+            document.getElementById("GeneralDonationDescription").value = generalDonationDescription;
+            document.getElementById("GeneralDonationAmount").value = generalDonationAmount;
+            document.getElementById("orderCount").innerHTML = orderCount;
+            document.getElementById("orderAmount").innerHTML = orderAmount;
+            if (orderCount == 0 || orderAmount == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        function btnKioskCheckoutAPI_onclick() {
+            if (updateShoppingCart()) {
+                var jsonObject = {};
+                var aPIPaymentModel = {};
+                var aPIOrderItemModel;
+                aPIPaymentModel.CreditCardExpiryMM = "09";
+                aPIPaymentModel.CreditCardExpiryYYYY = "2025";
+                aPIPaymentModel.CreditCardNumber = "4111111111111111";
+                aPIPaymentModel.CreditCardSecCode = "123";
+                aPIPaymentModel.EmailAddress = "test1@email.com";
+                aPIPaymentModel.FirstName = null;
+                aPIPaymentModel.LastName = null;
+                aPIPaymentModel.NameOnCreditCard = "Joe Perez";
+                aPIPaymentModel.SponsorshipAmount = 999;
+                jsonObject.APIPaymentModel = aPIPaymentModel;
+                jsonObject.APIOrderItemModels = [];
+                aPIOrderItemModel = {};
+                jsonObject.APIOrderItemModels.push(aPIOrderItemModel);
+                aPIOrderItemModel.KioskItemId = 9;
+                aPIOrderItemModel.OrderQty = 1;
+                aPIOrderItemModel.OrderAmount = 99;
+                aPIOrderItemModel = {};
+                jsonObject.APIOrderItemModels.push(aPIOrderItemModel);
+                aPIOrderItemModel.KioskItemId = 18;
+                aPIOrderItemModel.OrderQty = 1;
+                aPIOrderItemModel.OrderAmount = 198;
+                console.log(jsonObject);
+                alert("AJAX call POST Checkout");
+                $.ajax({
+                    url: baseURL + "APIKioskPayment/",// + document.getElementById("apiKioskOrderId").value,
+                    type: "POST",
+                    data: jsonObject,
+                    success: function (responseData, textStatus, request) {
+                        console.log("btnKioskCheckoutAPI_onclick", "00090000", "SUCCESS!!!");
+                        var jsonObject = JSON.parse(responseData.JsonObject);
+                        console.log(jsonObject);
+                    },
+                    error: function (xhr, exception) {
+                        console.log("btnKioskCheckoutAPI_onclick", "00099000", "ERROR???");
+                        console.log("btnKioskCheckoutAPI_onclick", "00099100", xhr, exception);
+                        document.getElementById("resultsDiv").innerHTML = "";
+                    }
+                });
+                return true;
+            }
+            else {
+                alert("Please select an item to continue");
+                return false;
+            }
+        }
+        function isInputNumber(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if ((charCode >= 48 && charCode <= 57) || charCode === 8)//0-9 or backspace
+            //if ((window.event.keyCode >= 48 && window.event.keyCode <= 57) || window.event.keyCode == 8)//0-9 or backspace
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

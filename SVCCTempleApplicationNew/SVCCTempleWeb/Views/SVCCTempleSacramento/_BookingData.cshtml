@@ -1,0 +1,95 @@
+﻿@model SVCCTempleWeb.Models.BookingModel
+<style>
+    #EmailAddress-error, #ConfirmEmailAddress-error, #TelephoneNumber-error, #FirstName-error, #LastName-error, #StartDate-error, #StartTime-error {
+        color: #ff0000;
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+    }
+</style>
+@if (Model != null && Model.ResponseObjectModel != null && !string.IsNullOrWhiteSpace(Model.ResponseObjectModel.ValidationSummaryMessage))
+{
+    <div class="row validationSummaryMessage">
+        @Model.ResponseObjectModel.ValidationSummaryMessage
+    </div>
+}
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="row" style="margin-left: auto; margin-right: auto; padding: 5px; width: 90%">
+        @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationSummary(false, "", new { @class = "validationSummaryErrors", style = "-webkit-column-count: 3; -moz-column-count: 3; column-count: 3; font-size: 12px; text-align: left;" }).ToHtmlString()))
+    </div>
+}
+@if (Model != null && Model.ResponseObjectModel != null)
+{
+    <div class="row">
+        @Html.Partial("_ResponseObject", Model.ResponseObjectModel)
+    </div>
+}
+<table class="col-md-12">
+    <tr>
+        <th class="text-right" style="padding: 9px;">
+            @Html.LabelFor(m => m.EmailAddress, new { @class = "control-label" })
+        </th>
+        <td style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.EmailAddress, "", new { id = "EmailAddress-error" }).ToHtmlString()))
+        </td>
+        <th class="text-right" style="padding: 9px;">
+            @Html.LabelFor(m => m.ConfirmEmailAddress, new { @class = "control-label" })
+        </th>
+        <td style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.ConfirmEmailAddress, new { @class = "form-control", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.ConfirmEmailAddress, "", new { id = "ConfirmEmailAddress-error" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th class="text-right" style="padding: 9px;">
+            @Html.LabelFor(m => m.TelephoneNumber, new { @class = "control-label" })
+        </th>
+        <td style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.TelephoneNumber, new { @class = "form-control", min = "1000000000", max = "9999999999", style = "width: 81%;", type = "number" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.TelephoneNumber, "", new { id = "TelephoneNumber-error" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th class="text-right" style="padding: 9px;">
+            @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
+        </th>
+        <td style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.FirstName, "", new { id = "FirstName-error" }).ToHtmlString()))
+        </td>
+        <th class="text-right" style="padding: 9px;">
+            @Html.LabelFor(m => m.LastName, new { @class = "control-label" })
+        </th>
+        <td style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.LastName, "", new { id = "LastName-error" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th class="text-right" style="padding: 9px;">
+            @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
+        </th>
+        <td style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.StartDate, new { @class = "form-control", type = "date", style = "width: 54%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.StartDate, "", new { id = "StartDate-error" }).ToHtmlString()))
+        </td>
+        <th class="text-right" style="padding: 9px;">
+            @Html.LabelFor(m => m.StartTime, new { @class = "control-label" })
+        </th>
+        <td style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control", type = "time", style = "width: 45%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.StartTime, "", new { id = "StartTime-error" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th class="text-right" col style="padding: 9px; vertical-align: top;">
+            @Html.LabelFor(m => m.PatronComments, new { @class = "control-label" })
+        </th>
+        <td colspan="3" style="padding: 9px; text-align: left; vertical-align: top;">
+            @Html.TextAreaFor(m => m.PatronComments, new { @class = "form-control", type = "date", style = "width: 81%;" })
+        </td>
+    </tr>
+</table>
+<br style="clear: both;" />

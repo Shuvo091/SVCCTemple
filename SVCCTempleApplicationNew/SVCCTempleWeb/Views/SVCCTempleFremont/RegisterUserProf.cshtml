@@ -1,0 +1,102 @@
+﻿@model SVCCTempleWeb.Models.RegisterUserProfModel
+
+@{
+    ViewBag.Title = "RegisterUserProf";
+}
+<form id="formRegisterUser">
+    @Html.Partial("_RegisterUserProf", Model)
+</form>
+<br />
+<input class="btn btn-primary" id="registerUserProf" onclick="javascript: return registerUserProf_onclick();" style="font-weight: bold;" type="submit" value="R E G I S T E R" />
+<script type="text/javascript">
+<!--
+    function window_onload() {
+        newFunction();
+    }
+    function newFunction() {
+        $(document).ready(
+            function () {
+                $('#ConfirmRegisterEmailAddress').bind
+                    ("cut copy paste",
+                    function (e) {
+                        e.preventDefault();
+                    }
+                    );
+            });
+        $("#RegisterEmailAddress").html("");
+        $("#ConfirmRegisterEmailAddress").html("");
+        getRidOffAutocomplete();
+    }
+    function getRidOffAutocomplete() {
+        var timer = window.setTimeout(function () {
+            $('#RegisterEmailAddress, #ConfirmRegisterEmailAddress').prop('disabled', false);
+            clearTimeout(timer);
+        }, 1200);
+    }
+    function registerUserProf_onclick() {
+        event.preventDefault();
+        $.validator.unobtrusive.parse($("#formRegisterUser")); //add the form validation
+        var formValid = $("#formRegisterUser").valid();
+        var url = "/SVCCTempleSacramento/RegisterUserProf";
+        var jsonPostData = $("#formRegisterUser").serialize();
+        console.log(formValid, jsonPostData);
+        if (formValid) {
+            $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+            $.ajax({
+                url: url,
+                type: "POST",
+                //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                //dataType: "html",
+                data: jsonPostData,
+                success: function (responseData, textStatus, request) {
+                    $("#loadingModal").modal('hide');
+                    if (responseData.ResponseMessagesHtml != null) {
+                        document.getElementById("responseMessage").innerHTML = responseData.ResponseMessagesHtml;
+                    }
+                    if (responseData.ResponseMessagesData != null) {
+                        for (i = 0; i < responseData.ResponseMessagesData.length; i++) {
+                            if (i % 2 == 0) {
+                                document.getElementById(responseData.ResponseMessagesData[i].Key).innerText = responseData.ResponseMessagesData[i].Value;
+                            }
+                            else {
+                                document.getElementById(responseData.ResponseMessagesData[i].Key).value = responseData.ResponseMessagesData[i].Value;
+                            }
+                        }
+                    }
+                    newFunction();
+                    console.log("SUCCESS!!! RegisterUserProf", responseData);
+                },
+                error: function (xhr, exception) {
+                    $("#loadingModal").modal('hide');
+                    console.log(xhr.responseJSON.ResponseMessagesData);
+                    console.log(xhr.responseJSON.ResponseMessagesError);
+                    if (xhr.responseJSON.ResponseMessagesHtml != null) {
+                        document.getElementById("responseMessage").innerHTML = xhr.responseJSON.ResponseMessagesHtml;
+                    }
+                    if (xhr.responseJSON.ResponseMessagesData != null) {
+                        for (i = 0; i < xhr.responseJSON.ResponseMessagesData.length; i++) {
+                            if (i % 2 == 0) {
+                                document.getElementById(xhr.responseJSON.ResponseMessagesData[i].Key).innerText = xhr.responseJSON.ResponseMessagesData[i].Value;
+                            }
+                            else {
+                                document.getElementById(xhr.responseJSON.ResponseMessagesData[i].Key).value = xhr.responseJSON.ResponseMessagesData[i].Value;
+                            }
+                        }
+                    }
+                    if (xhr.responseJSON.ResponseMessagesError != null) {
+                        for (i = 0; i < xhr.responseJSON.ResponseMessagesError.length; i++) {
+                            for (j = 0; j < xhr.responseJSON.ResponseMessagesError[i].Value.length; j++) {
+                                $('span[data-valmsg-for="' + xhr.responseJSON.ResponseMessagesError[i].Key + '"]').text(xhr.responseJSON.ResponseMessagesError[j].Value);
+                            }
+                        }
+                    }
+                    newFunction();
+                    console.log("xhr.status", xhr.status, "exception", exception, "ERROR??? RegisterUserProf");
+                }
+            });
+        }
+        else {
+            alert("Please fix errors to continue");
+        }
+    }
+</script>

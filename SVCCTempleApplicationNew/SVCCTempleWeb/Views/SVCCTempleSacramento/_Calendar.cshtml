@@ -1,0 +1,339 @@
+﻿@model SVCCTempleWeb.Models.CalendarModel
+@{
+    int i, j, k;
+}
+<table style="border-spacing: 0px; padding: 3px; border-collapse: collapse; margin:0px; width:1086px;">
+    <tr>
+        <td align="left" colspan="4" style="height:21.6pt">
+            <a id="calendarPrev" name="calendarPrev" href="javascript:return calendarPrev_onclick();" onclick="javascript:return calendarPrev_onclick();" style="background: #f3f3f3; color: #000000; text-decoration: none;">&#9668</a>
+            <select id="calendarMonth" name="calendarMonth" onchange="javascript:return calendarMonth_onchange();" style="font-family: Arial; font-size: 9pt;">
+                @functions {
+                    void buildCalendarInfo(SortedList<string, List<SVCCTempleWeb.Models.CalendarData>> calendarDataListList, string calendarPart, out string calendarInfo1, out string calendarInfo2, out string calendarInfo3, out string calendarInfo4, out string calendarInfo5)
+                    {
+                        List<SVCCTempleWeb.Models.CalendarData> calendarDataList;
+                        Model.CalendarDataListList.TryGetValue(calendarPart, out calendarDataList);
+                        calendarInfo1 = calendarDataList[0].CodeDataDesc0;
+                        if (calendarDataList.Count > 1)
+                        {
+                            calendarInfo2 = ", " + calendarDataList[1].CodeDataDesc0;
+                            calendarInfo3 = " " + calendarDataList[1].StartDate.Day;//.Substring(8, 2);
+                            calendarInfo4 = superScript(int.Parse(calendarInfo3));
+                            calendarInfo5 = " " + DateTime.Parse(calendarDataList[1].StartTime).ToString("h:mm tt");
+                        }
+                        else
+                        {
+                            calendarInfo2 = "";
+                            calendarInfo3 = "";
+                            calendarInfo4 = "";
+                            calendarInfo5 = "";
+                        }
+                        return;
+                    }
+                    string superScript(int number)
+                    {
+                        string[] superscript = { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th", "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th", "st" };
+
+                        return superscript[number];
+                    }
+                }
+                @{
+                    string calendarInfo1, calendarInfo2, calendarInfo3, calendarInfo4, calendarInfo5;
+                    for (i = 1; i < 10; i++)
+                    {
+                        if (i == Model.CalendarMonthSelected)
+                        {
+                            <option selected="selected" value="0@(i)">@Model.CalendarMonthName[i - 1]</option>
+                        }
+                        else
+                        {
+                            <option value="0@(i)">@Model.CalendarMonthName[i - 1]</option>
+                        }
+                    }
+                    for (i = 10; i <= 12; i++)
+                    {
+                        if (i == Model.CalendarMonthSelected)
+                        {
+                            <option selected="selected" value="@(i)">@Model.CalendarMonthName[i - 1]</option>
+                        }
+                        else
+                        {
+                            <option value="@(i)">@Model.CalendarMonthName[i - 1]</option>
+                        }
+                    }
+                }
+            </select>
+            <select id="calendarYear" name="calendarYear" onchange="javascript:return calendarYear_onchange();" style="font-family: Arial; font-size: 9pt;">
+                @{
+                    for (i = 0; i < Model.CalendarYear.Length; i++)
+                    {
+                        if (Model.CalendarYear[i] == Model.CalendarYearSelected)
+                        {
+                            <option selected="selected" value="@Model.CalendarYear[i]">@Model.CalendarYear[i]</option>
+                        }
+                        else
+                        {
+                            <option value="@Model.CalendarYear[i]">@Model.CalendarYear[i]</option>
+                        }
+                    }
+                }
+            </select>
+            <a id="calendarNext" name="calendarNext" href="javascript:return calendarNext_onclick();" onclick="javascript: return calendarNext_onclick();" style="background: #f3f3f3; color: #000000; text-decoration: none;">&#9658</a>
+        </td>
+        <td align="right" colspan="3" style="font-family:Times New Roman;font-size:20px;font-weight:bold">
+            @Model.CalendarFromDate.ToString("MMMM yyyy")
+        </td>
+    </tr>
+    <tr>
+        <td align="left" colspan="7" style="border-collapse:collapse;border-color:#cccccc;border-style:solid;border-width:1px;height:21.6pt">
+            <table cellpadding="0" cellspacing="0" style="margin:0px;width:100%">
+                <tr>
+                    <td align="left" style="white-space:nowrap;width:30%">
+                        @{
+                            buildCalendarInfo(Model.CalendarDataListList, "PANCHANGAM_YEAR", out calendarInfo1, out calendarInfo2, out calendarInfo3, out calendarInfo4, out calendarInfo5);
+                        }
+                        <span style="font-family: Arial; font-size: 10pt; font-weight: bold;">@calendarInfo1@calendarInfo2@calendarInfo3<sup>@calendarInfo4</sup>@calendarInfo5</span>
+                    </td>
+                    <td align="center" style="white-space:nowrap;width:40%">
+                        @{
+                            buildCalendarInfo(Model.CalendarDataListList, "PANCHANGAM_RAASI", out calendarInfo1, out calendarInfo2, out calendarInfo3, out calendarInfo4, out calendarInfo5);
+                        }
+                        <span style="font-family: Arial; font-size: 10pt; font-weight: bold;">@calendarInfo1@calendarInfo2@calendarInfo3<sup>@calendarInfo4</sup>@calendarInfo5</span>
+                    </td>
+                    <td align="right" style="white-space:nowrap;width:30%">
+                        @{
+                            buildCalendarInfo(Model.CalendarDataListList, "PANCHANGAM_YEAR_PART", out calendarInfo1, out calendarInfo2, out calendarInfo3, out calendarInfo4, out calendarInfo5);
+                        }
+                        <span style="font-family: Arial; font-size: 10pt; font-weight: bold;">@calendarInfo1@calendarInfo2@calendarInfo3<sup>@calendarInfo4</sup>@calendarInfo5</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" style="white-space:nowrap">
+                        @{
+                            buildCalendarInfo(Model.CalendarDataListList, "PANCHANGAM_SEASON", out calendarInfo1, out calendarInfo2, out calendarInfo3, out calendarInfo4, out calendarInfo5);
+                        }
+                        <span style="font-family: Arial; font-size: 10pt; font-weight: bold;">@calendarInfo1@calendarInfo2@calendarInfo3<sup>@calendarInfo4</sup>@calendarInfo5</span>
+                    </td>
+                    <td align="center" style="white-space:nowrap">
+                        @{
+                            buildCalendarInfo(Model.CalendarDataListList, "PANCHANGAM_MONTH", out calendarInfo1, out calendarInfo2, out calendarInfo3, out calendarInfo4, out calendarInfo5);
+                        }
+                        <span style="font-family: Arial; font-size: 10pt; font-weight: bold;">@calendarInfo1@calendarInfo2@calendarInfo3<sup>@calendarInfo4</sup>@calendarInfo5</span>
+                    </td>
+                    <td align="right" style="white-space:nowrap">
+                        @{
+                            buildCalendarInfo(Model.CalendarDataListList, "PANCHANGAM_TAMIL_MONTH", out calendarInfo1, out calendarInfo2, out calendarInfo3, out calendarInfo4, out calendarInfo5);
+                        }
+                        <span style="font-family: Arial; font-size: 10pt; font-weight: bold;">@calendarInfo1@calendarInfo2@calendarInfo3<sup>@calendarInfo4</sup>@calendarInfo5</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <colgroup>
+        <col style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; vertical-align: top; width: 155px;" />
+        <col style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; vertical-align: top; width: 155px;" />
+        <col style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; vertical-align: top; width: 155px;" />
+        <col style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; vertical-align: top; width: 155px;" />
+        <col style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; vertical-align: top; width: 155px;" />
+        <col style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; vertical-align: top; width: 155px;" />
+        <col style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; vertical-align: top; width: 155px;" />
+    </colgroup>
+    <tr>
+        <td align="center" style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; font-family: Arial; font-size: 9pt; font-weight: bold; height: 36px;">
+            Sun
+        </td>
+        <td align="center" style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; font-family: Arial; font-size: 9pt; font-weight: bold; height: 36px;">
+            Mon
+        </td>
+        <td align="center" style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; font-family: Arial; font-size: 9pt; font-weight: bold; height: 36px;">
+            Tue
+        </td>
+        <td align="center" style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; font-family: Arial; font-size: 9pt; font-weight: bold; height: 36px;">
+            Wed
+        </td>
+        <td align="center" style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; font-family: Arial; font-size: 9pt; font-weight: bold; height: 36px;">
+            Thu
+        </td>
+        <td align="center" style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; font-family: Arial; font-size: 9pt; font-weight: bold; height: 36px;">
+            Fri
+        </td>
+        <td align="center" style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; font-family: Arial; font-size: 9pt; font-weight: bold; height: 36px;">
+            Sat
+        </td>
+    </tr>
+    @{
+        List<SVCCTempleWeb.Models.CalendarData> thithiList, nakshatraList;
+        Model.CalendarDataListList.TryGetValue("PANCHANGAM_THITHI", out thithiList);
+        Model.CalendarDataListList.TryGetValue("PANCHANGAM_NAKSHATRA", out nakshatraList);
+        int indexKey = -1, indexValue;
+        for (i = 0; i < 6; i++)
+        {
+            <tr>
+                @{
+                    for (j = 0; j < 7; j++)
+                    {
+                        indexKey++;
+                        <td style="border-collapse: collapse; border-color: #cccccc; border-style: solid; border-width: 1px; height: 144px; text-align: center; vertical-align: top;">
+                            <p style="color: @Model.CalendarDateListList.ElementAt(indexKey).Value[0].Color; font-family: Arial; font-size: 8.0pt; font-weight: bold; margin:0px; width:98%; text-align: right">@Model.CalendarDateListList.ElementAt(indexKey).Key.ToString("dd").TrimStart('0')</p>
+                            <p style="color: @Model.CalendarDateListList.ElementAt(indexKey).Value[0].Color; font-family :Arial; font-size: 8.0pt; font-weight: bold; margin: 0px; width: 98%; text-align: center;">
+                                @{
+                                    indexValue = 0;
+                                    while (indexValue < Model.CalendarDateListList.ElementAt(indexKey).Value.Count && Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeTypeNameDesc == "PANCHANGAM_THITHI")
+                                    {
+                                        @Html.Raw(Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeDataDesc0 + " - " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeDataDesc9);
+                                        <br />
+                                        @Html.Raw(Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].StartDate.ToString("MM/dd") + " " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].StartTime + " - " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].FinishDate.ToString("MM/dd") + " " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].FinishTime);
+                                        <br />
+                                        indexValue++;
+                                    }
+                                }
+                            </p>
+                            <br />
+                            <p style="color: @Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].Color; font-family :Arial; font-size: 8.0pt; font-weight: bold; margin: 0px; width: 98%; text-align: center;">
+                                @{
+                                    while (indexValue < Model.CalendarDateListList.ElementAt(indexKey).Value.Count && Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeTypeNameDesc == "PANCHANGAM_NAKSHATRA")
+                                    {
+                                        @Html.Raw(Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeDataDesc0 + " - " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeDataDesc9);
+                                        <br />
+                                        @Html.Raw(Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].StartDate.ToString("MM/dd") + " " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].StartTime + " - " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].FinishDate.ToString("MM/dd") + " " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].FinishTime);
+                                        <br />
+                                        indexValue++;
+                                    }
+                                }
+                            </p>
+                            <br />
+                            <p style="color: @Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].Color; font-family :Arial; font-size: 8.0pt; font-weight: bold; margin: 0px; width: 98%; text-align: center;">
+                                @{
+                                    while (indexValue < Model.CalendarDateListList.ElementAt(indexKey).Value.Count && Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeTypeNameDesc == "RISE_SET")
+                                    {
+                                        @Html.Raw(Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].CodeDataDesc0 + " " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].StartTime + " - " + Model.CalendarDateListList.ElementAt(indexKey).Value[indexValue].FinishTime);
+                                        <br />
+                                        indexValue++;
+                                    }
+                                }
+                            </p>
+                            @{
+                                List<SVCCTempleWeb.Models.CalendarEvent> calendarEvents;
+                                if (Model.CalendarEventListList.TryGetValue(Model.CalendarDateListList.ElementAt(indexKey).Key, out calendarEvents))
+                                {
+                                    <br />
+                                    <p style="color: #ff5f40; font-family :Arial; font-size: 8.0pt; font-weight: bold; margin: 0px; width: 98%; text-align: center;">
+                                        @foreach (var calendarEvent in calendarEvents)
+                                        {
+                                            @calendarEvent.EventText<br />
+                                        }
+                                    </p>
+                                }
+                            }
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    }
+</table>
+@for (i = Model.ImportantDatesModelsList.Count % 3; i > 0 && i < 3; i++)
+{
+    Model.ImportantDatesModelsList.Add(new SVCCTempleWeb.Models.ImportantDatesModel());
+}
+<table style="border-spacing: 0px; padding: 3px; border-collapse: collapse; margin:0px; padding: 5px; width:1086px;">
+    <colgroup>
+        <col style="width: 130px;" />
+        <col style="width: 150px;" />
+        <col style="width: 82px;" />
+        <col style="width: 130px;" />
+        <col style="width: 150px;" />
+        <col style="width: 82px;" />
+        <col style="width: 130px;" />
+        <col style="width: 150px;" />
+        <col style="width: 82px;" />
+    </colgroup>
+    <tr>
+        <td colspan="9" style="border-collapse:collapse; border-color:#cccccc; border-style:solid; border-width:1px; font-family: Times New Roman; font-size: 20px; font-weight: bold; padding: 5px;">
+            Daily, Weekly & Recurring Events
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Daily 9:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gangadhareshwara (Shiva) Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Tuesday 7pm</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gakara Ganapathy Sahasranamam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Friday 10am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Saraswahti Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Friday 10:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Lakshmi Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Saturday 9am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Venkateswara Suprabatham</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Saturday 10am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Navagraha Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Saturday 11am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Venkateshwara Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Saturday 5pm</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Aanjaneya (Hanuman) Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Every Poornima</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">6:30pm Satyanarayana Puja</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Every Sankasht Chathurthi<br />Chathurthi after Poornima</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Ganapathy Abhishekam<br />6am on Weekdays<br />7:30am on Weekends<br />6:30pm Ganapathy Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Sashti - Shukla & Krishna</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">6:30pm Subhramanya Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Pradosham - Shukla & Krishna<br />Trayodashi</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gangadhareshwara (Shiva) Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Sunday 10:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Ganapathy Abhishekam</span>
+        </td>
+    </tr>
+    @*{
+            k = 0;
+            for (i = 0; i < Model.ImportantDatesModelsList.Count / 3; i++)
+            {
+                <tr>
+                    @for (j = 0; j < 3; j++)
+                    {
+                        <td style="border-collapse:collapse; border-color:#cccccc; border-style:solid; border-width:1px; color: #ff0000; font-family: Times New Roman; font-size: 11pt; font-weight: bold; padding: 5px; text-align: left; vertical-align: top;">
+                            @Model.ImportantDatesModelsList[k].EventName1
+                        </td>
+                        <td style="border-collapse:collapse; border-color:#cccccc; border-style:solid; border-width:1px; color: #0000ff; font-family: Times New Roman; font-size: 11pt; font-weight: bold; padding: 5px; text-align: left; vertical-align: top;">
+                            @Model.ImportantDatesModelsList[k].EventDesc1
+                        </td>
+                        <td style="background-color: #a0a0a0; border-collapse:collapse; border-color:#cccccc; border-style:solid; border-width:1px; font-family: Times New Roman; font-size: 11pt; font-weight: bold; padding: 5px; text-align: center; vertical-align: top;">
+                            @Model.ImportantDatesModelsList[k].StartTime
+                        </td>
+                        k++;
+                    }
+                </tr>
+            }
+        }*@
+</table>

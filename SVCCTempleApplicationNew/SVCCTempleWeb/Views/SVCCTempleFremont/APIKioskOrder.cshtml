@@ -1,0 +1,11 @@
+﻿@model List<SVCCTempleWeb.Models.APIKioskGroupModel>
+@{
+    ViewBag.Title = "KioskOrder";
+    Layout = "_Layout5.cshtml";
+}
+@Html.Partial("_APIKioskOrder", Model)
+<script type="text/javascript">
+    function window_onload() {
+        updateShoppingCart();
+    }
+</script>

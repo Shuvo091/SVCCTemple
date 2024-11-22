@@ -1,0 +1,45 @@
+﻿@model SVCCTempleWeb.Models.BookingModel
+<div class="center">
+    <div id="divErrorMessage"></div>
+    <div class="center" style="width: 36%;">
+        <button class="loginRegisterbtn" id="bookingDataSave1" onclick="javascript: return bookingDataSave_onclick();">SAVE</button>
+    </div>
+    <form id="formBookingData">
+        @Html.Partial("_BookingData", Model)
+    </form>
+    <div class="center" style="width: 36%;">
+        <button class="loginRegisterbtn" id="bookingDataSave1" onclick="javascript: return bookingDataSave_onclick();">SAVE</button>
+    </div>
+</div>
+<script type="text/javascript">
+    function bookingDataSave_onclick() {
+        console.log("00000000", "bookingDataSave_onclick", "ENTER!!!");
+        $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+        document.getElementById("divErrorMessage").innerHTML = "";
+        var url = "/SVCCTempleSacramento/Booking";
+        var jsonPostData = $("#formBookingData").serialize();
+        $("#loadingModal").modal('hide');
+        $.ajax({
+            url: url,
+            type: "POST",
+            //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            //dataType: "html",
+            data: jsonPostData,
+            success: function (responseData, textStatus, request) {
+                console.log("00000000", "bookingDataSave_onclick", "SUCCESS!!!");
+                $("#loadingModal").modal('hide');
+                document.getElementById("divErrorMessage").innerHTML = "<span style='color: #0000ff; font-family: Arial; font-size: 15px; font-weight: bold;'>Booking request created successfully!!!</span>";
+                document.getElementById("formBookingData").innerHTML = responseData;
+                alert("Booking request created successfully!!!");
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                console.log("00000000", "bookingDataSave_onclick", "ERROR???");
+                console.log(xhr);
+                document.getElementById("formBookingData").innerHTML = xhr.responseText;
+                document.getElementById("divErrorMessage").innerHTML = "<span style='color: #ff0000; font-family: Arial; font-size: 15px; font-weight: bold;'>Error while creating booking request</span>";
+                alert("Error while creating booking request???");
+            }
+        });
+    }
+</script>

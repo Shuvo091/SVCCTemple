@@ -1,0 +1,75 @@
+﻿@model SVCCTempleWeb.Models.APIDailyInfoModel
+
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin: 0 auto; padding: 5px;">
+    <tr>
+        <th colspan="3">
+            Banner Url
+        </th>
+        <td colspan="3">
+            @Model.BannerImageUrl
+        </td>
+    </tr>
+    @foreach (var deityImageUrl in Model.DeityImagesUrl)
+    {
+        <tr>
+            <th colspan="3">
+                Deity Url
+            </th>
+            <td colspan="3">
+                @deityImageUrl
+            </td>
+        </tr>
+    }
+    <tr>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Type</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Desc</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Start Date</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Start Time</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Finish Date</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Finish Time</th>
+    </tr>
+    @foreach (var generalInfo in Model.GeneralInfos)
+    {
+        <tr>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.InfoType</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.InfoDesc</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.StartDate</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.StartTime</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.FinishDate</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.FinishTime</td>
+        </tr>
+    }
+</table>
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin: 0 auto; padding: 5px;">
+    <tr>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            Desc
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            Time
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            Spon#
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            Kiosk#
+        </th>
+    </tr>
+    @foreach (var aPIDailyInfoDataModel in Model.APIDailyInfoDataModels)
+    {
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            @aPIDailyInfoDataModel.EventDesc1
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            @Html.Raw(aPIDailyInfoDataModel.EventDetail1.Replace(Environment.NewLine, "<br />"))
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            @aPIDailyInfoDataModel.SponsorshipGroupId
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+            @aPIDailyInfoDataModel.KioskGroupId
+        </td>
+    </tr>
+    }
+</table>

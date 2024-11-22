@@ -1,0 +1,132 @@
+﻿@model SVCCTempleWeb.Models.EventRegisterModel
+@{
+    ViewBag.Title = "EventRegister";
+    Layout = "_Layout3.cshtml";
+}
+<h3 style="color: #0000ff; font-weight: bold;">REQUEST FORM FOR DIWALI (DEEPAVALI) SWEETS & SNACKS</h3>
+<span style="color: #ff0000; font-size: 18px; font-weight: bold;">Pickup on Oct 27, 28, 29, 30 - 5pm - 8pm</span>
+<form id="formEventRegisterData">
+    @Html.Partial("_EventRegisterData", Model)
+</form>
+<table class="table table-condensed" style="margin-left: auto; margin-right: auto; width: 81%;">
+    <tr>
+        <td colspan="2">
+            <button class="btn btn-primary" id="btnEventRegisterSubmit" onclick="javascript: return btnEventRegisterSubmit_onclick();" style="font-size: 18px; font-weight: bold;">S U B M I T</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center; vertical-align: top;">
+            <img src="/Images/Fremont/DiwaliSweets_20241027_20241030.jpg" alt="SVCC Temple Fremont Diwali Deepavali Sweets. Snacks 10/27 yill 10/30 5pm - 8pm" title="SVCC Temple Fremont Diwali Deepavali Sweets. Snacks 10/27 yill 10/30 5pm - 8pm" />
+        </td>
+    </tr>
+</table>
+<form id="formKioskCheckout" action="/SVCCTempleFremont/KioskCheckout" method="get">
+    <input id="kioskOrderedItemIds" name="kioskOrderedItemIds" type="hidden" />
+    <input id="kioskOrderedOrderQtys" name="kioskOrderedOrderQtys" type="hidden" />
+</form>
+<script type="text/javascript">
+    function window_onload() {
+    }
+    function inputDecimal() {
+    }
+    function btnEventRegisterSubmit_onclick() {
+        console.log("00000000", "btnEventRegisterSubmit_onclick", "Enter");
+        try {
+            document.getElementById("divItemAttribValidationSummary").innerHTML = "";
+        }
+        catch (err) {
+            ;
+        }
+        try {
+            document.getElementById("divItemAttribResponseObject").innerHTML = "";
+        }
+        catch (err) {
+            ;
+        }
+        var comments = document.getElementById("Comments").value.trim();
+        console.log(1, comments);
+        var orderItems = "", prefixString = "";
+        var kioskOrderedItemIds = "", kioskOrderedOrderQtys = "", prefixString1 = "";
+        for (var i = 0; i < 13; i++) {
+            try {
+                console.log(1, i);
+                if (document.getElementById("orderItemQty" + i).value.trim() != "") {
+                    orderItems += prefixString + document.getElementById("orderItemDesc" + i).value.trim() + " - " + document.getElementById("orderItemQty" + i).value.trim();
+                    prefixString = "\n";
+                    kioskOrderedItemIds += prefixString1 + document.getElementById("orderItemId" + i).value.trim();
+                    kioskOrderedOrderQtys += prefixString1 + document.getElementById("orderItemQty" + i).value.trim();
+                    prefixString1 = ",";
+                    console.log(9, i, kioskOrderedItemIds, kioskOrderedOrderQtys);
+                    document.getElementById("kioskOrderedItemIds").value = kioskOrderedItemIds;
+                    document.getElementById("kioskOrderedOrderQtys").value = kioskOrderedOrderQtys;
+                }
+            }
+            catch (err) {
+                console.log(999, i, err);
+                break;
+            }
+        }
+        console.log(9, kioskOrderedItemIds, kioskOrderedOrderQtys);
+        document.getElementById("Comments").value = orderItems + "\n" + comments;
+        $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+        document.getElementById("SessionDesc").value = document.getElementById("SessionId").options[document.getElementById("SessionId").selectedIndex].text;
+        var url = "/SVCCTempleFremont/EventRegister";
+        var postData = $("#formEventRegisterData").serialize();
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",//"application/x-www-form-urlencoded; charset=UTF-8",//"text/plain; charset=UTF-8", //false, //"application/json; charset=utf-8",
+            //dataType: "html",
+            data: postData,
+            //async: false,
+            success: function (responseData, textStatus, request) {
+                $("#loadingModal").modal('hide');
+                console.log("00001000", "btnEventRegisterSubmit_onclick", "SUCCESS!!!");
+                //responseData = responseData.replace("Enjoy the sessionw ith Gurugale (Gurji)", "Enjoy Suvasini...");
+                document.getElementById("formEventRegisterData").innerHTML = responseData;
+                //document.getElementById("formKioskCheckout").submit();
+                //redirectToKioskCheckout(kioskOrderedItemIds, kioskOrderedOrderQtys);
+                console.log("00090000", "btnEventRegisterSubmit_onclick", "Exit");
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                console.log("00099000", "btnEventRegisterSubmit_onclick", "ERROR???", exception, xhr);
+                document.getElementById("formEventRegisterData").innerHTML = xhr.responseText;
+                console.log("00090100", "btnEventRegisterSubmit_onclick", "Exit");
+            }
+        });
+        return false;
+    }
+    function redirectToKioskCheckout(kioskOrderedItemIds, kioskOrderedOrderQtys) {
+        //alert(1);
+        console.log(0.9, "redirectToKioskCheckout");
+        console.log(1.9, kioskOrderedItemIds, kioskOrderedOrderQtys);
+        var myForm = document.createElement("FORM");
+        myForm.setAttribute("id", "formKioskCheckout");
+        document.body.appendChild(myForm);
+
+        //This will create a new FORM which is mapped to the Java Object of myForm, with an id of TestForm. Equivalent to: <form id="TestForm"></form>
+        var myInput = document.createElement("INPUT");
+        myInput.setAttribute("id", "kioskOrderedItemIds");
+        myInput.setAttribute("name", "kioskOrderedItemIds");
+        myInput.setAttribute("type", "hidden");
+        myInput.setAttribute("value", kioskOrderedItemIds);
+        document.getElementById("formKioskCheckout").appendChild(myInput);
+        console.log(2.7, myInput.id, myInput);
+
+        myInput = document.createElement("INPUT");
+        myInput.setAttribute("id", "kioskOrderedOrderQtys");
+        myInput.setAttribute("name", "kioskOrderedOrderQtys");
+        myInput.setAttribute("type", "hidden");
+        myInput.setAttribute("value", kioskOrderedOrderQtys);
+        document.getElementById("formKioskCheckout").appendChild(myInput);
+        console.log(3.6, myInput.id, myInput);
+
+        //To submit the form: 
+        myForm.method = "POST";
+        myForm.action = "/SVCCTempleFremont/KioskCheckout";  // or "response.php" 
+        console.log(9.9, myForm.id, myForm);
+        //alert(2);
+        myForm.submit();
+    }
+</script>

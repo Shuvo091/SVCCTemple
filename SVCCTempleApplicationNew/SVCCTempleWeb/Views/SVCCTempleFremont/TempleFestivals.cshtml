@@ -1,0 +1,24 @@
+﻿@model List<SVCCTempleWeb.Models.TempleEventModel>
+@{
+    ViewBag.Title = "TempleFestivals";
+    Layout = "_Layout2.cshtml";
+}
+
+<div class="col-md-9">
+    <h2 id="festivalsH2">Festivals...</h2>
+    @Html.Partial("_TempleFestivals", Model)
+<script type="text/javascript">
+    function window_onload() {
+
+    }
+    //function festivalsHref_onclick() {
+    //    document.getElementById("recurringH2").focus();
+    //    document.getElementById("recurringH2").scrollIntoView();
+    //    return false;
+    //}
+    //function recurringHref_onclick() {
+    //    document.getElementById("festivalsH2").focus();
+    //    document.getElementById("festivalsH2").scrollIntoView();
+    //    return false;
+    //}
+</script>

@@ -1,0 +1,431 @@
+﻿@using System.Data.SqlClient
+@using System.Data
+@{
+    #region
+    string sqlStmt = "";
+    sqlStmt += "    IF OBJECT_ID(N'tempdb..#TEMP1') IS NOT NULL" + Environment.NewLine;
+    sqlStmt += "    BEGIN" + Environment.NewLine;
+    sqlStmt += "            DROP TABLE #TEMP1" + Environment.NewLine;
+    sqlStmt += "        END" + Environment.NewLine;
+    sqlStmt += "        CREATE TABLE #TEMP1 (CalendarDate DATE, WeekDayNum TINYINT, StartDate CHAR(10), StartTime CHAR(5), FinishDate CHAR(10), FinishTime CHAR(5))" + Environment.NewLine;
+    sqlStmt += "        DECLARE @dateTimeIndex DATE = @StartDate" + Environment.NewLine;
+    sqlStmt += "        WHILE(@dateTimeIndex <= @FinishDate)" + Environment.NewLine;
+    sqlStmt += "        BEGIN" + Environment.NewLine;
+    sqlStmt += "            INSERT #TEMP1" + Environment.NewLine;
+    sqlStmt += "            SELECT @dateTimeIndex, DATEPART(WEEKDAY, @dateTimeIndex), CONVERT(CHAR(10), @dateTimeIndex, 126), '00:00', CONVERT(CHAR(10), @dateTimeIndex, 126), '00:00'" + Environment.NewLine;
+    sqlStmt += "            SET @dateTimeIndex = DATEADD(DAY, 1, @dateTimeIndex)" + Environment.NewLine;
+    sqlStmt += "        END" + Environment.NewLine;
+    sqlStmt += "        SELECT Calendar.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.StartTime" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.FinishDate" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.FinishTime" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeNameId" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeDesc1" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.CalendarCodeId" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataNameId" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataDesc0" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataDesc9" + Environment.NewLine;
+    sqlStmt += "          FROM Calendar" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN CodeData" + Environment.NewLine;
+    sqlStmt += "            ON Calendar.CalendarCodeId = CodeData.CodeDataId" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN CodeType" + Environment.NewLine;
+    sqlStmt += "            ON CodeData.CodeTypeId = CodeType.CodeTypeId" + Environment.NewLine;
+    sqlStmt += "         WHERE Calendar.LocationNameDesc = @LocationNameDesc" + Environment.NewLine;
+    sqlStmt += "           AND CodeType.CodeTypeNameDesc NOT IN('PANCHANGAM_KARANA', 'PANCHANGAM_YOGA')" + Environment.NewLine;
+    sqlStmt += "           AND" + Environment.NewLine;
+    sqlStmt += "              (" + Environment.NewLine;
+    sqlStmt += "               @StartDate BETWEEN Calendar.StartDate AND Calendar.FinishDate" + Environment.NewLine;
+    sqlStmt += "            OR @FinishDate BETWEEN Calendar.StartDate AND Calendar.FinishDate" + Environment.NewLine;
+    sqlStmt += "              )" + Environment.NewLine;
+    sqlStmt += "         UNION" + Environment.NewLine;
+    sqlStmt += "        SELECT Calendar.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.StartTime" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.FinishDate" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.FinishTime" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeNameId" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeDesc1" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.CalendarCodeId" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataNameId" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataDesc0" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataDesc9" + Environment.NewLine;
+    sqlStmt += "          FROM Calendar" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN CodeData" + Environment.NewLine;
+    sqlStmt += "            ON Calendar.CalendarCodeId = CodeData.CodeDataId" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN CodeType" + Environment.NewLine;
+    sqlStmt += "            ON CodeData.CodeTypeId = CodeType.CodeTypeId" + Environment.NewLine;
+    sqlStmt += "         WHERE Calendar.LocationNameDesc = @LocationNameDesc" + Environment.NewLine;
+    sqlStmt += "           AND CodeType.CodeTypeNameDesc NOT IN('PANCHANGAM_KARANA', 'PANCHANGAM_YOGA')" + Environment.NewLine;
+    sqlStmt += "           AND" + Environment.NewLine;
+    sqlStmt += "              (" + Environment.NewLine;
+    sqlStmt += "               Calendar.StartDate BETWEEN @StartDate AND @FinishDate" + Environment.NewLine;
+    sqlStmt += "            OR Calendar.FinishDate BETWEEN @StartDate AND @FinishDate" + Environment.NewLine;
+    sqlStmt += "              )" + Environment.NewLine;
+    sqlStmt += "         UNION" + Environment.NewLine;
+    sqlStmt += "        SELECT #TEMP1.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,#TEMP1.StartTime" + Environment.NewLine;
+    sqlStmt += "              ,#TEMP1.FinishDate" + Environment.NewLine;
+    sqlStmt += "              ,#TEMP1.FinishTime" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeNameId" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeType.CodeTypeDesc1" + Environment.NewLine;
+    sqlStmt += "              ,0 AS CalendarCodeId" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataNameId" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataDesc0" + Environment.NewLine;
+    sqlStmt += "              ,CodeData.CodeDataDesc9" + Environment.NewLine;
+    sqlStmt += "          FROM #TEMP1" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN CodeData" + Environment.NewLine;
+    sqlStmt += "            ON #TEMP1.WeekDayNum = CodeData.CodeDataNameId" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN CodeType" + Environment.NewLine;
+    sqlStmt += "            ON CodeData.CodeTypeId = CodeType.CodeTypeId" + Environment.NewLine;
+    sqlStmt += "           AND CodeType.CodeTypeNameDesc = 'PANCHANGAM_DAY_NAME'" + Environment.NewLine;
+    sqlStmt += "         UNION" + Environment.NewLine;
+    sqlStmt += "        SELECT RiseSet.GregorianDate" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.SunRise" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.GregorianDate" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.SunSet" + Environment.NewLine;
+    sqlStmt += "              ,9100 CodeTypeNameId" + Environment.NewLine;
+    sqlStmt += "              ,'RISE_SET' AS CodeTypeNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeTypeDesc" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeTypeDesc1" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.RiseSetId" + Environment.NewLine;
+    sqlStmt += "              ,9100 AS CodeDataNameId" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeDataNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,'Rise/Set' AS CodeDataDesc0" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeDataDesc9" + Environment.NewLine;
+    sqlStmt += "          FROM RiseSet" + Environment.NewLine;
+    sqlStmt += "         WHERE RiseSet.LocationNameDesc = @LocationNameDesc" + Environment.NewLine;
+    sqlStmt += "           AND GregorianDate BETWEEN @StartDate AND @FinishDate" + Environment.NewLine;
+    sqlStmt += "         UNION" + Environment.NewLine;
+    sqlStmt += "        SELECT RiseSet.GregorianDate" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.RKStart" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.GregorianDate" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.RKFinish" + Environment.NewLine;
+    sqlStmt += "              ,9200 CodeTypeNameId" + Environment.NewLine;
+    sqlStmt += "              ,'RISE_SET' AS CodeTypeNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeTypeDesc" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeTypeDesc1" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.RiseSetId" + Environment.NewLine;
+    sqlStmt += "              ,9200 AS CodeDataNameId" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeDataNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,'Rahu Kalam' AS CodeDataDesc0" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeDataDesc9" + Environment.NewLine;
+    sqlStmt += "          FROM RiseSet" + Environment.NewLine;
+    sqlStmt += "         WHERE RiseSet.LocationNameDesc = @LocationNameDesc" + Environment.NewLine;
+    sqlStmt += "           AND GregorianDate BETWEEN @StartDate AND @FinishDate" + Environment.NewLine;
+    sqlStmt += "         UNION" + Environment.NewLine;
+    sqlStmt += "        SELECT RiseSet.GregorianDate" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.YGStart" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.GregorianDate" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.YGFinish" + Environment.NewLine;
+    sqlStmt += "              ,9300 CodeTypeNameId" + Environment.NewLine;
+    sqlStmt += "              ,'RISE_SET' AS CodeTypeNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeTypeDesc" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeTypeDesc1" + Environment.NewLine;
+    sqlStmt += "              ,RiseSet.RiseSetId" + Environment.NewLine;
+    sqlStmt += "              ,9300 AS CodeDataNameId" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeDataNameDesc" + Environment.NewLine;
+    sqlStmt += "              ,'Yama Gandam' AS CodeDataDesc0" + Environment.NewLine;
+    sqlStmt += "              ,'' AS CodeDataDesc9" + Environment.NewLine;
+    sqlStmt += "          FROM RiseSet" + Environment.NewLine;
+    sqlStmt += "         WHERE RiseSet.LocationNameDesc = @LocationNameDesc" + Environment.NewLine;
+    sqlStmt += "           AND GregorianDate BETWEEN @StartDate AND @FinishDate" + Environment.NewLine;
+    sqlStmt += "      ORDER BY CodeType.CodeTypeNameId" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.StartDate" + Environment.NewLine;
+    #endregion
+    #region
+    Dictionary<string, Dictionary<long, Dictionary<string, string>>> sankalpamDatas = new Dictionary<string, Dictionary<long, Dictionary<string, string>>>();
+    Dictionary<long, Dictionary<string, string>> sankalpamDataRows;
+    Dictionary<string, string> sankalpamDataCols;
+    int i, rowIndex = -1;
+    long dateTimeIndexValue, startDateValue, finishDateValue;
+    string pakshaName;
+    string databaseConnectionString = ApplicationInstance.Application["DatabaseConnectionString"].ToString();
+    DateTime startDate = DateTime.Now, finishDate = startDate.AddDays(35);
+    SqlConnection sqlConnection = new SqlConnection(databaseConnectionString);
+    sqlConnection.Open();
+    SqlCommand sqlCommand = new SqlCommand(sqlStmt, sqlConnection);
+    sqlCommand.Parameters.Add("@LocationNameDesc", SqlDbType.VarChar, 50);
+    sqlCommand.Parameters.Add("@StartDate", SqlDbType.VarChar, 10);
+    sqlCommand.Parameters.Add("@FinishDate", SqlDbType.VarChar, 10);
+    sqlCommand.Parameters["@LocationNameDesc"].Value = "SACRAMENTO";
+    sqlCommand.Parameters["@StartDate"].Value = startDate.ToString("yyyy-MM-dd");
+    sqlCommand.Parameters["@FinishDate"].Value = finishDate.ToString("yyyy-MM-dd");
+    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+    #endregion
+    while (sqlDataReader.Read())
+    {
+        try
+        {
+            sankalpamDataRows = sankalpamDatas[sqlDataReader["CodeTypeNameDesc"].ToString()];
+            rowIndex = sankalpamDataRows.Count;
+        }
+        catch
+        {
+            sankalpamDataRows = new Dictionary<long, Dictionary<string, string>>();
+            sankalpamDatas[sqlDataReader["CodeTypeNameDesc"].ToString()] = sankalpamDataRows;
+            rowIndex = 0;
+        }
+        sankalpamDataCols = new Dictionary<string, string>();
+        sankalpamDataRows[rowIndex] = sankalpamDataCols;
+        for (i = 0; i < sqlDataReader.FieldCount; i++)
+        {
+            sankalpamDataCols[sqlDataReader.GetName(i)] = sqlDataReader[i].ToString();
+        }
+        if (sankalpamDataCols["StartTime"] == "00:00")
+        {
+            sankalpamDataCols["StartTime"] = "";
+        }
+        else
+        {
+            sankalpamDataCols["StartTime"] = DateTime.Parse(sankalpamDataCols["StartTime"]).ToString("h:mmtt").ToLower();
+        }
+        if (sankalpamDataCols["FinishTime"] == "00:00")
+        {
+            sankalpamDataCols["FinishTime"] = "";
+        }
+        else
+        {
+            sankalpamDataCols["FinishTime"] = DateTime.Parse(sankalpamDataCols["FinishTime"]).ToString("h:mmtt").ToLower();
+        }
+    }//while (sqlDataReader.Read())
+    sqlDataReader.Close();
+    sqlConnection.Close();
+    rowIndex = 0;
+    <div class="col-md-12">
+        <div scope="col" style="align-content: center; background-color: #ffffff; color: #000000; display: flex; flex-direction: column; font-size: 18px; font-weight: bold; justify-content: center; text-align: center;">
+            <h4 style="font-weight: bold;">Sankalpam for @startDate.ToString("ddd MMM dd yyyy") - @finishDate.ToString("ddd MMM dd yyyy")</h4>
+        </div>
+        @for (var dateTimeIndex = startDate; dateTimeIndex <= finishDate; dateTimeIndex = dateTimeIndex.AddDays(1))
+        {
+            rowIndex++;
+            <div scope="col" style="align-content: center; background-color: #d3d3d3; color: #0000ff; display: flex; font-size: 15px; font-weight: bold; justify-content: center; text-align: center;">
+                <span style="color: #ff0000;">#@rowIndex&nbsp;Sankalpam for</span>&nbsp;@dateTimeIndex.ToString("MMM d yyyy")<span style="color: #000000;">&nbsp;@dateTimeIndex.ToString(" dddd")</span>
+                <br style="clear: both;" />
+            </div>
+            <div scope="col" style="align-content: center; background-color: #d3d3d3; color: #0000ff; display: flex; font-size: 15px; font-weight: bold; justify-content: center; text-align: center;">
+                Below is recommendation - Please call temple for more info
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th class="text-center" colspan="4" scope="row" style="color: #000000; font-size: 18px;">
+                        Begin of Sankalpam
+                    </th>
+                </tr>
+                <tr>
+                    <td class="text-center" colspan="4" style="background-color: #d3d3d3; color: #a54000; font-size: 14px; font-weight: bold;">
+                        Mamo Partha Samastha Durita Kshya Dwara Sri Parameshwara / Narayana Preethyartham Subhey Shobhaney Muhoorthey Aadya Brahmanaha Dweethiya Parardey Shveta  Varaha Kalpey Vaivasvatha Manvan Tharey Ashta Vim Sathy Thamey Kaliyuge Prathamey Paadey Krounchaka Dweepey Ramanaka Varshey Amerka Deshey Kapilaranye Hari Hara Kshetra Sameepey Aindra Kandey Mero Pashchima Digbhaage Uttara Americayam Saagarayormadhya Deshey Asmin Varthamanikey Vyavaharike  Prabhavadeenam Shashtyaha Samvatsaranam Madhye
+                    </td>
+                </tr>
+                @{
+                    foreach (var sankalpamData in sankalpamDatas)
+                    {
+                        if (sankalpamData.Value[0]["CodeTypeNameDesc"] == "PANCHANGAM_TAMIL_MONTH")
+                        {
+                            break;
+                        }
+                        for (i = 0; i < sankalpamData.Value.Count; i++)
+                        {
+                            dateTimeIndexValue = long.Parse(dateTimeIndex.ToString("yyyyMMdd"));
+                            startDateValue = long.Parse(sankalpamData.Value[i]["StartDate"].Replace("-", ""));
+                            finishDateValue = long.Parse(sankalpamData.Value[i]["FinishDate"].Replace("-", ""));
+                            if (
+                                (
+                                    dateTimeIndexValue >= startDateValue &&
+                                    dateTimeIndexValue <= finishDateValue
+                                ) ||
+                                (
+                                    startDateValue == dateTimeIndexValue || finishDateValue == dateTimeIndexValue
+                                )
+                               )
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        @if (sankalpamData.Value[i]["CodeTypeNameDesc"] == "PANCHANGAM_THITHI")
+                                        {
+                                            @sankalpamData.Value[i]["CodeDataDesc9"]<br />
+                                            pakshaName = sankalpamData.Value[i]["CodeDataNameDesc"].Substring(sankalpamData.Value[i]["CodeDataNameDesc"].IndexOf("_") + 1);
+                                            pakshaName = pakshaName.Substring(0, 1) + pakshaName.Substring(1).ToLower() + " Pakshey Adhye";
+                                            @pakshaName
+                                        }
+                                        else
+                                        {
+                                            @sankalpamData.Value[i]["CodeDataDesc0"]
+                                        }
+                                        <br />
+                                        @sankalpamData.Value[i]["CodeTypeDesc1"]
+                                    </th>
+                                    <th class="text-left" scope="row">
+                                        @if (dateTimeIndexValue == startDateValue && sankalpamData.Value[i]["StartTime"] != "")
+                                        {
+                                            <span style="color:#0000ff;">From @DateTime.Parse(sankalpamData.Value[i]["StartTime"]).ToString("h:mmtt").ToLower()</span>
+                                        }
+                                        else
+                                        {
+                                            if (dateTimeIndexValue == finishDateValue && sankalpamData.Value[i]["FinishTime"] != "")
+                                            {
+                                                <span style="color: #ff0000;">Till @DateTime.Parse(sankalpamData.Value[i]["FinishTime"]).ToString("h:mmtt").ToLower()</span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color: #000000;">All Day</span>
+                                            }
+                                        }
+                                    </th>
+                                    <td>
+                                        @sankalpamData.Value[i]["StartDate"]
+                                        <br />
+                                        @sankalpamData.Value[i]["StartTime"]
+                                    </td>
+                                    <td>
+                                        @sankalpamData.Value[i]["FinishDate"]
+                                        <br />
+                                        @sankalpamData.Value[i]["FinishTime"]
+                                        <br />
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                }
+                <tr>
+                    <td class="text-center" colspan="4" style="background-color: #d3d3d3; color: #a54000; font-size: 14px; font-weight: bold;">
+                        Vishnu Yoga Vishnu Karana Evam Guna Sakala Viseshana Visishtayam Asyam Vartamanayaam
+                    </td>
+                </tr>
+                @{
+                    var sankalpamData1 = sankalpamDatas["PANCHANGAM_THITHI"];
+                    for (i = 0; i < sankalpamData1.Count; i++)
+                    {
+                        dateTimeIndexValue = long.Parse(dateTimeIndex.ToString("yyyyMMdd"));
+                        startDateValue = long.Parse(sankalpamData1[i]["StartDate"].Replace("-", ""));
+                        finishDateValue = long.Parse(sankalpamData1[i]["FinishDate"].Replace("-", ""));
+                        if (
+                            (
+                                dateTimeIndexValue >= startDateValue &&
+                                dateTimeIndexValue <= finishDateValue
+                            ) ||
+                            (
+                                startDateValue == dateTimeIndexValue || finishDateValue == dateTimeIndexValue
+                            )
+                           )
+                        {
+                            <tr>
+                                <th scope="row">
+                                    @sankalpamData1[i]["CodeDataDesc9"]
+                                    <br />
+                                    @sankalpamData1[i]["CodeTypeDesc1"]
+                                </th>
+                                <th class="text-left" scope="row">
+                                    @if (dateTimeIndexValue == startDateValue && sankalpamData1[i]["StartTime"] != "")
+                                    {
+                                        <span style="color:#0000ff;">From @DateTime.Parse(sankalpamData1[i]["StartTime"]).ToString("h:mmtt").ToLower()</span>
+                                    }
+                                    else
+                                    {
+                                        if (dateTimeIndexValue == finishDateValue && sankalpamData1[i]["FinishTime"] != "")
+                                        {
+                                            <span style="color: #ff0000;">Till @DateTime.Parse(sankalpamData1[i]["FinishTime"]).ToString("h:mmtt").ToLower()</span>
+                                        }
+                                        else
+                                        {
+                                            <span style="color: #000000;">All Day</span>
+                                        }
+                                    }
+                                </th>
+                                <td>
+                                    @sankalpamData1[i]["StartDate"]
+                                    <br />
+                                    @sankalpamData1[i]["StartTime"]
+                                </td>
+                                <td>
+                                    @sankalpamData1[i]["FinishDate"]
+                                    <br />
+                                    @sankalpamData1[i]["FinishTime"]
+                                    <br />
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                <tr>
+                    <th class="text-center" colspan="4" scope="row" style="color: #000000; font-size: 18px;">
+                        End of Sankalpam
+                    </th>
+                </tr>
+            </table>
+            <table class="table table-striped">
+                @{
+                    var sankalpamData2 = sankalpamDatas["PANCHANGAM_TAMIL_MONTH"];
+                    for (i = 0; i < sankalpamData2.Count; i++)
+                    {
+                        dateTimeIndexValue = long.Parse(dateTimeIndex.ToString("yyyyMMdd"));
+                        startDateValue = long.Parse(sankalpamData2[i]["StartDate"].Replace("-", ""));
+                        finishDateValue = long.Parse(sankalpamData2[i]["FinishDate"].Replace("-", ""));
+                        if (
+                            (
+                                dateTimeIndexValue >= startDateValue &&
+                                dateTimeIndexValue <= finishDateValue
+                            ) ||
+                            (
+                                startDateValue == dateTimeIndexValue || finishDateValue == dateTimeIndexValue
+                            )
+                           )
+                        {
+                            <tr>
+                                <th scope="row">
+                                    @sankalpamData2[i]["CodeDataDesc0"]
+                                    <br />
+                                    @sankalpamData2[i]["CodeTypeDesc1"]
+                                </th>
+                                <td>
+                                    @sankalpamData2[i]["StartDate"]
+                                    <br />
+                                    @sankalpamData2[i]["StartTime"]
+                                </td>
+                                <td>
+                                    @sankalpamData2[i]["FinishDate"]
+                                    <br />
+                                    @sankalpamData2[i]["FinishTime"]
+                                    <br />
+                                </td>
+                            </tr>
+                        }
+                    }
+                    sankalpamData2 = sankalpamDatas["RISE_SET"];
+                    for (i = 0; i < sankalpamData2.Count; i++)
+                    {
+                        dateTimeIndexValue = long.Parse(dateTimeIndex.ToString("yyyyMMdd"));
+                        startDateValue = long.Parse(sankalpamData2[i]["StartDate"].Replace("-", ""));
+                        if (dateTimeIndexValue == startDateValue)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    @sankalpamData2[i]["CodeDataDesc0"]
+                                </th>
+                                <td>
+                                    @DateTime.Parse(sankalpamData2[i]["StartDate"]).ToString("MMM d yyyy")<br />
+                                    @DateTime.Parse(sankalpamData2[i]["StartTime"]).ToString("h:mmtt").ToLower()
+                                </td>
+                                <td>
+                                    @DateTime.Parse(sankalpamData2[i]["FinishDate"]).ToString("MMM d yyyy")<br />
+                                    @DateTime.Parse(sankalpamData2[i]["FinishTime"]).ToString("h:mmtt").ToLower()
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        }@*for (var dateTimeIndex*@
+    </div>
+}
+<br style="clear: both;" />
+@Html.Partial("_RituSeason")
+<br style="clear: both;" />

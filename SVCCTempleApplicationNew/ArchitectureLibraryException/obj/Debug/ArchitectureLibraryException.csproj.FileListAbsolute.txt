@@ -1,0 +1,10 @@
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Debug\ArchitectureLibraryException.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Debug\ArchitectureLibraryException.pdb
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Debug\log4net.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Debug\Newtonsoft.Json.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Debug\log4net.xml
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Debug\Newtonsoft.Json.xml
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Debug\ArchitectureLibraryException.csproj.CoreCompileInputs.cache
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Debug\ArchitectureLibraryException.csproj.CopyComplete
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Debug\ArchitectureLibraryException.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Debug\ArchitectureLibraryException.pdb

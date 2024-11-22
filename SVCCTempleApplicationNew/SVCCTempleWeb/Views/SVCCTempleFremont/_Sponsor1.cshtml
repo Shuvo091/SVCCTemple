@@ -1,0 +1,46 @@
+﻿@model SVCCTempleWeb.Models.SponsorshipModel
+<table style="padding: 5px;">
+    <tr>
+        <td colspan="2" style="text-align: center;">
+            @Html.TextBoxFor(m => m.SponsorModel.OtherSponsorshipDescription, new { maxlength = "108", placeholder = "Enter description for general donation", style = "color: #a54000; font-family: Arial; font-size: 15px; font-weight: bold; text-align: left; width: 261px;" })&nbsp;&nbsp;
+            @Html.TextBoxFor(m => m.SponsorModel.OtherSponsorshipAmount, new { onblur = "javascript: return calculateSponsorshipAmount();", placeholder = "Amount", step = "0.01", style = "font-family: Arial; font-size: 15px; font-weight: bold; width: 81px;", type = "number" })
+        </td>
+    </tr>
+    @{
+        int i, j;
+        for (i = 0; i < Model.SponsorModel.SponsorshipGroupModels.Count; i++)
+        {
+            <tr>
+                <td colspan="5" style="color: #0000ff; font-size: 15pt; font-weight: bold; text-align: center;">
+                    @Model.SponsorModel.SponsorshipGroupModels[i].SponsorshipGroupDesc
+                </td>
+            </tr>
+            for (j = 0; j < Model.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels.Count; j++)
+            {
+                <tr>
+                    <td style="font-family: Arial; font-size: 12px; padding: 5px; text-align: left;">
+                        @Html.HiddenFor(m => m.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels[j].SponsorshipListOrderQty@*, new { maxlength = "3", onblur = "javascript: return calculateSponsorshipAmount();", placeholder = "Qty", style = "font-family: Arial; font-size: 12px; text-align: right; width: 27px;" }*@)
+                        <input id="sponsorshipCheckbox_@(i)_@(j)" onclick="javascript: return sponsorshipCheckbox_onclick(@(i), @(j), this);" type="checkbox" />
+                    </td>
+                    <td style="font-family: Arial; font-size: 18px; font-weight: bold; padding: 5px; text-align: left;">
+                        @Model.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels[j].SponsorshipListDesc
+                        @Html.HiddenFor(m => m.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels[j].SponsorshipListId)
+                        @Html.HiddenFor(m => m.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels[j].SponsorshipListDesc)
+                    </td>
+                    <td style="color: #ff0000; font-family: Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right;">
+                        @Model.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels[j].SponsorshipListRate.ToString("c").TrimEnd('0').Trim('.')
+                        @Html.HiddenFor(m => m.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels[j].SponsorshipListRate)
+                    </td>
+                    <td style="display: none; padding: 5px;">
+                        @Html.TextBoxFor(m => m.SponsorModel.SponsorshipGroupModels[i].SponsorshipListModels[j].SponsorshipListOrderAmount, new { autocomplete = "off", maxlength = "5", onkeydown = "javascript:return SuppressEdit();", onkeyup = "javascript:return SuppressEdit();", onkeypress = "javascript:return SuppressEdit();", style = "border-style: none; font-family: Arial; font-size: 12px; text-align: right; width: 63px;" })
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5">
+                    <hr style="background-color: #000000; display: block; font-size: 27px; font-weight: bold; height: 3px;" />
+                </td>
+            </tr>
+        }
+    }
+</table>

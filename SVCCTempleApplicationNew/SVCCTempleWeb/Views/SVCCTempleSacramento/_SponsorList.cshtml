@@ -1,0 +1,277 @@
+﻿@model SVCCTempleWeb.Models.SponsorListModel
+@{
+    int i;
+    string selectedText;
+    DateTime fromDate = DateTime.Parse(DateTime.Now.Year + "-01-01"), toDate = DateTime.Now;
+    int fromYearSelected = fromDate.Year, fromMonthSelected = fromDate.Month, fromDaySelected = fromDate.Day;
+    int toYearSelected = toDate.Year, toMonthSelected = toDate.Month, toDaySelected = toDate.Day;
+    string privateKey = HttpContext.Current.Application["PrivateKey"].ToString();
+    SVCCTempleWeb.Models.SessionObjectModel sessionObjectModel = (SVCCTempleWeb.Models.SessionObjectModel)Session["SessionObjectSacramento"];
+    string userTypeNameId;
+    try
+    {
+        userTypeNameId = ArchitectureLibraryUtility.EncryptDecrypt.DecryptDataMd5(sessionObjectModel.UserTypeNameId, privateKey);
+    }
+    catch
+    {
+        userTypeNameId = "";
+    }
+}
+<div id="sponsorListMessage" style="font-family: Arial; font-size: 18px; font-weight: bold;"></div>
+<table style="margin: auto; padding: 5px;">
+    <tr>
+        <td style="padding: 5px;">
+            Group :
+        </td>
+        <td style="padding: 5px;">
+            @{
+                List<SelectListItem> sponsorshipGroupItems = new List<SelectListItem>();
+                foreach (var x in Model.SponsorshipGroupModels)
+                {
+                    sponsorshipGroupItems.Add(new SelectListItem { Text = x.SponsorshipGroupDesc, Value = x.SponsorshipGroupId.ToString() });
+                }
+            }
+        </td>
+        <td style="text-align: left; padding: 5px;">
+            @Html.DropDownListFor(m => m.SponsorshipGroupListId, new SelectList(sponsorshipGroupItems, "Value", "Text", Model.SponsorshipGroupListId), "--- Select Category ---", new { @class = "form-control", style = "font-family: Arial; width: 315px;" })
+        </td>
+        <td style="padding: 5px;">
+            Sankalpam :
+        </td>
+        <td style="padding: 5px;">
+            <select class="form-control" id="sankalpamStatus" style="width: 153px;">
+                <option value="0">All</option>
+                <option value="1" selected="selected">Not Completed</option>
+                <option value="2">Completed</option>
+            </select>
+        </td>
+        <td style="padding: 5px;">
+            <input class="form-control btn-primary" id="updateSankalpam" onclick="javascript: return updateSankalpam_onclick();" type="button" value="Update Sankalpam" />
+        </td>
+    </tr>
+</table>
+<table style="margin: auto; padding: 5px;">
+    <tr>
+        <td style="padding: 5px;">
+            @if (userTypeNameId == "10" || userTypeNameId == "20")
+            {
+                <a class="control-label" href="javascript: void(0);" onclick="javascript: return copyToClipboard('divSponsorListData');" style="color: #ff0000; font-size: 18px; font-weight: bold; text-decoration: underline;">Copy to Clipboard</a>
+            }
+        </td>
+        <td class="control-label" style="padding: 5px; vertical-align: middle;">From Date : </td>
+        <td>
+            <div style="float: left; padding: 5px;">
+                <select id="fromYear" class="form-control">
+                    @for (i = DateTime.Now.Year - 3; i <= DateTime.Now.Year + 9; i++)
+                    {
+                        if (i == fromYearSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="fromMonth" class="form-control">
+                    @for (i = 1; i <= 12; i++)
+                    {
+                        if (i == fromMonthSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="fromDay" class="form-control">
+                    @for (i = 1; i <= 31; i++)
+                    {
+                        if (i == fromDaySelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+        </td>
+        <td class="control-label" style="padding: 5px; vertical-align: middle;">To Date : </td>
+        <td>
+            <div style="float: left; padding: 5px;">
+                <select id="toYear" class="form-control">
+                    @for (i = DateTime.Now.Year - 3; i <= DateTime.Now.Year + 9; i++)
+                    {
+                        if (i == toYearSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="toMonth" class="form-control">
+                    @for (i = 1; i <= 12; i++)
+                    {
+                        if (i == toMonthSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="toDay" class="form-control">
+                    @for (i = 1; i <= 31; i++)
+                    {
+                        if (i == toDaySelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+        </td>
+        <td>
+            <input class="form-control btn-primary" onclick="javascript: return sponsorListData_onclick();" type="button" value="Get Report" />
+        </td>
+        <td style="padding: 5px;">
+            @if (userTypeNameId == "10" || userTypeNameId == "20")
+            {
+                <input class="form-control btn-primary" onclick="javascript: return downloadSponsorListData_onclick();" type="button" value="Download" />
+            }
+        </td>
+    </tr>
+</table>
+<div id="divSponsorListData">
+</div>
+<script type="text/javascript">
+    sponsorListData_onclick();
+    function sponsorListData_onclick() {
+        $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+        //debugger;
+        var fromDate = document.getElementById("fromYear").value + "-" + document.getElementById("fromMonth").value + "-" + document.getElementById("fromDay").value;
+        var toDate = document.getElementById("toYear").value + "-" + document.getElementById("toMonth").value + "-" + document.getElementById("toDay").value;
+        var sankalpamStatus = document.getElementById("sankalpamStatus").value;
+        var id = document.getElementById("SponsorshipGroupListId").value;
+        if (id === "") {
+            id = "-1";
+        }
+        var url = "/SVCCTempleSacramento/SponsorListData/" + id + "?fromDate=" + fromDate + "&toDate=" + toDate + "&sankalpamStatus=" + sankalpamStatus;
+        $.ajax({
+            url: url,
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (responseData, textStatus, request) {
+                $("#loadingModal").modal('hide');
+                $("#divSponsorListData").html(responseData);
+                console.log("sponsorListData_onclick Success");
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                console.log("Error", "xhr", xhr, "exception=", exception);
+            }
+        });
+        return false;
+    }
+    function downloadSponsorListData_onclick() {
+        $("#loadingModal").modal('hide');
+        sponsorListData_onclick();
+        var fromDate = document.getElementById("fromYear").value + "-" + document.getElementById("fromMonth").value + "-" + document.getElementById("fromDay").value;
+        var toDate = document.getElementById("toYear").value + "-" + document.getElementById("toMonth").value + "-" + document.getElementById("toDay").value;
+        window.location.replace('@Url.Action("SponsorListDownload", "SVCCTempleSacramento")' + "?fromDate=" + fromDate + "&toDate=" + toDate + "&sankalpamStatus=");
+        $("#loadingModal").modal('hide');
+        return false;
+    }
+    function copyToClipboard(elementId) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(elementId));
+        window.getSelection().removeAllRanges(); //clear current selection
+        window.getSelection().addRange(range); //to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();//to deselect
+    }
+    function updateSankalpam_onclick() {
+        $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+        var i = -1;
+        var documentElementSankalpamDateTime;
+        var sponsorshipIds = [];
+        for (i = 0; ; i++) {
+            try {
+                documentElementSankalpamDateTime = document.getElementById("sankalpamDateTime" + i);
+                if (documentElementSankalpamDateTime == null) {
+                    break;
+                }
+                else {
+                    if (documentElementSankalpamDateTime.checked) {
+                        sponsorshipIds.push(documentElementSankalpamDateTime.value);
+                    }
+                }
+            }
+            catch (err) {
+                break;
+            }
+        }
+        console.log(i, sponsorshipIds, sponsorshipIds.length);
+        var fromDate = document.getElementById("fromYear").value + "-" + document.getElementById("fromMonth").value + "-" + document.getElementById("fromDay").value;
+        var toDate = document.getElementById("toYear").value + "-" + document.getElementById("toMonth").value + "-" + document.getElementById("toDay").value;
+        var sankalpamStatus = document.getElementById("sankalpamStatus").value;
+        var id = document.getElementById("SponsorshipGroupListId").value;
+        if (id === "") {
+            id = "-1";
+        }
+        var url = "/SVCCTempleSacramento/SankalpamDateTime/" + id + "?fromDate=" + fromDate + "&toDate=" + toDate + "&sankalpamStatus=" + sankalpamStatus;
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: JSON.stringify(sponsorshipIds),
+            contentType: "application/json; charset=utf-8", //input
+            //contentType: "application/json",
+            //dataType: "html",
+            success: function (responseData, textStatus, request) {
+                $("#loadingModal").modal('hide');
+                $("#divSponsorListData").html(responseData);
+                document.getElementById("sponsorListMessage").innerHTML = "Sankalpam date time updated successfully";
+                document.getElementById("sponsorListMessage").style.color = "#0000ff";
+                console.log("updateSankalpam_onclick SUCCESS!!!", responseData);
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                document.getElementById("sponsorListMessage").innerHTML = "Error while updating sankalpam date time";
+                document.getElementById("sponsorListMessage").style.color = "#ff0000";
+                alert("Error while updating sankalpam date time");
+                console.log("updateSankalpam_onclick ERROR???", "xhr", xhr, "exception", exception);
+            }
+        });
+        return false;
+    }
+</script>

@@ -1,0 +1,21 @@
+﻿@model SVCCTempleWeb.Models.SnippetsModel
+<div class="col-md-9" style="font-family: Arial; font-size: 15px; text-align: left; width: 720px;">
+    <select class="form-control" id="snippetsList" onchange="javascript: return snippetsList_onclick();" style="width: 45%;">
+        <option value="">--- Select a Snippet ---</option>
+        <option value="1">Karma Yoga Chapter 3 - Discussion</option>
+        <option value="2">Karma Yoga Chapter 4 - Discussion</option>
+        <option value="3">Karma Yoga Chapter 5 - Discussion</option>
+    </select>
+</div>
+<div class="col-md-9" id="divSnippetsHtml" style="font-family: Arial; font-size: 15px; text-align: left; width: 720px;">
+    @Html.Raw(Model.SnippetsHtmlData)
+</div>
+<script type="text/javascript">
+    function snippetsList_onclick() {
+        var snippetsId = document.getElementById("snippetsList").value;
+        var url = "@Url.Action("Snippets", "SVCCTempleSacramento")";
+        url += "/" + snippetsId;
+        window.location.href = url;
+        document.getElementById("snippetsList").value = "";
+    }
+</script>

@@ -1,0 +1,13 @@
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\ArchitectureLibraryUtility.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\ArchitectureLibraryUtility.pdb
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\ArchitectureLibraryException.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\log4net.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\Newtonsoft.Json.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\ArchitectureLibraryException.pdb
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\log4net.xml
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\bin\Debug\Newtonsoft.Json.xml
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\obj\Debug\ArchitectureLibraryUtility.csprojAssemblyReference.cache
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\obj\Debug\ArchitectureLibraryUtility.csproj.CoreCompileInputs.cache
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\obj\Debug\ArchitectureLibraryUtility.csproj.CopyComplete
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\obj\Debug\ArchitectureLibraryUtility.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryUtility\obj\Debug\ArchitectureLibraryUtility.pdb

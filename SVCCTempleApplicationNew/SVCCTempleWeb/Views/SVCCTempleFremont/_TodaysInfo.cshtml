@@ -1,0 +1,41 @@
+﻿@{
+    string execUniqueId;
+    try
+    {
+        execUniqueId = HttpContext.Current.Session["ExecUniqueId"].ToString();
+    }
+    catch
+    {
+        execUniqueId = "_TodaysInfo";
+    }
+    Dictionary<string, string> todaysInfos = SVCCTempleWeb.ClassCode.Bootstrap.GetTodaysInfo("FREMONT", HttpContext.Current.Application, execUniqueId);
+}
+<span style="font-weight: bold;">40155 Blacow Rd, Fremont, CA 94538&nbsp;<a href="tel:1-510-403-4256" style="color: #0000ff; text-decoration: underline;">510) 403-4256</a>, <a href="tel:1-925-301-0391" style="color: #ff0000; text-decoration: underline;">(925) 301-0391</a></span>&nbsp;<a href="@Url.Action("ContactUs", "SVCCTempleFremont")" style="color: #0000ff; font-family: Arial; font-size: 14px; font-weight: bold; text-decoration: underline;" target="_blank">mailinglistfremont@svcctemple.org</a><br />
+<span style="color:#ff0000;font-family: Arial; font-size: 15px; font-weight: bold">Weekdays - 9:00 AM - 12:00 PM & 5:30 PM - 8:00 PM</span>&nbsp;
+<span style="color:#0000ff;font-family: Arial; font-size: 15px; font-weight: bold">Weekends - 9:00 AM - 8:00 PM</span><br />
+<span style="color: #0000ff; font-family: Verdana; font-size: 12px; font-weight: bold;">
+    @DateTime.Now.ToString("dddd MMMM d yyyy")
+    <span style="color: #ff0000; font-family: Arial; font-size: 12px; font-weight: bold">
+        <span style="color: #000000;">&nbsp;Sun Rise / Set</span>
+        <span style="color: #ff0000;">&nbsp;@todaysInfos["SunRise"] - @todaysInfos["SunSet"]</span>
+        <span style="color: #000000;">&nbsp;Rahu Kalam</span>
+        <span style="color: #ff0000;">&nbsp;@todaysInfos["RKStart"] - @todaysInfos["RKFinish"]</span>
+        <span style="color: #000000;">&nbsp;Yama Gandam</span>
+        <span style="color: #ff0000;">&nbsp;@todaysInfos["YGStart"] - @todaysInfos["YGFinish"]</span>
+    </span>
+</span>
+<br />
+<table style="font-family: Arial; font-family: Arial; font-size: 18px; font-weight: bold; padding: 12px;">
+    <tr>
+        <td style="border-collapse: collapse; padding: 12px; padding-bottom: 0px; padding-right: 12px; text-align: left; vertical-align: top;">
+            <a href="@ApplicationInstance.Application["FremontBaseURL"]/KioskOrder" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank"><span style="color: #ff0000;">Donate</span> through <span style="color: #a54000;">KIOSK</span></a>
+        </td>
+        <td colspan="2" style="font-family: Arial; padding: 12px; padding-bottom: 0px; text-align: center; vertical-align: top;">
+            @*<a href="https://www.facebook.com/svcctemple" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank">Click to watch live !!!</a>*@
+            <a href="@ApplicationInstance.Application["SacramentoBaseURL"]" style="color: #a54000; font-weight: bold; text-decoration: underline;" target="_blank">Click for SVCC Temple Sacramento</a>
+        </td>
+        <td style="font-family: Arial; padding: 12px; padding-bottom: 0px; text-align: right; vertical-align: top;">
+            <a href="@ApplicationInstance.Application["FremontBaseURL"]/Sponsorship" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank"><span style="color: #0000ff;">Donate</span> & enter Sankalpam</a>
+        </td>
+    </tr>
+</table>

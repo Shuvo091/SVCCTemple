@@ -1,0 +1,155 @@
+﻿@model SVCCTempleWeb.Models.SponsorshipModel
+<table style="padding: 5px;">
+    <tr>
+        <td colspan="2" style="color:#a54000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: center; vertical-align: top;">
+            <input id="PaymentModel_RegiterEmailAddress" name="PaymentModel.RegiterEmailAddress" type="checkbox" /><span style="width: 9px;">&nbsp;</span>Click here if you want to be included in the Temple Distribution List
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: top;">
+            <span style="color: #0000ff;"></span>Other Instructions :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @Html.TextAreaFor(m => m.PaymentModel.Comments, new { @class = "form-control", maxlength = "1024", placeholder = "Please enter other instructions", style = "font-family: Arial; height: 60px; width: 360px;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            Sponsorship Amount :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            <span id="totalSponsorshipAmount" style="font-family: Arial; font-size: 15px; font-weight: bold; padding: 0px; vertical-align: top;">0</span>
+            @Html.HiddenFor(m => m.PaymentModel.SponsorshipAmount)
+            @Html.ValidationMessageFor(m => m.PaymentModel.SponsorshipAmount, "", new { @class = "text-danger", style = "color: #ff0000; font-size: 15px; font-weight: bold;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(required)</span>&nbsp;Email Address :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.PaymentModel.EmailAddress, new { @class = "form-control", maxlength = "512", placeholder = "Email Address", style = "font-family: Arial; width: 360px;" })
+            @Html.ValidationMessageFor(m => m.PaymentModel.EmailAddress, "", new { @class = "text-danger", style = "color: #ff0000; font-size: 15px; font-weight: bold;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(required)</span>&nbsp;Name on Credit Card :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.PaymentModel.NameOnCreditCard, new { @class = "form-control", maxlength = "72", placeholder = "Name on Credit Card", style = "font-family: Arial; width: 360px;" })
+            @Html.ValidationMessageFor(m => m.PaymentModel.NameOnCreditCard, "", new { @class = "text-danger", style = "color: #ff0000; font-size: 15px; font-weight: bold;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(required)</span>&nbsp;Credit Card Number :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            <div style="float: left;">
+                @Html.PasswordFor(m => m.PaymentModel.CreditCardNumber, new { @class = "form-control", maxlength = "27", onkeypress = "javascript:return ValidateIntegerData(event);", placeholder = "Credit Card Number", style = "font-family: Arial; width: 315px;" })
+            </div>
+            <div class="input-group-append" style="float: left; width: 36px;">
+                <button class="btn btn-primary" id="showHidePaymentModelCreditCardNumber" onmouseout="javascript: return showHideForHide('PaymentModel_CreditCardNumber', 'password');" onmouseover="javascript: return showHideForShow('PaymentModel_CreditCardNumber', 'text');" type="button">
+                    <span class="fa fa-eye-slash icon"></span>
+                </button>
+            </div>
+            <div style="width: 1px;">
+            </div>
+            @Html.ValidationMessageFor(m => m.PaymentModel.CreditCardNumber, "", new { @class = "text-danger", style = "color: #ff0000; font-size: 15px; font-weight: bold;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(required)</span>&nbsp;Credit Card Sec Code :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            <div style="float: left;">
+                @Html.PasswordFor(m => m.PaymentModel.CreditCardSecCode, new { @class = "form-control", maxlength = "9", onkeypress = "javascript:return ValidateIntegerData(event);", placeholder = "Sec Code", style = "font-family: Arial; width: 90px;" })
+            </div>
+            <div class="input-group-append" style="float: left; width: 36px;">
+                <button class="btn btn-primary" id="showHidePaymentModelCreditCardSecCode" onmouseout="javascript: return showHideForHide('PaymentModel_CreditCardSecCode', 'password');" onmouseover="javascript: return showHideForShow('PaymentModel_CreditCardSecCode', 'text');" type="button">
+                    <span class="fa fa-eye-slash icon"></span>
+                </button>
+            </div>
+            <div style="width: 1px;">
+            </div>
+            @Html.ValidationMessageFor(m => m.PaymentModel.CreditCardSecCode, "", new { @class = "text-danger", style = "color: #ff0000; font-size: 15px; font-weight: bold; padding: 9px;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(required)</span>&nbsp;Credit Card Expiry :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @{
+                int i, j;
+                List<SelectListItem> listItemsMonth = new List<SelectListItem>();
+                for (i = 1; i < 10; i++)
+                {
+                    listItemsMonth.Add(new SelectListItem { Text = @i.ToString(), Value = "0" + @i.ToString() });
+                }
+                for (; i < 13; i++)
+                {
+                    listItemsMonth.Add(new SelectListItem { Text = @i.ToString(), Value = @i.ToString() });
+                }
+                List<SelectListItem> listItemsYear = new List<SelectListItem>();
+                for (j = DateTime.Now.Year; j < DateTime.Now.Year + 10; j++)
+                {
+                    listItemsYear.Add(new SelectListItem { Text = @j.ToString(), Value = @j.ToString() });
+                }
+            }
+            <div style="float: left;">
+                @Html.DropDownListFor(m => m.PaymentModel.CreditCardExpiryMM, listItemsMonth, "---", new { @class = "form-control", style = "font-family: Arial;" })
+                @Html.ValidationMessageFor(m => m.PaymentModel.CreditCardExpiryMM, "", new { @class = "text-danger", style = "color: #ff0000; font-size: 15px; font-weight: bold;" })
+            </div>
+            <div style="float: left;">
+                @Html.DropDownListFor(m => m.PaymentModel.CreditCardExpiryYYYY, listItemsYear, "---", new { @class = "form-control", style = "font-family: Arial;" })
+                @Html.ValidationMessageFor(m => m.PaymentModel.CreditCardExpiryYYYY, "", new { @class = "text-danger", style = "color: #ff0000; font-size: 15px; font-weight: bold;" })
+            </div>
+            <br style="clear: both;" />
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(optional)</span>&nbsp;Primary Telephone Num :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.PaymentModel.PrimaryTelephoneNum, new { @class = "form-control", maxlength = "10", onkeypress = "javascript:return ValidateIntegerData(event);", placeholder = "Primary Telephone Num", style = "font-family: Arial; width: 225px;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(optional)</span>&nbsp;First Name :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.PaymentModel.FirstName, new { @class = "form-control", maxlength = "100", placeholder = "First Name", style = "font-family: Arial; width: 225px;" })
+        </td>
+    </tr>
+    <tr>
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(optional)</span>&nbsp;Last Name :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.PaymentModel.LastName, new { @class = "form-control", maxlength = "100", placeholder = "Last Name", style = "font-family: Arial; width: 225px;" })
+        </td>
+    </tr>
+    <tr style="display: none;">
+        <td style="color:#000000; font-family:Arial; font-size: 15px; font-weight: bold; padding: 5px; text-align: right; vertical-align: middle;">
+            <span style="color: #0000ff;">(optional)</span>&nbsp;Reference Number :&nbsp;
+        </td>
+        <td style="padding: 5px; text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.PaymentModel.ReferenceNumber, new { @class = "form-control", maxlength = "18", placeholder = "Reference Number", style = "font-family: Arial; width: 125px;" })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="margin: auto; padding: 0px; text-align: center; vertical-align: top; width: 100%;">
+            <input alt="Make Payment" onclick="javascript: return sponsorship_onclick();" style="width: 180px;" type="image" src="~/Images/MakeYourPayment.jpg" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="margin: auto; padding: 0px; text-align: center; vertical-align: top; width: 100%;">
+            <a href="https://www.facebook.com/svcctemple" target="_blank"><img alt="Watch us live on Facebook https://www.facebook.com/svcctemple" src="~/Images/WatchOnlineFB0.png" style="border-style: none;" title="Watch us live on Facebook https://www.facebook.com/svcctemple" /></a>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,22 @@
+﻿@model Dictionary<string, List<SVCCTempleWeb.Models.ImportantDatesModelNew>>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 0px; font-family: Arial; font-size: 18px; font-weight: bold; margin: auto; padding: 5px;">
+    <tr>
+        <td colspan="3" style="border-collapse: collapse; margin: auto; padding: 5px; text-align: center; vertical-align: top;">
+            <a href="@ApplicationInstance.Application["FremontBaseURL"]/Sponsorship" style="color: #ff0000; font-size: 25px; font-weight: bold;" target="_blank">Please click here to <span style="color: #0000ff;">donate</span> & enter Sankalpam info</a><br />
+            <a href="https://www.facebook.com/svcctemple" style="color: #0000ff; font-size: 25px; font-weight: bold;" target="_blank">Please click here to watch live !!!</a><br />
+        </td>
+    </tr>
+</table>
+@Html.Partial("_ImportantMessages")
+<h2 style="font-weight: bold;">Important Dates</h2>
+@Html.Partial("_ImportantDates2", Model)
+@Html.Partial("_ImportantMessages2")
+<script type="text/javascript">
+    function window_onload() {
+    }
+</script>

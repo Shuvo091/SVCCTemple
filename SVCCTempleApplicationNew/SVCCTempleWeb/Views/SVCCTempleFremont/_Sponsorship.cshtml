@@ -1,0 +1,251 @@
+﻿@model SVCCTempleWeb.Models.SponsorshipModel
+<form id="formSponsorship">
+    <table style="padding: 5px; width: 100%;">
+        <tr>
+            <td class="text-danger" colspan="2" id="Sponsorship_ValidationSummary" style="font-size: 18px; font-weight: bold; padding: 5px; text-align: center; vertical-align: top;">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger", style = "font-size: 18px; font-weight: bold;" })
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" id="responseMessagesTr" style="margin: auto; padding: 5px; text-align: center; vertical-align: top;">
+                @Html.Partial("_ResponseMessages", Model.ResponseObjectModel)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="margin: auto; padding: 0px; text-align: center; vertical-align: top; width: 100%;">
+                <table style="margin: auto; padding: 5px; text-align: center;">
+                    <tr>
+                        <td style="padding: 5px; text-align: right; vertical-align: top; width: 50%;">
+                            <a href="https://www.facebook.com/svcctemple" target="_blank"><img alt="Watch us live on Facebook https://www.facebook.com/svcctemple" src="~/Images/WatchOnlineFB0.png" style="border-style: none;" title="Watch us live on Facebook https://www.facebook.com/svcctemple" /></a>
+                        </td>
+                        <td style="padding: 5px; text-align: left; vertical-align: top; width: 50%;">
+                            <input alt="Make Payment" onclick="javascript: return sponsorship_onclick();" style="width: 180px;" type="image" src="~/Images/MakeYourPayment.jpg" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px; text-align: left; vertical-align: top; width: 40%;">
+                @*@Html.Partial("_Sponsor", Model.SponsorModel, new ViewDataDictionary() { TemplateInfo = new System.Web.Mvc.TemplateInfo() { HtmlFieldPrefix = "SponsorModel" } })*@
+                @Html.Partial("_Sponsor", Model)
+            </td>
+            <td style="padding: 5px; text-align: left; vertical-align: top; width: 60%;">
+                @*@Html.Partial("_Payment", Model.PaymentModel, new ViewDataDictionary() { TemplateInfo = new System.Web.Mvc.TemplateInfo() { HtmlFieldPrefix = "PaymentModel" } })*@
+                @Html.Partial("_Payment", Model)
+            </td>
+        </tr>
+    </table>
+</form>
+<script type="text/javascript">
+    function window_onload() {
+        document.getElementById("SponsorModel_OtherSponsorshipDescription").value = "";
+        document.getElementById("SponsorModel_OtherSponsorshipAmount").value = "";
+        console.log(9, "window_onload");
+        try {
+            var query = window.location.href;
+            console.log(9.9, query);
+            var lastIndexOf1 = query.lastIndexOf('/');
+            var lastIndexOf2 = query.lastIndexOf('?');
+            console.log(9.18, lastIndexOf1, lastIndexOf2);
+            var groupId, itemId;
+            try {
+                if (lastIndexOf2 > -1) {
+                    groupId = query.substr(lastIndexOf1 + 1, lastIndexOf2 - lastIndexOf1 - 1);
+                    itemId = query.substr(lastIndexOf2 + 8);
+                    console.log(9.27, groupId, itemId);
+                    var i, j, elementObject, found = false;
+                    for (i = 0; i < @Model.SponsorModel.SponsorshipGroupModels.Count; i++) {
+                        elementObject = document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + "0" + "__SponsorshipListId");
+                        if (elementObject == null) {
+                            //alert(i);
+                            break;
+                        }
+                        for (j = 0; ; j++) {
+                            elementObject = document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListId");
+                            if (elementObject == null) {
+                                //alert(i + " " + j);
+                                break;
+                            }
+                            if (elementObject.value == itemId) {
+                                //alert("Found 1");
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found) {
+                            //alert("Found 2");
+                            break;
+                        }
+                    }
+                    if (found && elementObject != null) {
+                        elementObject = document.getElementById("sponsorshipCheckbox_" + i + "_" + j);
+                        console.log(9.36, elementObject.id, elementObject.checked + " " + elementObject.value);
+                        elementObject.checked = true;
+                        sponsorshipCheckbox_onclick(i, j, elementObject);
+                    }
+                    else {
+                        console.log(9.45, "Not Found");
+                    }
+                }
+                else {
+                    groupId = query.substr(lastIndexOf1 + 1);
+                    itemId = "";
+                    console.log(9.54, groupId, itemId);
+                }
+                document.getElementById("sponsorTr" + groupId).focus();
+                document.getElementById("sponsorTr" + groupId).scrollIntoView();
+            }
+            catch (err) {
+                console.log(9.99);
+            }
+            console.log(9.63);
+            //alert(query.lastIndexOf('/'));
+            //alert(query);
+            //var parms = query.split('/');
+            //var index = parms[parms.length - 1];
+            //console.log(9.18, index, parms);
+            //var index2 = "", parms2 = "";
+            //try {
+            //    parms2 = index.split('?');
+            //    index2 = parms2[parms2.length - 1];
+            //}
+            //catch (err) {
+            //    index2 = "";
+            //    parm2 = "";
+            //}
+            ////alert(parms.length);
+            ////alert(parms[parms.length - 1]);
+            ////alert(index);
+            //console.log(9.27, index, index2, parms, parms2);
+            //console.log(9.36);
+        }
+        catch (err) {
+            ;
+        }
+    }
+    function SponsorModel_SponsorshipGroupListId_onclick() {
+        var index = document.getElementById("SponsorModel_SponsorshipGroupListId").value;
+        if (index != "") {
+            document.getElementById("sponsorTr" + index).focus();
+            document.getElementById("sponsorTr" + index).scrollIntoView();
+        }
+    }
+    function returnToTop_onclick() {
+        document.getElementById("SponsorModel_SponsorshipGroupListId").selectedIndex = 0;
+        document.getElementById("SponsorModel_SponsorshipGroupListId").focus();
+        document.getElementById("SponsorModel_SponsorshipGroupListId").scrollIntoView();
+        return false;
+    }
+    function calculateSponsorshipAmount() {
+        var rate, qty, amount, sponsorshipAmount;
+        try {
+            sponsorshipAmount = document.getElementById("SponsorModel_OtherSponsorshipAmount").value;
+            if (sponsorshipAmount < 0) {
+                sponsorshipAmount = 0;
+                document.getElementById("SponsorModel_OtherSponsorshipAmount").value = "";
+            }
+        }
+        catch (err) {
+            sponsorshipAmount = 0;
+        }
+        sponsorshipAmount = parseFloat(sponsorshipAmount);
+        if (isNaN(sponsorshipAmount) || typeof (sponsorshipAmount) == "undefined") {
+            sponsorshipAmount = 0;
+        }
+        sponsorshipAmount = parseFloat(sponsorshipAmount);
+        for (var i = 0; ; i++) {
+            if (document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + "0" + "__SponsorshipListRate") == null) {
+                break;
+            }
+            for (var j = 0; ; j++) {
+                if (document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListRate") == null) {
+                    break;
+                }
+                rate = parseFloat(document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListRate").value);
+                qty = parseFloat(document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListOrderQty").value);
+                if (isNaN(rate) || isNaN(qty)) {
+                    amount = 0;
+                }
+                else {
+                    amount = parseFloat(qty * rate);
+                }
+                //console.log(i, j, rate, qty, amount);
+                if (amount == 0) {
+                    document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListOrderAmount").value = "";
+                }
+                else {
+                    document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListOrderAmount").value = amount;
+                }
+                sponsorshipAmount += amount;
+            }
+        }
+        if (sponsorshipAmount == 0) {
+            document.getElementById("PaymentModel_SponsorshipAmount").value = "";
+            document.getElementById("totalSponsorshipAmount").innerHTML = "0";
+        }
+        else {
+            document.getElementById("PaymentModel_SponsorshipAmount").value = sponsorshipAmount;
+            document.getElementById("totalSponsorshipAmount").innerHTML = sponsorshipAmount;
+        }
+    }
+    function sponsorshipCheckbox_onclick(i, j, checkboxObject) {
+        if (checkboxObject.checked) {
+            document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListOrderQty").value = 1;
+            //document.getElementById("SponsorModelsInstance_SponsorshipGroupModelsCollection_" + i + "__SponsorshipListModelsCollection_" + j + "__SponsorshipListOrderQty").value = 1;
+        }
+        else {
+            document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListOrderQty").value = 0;
+            //document.getElementById("SponsorModelsInstance_SponsorshipGroupModelsCollection_" + i + "__SponsorshipListModelsCollection_" + j + "__SponsorshipListOrderQty").value = 0;
+        }
+        console.log(i, j, checkboxObject.checked, document.getElementById("SponsorModel_SponsorshipGroupModels_" + i + "__SponsorshipListModels_" + j + "__SponsorshipListOrderQty").value);
+        calculateSponsorshipAmount();
+    }
+    function sponsorship_onclick() {
+        document.getElementById("Sponsorship_ValidationSummary").innerHTML = "";
+        event.preventDefault();
+        $.validator.unobtrusive.parse($("#formSponsorship")); //add the form validation
+        var formValid = $("#formSponsorship").valid();
+        if (formValid) {
+            $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+            var url = "/SVCCTempleFremont/Sponsorship";
+            var jsonPostData = $("#formSponsorship").serialize();
+            $.ajax({
+                url: url,
+                type: "POST",
+                //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                //dataType: "html",
+                data: jsonPostData,
+                success: function (responseData, textStatus, request) {                            
+                    $("#loadingModal").modal('hide');
+                    document.getElementById("formSponsorship").innerHTML = responseData;
+                    console.log("SUCCESS!!! Sponsorship Save");
+                },
+                error: function (xhr, exception) {
+                    $("#loadingModal").modal('hide'); 
+                    document.getElementById("responseMessagesTr").innerHTML = xhr.responseText;
+                    document.getElementById("Sponsorship_ValidationSummary").innerHTML = "Please fix errors to continue";
+                    console.log("xhr.status", xhr.status, "exception", exception, "ERROR??? Sponsorship Save", xhr.responseText);
+                }
+            });
+        }
+        else {
+            alert("Please fix errors to continue");
+            document.getElementById("Sponsorship_ValidationSummary").innerHTML = "Please fix errors to continue";
+        }
+    }
+    function showHideForShow(inputElementId, typeAttributeValue) {
+        //console.log(9, inputElementId);
+        //Change the attribute to text  
+        $("#" + inputElementId).attr('type', typeAttributeValue);
+        $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+        //console.log(9.9, inputElementId);
+    }
+    function showHideForHide(inputElementId, typeAttributeValue) {
+        //console.log(9.18, inputElementId);
+        //Change the attribute back to password  
+        $('#' + inputElementId).attr('type', typeAttributeValue);
+        $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+        //console.log(9.27, inputElementId);
+    }
+</script>

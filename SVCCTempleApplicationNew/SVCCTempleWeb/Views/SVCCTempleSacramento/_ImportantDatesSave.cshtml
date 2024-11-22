@@ -1,0 +1,254 @@
+﻿@model List<SVCCTempleWeb.Models.ImportantDatesModel>
+@{
+    int i, j;
+    SortedList<string, SortedList<int, List<string>>> x = new SortedList<string, SortedList<int, List<string>>>();
+    SortedList<int, List<string>> y;
+    List<string> z;
+    int fontColorIndex;
+    string[] fontColors = { "#0000ff", "#ff0000", "#a40000", "#000000" };
+    foreach (SVCCTempleWeb.Models.ImportantDatesModel importantDatesModels in Model)
+    {
+        if (importantDatesModels.ImportantDatesId != "")
+        {
+            if (!x.TryGetValue(importantDatesModels.BeginDate, out y))
+            {
+                y = new SortedList<int, List<string>>();
+                x.Add(importantDatesModels.BeginDate, y);
+                y.Add(5001, new List<string>());
+                y.Add(5002, new List<string>());
+                y.Add(5003, new List<string>());
+                y.Add(5004, new List<string>());
+                y.Add(5005, new List<string>());
+                y.Add(5006, new List<string>());
+                y.Add(5007, new List<string>());
+                y.Add(5008, new List<string>());
+                y.Add(5009, new List<string>());
+            }
+            y.TryGetValue(int.Parse(importantDatesModels.ImportantDatesId), out z);
+            try
+            {
+                z.Add(DateTime.Parse(importantDatesModels.EventDate).ToString("ddd - M/d"));
+            }
+            catch
+            {
+                z.Add("");
+            }
+            z.Add(importantDatesModels.EventTime);
+            z.Add(importantDatesModels.EventText1);
+            z.Add(importantDatesModels.EventText2);
+            z.Add(importantDatesModels.EventText3);
+        }
+    }
+    //var upcomingEventsModelsListSummary = Model.UpcomingEventsModelsList.Where(a => a.CategoryNameDesc == "SUMMARY").Take(6).ToList();
+    //j = upcomingEventsModelsListSummary.Count % 2;
+    //if (j > 0)
+    //{
+    //    for (i = j; i < 2; i++)
+    //    {
+    //        upcomingEventsModelsListSummary.Add(new SVCCTemple.Models.UpcomingEventsModels());
+    //    }
+    //}
+}
+@*@foreach (KeyValuePair<string, SortedList<int, List<string>>> x1 in x)
+    {
+        foreach (KeyValuePair<int, List<string>> y1 in x1.Value)
+        {
+            foreach (var z1 in y1.Value)
+            {
+                <script type="text/javascript">
+                    console.log(@y1.Key, "@z1");
+                </script>
+            }
+        }
+    }*@
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; font-weight: bold; padding: 5px; width: 850px;">
+    <colgroup>
+        <col style="width: 75px;">
+        <col style="width: 85px;">
+        <col style="width: 85px;">
+        <col style="width: 85px;">
+        <col style="width: 85px;">
+        <col style="width: 85px;">
+        <col style="width: 85px;">
+        <col style="width: 85px;">
+        @*<col style="width: 90px;">
+            <col style="width: 90px;">*@
+    </colgroup>
+    <tr>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+            Poornima
+            <br /><br />
+            @*<span style="color: #ff0000;">6:30pm Satyanaryana Pooja</span>*@
+            <a href="@ApplicationInstance.Application["BaseURL"]SVCCTempleSacramento/Sponsorship/1031" style="background-color: #d3d3d3; color: #ff0000;" target="_blank">Click to enter Sankalpam</a>
+            <br /><br />
+            <a href="@ApplicationInstance.Application["BaseURL"]Files/Satyanarayana_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click to read...</a>
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+            Sankat&nbsp;Chath.
+            <br /><br />
+            @*<span style="color: #ff0000;">Ganapathy Abhishekam</span><br /><br />*@
+            <a href="@ApplicationInstance.Application["BaseURL"]SVCCTempleSacramento/Sponsorship/1032" style="background-color: #d3d3d3; color: #ff0000;" target="_blank">Click to enter Sankalpam</a>
+            <br /><br />
+            <a href="@ApplicationInstance.Application["BaseURL"]Files/SankataharaChathurthi_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click to read...</a>
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+            Sashti
+            <br /><br />
+            @*<span style="color: #ff0000;">6:30pm Subhramanya Abhishekam</span><br /><br />*@
+            <a href="@ApplicationInstance.Application["BaseURL"]SVCCTempleSacramento/Sponsorship/1033" style="background-color: #d3d3d3; color: #ff0000;" target="_blank">Click to enter Sankalpam</a>
+            <br /><br />
+            <a href="@ApplicationInstance.Application["BaseURL"]Files/Sashti_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+            Pradosham
+            @*<span style="color: #ff0000;">6:30pm Shiva Abhishekam</span>*@
+            <br /><br />
+            <a href="@ApplicationInstance.Application["BaseURL"]SVCCTempleSacramento/Sponsorship/1034" style="background-color: #d3d3d3; color: #ff0000;" target="_blank">Click to enter Sankalpam</a>
+            <br /><br />
+            <a href="@ApplicationInstance.Application["BaseURL"]Files/Pradosham_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+            Start of<br />
+            Amavasya<br />
+            <span style="color: #000000">Info Only</span><br /><br />
+            <a href="@ApplicationInstance.Application["BaseURL"]Files/Amavasya_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+            Start of<br />
+            Lunar<br />
+            Month<br />
+            <span style="color: #000000">Info Only</span>
+        </th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+            Start of<br />
+            Solar<br />
+            Month<br />
+            (Rasi)<br />
+            <span style="color: #000000">Info Only</span>
+        </th>
+    </tr>
+    @foreach (KeyValuePair<string, SortedList<int, List<string>>> x1 in x)
+    {
+        <tr>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #ff0000; padding: 5px; text-align: center;">
+                @DateTime.Parse(x1.Key).ToString("MMM yyyy")
+            </td>
+            @foreach (KeyValuePair<int, List<string>> y1 in x1.Value)
+            {
+                if (y1.Key != 5003 && y1.Key != 5004)
+                {
+                    <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center;">
+                        @{
+                            fontColorIndex = 0;
+                            i = 0;
+                            foreach (var z1 in y1.Value)
+                            {
+                                if (z1 != "")
+                                {
+                                    if (i == 0)
+                                    {
+                                        <span>@z1</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="color: @(fontColors[fontColorIndex])">@z1</span>
+                                        fontColorIndex++;
+                                    }
+                                    i++;
+                                    <br />
+                                }
+                                else
+                                {
+                                    fontColorIndex = 0;
+                                }
+                            }
+                        }
+                    </td>
+                }
+            }
+        </tr>
+    }
+</table>
+<table style="border-spacing: 0px; padding: 3px; border-collapse: collapse; margin:0px; padding: 5px; width:1086px;">
+    <colgroup>
+        <col style="width: 130px;" />
+        <col style="width: 150px;" />
+        <col style="width: 82px;" />
+        <col style="width: 130px;" />
+        <col style="width: 150px;" />
+        <col style="width: 82px;" />
+        <col style="width: 130px;" />
+        <col style="width: 150px;" />
+        <col style="width: 82px;" />
+    </colgroup>
+    <tr>
+        <td colspan="9" style="border-collapse:collapse; border-color:#cccccc; border-style:solid; border-width:1px; font-family: Times New Roman; font-size: 20px; font-weight: bold; padding: 5px;">
+            Daily, Weekly & Recurring Events
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Daily 9:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gangadhareshwara (Shiva) Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Tuesday 7pm</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gakara Ganapathy Sahasranamam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Friday 10am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Saraswahti Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Friday 10:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Lakshmi Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Saturday 9am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Venkateswara Suprabatham</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Saturday 10am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Navagraha Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Saturday 11am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Venkateshwara Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Saturday 5pm</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Aanjaneya (Hanuman) Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Every Poornima</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">6:30pm Satyanarayana Puja</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Every Sankasht Chathurthi<br />Chathurthi after Poornima</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Ganapathy Abhishekam<br />6am on Weekdays<br />7:30am on Weekends<br />6:30pm Ganapathy Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Sashti - Shukla & Krishna</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">6:30pm Subhramanya Abhishekam</span>
+        </td>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #0000ff; font-size: 15px; font-weight: bold;">Pradosham - Shukla & Krishna<br />Trayodashi</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Gangadhareshwara (Shiva) Abhishekam</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+            <span style="color: #ff0000; font-size: 15px; font-weight: bold;">Sunday 10:30am</span><br />
+            <span style="color: #a54000; font-size: 15px; font-weight: bold;">Ganapathy Abhishekam</span>
+        </td>
+    </tr>
+</table>

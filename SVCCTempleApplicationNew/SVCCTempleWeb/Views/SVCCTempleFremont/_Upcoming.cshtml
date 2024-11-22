@@ -1,0 +1,70 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@{
+    int i, j, index;
+}
+<div id="divRecurring" style="text-align: left;">
+    <span style="color: #0000ff; font-size: 20px; font-weight: bold;">
+        Recurring Schedule<span style="padding: 27px;">&nbsp;</span><a href="javascript: void(0);" alt="Back to top SVCC Temple Fremont" title="Back to top SVCC Temple Fremont" onclick="javascript: document.getElementById('divUpcomingLinks').scrollIntoView();" style="color: #a54000; font-size: 23px; font-weight: bold; text-decoration: underline;">Back to top</a>
+    </span>
+</div>
+<br style="clear: both;" />
+<hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+<div class="col-md-9" id="divUpcomingLinks">
+    <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin: auto 0; padding: 5px;">
+        @{
+            index = 0;
+            for (i = 0; i < Model.UpcomingFestivalsModels.Count; i++)
+            {
+                <tr>
+                    @for (j = 0; j < 3 && index < Model.UpcomingFestivalsModels.Count; j++)
+                    {
+                        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+                            @Html.Raw(Model.UpcomingFestivalsModels[index].NavigationHtml)
+                        </td>
+                        index++;
+                    }
+                </tr>
+            }
+        }
+    </table>
+    <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin: auto 0; padding: 5px;">
+        <tr>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+                <span style="color: #a54000; font-size: 15px; font-weight: bold;">
+                    a.&nbsp;
+                </span>
+                <a alt="Daily Weekly Schedule - SVCC Temple Fremont" title="Daily Weekly Schedule - SVCC Temple Fremont" href="javascript: void(0);" onclick="javascript: document.getElementById('divDailyWeekly').scrollIntoView();" style="color: #a54000; font-size: 15px; font-weight: bold; text-decoration: underline;">
+                    Daily Weekly Schedule
+                </a>
+            </td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+                <span style="color: #a54000; font-size: 15px; font-weight: bold;">
+                    b.&nbsp;
+                </span>
+                <a alt="Recurring Schedule - SVCC Temple Fremont" title="Recurring Schedule - SVCC Temple Fremont" href="javascript: void(0);" onclick="javascript: document.getElementById('divRecurring').scrollIntoView();" style="color: #a54000; font-size: 15px; font-weight: bold; text-decoration: underline;">
+                    Recurring Schedule
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+@for (i = 0; i < Model.UpcomingFestivalsModels.Count; i++)
+{
+    if (i > 0)
+    {
+        <br style="clear: both;" />
+        <hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+    }
+    @Html.Raw(Model.UpcomingFestivalsModels[i].ContentHtml)
+}
+<br style="clear: both;" />
+<hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+<div id="divDailyWeekly" style="text-align: left;">
+    <span style="color: #0000ff; font-size: 20px; font-weight: bold;">
+        Daily / Weekly Schedule<span style="padding: 27px;">&nbsp;</span><a href="javascript: void(0);" alt="Back to top SVCC Temple Fremont" title="Back to top SVCC Temple Fremont" onclick="javascript: document.getElementById('divUpcomingLinks').scrollIntoView();" style="color: #a54000; font-size: 23px; font-weight: bold; text-decoration: underline;">Back to top</a>
+    </span>
+</div>
+@Html.Partial("_DailyWeekly", Model)
+<br style="clear: both;" />
+<hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+@Html.Partial("_ImportantDates0")

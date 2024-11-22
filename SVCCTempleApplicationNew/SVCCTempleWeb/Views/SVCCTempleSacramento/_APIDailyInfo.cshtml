@@ -1,0 +1,23 @@
+﻿@model List<SVCCTempleWeb.Models.GeneralInfo>
+
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin: 0 auto; padding: 5px;">
+    <tr>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Type</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Desc</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Start Date</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Start Time</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Finish Date</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">Finish Time</th>
+    </tr>
+    @foreach (var generalInfo in Model)
+    {
+        <tr>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.InfoType</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.InfoDesc</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.StartDate</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.StartTime</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.FinishDate</td>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px;">@generalInfo.FinishTime</td>
+        </tr>
+    }
+</table>

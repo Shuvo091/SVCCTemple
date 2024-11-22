@@ -1,0 +1,173 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+<div class="col-md-9">
+    <div scope="col" style="align-content: center; background-color: #d3d3d3; color: #0000ff; display: flex; flex-direction: column; font-size: 18px; font-weight: bold; justify-content: center; text-align: center;">
+        Sankalpam for @Model.StartDate.ToString("MMM d yyyy")&nbsp;<a href="@Url.Action("SankalpamInfo", "SVCCTempleFremont")" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for more...</a>
+        <span style="font-size: 15px;">Below is recommendation - Please call temple for more info</span>
+    </div>
+    @{
+    int i, j;
+    string pakshaName, dayName, codeDataDesc_0_9;
+    string[] dayNames = { "Bhanu", "Soma", "Bhowma", "Bhudha", "Guru", "Brugu", "Sthira"};
+    SVCCTempleWeb.Models.CalendarData sankalpamInfo;
+    List<SVCCTempleWeb.Models.CalendarData> thithiSankalpamInfos = new List<SVCCTempleWeb.Models.CalendarData>();
+    dayName = dayNames[(int)DateTime.Now.DayOfWeek];
+    <table class="table table-striped">
+        <tr>
+            <th class="text-center" colspan="4" scope="row" style="color: #000000; font-size: 18px;">
+                Begin of Sankalpam
+            </th>
+        </tr>
+        <tr>
+            <td class="text-center" colspan="4" style="background-color: #d3d3d3; color: #a54000; font-size: 14px; font-weight: bold;">
+                Mamo Partha Samastha Durita Kshya Dwara Sri Parameshwara / Narayana Preethyartham Subhey Shobhaney Muhoorthey Aadya Brahmanaha Dweethiya Parardey Shveta  Varaha Kalpey Vaivasvatha Manvan Tharey Ashta Vim Sathy Thamey Kaliyuge Prathamey Paadey Krounchaka Dweepey Ramanaka Varshey Amerka Deshey Kapilaranye Hari Hara Kshetra Sameepey Aindra Kandey Mero Pashchima Digbhaage Uttara Americayam Saagarayormadhya Deshey Asmin Varthamanikey Vyavaharike  Prabhavadeenam Shashtyaha Samvatsaranam Madhye
+            </td>
+        </tr>
+        @for (i = 0; i < Model.SankalpamInfos.Count; i++)
+        {
+            sankalpamInfo = Model.SankalpamInfos[i];
+            if (sankalpamInfo.CodeTypeNameDesc == "PANCHANGAM_TAMIL_MONTH")
+            {
+                break;
+            }
+            if (sankalpamInfo.CodeTypeNameDesc == "PANCHANGAM_THITHI")
+            {
+                thithiSankalpamInfos.Add(sankalpamInfo);
+            }
+            if (sankalpamInfo.CodeTypeNameId != 7700 && sankalpamInfo.CodeTypeNameId != 7800)
+            {
+                if(sankalpamInfo.CodeTypeNameDesc == "PANCHANGAM_NAKSHATRA" && dayName != "")
+                {
+        <tr>
+            <th scope="row">
+                @dayName<br />
+                @("Vasara Yuktayam")
+            </th>
+            <th class="text-left" scope="row">
+                <span style="color: #000000;">All Day</span>
+            </th>
+            <td>
+                @DateTime.Now.ToString("MMM d yyyy")<br />
+                12:00 AM
+            </td>
+            <td>
+                @DateTime.Now.ToString("MMM d yyyy")<br />
+                11:59 PM
+            </td>
+        </tr>
+                    dayName = "";
+                }
+        <tr>
+            <th scope="row">
+                @if (sankalpamInfo.CodeTypeNameDesc == "PANCHANGAM_THITHI")
+                {
+                    codeDataDesc_0_9 = sankalpamInfo.CodeDataDesc9;
+                    pakshaName = sankalpamInfo.CodeDataNameDesc.Substring(sankalpamInfo.CodeDataNameDesc.IndexOf("_") + 1);
+                    pakshaName = pakshaName.Substring(0, 1) + pakshaName.Substring(1).ToLower() + " Pakshey Adhye";
+                    @pakshaName<br />
+                }
+                else
+                {
+                    codeDataDesc_0_9 = sankalpamInfo.CodeDataDesc0;
+                }
+                @codeDataDesc_0_9<br />
+                @sankalpamInfo.CodeTypeDesc1
+            </th>
+            <th class="text-left" scope="row">
+                @if (long.Parse(sankalpamInfo.StartDate.ToString("yyyyMMdd")) == long.Parse(DateTime.Now.ToString("yyyyMMdd")))
+                {
+                    <span style="color:#0000ff;">From @DateTime.Parse(sankalpamInfo.StartTime).ToString("hh:mm tt")</span>
+                }
+                else
+                {
+                    if (sankalpamInfo.FinishDate.ToString("yyyyMMdd") == DateTime.Now.ToString("yyyyMMdd"))
+                    {
+                        <span style="color: #ff0000;">Till @DateTime.Parse(sankalpamInfo.FinishTime).ToString("hh:mm tt")</span>
+                    }
+                    else
+                    {
+                        <span style="color: #000000;">All Day</span>
+                    }
+                }
+            </th>
+            <td>
+                @sankalpamInfo.StartDate.ToString("MMM d yyyy")<br />
+                @DateTime.Parse(sankalpamInfo.StartTime).ToString("hh:mm tt")
+            </td>
+            <td>
+                @sankalpamInfo.FinishDate.ToString("MMM d yyyy")<br />
+                @DateTime.Parse(sankalpamInfo.FinishTime).ToString("hh:mm tt")
+            </td>
+        </tr>
+            }
+        }
+        <tr>
+            <td class="text-center" colspan="4" style="background-color: #d3d3d3; color: #a54000; font-size: 14px; font-weight: bold;">
+                Vishnu Yoga Vishnu Karana Evam Guna Sakala Viseshana Visishtayam Asyam Vartamanayaam
+            </td>
+        </tr>
+        @for (j = 0; j < thithiSankalpamInfos.Count; j++)
+        {
+            sankalpamInfo = thithiSankalpamInfos[j];
+            <tr>
+                <th scope="row">
+                    @sankalpamInfo.CodeDataDesc9<br />
+                    @sankalpamInfo.CodeTypeDesc1
+                </th>
+                <th class="text-left" scope="row">
+                    @if (sankalpamInfo.StartDate.ToString("yyyyMMdd") == DateTime.Now.ToString("yyyyMMdd"))
+                    {
+                        <span style="color:#0000ff;">From @DateTime.Parse(sankalpamInfo.StartTime).ToString("hh:mm tt")</span>
+                    }
+                    else
+                    {
+                        if (sankalpamInfo.FinishDate.ToString("yyyyMMdd") == DateTime.Now.ToString("yyyyMMdd"))
+                        {
+                            <span style="color: #ff0000;">Till @DateTime.Parse(sankalpamInfo.FinishTime).ToString("hh:mm tt")</span>
+                        }
+                        else
+                        {
+                            <span style="color: #000000;">All Day</span>
+                        }
+                    }
+                </th>
+                <td>
+                    @sankalpamInfo.StartDate.ToString("MMM d yyyy")<br />
+                    @DateTime.Parse(sankalpamInfo.StartTime).ToString("hh:mm tt")
+                </td>
+                <td>
+                    @sankalpamInfo.FinishDate.ToString("MMM d yyyy")<br />
+                    @DateTime.Parse(sankalpamInfo.FinishTime).ToString("hh:mm tt")
+                </td>
+            </tr>
+        }
+            <tr>
+                <th class="text-center" colspan="4" scope="row" style="color: #000000; font-size: 18px;">
+                    End of Sankalpam
+                </th>
+            </tr>
+    </table>
+    <table class="table table-striped">
+        @for (; i < Model.SankalpamInfos.Count; i++)
+        {
+            sankalpamInfo = Model.SankalpamInfos[i];
+            if (sankalpamInfo.CodeTypeNameId != 7700 && sankalpamInfo.CodeTypeNameId != 7800)
+            {
+        <tr>
+            <th scope="row">
+                @sankalpamInfo.CodeDataDesc0<br />
+                @sankalpamInfo.CodeTypeDesc1
+            </th>
+            <td>
+                @sankalpamInfo.StartDate.ToString("MMM d yyyy")<br />
+                @DateTime.Parse(sankalpamInfo.StartTime).ToString("hh:mm tt")
+            </td>
+            <td>
+                @sankalpamInfo.FinishDate.ToString("MMM d yyyy")<br />
+                @DateTime.Parse(sankalpamInfo.FinishTime).ToString("hh:mm tt")
+            </td>
+        </tr>
+            }
+        }
+    </table>
+    }
+</div>

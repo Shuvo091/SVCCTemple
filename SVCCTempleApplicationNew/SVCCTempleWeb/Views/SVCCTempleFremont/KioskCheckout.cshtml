@@ -1,0 +1,56 @@
+﻿@model SVCCTempleWeb.Models.KioskCheckoutModel
+@{
+    ViewBag.Title = "KioskCheckout";
+    Layout = "_Layout5.cshtml";
+}
+@Html.Partial("_KioskCheckout", Model)
+<script type="text/javascript">
+    function window_onload() {
+        //$("#PaymentModel_EmailAddress").val("test1@email.com");
+        //$("#PaymentModel_NameOnCreditCard").val("Ravi Ramaswamy");
+        //$("#PaymentModel_CreditCardNumber").val("4111111111111111");
+        //$("#PaymentModel_CreditCardSecCode").val("123");
+        //$("#PaymentModel_CreditCardExpiryMM").val("09");
+        //$("#PaymentModel_CreditCardExpiryYYYY").val("2025");
+    }
+    function startTimer(duration, display) {
+        var timer = duration, seconds;
+        setInterval(function () {
+            seconds = parseInt(timer % 60, 10);
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            display.textContent = seconds;
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+    function kioskCheckoutSave_onclick() {
+        console.log("00000000", "kioskCheckoutSave_onclick");
+        $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+        var url = "/SVCCTempleFremont/KioskPayment";
+        var postData = $("#formKioskCheckout").serialize();
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",//"application/x-www-form-urlencoded; charset=UTF-8",//"text/plain; charset=UTF-8", //false, //"application/json; charset=utf-8",
+            //dataType: "html",
+            data: postData,
+            //async: false,
+            success: function (responseData, textStatus, request) {
+                $("#loadingModal").modal('hide');
+                console.log("00090000", "kioskCheckoutSave_onclick", "SUCCESS!!!");
+                document.getElementById("formKioskCheckout").innerHTML = responseData;
+                var countDown = 15, display = document.querySelector('#time');
+                window.setTimeout(function () {
+                    window.location.href = "/SVCCTempleFremont/KioskOrder";
+                }, 15000);
+                startTimer(countDown, display);
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                console.log("00099000", "kioskCheckoutSave_onclick", "ERROR???", exception, xhr);
+                document.getElementById("formKioskCheckout").innerHTML = xhr.responseText;
+            }
+        });
+    }
+</script>

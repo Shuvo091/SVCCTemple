@@ -1,0 +1,40 @@
+﻿@model SVCCTempleWeb.Models.TempleScheduleUploadList
+<table class="table table-bordered table-condensed table-responsive" style="width: 63%;">
+    <colgroup>
+        <col style="width: 18px;" />
+        <col style="width: 99px;" />
+        <col style="width: 99px;" />
+        <col style="width: 99px;" />
+    </colgroup>
+    <tr>
+        <th>
+            #
+        </th>
+        <th class="text-center">
+        </th>
+        <th class="text-center">
+            Start Date
+        </th>
+        <th class="text-center">
+            Finish Date
+        </th>
+    </tr>
+    @for (var index = 0; index < Model.TempleScheduleUploadModels.Count; index++)
+    {
+    <tr>
+        <td class="text-right">
+            @(index + 1)
+        </td>
+        <td class="text-left">
+            @Model.TempleScheduleUploadModels[index].TempleScheduleMasterModel.EventDesc0
+            @Html.HiddenFor(m => Model.TempleScheduleUploadModels[index].TempleScheduleUploadId)
+        </td>
+        <td class="text-center">
+            @Html.TextBoxFor(m => Model.TempleScheduleUploadModels[index].StartDate, new { @class = "form-control", style = "width: 91%;", type = "date" })
+        </td>
+        <td class="text-center">
+            @Html.TextBoxFor(m => Model.TempleScheduleUploadModels[index].FinishDate, new { @class = "form-control", style = "width: 91%;", type = "date" })
+        </td>
+    </tr>
+    }
+</table>

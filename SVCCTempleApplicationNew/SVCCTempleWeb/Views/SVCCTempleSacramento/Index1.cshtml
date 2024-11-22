@@ -1,0 +1,22 @@
+﻿@model List<SVCCTempleWeb.Models.ImportantDatesModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table style="font-family: Arial; font-family: Arial; font-size: 27px; font-weight: bold; margin: auto; padding: 5px; width: 810px;">
+    <tr>
+        <td style="font-family: Arial; padding: 5px; vertical-align: top;">
+            <a href="@ApplicationInstance.Application["SacramentoBaseURL"]/Sponsorship" style="color: #ff0000; font-size: 25px; font-weight: bold;" target="_blank">Please click here to <span style="color: #0000ff;">donate</span> & enter Sankalpam info</a><br />
+            <a href="https://www.facebook.com/svcctemplesacramento" style="color: #0000ff; font-size: 25px; font-weight: bold; text-decoration: underline;" target="_blank">Please click here to watch live !!!</a>
+        </td>
+    </tr>
+</table>
+@Html.Partial("_ImportantMessages")
+<h2 style="font-weight: bold;">Important Dates</h2>
+@Html.Partial("_ImportantDates", Model)
+@Html.Partial("_ImportantMessages2")
+<script type="text/javascript">
+    function window_onload() {
+    }
+</script>

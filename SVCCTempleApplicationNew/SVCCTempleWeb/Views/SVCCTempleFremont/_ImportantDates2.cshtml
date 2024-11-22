@@ -1,0 +1,188 @@
+﻿@model Dictionary<string, List<SVCCTempleWeb.Models.ImportantDatesModelNew>>
+
+@{
+    string eventTime, backgroundcolor;
+    <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; font-weight: bold; margin: 0 auto; padding: 5px; width: 850px;">
+        <colgroup>
+            <col style="width: 75px;">
+            <col style="width: 85px;">
+            <col style="width: 85px;">
+            <col style="width: 85px;">
+            <col style="width: 85px;">
+            <col style="width: 85px;">
+            <col style="width: 85px;">
+            <col style="width: 85px;">
+            <col style="width: 90px;">
+            <col style="width: 90px;">
+        </colgroup>
+        <tr>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Poornima<br />
+                <span style="color: #ff0000;">Satyanaryana Pooja</span><br /><br />
+                <a href="@ApplicationInstance.Application["BaseURL"]Files/Satyanarayana_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Sankat<br />
+                Chath.<br />
+                <span style="color: #ff0000;">Ganapathy Abhishekam</span><br /><br />
+                <a href="@ApplicationInstance.Application["BaseURL"]Files/SankataharaChathurthi_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Sashti<br />
+                <span style="color: #ff0000;">Subhramanya Abhishekam</span><br /><br />
+                <a href="@ApplicationInstance.Application["BaseURL"]Files/Sashti_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Ashtami<br />
+                <span style="color: #ff0000;">Guruvayoorappan Abhishekam</span>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Pradosham<br />
+                <span style="color: #ff0000;">Shiva Abhishekam</span><br /><br />
+                <a href="@ApplicationInstance.Application["BaseURL"]Files/Pradosham_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Swati<br />
+                <span style="color: #ff0000;">Lakshi Narasimha Abhishekam</span><br /><br />
+                <a href="@ApplicationInstance.Application["BaseURL"]Files/LakshmiNarasimha_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Start of<br />
+                Amavasya<br />
+                <span style="color: #000000">Info Only</span><br /><br />
+                <a href="@ApplicationInstance.Application["BaseURL"]Files/Amavasya_1.html" style="background-color: #d3d3d3; color: #000000;" target="_blank">Click here...</a>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Start of<br />
+                Lunar<br />
+                Month<br />
+                <span style="color: #000000">Info Only</span>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                Start of<br />
+                Solar<br />
+                Month<br />
+                (Rasi)<br />
+                <span style="color: #000000">Info Only</span>
+            </th>
+        </tr>
+        <tr style="display: none;">
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+
+            </th>
+            <th style="border-collapse: collapse; background-color: #d3d3d3; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                <a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/48" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+            </th>
+            <th style="border-collapse: collapse; background-color: #d3d3d3; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                <a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/49" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+            </th>
+            <th style="border-collapse: collapse; background-color: #d3d3d3; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                <a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/50" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+            </th>
+            <th style="border-collapse: collapse; background-color: #d3d3d3; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                <a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/51" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+            </th>
+            <th style="border-collapse: collapse; background-color: #d3d3d3; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                <a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/52" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+            </th>
+            <th style="border-collapse: collapse; background-color: #d3d3d3; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                <a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/53" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+
+            </th>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+
+            </th>
+        </tr>
+        @{
+            foreach (var monthImportantDatesModel in Model)
+            {
+                if (monthImportantDatesModel.Key != "9999-12-01")
+                {
+                    <tr>
+                        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #ff0000; padding: 5px; text-align: center;">
+                            @DateTime.Parse(monthImportantDatesModel.Key).ToString("MMM yyyy")
+                        </td>
+                        @foreach (var importantDatesModel in monthImportantDatesModel.Value)
+                        {
+                            if (importantDatesModel.ImportantDatesDateModels.Count > 0 && importantDatesModel.ImportantDatesDateModels[0].EventDate == DateTime.Now.ToString("yyyy-MM-dd"))
+                            {
+                                backgroundcolor = "#d3d3d3";
+                            }
+                            else
+                            {
+                                backgroundcolor = "#ffffff";
+                            }
+                            <td style="background-color: @backgroundcolor; border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center;">
+                                @foreach (var importantDatesDateModel in importantDatesModel.ImportantDatesDateModels)
+                                {
+                                    if (backgroundcolor == "#d3d3d3")
+                                    {
+                                        @Html.Raw("<a href='" + ApplicationInstance.Application["FremontBaseURL"] + "Sponsorship/" + importantDatesModel.SponsorshipGroupId + "' target='blank'>");
+                                    }
+                                    @DateTime.Parse(importantDatesDateModel.EventDate).ToString("ddd MMM - dd")
+                                    eventTime = importantDatesDateModel.EventTime.Trim() == "" ? importantDatesModel.StartTime : importantDatesDateModel.EventTime;
+                                    <br /><span style="color: #0000ff;">@eventTime</span><br />
+                                    if (importantDatesDateModel.EventText1.Trim() != "")
+                                    {
+                                        <br /><span style="color: #ff0000;">@importantDatesDateModel.EventText1</span>
+                                    }
+                                    if (importantDatesDateModel.EventText2.Trim() != "")
+                                    {
+                                        <br /><span style="color: #a40000;">@importantDatesDateModel.EventText2</span>
+                                    }
+                                    if (backgroundcolor == "#d3d3d3")
+                                    {
+                                        @Html.Raw("</a>");
+                                    }
+                                }
+                                @if (importantDatesModel.SponsorshipGroupId > 0)
+                                {
+                                    <br /><br /><a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/@importantDatesModel.SponsorshipGroupId" style="background-color: #d3d3d3; color: maroon; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        }
+    </table>
+    var importantDatesModels = Model["9999-12-01"];
+    int index = 0, i;
+    <br />
+    <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; font-weight: bold; margin: 0 auto; padding: 5px; width: 850px;">
+        @while (index < importantDatesModels.Count)
+        {
+            <tr>
+                @for (i = 0; i < 5; i++)
+                {
+                    if (!string.IsNullOrWhiteSpace(importantDatesModels[index].EventName1) && (importantDatesModels[index].EventName1.IndexOf(DateTime.Now.ToString("dddd")) > -1 || importantDatesModels[index].EventName1.IndexOf("Daily") > -1))
+                    {
+                        backgroundcolor = "#d3d3d3";
+                    }
+                    else
+                    {
+                        backgroundcolor = "#ffffff";
+                    }
+                    <td style="background-color: @backgroundcolor; border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center;">
+                        @importantDatesModels[index].EventName1<br />
+                        <span style="color: #0000ff;">@importantDatesModels[index].EventDesc1</span><br />
+                        <span style="color: #ff0000;">@importantDatesModels[index].StartTime</span>
+                        @if (importantDatesModels[index].SponsorshipGroupId > 0)
+                        {
+                            <br /><br /><a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/@importantDatesModels[index].SponsorshipGroupId" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+                        }
+                    </td>
+                    index++;
+                }
+            </tr>
+        }
+    </table>
+}

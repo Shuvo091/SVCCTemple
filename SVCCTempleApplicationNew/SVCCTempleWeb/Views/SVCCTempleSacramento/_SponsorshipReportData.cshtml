@@ -1,0 +1,63 @@
+﻿@model List<SVCCTempleWeb.Models.SponsorshipReportDataModel>
+@{
+    if (Model != null)
+    {
+        double totalAmount = 0;
+        <table class="table-bordered table-striped" style="margin: auto; padding: 5px;">
+            <tr>
+                <td colspan="9" style="font-size: 18px; font-weight: bold; text-align: center;">
+                    @(HttpContext.Current.Request.QueryString["fromDate"] + " - " + HttpContext.Current.Request.QueryString["toDate"] + " " + DateTime.Now.ToString("MMM-dd-yyyy hh:mm tt"))
+                </td>
+            </tr>
+            <tr>
+                <th style="padding: 5px;">#</th>
+                <th style="padding: 5px;">Email</th>
+                <th style="padding: 5px;">Id</th>
+                <th style="padding: 5px;">Date</th>
+                <th style="padding: 5px;">Location</th>
+                @*<th style="padding: 5px;">Comments</th>*@
+                <th style="padding: 0px;">Amount</th>
+                <th style="padding: 0px;">Status</th>
+            </tr>
+            @{
+                int i, seqNum = 0;
+                SVCCTempleWeb.Models.SponsorshipReportDataModel x;
+                for (i = 0; i < Model.Count; i++)
+                {
+
+                    x = Model[i];
+                    totalAmount += x.ShoppingCartAmount;
+            <tr>
+                <td style="padding: 5px; text-align: center; vertical-align: top;">@(seqNum + 1)</td>
+                <td style="padding: 5px; text-align: left; vertical-align: top; width: 90px;">@x.EmailAddress</td>
+                <td style="padding: 5px; text-align: center; vertical-align: top;">@x.SponsorshipId</td>
+                <td style="padding: 5px; text-align: center; vertical-align: top;">
+                    @DateTime.Parse(x.AddDateTime).ToString("yyyy-MM-dd HH:mm:ss")
+                    <span style="display: none;">@x.EmailAddress</span>
+                </td>
+                <td style="padding: 5px; text-align: left; vertical-align: top;">
+                    @x.LocationNameDesc
+                </td>
+                @*<td style="padding: 5px; text-align: left; vertical-align: top; width: 270px;">
+            @Html.Raw(x.ShoppingCartComments.Replace(Environment.NewLine, "<br />"))
+        </td>*@
+                <td style="padding: 5px; text-align: right; vertical-align: top; width: 90px;">
+                    @x.ShoppingCartAmount.ToString("c")
+                </td>
+                <td style="padding: 5px; text-align: left; vertical-align: top; width: 90px;">
+                    @x.StatusNameDesc
+                </td>
+            </tr>
+                    seqNum++;
+                }
+            }
+            <tr>
+                <td colspan="6"></td>
+                <td style="font-size: 18px; font-weight: bold; padding: 5px; text-align: right; vertical-align: top;">
+                    @totalAmount.ToString("c")
+                </td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    }
+}

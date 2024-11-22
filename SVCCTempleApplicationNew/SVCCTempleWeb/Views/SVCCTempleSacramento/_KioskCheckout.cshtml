@@ -1,0 +1,135 @@
+﻿@model SVCCTempleWeb.Models.KioskCheckoutModel
+<form id="formKioskCheckout">
+    <style>
+        #PaymentModel-CreditCardNumber-error, #PaymentModel-EmailAddress-error, #PaymentModel-NameOnCreditCard-error,
+        #PaymentModel-CreditCardSecCode-error, #PaymentModel-CreditCardExpiryYYYY-error, #PaymentModel-CreditCardExpiryMM-error,
+        #PaymentModel-PrimaryTelephoneNum-error {
+            color: #ff0000;
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+    <h2 style="font-weight: bold; letter-spacing: 7px; text-transform: uppercase;">SVCC KIOSK PAYMENT</h2>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="row" style="text-align: left;">
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationSummary(false, "", new { @class = "validationSummaryErrors" }).ToHtmlString()))
+        </div>
+    }
+    <div class="col-md-6" style="width: 50%;">
+        <h2 style="font-weight: bold; letter-spacing: 7px; text-transform: uppercase;">SHOPPING CART</h2>
+        <div class="row" style="padding: 9px;">
+            @Html.HiddenFor(m => m.KioskOrderItemIds)
+            @Html.HiddenFor(m => m.GeneralDonationAmount)
+            @Html.HiddenFor(m => m.GeneralDonationDescription)
+            @Html.HiddenFor(m => m.PaymentModel.SponsorshipAmount)
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%;">Comments : </label>
+            @Html.TextAreaFor(m => m.PaymentModel.Comments, new { @class = "form-control", placeholder = "Enter your Sankalpam info or additional comments", style = "width: 70%;" })
+            <table class="table table-striped" style="margin: 0 auto; padding: 5px; width: 80%;">
+                <tr>
+                    <th class="text-right" scope="row">#</th>
+                    <th class="text-right" scope="row">Id</th>
+                    <th class="text-left" scope="row">Description</th>
+                    <th class="text-right" scope="row">Qty</th>
+                    <th class="text-right" scope="row">Amount</th>
+                </tr>
+                @{
+                    int index = 0;
+                    foreach (var kioskItemModel in Model.KioskItemModels)
+                    {
+                        <tr>
+                            <td class="text-right" style="padding: 5px">@(++index)</td>
+                            <td class="text-right" style="padding: 5px;">@kioskItemModel.KioskItemId</td>
+                            <td class="text-left" style="padding: 5px;">@kioskItemModel.ItemDesc</td>
+                            <td class="text-right" style="padding: 5px;">@kioskItemModel.OrderQty</td>
+                            <td class="text-right" style="padding: 5px;">@kioskItemModel.OrderAmount.Value.ToString("c")</td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <td colspan="2"></td>
+                    <td class="text-right" style="font-weight: bold; padding: 5px;">Total</td>
+                    <td class="text-right" style="font-weight: bold; padding: 5px;">@Model.OrderItemCount</td>
+                    <td class="text-right" style="font-weight: bold; padding: 5px;">@Model.OrderItemAmount.ToString("c")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6" style="width: 50%;">
+        <h2 style="font-weight: bold; letter-spacing: 7px; text-transform: uppercase;">payment</h2>
+        <div class="row" style="padding: 9px; text-align: left;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">Email Address :<br /><span style="color: #0000ff;">(Required)</span></label>
+            @Html.TextBoxFor(m => m.PaymentModel.EmailAddress, new { @class = "form-control", placeholder = "Email Address", style = "width: 70%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.PaymentModel.EmailAddress, "", new { id = "PaymentModel-EmailAddress-error" }).ToHtmlString()))
+        </div>
+        <div class="row" style="padding: 9px; text-align: left;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">Name as on card :<br /><span style="color: #0000ff;">(Required)</span></label>
+            @Html.TextBoxFor(m => m.PaymentModel.NameOnCreditCard, new { @class = "form-control", placeholder = "Name as on card", style = "width: 70%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.PaymentModel.NameOnCreditCard, "", new { id = "PaymentModel-NameOnCreditCard-error" }).ToHtmlString()))
+        </div>
+        <div class="row" style="padding: 9px; text-align: left;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">Credit Card# :<br /><span style="color: #0000ff;">(Required)</span></label>
+            @Html.TextBoxFor(m => m.PaymentModel.CreditCardNumber, new { @class = "form-control", placeholder = "Credit Card#", style = "float: left; width: 63%;", type = "password" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.PaymentModel.CreditCardNumber, "", new { id = "PaymentModel-CreditCardNumber-error", style = "float: left;" }).ToHtmlString()))
+            <div class="input-group-append" style="float: left; width: 36px;">
+                <button class="btn btn-primary" id="showHidePaymentModelCreditCardNumber" onmouseout="javascript: return showHideForHide('PaymentModel_CreditCardNumber', 'password');" onmouseover="javascript: return showHideForShow('PaymentModel_CreditCardNumber', 'text');" type="button">
+                    <span class="icon fa fa-eye-slash"></span>
+                </button>
+            </div>
+        </div>
+        <div class="row" style="padding: 9px; text-align: left;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">Sec Code:<br /><span style="color: #0000ff;">(Required)</span></label>
+            @Html.TextBoxFor(m => m.PaymentModel.CreditCardSecCode, new { @class = "form-control", placeholder = "Sec Code#", style = "float: left; width: 20%;", type = "password" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.PaymentModel.CreditCardSecCode, "", new { id = "PaymentModel-CreditCardSecCode-error", style = "float: left;" }).ToHtmlString()))
+            <div class="input-group-append" style="float: left; width: 36px;">
+                <button class="btn btn-primary" id="showHidePaymentModelCreditCardSecCode" onmouseout="javascript: return showHideForHide('PaymentModel_CreditCardSecCode', 'password');" onmouseover="javascript: return showHideForShow('PaymentModel_CreditCardSecCode', 'text');" type="button">
+                    <span class="icon fa fa-eye-slash"></span>
+                </button>
+            </div>
+        </div>
+        <div class="row" style="padding: 9px; text-align: left;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">Card Expiry:<br /><span style="color: #0000ff;">(Required)</span></label>
+            @{
+                int i, j;
+                List<SelectListItem> listItemsMonth = new List<SelectListItem>();
+                for (i = 1; i < 10; i++)
+                {
+                    listItemsMonth.Add(new SelectListItem { Text = @i.ToString(), Value = "0" + @i.ToString() });
+                }
+                for (; i < 13; i++)
+                {
+                    listItemsMonth.Add(new SelectListItem { Text = @i.ToString(), Value = @i.ToString() });
+                }
+                List<SelectListItem> listItemsYear = new List<SelectListItem>();
+                for (j = DateTime.Now.Year; j < DateTime.Now.Year + 10; j++)
+                {
+                    listItemsYear.Add(new SelectListItem { Text = @j.ToString(), Value = @j.ToString() });
+                }
+            }
+            <div style="float: left; padding-right: 9px;">
+                @Html.DropDownListFor(m => m.PaymentModel.CreditCardExpiryMM, listItemsMonth, "---", new { @class = "form-control", style = "font-family: Arial;" })
+                @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.PaymentModel.CreditCardExpiryMM, "", new { id = "PaymentModel-CreditCardExpiryMM-error", style = "float: left;" }).ToHtmlString()))
+            </div>
+            <div style="float: left;">
+                @Html.DropDownListFor(m => m.PaymentModel.CreditCardExpiryYYYY, listItemsYear, "---", new { @class = "form-control", style = "font-family: Arial;" })
+                @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.PaymentModel.CreditCardExpiryYYYY, "", new { id = "PaymentModel-CreditCardExpiryYYYY-error", style = "float: left;" }).ToHtmlString()))
+            </div>
+            <br style="clear: both;" />
+        </div>
+        <div class="row" style="padding: 9px;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">Telephone#:<br /><span style="color: #0000ff;">(Optional)</span></label>
+            @Html.TextBoxFor(m => m.PaymentModel.PrimaryTelephoneNum, new { @class = "form-control", placeholder = "Telephone Num", style = "width: 70%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.PaymentModel.PrimaryTelephoneNum, "", new { id = "PaymentModel-PrimaryTelephoneNum-error", style = "float: left;" }).ToHtmlString()))
+        </div>
+        <div class="row" style="padding: 9px;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">First Name:<br /><span style="color: #0000ff;">(Optional)</span></label>
+            @Html.TextBoxFor(m => m.PaymentModel.FirstName, new { @class = "form-control", placeholder = "First Name", style = "width: 70%;" })
+        </div>
+        <div class="row" style="padding: 9px;">
+            <label style="padding-right: 18px; float: left; text-align: right; width: 25%">Last Name:<br /><span style="color: #0000ff;">(Optional)</span></label>
+            @Html.TextBoxFor(m => m.PaymentModel.LastName, new { @class = "form-control", placeholder = "Last Name", style = "width: 70%;" })
+        </div>
+        <button class="loginRegisterbtn" id="kioskCheckoutSave" onclick="javascript: return kioskCheckoutSave_onclick();" style="letter-spacing: 9px; text-transform: uppercase;" type="button">payment</button>
+    </div>
+</form>

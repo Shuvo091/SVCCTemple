@@ -1,0 +1,3157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Code\Publish\SVCCTemple\Web</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryCreditCardService.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryCreditCardService.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryEmailLibrary.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryEmailLibrary.dll.config">
+      <publishTime>04/27/2022 08:42:19</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryEmailLibrary.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryEmailUtility.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryEmailUtility.dll.config">
+      <publishTime>04/27/2022 08:42:20</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryEmailUtility.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryException.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryException.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryExtensions.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryExtensions.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryPDFLibrary.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryPDFLibrary.dll.config">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryPDFLibrary.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryShoppingCartService.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryShoppingCartService.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryUtility.dll">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/ArchitectureLibraryUtility.pdb">
+      <publishTime>12/27/2023 16:09:33</publishTime>
+    </File>
+    <File Include="bin/BouncyCastle.Crypto.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.Core.dll">
+      <publishTime>04/20/2022 22:50:32</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.Core.pdb">
+      <publishTime>04/20/2022 22:50:32</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.dll">
+      <publishTime>04/20/2022 22:50:32</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.pdb">
+      <publishTime>04/20/2022 22:50:32</publishTime>
+    </File>
+    <File Include="bin/itext.forms.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/itext.html2pdf.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/itext.io.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/itext.kernel.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/itext.layout.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/itext.styledxmlparser.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/itext.svg.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/itextsharp.xmlworker.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>04/20/2022 22:51:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Buffers.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Memory.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Numerics.Vectors.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/SendGrid.dll">
+      <publishTime>03/23/2022 18:39:48</publishTime>
+    </File>
+    <File Include="bin/SendGrid.pdb">
+      <publishTime>03/23/2022 18:39:48</publishTime>
+    </File>
+    <File Include="bin/StarkbankEcdsa.dll">
+      <publishTime>11/09/2021 21:27:58</publishTime>
+    </File>
+    <File Include="bin/SVCCTempleWeb.dll">
+      <publishTime>12/27/2023 16:09:34</publishTime>
+    </File>
+    <File Include="bin/SVCCTempleWeb.pdb">
+      <publishTime>12/27/2023 16:09:34</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>04/20/2022 22:51:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css.map">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>01/02/2023 12:27:07</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>01/02/2023 12:27:07</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>01/02/2023 12:27:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>01/02/2023 12:27:06</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_444444_256x240.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_555555_256x240.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_777620_256x240.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_777777_256x240.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_cc0000_256x240.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/images/ui-icons_ffffff_256x240.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.structure.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.theme.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/meanmenu.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/meanmenu.min.css">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/Site0.css">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Content/Site0.min.css">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Documents/Templates/ContactUsEmailTemplateBody.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Documents/Templates/ContactUsEmailTemplateSubject.txt">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Documents/Templates/EventsEmailTemplateBody.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Documents/Templates/KioskOrderItemTemplate.html">
+      <publishTime>07/20/2022 07:24:18</publishTime>
+    </File>
+    <File Include="Documents/Templates/KioskOrderReceiptEmailTemplateBody.html">
+      <publishTime>07/20/2022 08:20:57</publishTime>
+    </File>
+    <File Include="Documents/Templates/KioskOrderReceiptEmailTemplateSubject.txt">
+      <publishTime>07/20/2022 06:34:45</publishTime>
+    </File>
+    <File Include="Documents/Templates/RecurringEventsTemplate.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Documents/Templates/RegisterEmailTemplateBody.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Documents/Templates/RegisterEmailTemplateSubject.txt">
+      <publishTime>07/18/2022 06:11:30</publishTime>
+    </File>
+    <File Include="Documents/Templates/ResetPasswordEmailTemplateBody.html">
+      <publishTime>07/18/2022 05:51:34</publishTime>
+    </File>
+    <File Include="Documents/Templates/ResetPasswordEmailTemplateSubject.txt">
+      <publishTime>07/18/2022 06:11:53</publishTime>
+    </File>
+    <File Include="Documents/Templates/SankalpamUpdateTemplateBody.html">
+      <publishTime>04/27/2022 22:13:51</publishTime>
+    </File>
+    <File Include="Documents/Templates/SankalpamUpdateTemplateSubject.txt">
+      <publishTime>04/27/2022 22:16:16</publishTime>
+    </File>
+    <File Include="Documents/Templates/SignatureTemplate.html">
+      <publishTime>04/28/2022 07:33:40</publishTime>
+    </File>
+    <File Include="Documents/Templates/SponsorshipItemTemplate.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Documents/Templates/SponsorshipReceiptEmailTemplateBody.html">
+      <publishTime>05/17/2022 17:13:02</publishTime>
+    </File>
+    <File Include="Documents/Templates/SponsorshipReceiptEmailTemplateSubject.txt">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Documents/Templates/UpdatePasswordEmailTemplateBody.html">
+      <publishTime>07/18/2022 06:23:54</publishTime>
+    </File>
+    <File Include="Documents/Templates/UpdatePasswordEmailTemplateSubject.txt">
+      <publishTime>07/18/2022 06:19:42</publishTime>
+    </File>
+    <File Include="EmailBlast/Fremont/EmailBlastList.txt">
+      <publishTime>07/02/2023 19:24:57</publishTime>
+    </File>
+    <File Include="EmailBlast/Fremont/Logs/%40Temp.txt">
+      <publishTime>07/02/2023 20:05:08</publishTime>
+    </File>
+    <File Include="EmailBlast/Fremont/Schedule_202307_Body.html">
+      <publishTime>07/02/2023 19:38:34</publishTime>
+    </File>
+    <File Include="EmailBlast/Fremont/Schedule_202307_Subject.txt">
+      <publishTime>07/02/2023 19:24:49</publishTime>
+    </File>
+    <File Include="EmailBlast/Sacramento/EmailBlastList.txt">
+      <publishTime>07/02/2023 17:05:35</publishTime>
+    </File>
+    <File Include="EmailBlast/Sacramento/Logs/%40Temp.txt">
+      <publishTime>07/02/2023 20:05:42</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/AbhiramiAndhadhi2_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Amavasya_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Andal_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/ArudraDarshanam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/AyyappaIrumudiPooja_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/AyyappaMalaDharana_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/AyyappaMandalam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/BhishmaEkadasi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/ChandiHomam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/ChandramanaUdadi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Dakshinayana_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/DhanurMasam_2.html">
+      <publishTime>12/27/2023 11:33:16</publishTime>
+    </File>
+    <File Include="Files/Diwali_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Fremont/GSS_CA_RadhaKalyanam_20190308_20190310.pdf">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GakaraGanapathy2_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GaneshChathurthi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GaneshVisarjan_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GayatriJapam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GitaJayanthi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GSS2_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GuruPeyarchi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/GuruPoornima_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/HanumadJayanthi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Holi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/KaradayanNombu_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/KarthikaSomavara_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/KartikaPurnima_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/KrishnaJanmashtami_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/LakshmiNarasimha_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/LalithaSahasranamamKumkumaArchana_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/LunarNewYear_Cheiraoba_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/LunarNewYear_Navratra_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/LunarNewYear_Navreh_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/LunarNewYear_Ugadi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/MaasiMagam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/MahalayaPaksha_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/MakarSankranthi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/NarasimhaJayanthi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Narayaneeyam1_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Narayaneeyam2_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Navaratri_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/PanguniUthiram_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Pradosham2_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Pradosham_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/RaghavendraSwamy_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/RathaSaptami_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/SankataharaChathurthi2_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/SankataharaChathurthi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/SarawathiPuja_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Sashti_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Satyanarayana_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Shivaratri_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/SkandaSashti_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/SowramanaUgadi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/SrinivasaKalyanam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/SriRamaNavami_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/ThaiPoosam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Upakarma_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/VaikasiVisakam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/VaikunthaEkadashi_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/VaralakshmiVratam_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/VasantPanchami_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/Vijayadashami_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Files/VishnuSahasranamam2_1.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="HtmlFiles/LunarEclipse_20211119.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="HtmlFiles/LunarEclipse_20220515.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="HtmlFiles/LunarEclipse_20221108.html">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="HtmlFiles/LunarNewYear_1.html">
+      <publishTime>12/28/2022 13:50:54</publishTime>
+    </File>
+    <File Include="HtmlFiles/Sacramento/DhanurMasa_20231216_20240114.html">
+      <publishTime>12/27/2023 11:27:43</publishTime>
+    </File>
+    <File Include="HtmlFiles/Sankranti_1.html">
+      <publishTime>12/28/2022 10:03:13</publishTime>
+    </File>
+    <File Include="HtmlFiles/SrinivasaKalyanam.html">
+      <publishTime>07/21/2022 17:01:08</publishTime>
+    </File>
+    <File Include="Images/AadiKrithigai.jpg">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/AadiPerukku.jpg">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/AadiPooram.jpg">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/AadiPooramSacramento.jpg">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/Aandaal.png">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/AandaalKalyanam.jpg">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/AandalMaargazhiMahotsavam.png">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/AarudraDarshanam.jpg">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images/AkshayaTrithiya.jpg">
+      <publishTime>04/29/2022 10:38:20</publishTime>
+    </File>
+    <File Include="Images/Amavasya.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/ArudraDarshanam.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyodhyaRamMandir.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyyappaIrumudiPooja.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyyappaKidsMalaDharana.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyyappaLaksharchana.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyyappaLaksharchana.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyyappaMakaraThoranam.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyyappaMandalaStart.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/AyyappaSamaj.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Baiskahi.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/BhagavadGita.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/BhishmaEkadashi.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Bhogi.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Calotropis_gigantea.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/ChandiHomam.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/ChandramanaUgadi.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/ChitraPoornima.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Christmas.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/CreditCardDonate.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/DakshinayanaPunyakalam.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/DayLightSavingsEnd.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/DhanurMasam.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Diwali.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Diwali_2020_Sweets.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/DurgaAshtami.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Ekadashi.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Facebook.jpg">
+      <publishTime>07/20/2022 15:53:17</publishTime>
+    </File>
+    <File Include="Images/FacebookDonate.jpeg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Fremont/10MinKidsStotraMantra.jpeg">
+      <publishTime>10/17/2021 18:23:20</publishTime>
+    </File>
+    <File Include="Images/Fremont/21DaysAbhishekam_20200731_20200820.png">
+      <publishTime>10/17/2021 18:23:20</publishTime>
+    </File>
+    <File Include="Images/Fremont/21DaysGaneshaAtharvana_20210819_20210908.png">
+      <publishTime>10/17/2021 18:23:20</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/01.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/02.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/03.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/04.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/05.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/06.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/07.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/08.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_20180805/09.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiKrithigai_Gokulashtami_20200811.jpeg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AadiPooram_20180812.jpg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AandaalKalyanam.jpeg">
+      <publishTime>10/17/2021 18:23:21</publishTime>
+    </File>
+    <File Include="Images/Fremont/AandaalKalyanam.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AbhiramiAndhadhi.png">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AkhilBharatiya.jpeg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AkhilBharatiya.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AkshayaTrithiya_20180418.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/Amavasya.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AshokaPubjabiSamosa_20210109.mp4">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/AthirudramWatermark.png">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_Banner.png">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_EmailtoRuthviks.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_Flyer.pdf">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_Flyer_P1.pdf">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_Flyer_P2.pdf">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_Flyer_Page_1.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_Flyer_Page_2.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/AthiRudram_Invitation_1.jpg">
+      <publishTime>10/17/2021 18:23:22</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/AthiRudram_Invitation_2.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/AthiRudram_Invitation_3.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/AthiRudram_Invitation_4.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_ProgramDetails.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Athirudram_SponsorshipDetails.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Sankara1.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Sankara2.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Sankara3.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Sankara4.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Sankara5.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram/Shiva1.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AthiRudram_ThankYou.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AyyapaMandala_20171111_20171223.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AyyappaAbhishekam.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AyyappaBhajans.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/AyyappaPuja_20181216_20181223.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/Ayyappa_Vaikunta_Hanuman_Arudra_2018.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/BalajiAbhishekam.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/BasanthPanchami.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/BhagavadGita.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/BhishmaEkadasi.gif">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/BhishmaEkadasi_20180127.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/CovidVaccination_20220129.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/DanceProgram_SivaRatriCelebration_20180225.jpg">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/DhanvantariHomam_20210508.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/DhanvantariHomam_20210508_1.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Ayyappa_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Balaji_01.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Durga_01.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Ganesha_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Guruvayoorappan_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/LakshmiNarasimha_01.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/MahaLakshmi_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Muruga_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Navagraha_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/PanchaMukhaHanuman_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Parvathi_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Saibaba_01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Satyanarayana.png">
+      <publishTime>10/17/2021 18:23:23</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Shiva_01.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Shiva_02.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Shiva_03.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Dieties/Shiva_04.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Diwali_20181106.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/Diwali_20181106_Greetings.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/Diwali_20201113.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/Diwali_20201113_Email.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/DrRRangan_20190529.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/Facebook.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/Facebook2.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/01.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/02.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/03.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/04.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/05.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/06.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/07.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/08.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/09.mp4">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/FoodDrive_20200808/10.mp4">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GanapathyAbhishekam.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GanapathyHomam_20200821.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GaneshaChathurthi_20180912.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GaneshaChathurthi_20180912_1.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GaneshaPujaByKids_20210912.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GaneshChathurthi21Day_20180822.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GaneshChathurthi_20200821_Email.jpeg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GaneshChaturthi_20210910.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GnananandaSevaSamajBhajans.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GuruPeyarchi_20181011.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GuruPeyarchi_20201119.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GuruPeyarchi_20201119_Email.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GuruPoornima_20180726.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GuruPoornima_20180727.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/GuruvayoorappanAbhishekam.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HanumadJayanthi.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HanumadJayanthi_20171228.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HanumadJayanthi_20180510.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HanumadJayanthi_20191225.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HanumanJayanthi_20200516.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HanumanJayanthi_20210112.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HomePage/MenuBackground.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/HomePage/SVCCBanner.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/HomePage/SVCCBanner2.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/HomePage/SVCCBanner_Pandemic.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/HSSS_Vaccination_20210604.png">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/Amavasya.jpg">
+      <publishTime>12/31/2022 04:45:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/AyyappaMakaraThoranam.png">
+      <publishTime>12/31/2022 04:45:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/Ekadashi.jpg">
+      <publishTime>12/31/2022 04:45:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/GanapathyAbhishekam.png">
+      <publishTime>12/31/2022 04:33:30</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/GuruvayoorappanAbhishekam.png">
+      <publishTime>12/31/2022 04:39:18</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/LunarMonth.jpg">
+      <publishTime>12/31/2022 04:45:41</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/MuruganAbhishekam.png">
+      <publishTime>12/31/2022 04:39:18</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/Narayaneeyam.png">
+      <publishTime>12/31/2022 04:45:41</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/Poornima.jpg">
+      <publishTime>12/31/2022 04:45:41</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/ShivaAbhishekham.png">
+      <publishTime>12/31/2022 04:39:18</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/SolarMonth.jpg">
+      <publishTime>12/31/2022 04:45:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/ImportantDates/Swati.png">
+      <publishTime>12/31/2022 04:45:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/JasmineFlower_1.jpg">
+      <publishTime>10/17/2021 18:23:24</publishTime>
+    </File>
+    <File Include="Images/Fremont/JupiterSaturnConjunction_20201221.mp4.zzz">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/KaradayanNombu.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/KarthikaSomavaram_20201116_20201207.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/KarthikaSomvaraAyyappaMandala_2018.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/KrishnaJanmashtami_20180902.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/KrishnaJanmashtami_20180902_x.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/KrishnaJayanthi_20210829.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/LakshmiNarasimha.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/LalithaSahasranamam.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/LunarEclipse_20180131.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/LunarEclipse_20210526.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/LunarEclipse_Shanthi_20190120_20190121.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/Mahalakshmi.jpg">
+      <publishTime>04/29/2022 10:41:12</publishTime>
+    </File>
+    <File Include="Images/Fremont/MahalayaPaksha_20181008.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/MahaPeriyavaPadhukhaSamashtiPooja.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/MahaRudraParaynam_20200523.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/MahaRudraParaynam_20200523.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/MahaRudraParaynam_20200523.png_1">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/MakaraSankranti_zzz.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/MakarSankrantiBanner.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/MuruganAbhishekam.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/NarasimhaJayanthi_20180427.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/Narayaneeyam.png">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/Narayaneeyam_20180422_6.JPG">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/NavaGrahaAbhishekam.jpg">
+      <publishTime>10/17/2021 18:23:25</publishTime>
+    </File>
+    <File Include="Images/Fremont/Navaratri_20181009_20181018.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/Navaratri_20201017_20201025.png">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/Navaratri_20201017_20201025_Email.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/Navaratri_20211006_20211014.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/NeemFlower_2.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/NewYear2021.png">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/NewYear_20190101.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/Oonjal/Oonjal1.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/PanchaMukhaHanumanAbhishekam.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/ParkingAdvisory.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/Pongal.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/PongalBanner.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/Poornima.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/QRCodes/Register.png">
+      <publishTime>05/17/2022 15:07:54</publishTime>
+    </File>
+    <File Include="Images/Fremont/QRCodes/SrinivasaKalyanam_20220617_20220618.png">
+      <publishTime>05/17/2022 15:05:29</publishTime>
+    </File>
+    <File Include="Images/Fremont/RadhaKalyanam_20180204.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/RadhaKalyanam_GSS_20180204.jpg">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/RahuKetu_20200923.png">
+      <publishTime>10/17/2021 18:23:26</publishTime>
+    </File>
+    <File Include="Images/Fremont/RahuKetu_20200923_Email.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/RamanujaJayanthi_20180421.jpg">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/RamKrishnaHariUpanyasam_20180324.jpg">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/RataSaptami_20180123.jpg">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/RathaSaptami.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/RigYajurUpakarma_20180825.jpg">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/SamaVedaUpakarma_20200821.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/SankaraJayanthi_20180420.jpg">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/SaraswatiPuja_20210814.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/SashtaGrahaKoota_20210209.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/Satyanarayana.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/SatyanarayanaPuja_20201128.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/Satyanarayana_20200802.png">
+      <publishTime>10/17/2021 18:23:27</publishTime>
+    </File>
+    <File Include="Images/Fremont/ShivaAbhishekham.png">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/Shivarathri20210311_20210312.png">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/Shivarathri20210311_20210312_Original.png">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SivaRatri_20180213.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SivaRatri_20180213_1.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SivaRatri_20180213_2.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SivaRatri_20200221.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SkandaSashtiKarthikaSomavara_2018.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SkandaSashti_20191101.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SkandaSashti_20201115_20201119.png">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SmartPhone/%40Temp.txt">
+      <publishTime>04/29/2023 16:16:12</publishTime>
+    </File>
+    <File Include="Images/Fremont/SmartPhone/Kiosk/%40Temp.txt">
+      <publishTime>04/29/2023 17:16:36</publishTime>
+    </File>
+    <File Include="Images/Fremont/SpecialPlanetary_20200913.png">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SpecialPlanetary_20200913_Email.png">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_20190111_20190113.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_20190111_20190113_0.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_20190111_20190113_1.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_2022617_2022618.pdf">
+      <publishTime>05/16/2022 16:44:01</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_2022617_2022618_1.jpg">
+      <publishTime>05/17/2022 18:51:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_2022617_2022618_2.jpg">
+      <publishTime>05/17/2022 18:51:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_2022617_2022618_3.jpg">
+      <publishTime>05/17/2022 20:11:03</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_2022617_2022618_4.jpg">
+      <publishTime>05/23/2022 07:50:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/SrinivasaKalyanam_2022617_2022618_5.jpg">
+      <publishTime>05/23/2022 07:45:31</publishTime>
+    </File>
+    <File Include="Images/Fremont/SriRamaNavamiCelebration_20210418.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SriRamaNavami_20200402.png">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SriViswamjee20170831.pdf">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SVCCFremontDriveThru_1.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SVCCFremontDriveThru_2.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SVCCFremontVarunaJapaMantram_20200823.jpg">
+      <publishTime>10/17/2021 18:23:28</publishTime>
+    </File>
+    <File Include="Images/Fremont/SVCCFremontVarunaJapam_20200823.mp4.zzz">
+      <publishTime>10/17/2021 18:23:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/Swati.png">
+      <publishTime>10/17/2021 18:23:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/TamilNewYear_Vishu_20180414.jpg">
+      <publishTime>10/17/2021 18:23:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/ThaiPoosam_20180131.jpg">
+      <publishTime>10/17/2021 18:23:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/ThaiPoosam_20210127.png">
+      <publishTime>10/17/2021 18:23:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/ThaiPoosam_LunarEclipse_EclipseShanthi.jpg">
+      <publishTime>10/17/2021 18:23:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/ThaiPoosam_Save.jpg">
+      <publishTime>10/17/2021 18:23:38</publishTime>
+    </File>
+    <File Include="Images/Fremont/Ugadi_20170317.jpg">
+      <publishTime>10/17/2021 18:23:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/Upakarma_20200802.png">
+      <publishTime>10/17/2021 18:23:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/Upakarma_20200802_Events.png">
+      <publishTime>10/17/2021 18:23:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/Upakarma_20210821.png">
+      <publishTime>10/17/2021 18:23:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/001.jpg">
+      <publishTime>10/17/2021 18:23:39</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/001.mp4">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/002.jpg">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/003.jpg">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/004.jpg">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/005.jpg">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/006.jpg">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/007.jpg">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/008.jpg">
+      <publishTime>10/17/2021 18:23:42</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/009.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/010.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/011.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/012.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/013.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/014.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/015.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/016.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/017.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/018.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/019.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/020.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/021.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/022.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/023.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/024.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/025.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/026.jpg">
+      <publishTime>10/17/2021 18:23:43</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/027.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/028.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/029.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/030.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/031.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/032.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/033.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/034.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/035.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/036.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam/037.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam_20180528.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam_20180528_A.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikasiVisakam_20210525.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikuntaEkadasi20201224_20201225.png">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikuntaEkadasi_20171229.jpg">
+      <publishTime>10/17/2021 18:23:44</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaikuntaEkadasi_20181218.jpg">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/Vaikunta_Hanuman_Arudra_Ayyappa_2018.jpg">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaralakmiVratam_20200731.png">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaralakshmiNombu_20210820.png">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VaralakshmiVratam_20180824.jpg">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VasanthPanchami_20180121.jpg">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VasantPanchami_20220205.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Fremont/VenkateswaraSuprabhatam.png">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VishnuDurgaAbhishekam %281%29.png">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VishnuDurgaAbhishekam.png">
+      <publishTime>10/17/2021 18:23:45</publishTime>
+    </File>
+    <File Include="Images/Fremont/VishnuSahasranamam.png">
+      <publishTime>10/17/2021 18:23:46</publishTime>
+    </File>
+    <File Include="Images/Fremont/Vishu_20210414.png">
+      <publishTime>10/17/2021 18:23:46</publishTime>
+    </File>
+    <File Include="Images/Fremont/WatvchOnlineFB.png">
+      <publishTime>10/17/2021 18:23:46</publishTime>
+    </File>
+    <File Include="Images/GanapathyAbhishekam.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/GaneshaClayModelByKids.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GaneshaPujaByKids.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GaneshaVisarjan.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi21Days.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi21Days_2018.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_001.jpg">
+      <publishTime>10/17/2021 18:23:46</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_002.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_003.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_004.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_005.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_006.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_007.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_008.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_009.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_010.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_011.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_012.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_013.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_014.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_015.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_016.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_017.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_018.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_019.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_020.jpg">
+      <publishTime>10/17/2021 18:23:47</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_021.jpg">
+      <publishTime>10/17/2021 18:23:48</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_022.jpg">
+      <publishTime>10/17/2021 18:23:48</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_023.jpg">
+      <publishTime>10/17/2021 18:23:48</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_024.jpg">
+      <publishTime>10/17/2021 18:23:48</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_025.jpg">
+      <publishTime>10/17/2021 18:23:48</publishTime>
+    </File>
+    <File Include="Images/GaneshChathurthi_1/Image_026.jpg">
+      <publishTime>10/17/2021 18:23:48</publishTime>
+    </File>
+    <File Include="Images/GayathriJapam.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Gokulashtami.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GrahanaShanthi_20220516.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GujaratiNewYear.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GuruPeyarchi.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/GuruPeyarchi_Ravi.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GuruPoornima.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GuruPoornima_Old.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/GuruvayoorappanAbhishekam.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/HanumadJayanthi.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/HanumadJayanthi.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/HanumanJayanthi.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/HanumanJayanthi_1.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Holi.png">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/HolikaDahan.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/Index.cshtml">
+      <publishTime>10/17/2021 18:23:48</publishTime>
+    </File>
+    <File Include="Images/JasmineFlower.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/KanumPongal.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/KaradayanNombu.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/KarthikaSomavara.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/KartikaPurnima.jpg">
+      <publishTime>12/28/2022 13:54:47</publishTime>
+    </File>
+    <File Include="Images/KarwaChauth.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/KumbakonamAnanthanarayanaBhagavathar.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/KumkumaArchanaByLadies.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/LakshmiKubera_1.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/LakshmiKubera_2.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/LakshmiNarasimha.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/LakshmiNarasimha.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Loading.gif">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Loading1.gif">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Loading2.gif">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Loading3.gif">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Lohri.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/LunarEclipse.png">
+      <publishTime>04/29/2022 11:39:56</publishTime>
+    </File>
+    <File Include="Images/LunarEclipseShanthi.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/LunarEclipseShanti.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/LunarMonth.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/LunarSeason.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/MaasiMagam.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/MahalayaAmavasya.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/MahalayaPaksha.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/MahaPeriyava125.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/MakaraSankaranti.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/MakaraSankaranti_zzz.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/MakeYourPayment.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/MattuPongal.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/MuruganAbhishekam.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/NagaPanchami.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/NarasimhaJayanthi.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Narayaneeyam.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Navagraha.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/NavagrahaShanthiPuja.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Navaratri.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/NewYear.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/NewYear_20200101.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/PanguniUthiram.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Parking.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/PaypalDonate.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Poornima.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/PuriRathYatra.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/RaghavendraSwamy.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/RamanujaJayanthi.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/RathaSaptami.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/RigUpakarma.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/RigUpakarma.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/RigYajurUpakarma.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Aandaal.png">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Aandal01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Aanjaneya01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/AndalRangamannarKalyanam.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/AnnapoornaBloodDrive_20220122.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ArudraDarshanam_20201229_1.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ArudraDarshanam_20201229_2.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Balaji01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Bhogi.png">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/BloodDrive_20210904.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Carnatic_20190914.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Carnatic_20190914.pdf">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Covid19Drive_20220122.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Dhanur_2020_2021/20201215_0.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Dhanur_2020_2021/20201215_1.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Dhanur_2020_2021/20201215_2.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Dhanur_2020_2021/20201215_3.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Diwali_20181106.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Facebook.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Facebook2.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Ganesha01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/GaneshaChathurthi_20180912.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/HanumadJayanthi.png">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/HomePage/Light.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/HomePage/MenuBackground.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/HomePage/SVCC.bmp">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/HomePage/SVCCAddress.bmp">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/HomePage/SVCCBanner.jpg">
+      <publishTime>07/25/2022 07:20:27</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ImportantDates/Amavasya.jpg">
+      <publishTime>12/21/2023 20:41:08</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ImportantDates/Ekadashi.jpg">
+      <publishTime>12/21/2023 20:23:54</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ImportantDates/GanapathyAbhishekam.png">
+      <publishTime>12/21/2023 17:35:22</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ImportantDates/Poornima.jpg">
+      <publishTime>12/21/2023 16:50:34</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ImportantDates/Pradosham.jpg">
+      <publishTime>12/21/2023 20:24:40</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ImportantDates/Sashti.jpg">
+      <publishTime>12/21/2023 20:25:27</publishTime>
+    </File>
+    <File Include="Images/Sacramento/KrishnaJanmashtami_20180902.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Lakshmi01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/LunarEclipse_20210526.png">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/MahaRudram_20200613.png">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/MattuPongal.jpg">
+      <publishTime>10/17/2021 18:23:51</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Muruga01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Navagraha.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Navaratri_20181009_20181018.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Navaratri_20201017_20201025.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Navaratri_20201017_20201025_Email.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Navaratri_20211006_20211014.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Raghavendra_20180828.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/RataSaptami_20180123.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/RigYajurUpakarma_20180825.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Saraswathi01.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Satyanarayana01.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Shiva01_Pradosham.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Shivarathri20210311_20210312.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/SivaRatri.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/SivaRatri_20180213.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/SivaRatri_20200221.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/SpecialPlanetary_20200913.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/SrinivasaKalyanam_20190112.jpeg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/SriRamaNavami_PadaYatra_20210421_1.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/SriRamaNavami_PadaYatra_20210421_2.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/TAGS_SrinivasaKalyanam_Bhogi_20180113.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/ThaiPoosam_20190126_20190127.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Tyagaraja.png">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/Ugadi_20170317.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/VaikuntaEkadasi.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/VaralakshmiVratam_20180824.jpg">
+      <publishTime>10/17/2021 18:23:52</publishTime>
+    </File>
+    <File Include="Images/Sacramento/VasanthPanchami_20180121.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/Sacramento/VenuViolin_20180204.jpg">
+      <publishTime>10/17/2021 18:23:53</publishTime>
+    </File>
+    <File Include="Images/SaintArulagirinathar.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SamaUpakarma.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SamaUpakarma.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SankaraJayanthi.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SaraswatiPuja.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SaraswatiPuja_Old.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SashtaGraha.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Satyanarayana.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/ShaniPeyarchi.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/ShivaAbhishekham.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/SivaRatri.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SkandaSashti.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SolarMonth.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/SowramanaUgadi.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SrinivasaKalyanam.jpg">
+      <publishTime>04/29/2022 16:05:52</publishTime>
+    </File>
+    <File Include="Images/SrinivasaKalyanam1.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SriRamaNavami.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SriRamaNavami.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SriRamaNavamiCelebration_20210418.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/SwarnaGowriVrata.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Swati.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/ThaiPoosam.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/ThaiPoosam_Old.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/ThanksGiving.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Thiruvonam.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/UnderConstruction.jpg">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Images/VaikasiVisakam.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/VaikasiVisakam_1.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/VaikasiVisakam_NoText.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/VaikasiVisakam_Text.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/VaikuntaEkadasi.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/VaralakshmiVratam.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/VasantPanchami.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/Vijayadashami.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/VinaVenkatesam.png">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/WatchOnlineFB.jpg">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/WatchOnlineFB0.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/WatchOnlineFB2.png">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Images/YajurUpakarma.jpg">
+      <publishTime>12/28/2022 13:54:48</publishTime>
+    </File>
+    <File Include="Images/YajurUpakarma.png">
+      <publishTime>12/28/2022 13:54:45</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Ayyappa_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Balaji_01.png">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Durga_01.png">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Ganesha_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Guruvayoorappan_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/LakshmiNarasimha_01.png">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/MahaLakshmi_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Muruga_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Navagraha_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/PanchaMukhaHanuman_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Parvathi_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Saibaba_01.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Shiva_01.png">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Shiva_02.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Shiva_03.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Dieties/Shiva_04.jpg">
+      <publishTime>09/05/2021 16:54:54</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Facebook.jpg">
+      <publishTime>09/05/2021 17:51:30</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Facebook2.jpg">
+      <publishTime>09/05/2021 17:51:30</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/HomePage/MenuBackground.jpg">
+      <publishTime>09/05/2021 16:54:40</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/HomePage/SVCCBanner.jpg">
+      <publishTime>09/05/2021 16:54:39</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/HomePage/SVCCBanner2.jpg">
+      <publishTime>09/25/2021 19:11:56</publishTime>
+    </File>
+    <File Include="Images_Old/Fremont/Navaratri_20211006_20211014.jpg">
+      <publishTime>09/27/2021 16:06:11</publishTime>
+    </File>
+    <File Include="Images_Old/LakshmiKubera_1.jpg">
+      <publishTime>09/26/2021 07:03:15</publishTime>
+    </File>
+    <File Include="Images_Old/LakshmiKubera_2.jpg">
+      <publishTime>09/26/2021 07:03:15</publishTime>
+    </File>
+    <File Include="Images_Old/Loading.gif">
+      <publishTime>09/04/2021 15:36:20</publishTime>
+    </File>
+    <File Include="Images_Old/Loading1.gif">
+      <publishTime>09/04/2021 15:36:20</publishTime>
+    </File>
+    <File Include="Images_Old/Loading2.gif">
+      <publishTime>09/04/2021 15:36:20</publishTime>
+    </File>
+    <File Include="Images_Old/Loading3.gif">
+      <publishTime>09/04/2021 15:36:20</publishTime>
+    </File>
+    <File Include="Images_Old/MakeYourPayment.jpg">
+      <publishTime>08/21/2021 10:00:23</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Aandal01.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Aanjaneya01.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Balaji01.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Facebook.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Facebook2.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Ganesha01.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/HomePage/Light.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/HomePage/MenuBackground.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/HomePage/SVCC.bmp">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/HomePage/SVCCAddress.bmp">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Lakshmi01.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Muruga01.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Navaratri_20211006_20211014.jpg">
+      <publishTime>09/27/2021 16:53:54</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/RataSaptami_20180123.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/Saraswathi01.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/Sacramento/VasanthPanchami_20180121.jpg">
+      <publishTime>08/09/2021 22:10:19</publishTime>
+    </File>
+    <File Include="Images_Old/WatchOnlineFB.jpg">
+      <publishTime>08/21/2021 10:32:11</publishTime>
+    </File>
+    <File Include="Images_Old/WatchOnlineFB0.png">
+      <publishTime>08/21/2021 10:36:41</publishTime>
+    </File>
+    <File Include="Images_Old/WatchOnlineFB2.png">
+      <publishTime>08/21/2021 10:35:01</publishTime>
+    </File>
+    <File Include="Include/javaScriptCode-1.1.1.js">
+      <publishTime>07/17/2022 17:55:08</publishTime>
+    </File>
+    <File Include="Include/javaScriptCode-1.1.1.min.js">
+      <publishTime>07/20/2022 18:09:05</publishTime>
+    </File>
+    <File Include="Include/javaScriptCode.1.1.1.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Include/StyleSheet1.css">
+      <publishTime>12/22/2023 18:09:38</publishTime>
+    </File>
+    <File Include="Include/StyleSheet1.min.css">
+      <publishTime>12/22/2023 18:09:53</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/bindings/inputmask.binding.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/jquery.inputmask.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/jquery.inputmask.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.6.0.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.6.0.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.6.0.min.map">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.6.0.slim.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.6.0.slim.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.6.0.slim.min.map">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.meanmenu.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.meanmenu.min.js">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Snippets/Snippets1.html">
+      <publishTime>03/30/2023 13:00:25</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/%40Temp.txt">
+      <publishTime>01/03/2023 11:31:47</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/ArudraDarshanam_Content_1.html">
+      <publishTime>01/03/2023 12:00:27</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/ArudraDarshanam_Nav_1.html">
+      <publishTime>01/03/2023 11:27:52</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/BhishmaEkadashi_Content_1.html">
+      <publishTime>01/03/2023 14:04:37</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/BhishmaEkadashi_Nav_1.html">
+      <publishTime>01/03/2023 12:10:06</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/Bhogi_Content_1.html">
+      <publishTime>01/03/2023 12:20:55</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/Bhogi_Nav_1.html">
+      <publishTime>01/03/2023 11:58:55</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/DhanurMasam_Content_1.html">
+      <publishTime>01/03/2023 12:35:25</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/DhanurMasam_Nav_1.html">
+      <publishTime>01/03/2023 11:37:57</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/RathaSapthami_Content_1.html">
+      <publishTime>01/03/2023 14:01:27</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/RathaSapthami_Nav_1.html">
+      <publishTime>01/03/2023 12:12:22</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/Sankranti_Content_1.html">
+      <publishTime>01/03/2023 12:33:16</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/Sankranti_Nav_1.html">
+      <publishTime>01/03/2023 12:02:30</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/SivaRatri_Content_1.html">
+      <publishTime>01/03/2023 12:40:53</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/SivaRatri_Nav_1.html">
+      <publishTime>01/03/2023 12:42:42</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/ThaiPoosam_Content_1.html">
+      <publishTime>01/03/2023 14:06:30</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/ThaiPoosam_Nav_1.html">
+      <publishTime>01/03/2023 12:42:24</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/VasanthPanchami_Content_1.html">
+      <publishTime>01/03/2023 13:58:57</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Fremont/VasanthPanchami_Nav_1.html">
+      <publishTime>01/03/2023 12:06:33</publishTime>
+    </File>
+    <File Include="UpcomingFestivals/Sacramento/%40Temp.txt">
+      <publishTime>01/03/2023 11:31:53</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/AboutUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/APIJsonResult.cshtml">
+      <publishTime>05/02/2023 12:23:27</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/APIKioskOrder.cshtml">
+      <publishTime>04/29/2023 14:49:21</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Calendar.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/ContactUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/DailyInfo.cshtml">
+      <publishTime>12/30/2022 08:37:27</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Dashboard.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/EmailBlast.cshtml">
+      <publishTime>07/02/2023 19:55:19</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Error.cshtml">
+      <publishTime>07/15/2022 23:04:43</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/EventRegister.cshtml">
+      <publishTime>09/19/2023 08:16:15</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Forbidden.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/ImportantDates.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Index.cshtml">
+      <publishTime>12/26/2023 14:50:51</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Index1.cshtml">
+      <publishTime>08/13/2022 08:23:29</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Index2.cshtml">
+      <publishTime>07/24/2022 19:03:11</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Index7.cshtml">
+      <publishTime>01/03/2023 12:11:08</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/IndexGenerateTemplEventData.cshtml">
+      <publishTime>12/29/2022 14:02:40</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/IndexOld.cshtml">
+      <publishTime>10/15/2021 16:17:17</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/KioskCheckout.cshtml">
+      <publishTime>07/21/2022 11:32:29</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/KioskOrder.cshtml">
+      <publishTime>08/25/2022 07:44:46</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/KioskOrderAPI.cshtml">
+      <publishTime>08/06/2022 18:45:28</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/LoginUserProf.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/PicGallery.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/PoojaItems.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/QRCodes.cshtml">
+      <publishTime>05/17/2022 15:18:09</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/RegisterUserLoginUser.cshtml">
+      <publishTime>07/17/2022 18:47:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/RegisterUserProf.cshtml">
+      <publishTime>07/15/2022 23:33:14</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/SankalpamInfo.cshtml">
+      <publishTime>06/11/2022 09:11:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Snippets.cshtml">
+      <publishTime>03/18/2023 13:09:08</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/SponsorList.cshtml">
+      <publishTime>04/27/2022 21:26:24</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Sponsorship.cshtml">
+      <publishTime>05/16/2022 16:05:10</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Sponsorship1.cshtml">
+      <publishTime>05/17/2022 20:54:35</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/SponsorshipReport.cshtml">
+      <publishTime>07/13/2022 16:42:50</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/TempleFestivals.cshtml">
+      <publishTime>12/30/2022 08:40:50</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/TempleServices.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Unauthorized.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/Unsubscribe.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/UpcomingEvents.cshtml">
+      <publishTime>09/05/2021 16:31:22</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/UpdatePassword.cshtml">
+      <publishTime>07/17/2022 18:47:02</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/zzz0_DailyInfo.cshtml">
+      <publishTime>12/30/2022 08:37:27</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_AboutUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_APICalendarInfo.cshtml">
+      <publishTime>04/29/2023 06:05:08</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_APIDailyInfo.cshtml">
+      <publishTime>03/09/2023 11:06:58</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_APIKioskOrder.cshtml">
+      <publishTime>04/29/2023 18:41:51</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_APISankalpamInfo.cshtml">
+      <publishTime>04/18/2023 09:55:51</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Bottom.cshtml">
+      <publishTime>08/24/2023 18:36:00</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Calendar.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ContactUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ContactUsData.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Copyright.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_DailyInfo.cshtml">
+      <publishTime>04/12/2023 19:30:18</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_DailyWeekly.cshtml">
+      <publishTime>12/22/2023 20:02:48</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_DonationReport.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Error.cshtml">
+      <publishTime>07/15/2022 23:04:43</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_EventRegisterData.cshtml">
+      <publishTime>09/16/2023 08:23:15</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_FestivalInfo.cshtml">
+      <publishTime>04/10/2023 18:24:33</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ImportantDates.cshtml">
+      <publishTime>12/14/2023 12:33:47</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ImportantDates0.cshtml">
+      <publishTime>12/22/2023 20:05:11</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ImportantDates1.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ImportantDates2.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ImportantMessages.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ImportantMessages2.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_KioskCheckout.cshtml">
+      <publishTime>05/05/2023 11:03:15</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_KioskOrder.cshtml">
+      <publishTime>08/25/2022 07:49:43</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_KioskOrderAPI.cshtml">
+      <publishTime>08/06/2022 19:07:58</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_KioskReceipt.cshtml">
+      <publishTime>07/20/2022 13:32:44</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Layout.cshtml">
+      <publishTime>07/17/2022 18:51:09</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Layout2.cshtml">
+      <publishTime>07/17/2022 18:51:37</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Layout3.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Layout5.cshtml">
+      <publishTime>08/13/2022 08:23:29</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Layout6.cshtml">
+      <publishTime>07/24/2022 19:00:46</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Layout7.cshtml">
+      <publishTime>01/02/2023 12:49:12</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Left.cshtml">
+      <publishTime>04/27/2023 11:37:36</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_LoadingModal.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_LoginUserProf.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_LoginUserProfData.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Menu.cshtml">
+      <publishTime>04/12/2023 18:57:36</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Payment.cshtml">
+      <publishTime>05/18/2022 09:05:25</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_PoojaItems.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_RegisterUserProf.cshtml">
+      <publishTime>07/20/2022 18:19:42</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_RegisterUserProfData.cshtml">
+      <publishTime>07/17/2022 18:47:05</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ResetPassword.cshtml">
+      <publishTime>07/18/2022 06:06:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ResetPasswordData.cshtml">
+      <publishTime>07/18/2022 06:27:23</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ResponseMessages.cshtml">
+      <publishTime>07/15/2022 23:04:43</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_ResponseObject.cshtml">
+      <publishTime>07/17/2022 18:49:22</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Right.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SankalpamData.cshtml">
+      <publishTime>10/05/2023 11:27:17</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SankalpamInfo.cshtml">
+      <publishTime>04/12/2023 18:11:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SankalpamInfoDetail.cshtml">
+      <publishTime>04/18/2023 10:20:45</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SankalpamInfoSummary.cshtml">
+      <publishTime>10/27/2022 17:15:15</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Snippets.cshtml">
+      <publishTime>03/18/2023 13:11:25</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Sponsor.cshtml">
+      <publishTime>05/19/2022 08:38:00</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Sponsor1.cshtml">
+      <publishTime>05/18/2022 09:11:37</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SponsorList.cshtml">
+      <publishTime>07/18/2022 17:05:51</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SponsorListData.cshtml">
+      <publishTime>04/27/2022 22:20:59</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Sponsorship.cshtml">
+      <publishTime>05/19/2022 08:49:51</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Sponsorship1.cshtml">
+      <publishTime>05/18/2022 09:10:42</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SponsorshipReceipt.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SponsorshipReport.cshtml">
+      <publishTime>07/13/2022 16:45:51</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_SponsorshipReportData.cshtml">
+      <publishTime>07/13/2022 17:54:23</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_TempleFestivals.cshtml">
+      <publishTime>12/30/2022 08:40:36</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_TodaysInfo.cshtml">
+      <publishTime>12/30/2022 18:32:22</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Top.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Upcoming.cshtml">
+      <publishTime>12/14/2023 13:09:34</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_Upcoming_zzz.cshtml">
+      <publishTime>12/14/2023 11:43:31</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_UpdatePassword.cshtml">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_UpdatePasswordData.cshtml">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_UpdatePasswordSuccess.cshtml">
+      <publishTime>07/17/2022 20:48:34</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleFremont/_UserProfile.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/AboutUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/APIJsonResult.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Calendar.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/ContactUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/DailyInfo.cshtml">
+      <publishTime>05/06/2023 07:31:54</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/DailyInfoSankalpamInfo.cshtml">
+      <publishTime>05/15/2023 08:36:04</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Dashboard.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Error.cshtml">
+      <publishTime>07/15/2022 23:04:43</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Forbidden.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/ImportantDates.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Index - Copy.cshtml">
+      <publishTime>12/22/2023 19:03:40</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Index.cshtml">
+      <publishTime>12/27/2023 11:38:46</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Index1.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/IndexGenerateTempleEventData.cshtml">
+      <publishTime>05/05/2023 17:31:54</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/KioskCheckout.cshtml">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/KioskOrder.cshtml">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/LoginUserProf.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/PicGallery.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/PoojaItems.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/RegisterUserLoginUser.cshtml">
+      <publishTime>07/15/2022 23:33:58</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/RegisterUserProf.cshtml">
+      <publishTime>07/13/2022 21:07:30</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/SankalpamInfo.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Snippets.cshtml">
+      <publishTime>03/19/2023 18:52:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/SponsorList.cshtml">
+      <publishTime>04/27/2022 18:56:45</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Sponsorship.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/SponsorshipReport.cshtml">
+      <publishTime>07/13/2022 16:50:31</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/TempleInfoDates.cshtml">
+      <publishTime>05/05/2023 22:02:21</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/TempleServices.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Unauthorized.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/Unsubscribe.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/UpcomingEvents.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/UpdatePassword.cshtml">
+      <publishTime>07/15/2022 23:32:28</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_AboutUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_APICalendarInfo.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_APIDailyInfo.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Bottom.cshtml">
+      <publishTime>12/28/2022 13:39:22</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Calendar.cshtml">
+      <publishTime>05/06/2023 13:46:54</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ContactUs.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ContactUsData.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Copyright.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_DailyInfo.cshtml">
+      <publishTime>12/27/2023 11:38:27</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_DailyInfoData.cshtml">
+      <publishTime>05/10/2023 08:37:21</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_DailyInfoDataEmail.cshtml">
+      <publishTime>05/10/2023 08:43:15</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_DailyInfoSankalpamInfo.cshtml">
+      <publishTime>05/15/2023 08:36:49</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_DailyInfoSave.cshtml">
+      <publishTime>12/27/2023 11:37:45</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_DailyWeekly.cshtml">
+      <publishTime>12/26/2023 15:30:49</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_DonationReport.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Error.cshtml">
+      <publishTime>07/15/2022 23:04:43</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_FestivalInfo.cshtml">
+      <publishTime>12/27/2023 14:42:32</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ImportantDates.cshtml">
+      <publishTime>12/22/2023 20:18:42</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ImportantDatesSave.cshtml">
+      <publishTime>05/06/2023 13:47:50</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ImportantMessages.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ImportantMessages2.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_KioskCheckout.cshtml">
+      <publishTime>07/21/2022 13:13:30</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_KioskOrder.cshtml">
+      <publishTime>07/21/2022 12:31:31</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_KioskReceipt.cshtml">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Layout.cshtml">
+      <publishTime>12/22/2023 19:15:49</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Layout2.cshtml">
+      <publishTime>07/13/2022 20:42:46</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Layout3.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Layout5.cshtml">
+      <publishTime>07/25/2022 07:43:18</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Layout6.cshtml">
+      <publishTime>07/25/2022 07:56:59</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Left.cshtml">
+      <publishTime>12/22/2023 18:05:45</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_LoadingModal.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_LoginUserProf.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_LoginUserProfData.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Menu.cshtml">
+      <publishTime>07/25/2022 07:42:27</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Payment.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_PoojaItems.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_RegisterUserProf.cshtml">
+      <publishTime>07/17/2022 18:15:55</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_RegisterUserProfBackup.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_RegisterUserProfData.cshtml">
+      <publishTime>07/15/2022 23:37:04</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ResetPassword.cshtml">
+      <publishTime>07/18/2022 05:55:52</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ResetPasswordData.cshtml">
+      <publishTime>07/18/2022 06:32:22</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ResponseMessages.cshtml">
+      <publishTime>07/15/2022 23:04:43</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ResponseObject.cshtml">
+      <publishTime>07/13/2022 20:49:12</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Right.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SankalpamData.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SankalpamInfo.cshtml">
+      <publishTime>12/26/2023 14:47:26</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SankalpamInfoDetail.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Snippets.cshtml">
+      <publishTime>03/19/2023 18:52:15</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Sponsor.cshtml">
+      <publishTime>02/06/2023 20:21:57</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SponsorList.cshtml">
+      <publishTime>07/18/2022 17:09:50</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SponsorListData.cshtml">
+      <publishTime>04/27/2022 22:20:34</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Sponsorship.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SponsorshipReceipt.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SponsorshipReport.cshtml">
+      <publishTime>07/17/2022 18:19:55</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_SponsorshipReportData.cshtml">
+      <publishTime>07/13/2022 17:54:15</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_TodaysInfo.cshtml">
+      <publishTime>12/22/2023 18:37:54</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_Top.cshtml">
+      <publishTime>12/22/2023 18:24:44</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_UpcomingSchedule.cshtml">
+      <publishTime>12/26/2023 14:53:23</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_UpdatePassword.cshtml">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_UpdatePasswordData.cshtml">
+      <publishTime>07/21/2022 11:00:16</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_UpdatePasswordSuccess.cshtml">
+      <publishTime>07/17/2022 20:48:37</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_UserProfile.cshtml">
+      <publishTime>07/18/2022 13:29:56</publishTime>
+    </File>
+    <File Include="Views/SVCCTempleSacramento/_ValidationSummary.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/20/2022 22:51:07</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/14/2023 13:00:53</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,39 @@
+﻿@model SVCCTempleWeb.Models.ResponseObjectModel0
+@{
+    string textcolor, textalign, liststyletype;// = "";
+    if (Model != null)
+    {
+        switch (Model.ResponseTypeId)
+        {
+            case SVCCTempleWeb.Enumerations.ResponseTypeEnum.Info:
+                textcolor = "#337ab7";
+                break;
+            case SVCCTempleWeb.Enumerations.ResponseTypeEnum.Success:
+                textcolor = "#00d000"; //green
+                break;
+            case SVCCTempleWeb.Enumerations.ResponseTypeEnum.Error:
+                textcolor = "#ff0000"; //red
+                break;
+            default:
+                textcolor = "";
+                break;
+        }
+        textalign = Model.TextAlign;
+        liststyletype = Model.ListStyleType;
+    }
+    else
+    {
+        textcolor = "";
+        textalign = "";
+        liststyletype = "";
+    }
+    if (Model != null && Model.ResponseMessages != null)
+    {
+        <ul class="text-" style="color: @textcolor; display: inline-block; font-weight: bold;" id="listimg">
+            @foreach (var responseMessage in Model.ResponseMessages)
+            {
+                <li style="list-style-type: @liststyletype; text-align: @textalign;">@responseMessage.Value</li>
+            }
+        </ul>
+    }
+}

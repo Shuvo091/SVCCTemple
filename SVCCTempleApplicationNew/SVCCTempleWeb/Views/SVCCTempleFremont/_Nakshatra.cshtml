@@ -1,0 +1,52 @@
+﻿@model List<SVCCTempleWeb.Models.CalendarDateDataModel>
+@{ 
+    int index = 0;
+}
+<table class="table table-bordered table-condensed table-responsive" style="width: 72%;">
+    <tr>
+        <th>
+            #
+        </th>
+        <th class="text-left">
+            Nakshatra
+        </th>
+        <th class="text-center" colspan="2">
+            Start
+        </th>
+        <th class="text-center" colspan="2">
+            Finish
+        </th>
+        <th class="text-left">
+        </th>
+    </tr>
+    @foreach (var calendarDateDataModel in Model)
+    {
+        index++;
+    <tr>
+        <td class="text-right">
+            @index
+        </td>
+        <td class="text-left">
+            @calendarDateDataModel.CodeDataModel.CodeDataDesc0
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.StartDate
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.StartTime
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.FinishDate
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.FinishTime
+        </td>
+        <td class="text-left">
+            @calendarDateDataModel.CodeDataModel.CodeDataDesc1
+        </td>
+        <td class="text-left">
+            @calendarDateDataModel.CodeDataModel.CodeDataDesc2
+        </td>
+    </tr>
+    }
+</table>

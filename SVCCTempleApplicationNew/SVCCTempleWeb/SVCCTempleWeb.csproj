@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C8929EB-D2DD-4AAB-9982-359867D11C93}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVCCTempleWeb</RootNamespace>
+    <AssemblyName>SVCCTempleWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ClassCode\AjaxAuthorizeAttribute.cs" />
+    <Compile Include="ClassCode\Bootstrap.cs" />
+    <Compile Include="ClassCode\QRCode.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL0.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL1.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL2.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL3.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL4.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL5.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL81.cs" />
+    <Compile Include="ClassCode\SVCCTempleBL90.cs" />
+    <Compile Include="ClassCode\WebLog.cs" />
+    <Compile Include="ClassCode\WebUtilities.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SVCCTempleFremontController.cs" />
+    <Compile Include="Controllers\SVCCTempleSacramentoController.cs" />
+    <Compile Include="Enumerations\ContactUsTypeEnum.cs" />
+    <Compile Include="Enumerations\ResponseTypeEnum.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APICalendarData.cs" />
+    <Compile Include="Models\APICalendarInfoModel.cs" />
+    <Compile Include="Models\APICheckoutModel.cs" />
+    <Compile Include="Models\APIDailyInfoDataModel.cs" />
+    <Compile Include="Models\APIDailyInfoModel.cs" />
+    <Compile Include="Models\APIKioskOrderModel.cs" />
+    <Compile Include="Models\APIOrderItemModel.cs" />
+    <Compile Include="Models\APIPaymentModel.cs" />
+    <Compile Include="Models\APISankalpamInfoDataModel.cs" />
+    <Compile Include="Models\APISankalpamInfoModel.cs" />
+    <Compile Include="Models\AuditInfoModel.cs" />
+    <Compile Include="Models\BookingAssignModel.cs" />
+    <Compile Include="Models\BookingModel.cs" />
+    <Compile Include="Models\CalendarData.cs" />
+    <Compile Include="Models\CalendarDateDataModel.cs" />
+    <Compile Include="Models\CalendarDataViewModel.cs" />
+    <Compile Include="Models\CalendarEvent.cs" />
+    <Compile Include="Models\CalendarModel.cs" />
+    <Compile Include="Models\CodeDataModel.cs" />
+    <Compile Include="Models\CodeTypeModel.cs" />
+    <Compile Include="Models\ContactUsModel.cs" />
+    <Compile Include="Models\DailyInfoModel.cs" />
+    <Compile Include="Models\DonationReportModel.cs" />
+    <Compile Include="Models\EventRegisterModel.cs" />
+    <Compile Include="Models\GeneralInfo.cs" />
+    <Compile Include="Models\ImportantDatesDateModel.cs" />
+    <Compile Include="Models\ImportantDatesModel.cs" />
+    <Compile Include="Models\ImportantDatesModelNew.cs" />
+    <Compile Include="Models\IndexModel.cs" />
+    <Compile Include="Models\KioskCheckoutModel.cs" />
+    <Compile Include="Models\APIKioskGroupModel.cs" />
+    <Compile Include="Models\KioskGroupModel.cs" />
+    <Compile Include="Models\APIKioskItemModel.cs" />
+    <Compile Include="Models\KioskItemModel.cs" />
+    <Compile Include="Models\KioskOrderModel.cs" />
+    <Compile Include="Models\LoginUserProfModel.cs" />
+    <Compile Include="Models\PaymentModel.cs" />
+    <Compile Include="Models\RegisterUserLoginUserModel.cs" />
+    <Compile Include="Models\RegisterUserProfModel.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
+    <Compile Include="Models\ResponseModel.cs" />
+    <Compile Include="Models\ResponseObjectModel.cs" />
+    <Compile Include="Models\ResponseObjectModel0.cs" />
+    <Compile Include="Models\RiseSetModel.cs" />
+    <Compile Include="Models\SankalpamDataModel.cs" />
+    <Compile Include="Models\SankalpamInfoDetailModel.cs" />
+    <Compile Include="Models\SankalpamInfoModel.cs" />
+    <Compile Include="Models\SessionObjectModel.cs" />
+    <Compile Include="Models\SessionRegister.cs" />
+    <Compile Include="Models\SnippetsModel.cs" />
+    <Compile Include="Models\SponsorListDataModel.cs" />
+    <Compile Include="Models\SponsorListModel.cs" />
+    <Compile Include="Models\SponsorModel.cs" />
+    <Compile Include="Models\SponsorshipGroupModel.cs" />
+    <Compile Include="Models\SponsorshipListModel.cs" />
+    <Compile Include="Models\SponsorshipModel.cs" />
+    <Compile Include="Models\SponsorshipReportDataModel.cs" />
+    <Compile Include="Models\SponsorshipReportModel.cs" />
+    <Compile Include="Models\TempleEventImportantDatesModel.cs" />
+    <Compile Include="Models\TempleEventMasterModel.cs" />
+    <Compile Include="Models\TempleEventModel.cs" />
+    <Compile Include="Models\TempleInfoDateModel.cs" />
+    <Compile Include="Models\TempleInfoDatesModel.cs" />
+    <Compile Include="Models\TempleInfoModel.cs" />
+    <Compile Include="Models\TempleScheduleMasterModel.cs" />
+    <Compile Include="Models\TempleScheduleMasterList.cs" />
+    <Compile Include="Models\TempleScheduleUploadList.cs" />
+    <Compile Include="Models\TempleScheduleUploadModel.cs" />
+    <Compile Include="Models\TempleServiceModel.cs" />
+    <Compile Include="Models\UpcomingFestivalsModel.cs" />
+    <Compile Include="Models\UpdatePasswordModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
+    <Compile Include="Models\ValidationSummaryModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\meanmenu.css" />
+    <Content Include="Content\meanmenu.min.css" />
+    <Content Include="Content\Site0.min.css" />
+    <Content Include="Content\Site0.css" />
+    <Content Include="Documents\Templates\ContactUsEmailTemplateBody.html" />
+    <Content Include="Documents\Templates\ContactUsEmailTemplateSubject.txt" />
+    <Content Include="Documents\Templates\EventsEmailTemplateBody.html" />
+    <Content Include="Documents\Templates\RecurringEventsTemplate.html" />
+    <Content Include="Documents\Templates\ResetPasswordEmailTemplateBody.html" />
+    <Content Include="Documents\Templates\ResetPasswordEmailTemplateSubject.txt" />
+    <Content Include="Documents\Templates\SankalpamUpdateTemplateBody.html" />
+    <Content Include="Documents\Templates\SankalpamUpdateTemplateSubject.txt" />
+    <Content Include="Documents\Templates\RegisterEmailTemplateSubject.txt" />
+    <Content Include="Documents\Templates\SignatureTemplate.html" />
+    <Content Include="Documents\Templates\KioskOrderReceiptEmailTemplateBody.html" />
+    <Content Include="Documents\Templates\KioskOrderItemTemplate.html" />
+    <Content Include="Documents\Templates\SponsorshipReceiptEmailTemplateBody.html" />
+    <Content Include="Documents\Templates\KioskOrderReceiptEmailTemplateSubject.txt" />
+    <Content Include="Documents\Templates\SponsorshipReceiptEmailTemplateSubject.txt" />
+    <Content Include="Documents\Templates\SponsorshipItemTemplate.html" />
+    <Content Include="Documents\Templates\UpdatePasswordEmailTemplateBody.html" />
+    <Content Include="Documents\Templates\UpdatePasswordEmailTemplateSubject.txt" />
+    <Content Include="EmailBlast\Fremont\Logs\%40Temp.txt" />
+    <Content Include="EmailBlast\Fremont\Schedule_202307_Body.html" />
+    <Content Include="EmailBlast\Fremont\EmailBlastList.txt" />
+    <Content Include="EmailBlast\Fremont\Schedule_202307_Subject.txt" />
+    <Content Include="EmailBlast\Sacramento\EmailBlastList.txt" />
+    <Content Include="EmailBlast\Sacramento\Logs\%40Temp.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="Files\AbhiramiAndhadhi2_1.html" />
+    <Content Include="Files\Amavasya_1.html" />
+    <Content Include="Files\Andal_1.html" />
+    <Content Include="Files\ArudraDarshanam_1.html" />
+    <Content Include="Files\AyyappaIrumudiPooja_1.html" />
+    <Content Include="Files\AyyappaMalaDharana_1.html" />
+    <Content Include="Files\AyyappaMandalam_1.html" />
+    <Content Include="Files\BhishmaEkadasi_1.html" />
+    <Content Include="Files\ChandiHomam_1.html" />
+    <Content Include="Files\ChandramanaUdadi_1.html" />
+    <Content Include="Files\Dakshinayana_1.html" />
+    <Content Include="Files\DhanurMasam_2.html" />
+    <Content Include="Files\Diwali_1.html" />
+    <Content Include="Files\GakaraGanapathy2_1.html" />
+    <Content Include="Files\GaneshChathurthi_1.html" />
+    <Content Include="Files\GaneshVisarjan_1.html" />
+    <Content Include="Files\GayatriJapam_1.html" />
+    <Content Include="Files\GitaJayanthi_1.html" />
+    <Content Include="Files\GSS2_1.html" />
+    <Content Include="Files\GuruPeyarchi_1.html" />
+    <Content Include="Files\GuruPoornima_1.html" />
+    <Content Include="Files\HanumadJayanthi_1.html" />
+    <Content Include="Files\Holi_1.html" />
+    <Content Include="Files\KaradayanNombu_1.html" />
+    <Content Include="Files\KarthikaSomavara_1.html" />
+    <Content Include="Files\KartikaPurnima_1.html" />
+    <Content Include="Files\KrishnaJanmashtami_1.html" />
+    <Content Include="Files\LakshmiNarasimha_1.html" />
+    <Content Include="Files\LalithaSahasranamamKumkumaArchana_1.html" />
+    <Content Include="Files\LunarNewYear_Cheiraoba_1.html" />
+    <Content Include="Files\LunarNewYear_Navratra_1.html" />
+    <Content Include="Files\LunarNewYear_Navreh_1.html" />
+    <Content Include="Files\LunarNewYear_Ugadi_1.html" />
+    <Content Include="Files\MaasiMagam_1.html" />
+    <Content Include="Files\MahalayaPaksha_1.html" />
+    <Content Include="Files\MakarSankranthi_1.html" />
+    <Content Include="Files\NarasimhaJayanthi_1.html" />
+    <Content Include="Files\Narayaneeyam1_1.html" />
+    <Content Include="Files\Narayaneeyam2_1.html" />
+    <Content Include="Files\Navaratri_1.html" />
+    <Content Include="Files\PanguniUthiram_1.html" />
+    <Content Include="Files\Pradosham2_1.html" />
+    <Content Include="Files\Pradosham_1.html" />
+    <Content Include="Files\RaghavendraSwamy_1.html" />
+    <Content Include="Files\RathaSaptami_1.html" />
+    <Content Include="Files\SankataharaChathurthi2_1.html" />
+    <Content Include="Files\SankataharaChathurthi_1.html" />
+    <Content Include="Files\SarawathiPuja_1.html" />
+    <Content Include="Files\Sashti_1.html" />
+    <Content Include="Files\Satyanarayana_1.html" />
+    <Content Include="Files\Shivaratri_1.html" />
+    <Content Include="Files\SkandaSashti_1.html" />
+    <Content Include="Files\SowramanaUgadi_1.html" />
+    <Content Include="Files\SrinivasaKalyanam_1.html" />
+    <Content Include="Files\SriRamaNavami_1.html" />
+    <Content Include="Files\ThaiPoosam_1.html" />
+    <Content Include="Files\Upakarma_1.html" />
+    <Content Include="Files\VaikasiVisakam_1.html" />
+    <Content Include="Files\VaikunthaEkadashi_1.html" />
+    <Content Include="Files\VaralakshmiVratam_1.html" />
+    <Content Include="Files\VasantPanchami_1.html" />
+    <Content Include="Files\Vijayadashami_1.html" />
+    <Content Include="Files\VishnuSahasranamam2_1.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="HtmlFiles\LunarNewYear_1.html" />
+    <Content Include="HtmlFiles\Sacramento\DhanurMasa_20231216_20240114.html" />
+    <Content Include="HtmlFiles\Sacramento\SolarEclipse_20240408.html" />
+    <Content Include="HtmlFiles\Sacramento\LunarEclipse_20240324_20240325.html" />
+    <Content Include="HtmlFiles\Sankranti_1.html" />
+    <Content Include="HtmlFiles\LunarEclipse_20211119.html" />
+    <Content Include="HtmlFiles\LunarEclipse_20220515.html" />
+    <Content Include="HtmlFiles\LunarEclipse_20221108.html" />
+    <Content Include="HtmlFiles\SrinivasaKalyanam.html" />
+    <Content Include="Images\AadiKrithigai.jpg" />
+    <Content Include="Images\AadiPerukku.jpg" />
+    <Content Include="Images\AadiPooram.jpg" />
+    <Content Include="Images\AadiPooramSacramento.jpg" />
+    <Content Include="Images\Aandaal.png" />
+    <Content Include="Images\AandaalKalyanam.jpg" />
+    <Content Include="Images\AandalMaargazhiMahotsavam.png" />
+    <Content Include="Images\AarudraDarshanam.jpg" />
+    <Content Include="Images\AkshayaTrithiya.jpg" />
+    <Content Include="Images\Amavasya.jpg" />
+    <Content Include="Images\ArudraDarshanam.jpg" />
+    <Content Include="Images\AyodhyaRamMandir.jpg" />
+    <Content Include="Images\AyyappaIrumudiPooja.jpg" />
+    <Content Include="Images\AyyappaKidsMalaDharana.jpg" />
+    <Content Include="Images\AyyappaLaksharchana.jpg" />
+    <Content Include="Images\AyyappaLaksharchana.png" />
+    <Content Include="Images\AyyappaMakaraThoranam.png" />
+    <Content Include="Images\AyyappaMandalaStart.jpg" />
+    <Content Include="Images\AyyappaSamaj.jpg" />
+    <Content Include="Images\Baiskahi.jpg" />
+    <Content Include="Images\BhagavadGita.jpg" />
+    <Content Include="Images\BhishmaEkadashi.jpg" />
+    <Content Include="Images\Bhogi.png" />
+    <Content Include="Images\Calotropis_gigantea.jpg" />
+    <Content Include="Images\ChandiHomam.jpg" />
+    <Content Include="Images\ChandramanaUgadi.jpg" />
+    <Content Include="Images\ChitraPoornima.png" />
+    <Content Include="Images\Christmas.jpg" />
+    <Content Include="Images\CreditCardDonate.png" />
+    <Content Include="Images\DakshinayanaPunyakalam.jpg" />
+    <Content Include="Images\DayLightSavingsEnd.png" />
+    <Content Include="Images\DBD.jpg" />
+    <Content Include="Images\DBD1.jpg" />
+    <Content Include="Images\DhanurMasam.png" />
+    <Content Include="Images\Diwali.jpg" />
+    <Content Include="Images\Diwali_2020_Sweets.png" />
+    <Content Include="Images\DurgaAshtami.jpg" />
+    <Content Include="Images\Ekadashi.jpg" />
+    <Content Include="Images\Facebook.jpg" />
+    <Content Include="Images\FacebookDonate.jpeg" />
+    <Content Include="Images\Fremont\CovidVaccination_20220129.jpg" />
+    <Content Include="Images\Fremont\Dieties\Ayyappa_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\Balaji_01.png" />
+    <Content Include="Images\Fremont\Dieties\Durga_01.png" />
+    <Content Include="Images\Fremont\Dieties\Ganesha_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\Guruvayoorappan_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\LakshmiNarasimha_01.png" />
+    <Content Include="Images\Fremont\Dieties\MahaLakshmi_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\Muruga_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\Navagraha_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\PanchaMukhaHanuman_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\Parvathi_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\Saibaba_01.jpg" />
+    <Content Include="Images\Fremont\Dieties\Shiva_01.png" />
+    <Content Include="Images\Fremont\Dieties\Shiva_02.jpg" />
+    <Content Include="Images\Fremont\Dieties\Shiva_03.jpg" />
+    <Content Include="Images\Fremont\Dieties\Shiva_04.jpg" />
+    <Content Include="Images\Fremont\Facebook.jpg" />
+    <Content Include="Images\Fremont\Facebook2.jpg" />
+    <Content Include="Images\Fremont\HomePage\MenuBackground.jpg" />
+    <Content Include="Images\Fremont\HomePage\SVCCBanner2.jpg" />
+    <Content Include="Images\Fremont\HomePage\SVCCBanner.jpg" />
+    <Content Include="Images\Fremont\ImportantDates\Amavasya.jpg" />
+    <Content Include="Images\Fremont\ImportantDates\AyyappaMakaraThoranam.png" />
+    <Content Include="Images\Fremont\ImportantDates\Ekadashi.jpg" />
+    <Content Include="Images\Fremont\ImportantDates\GanapathyAbhishekam.png" />
+    <Content Include="Images\Fremont\ImportantDates\GuruvayoorappanAbhishekam.png" />
+    <Content Include="Images\Fremont\ImportantDates\LunarMonth.jpg" />
+    <Content Include="Images\Fremont\ImportantDates\MuruganAbhishekam.png" />
+    <Content Include="Images\Fremont\ImportantDates\Narayaneeyam.png" />
+    <Content Include="Images\Fremont\ImportantDates\Poornima.jpg" />
+    <Content Include="Images\Fremont\ImportantDates\ShivaAbhishekham.png" />
+    <Content Include="Images\Fremont\ImportantDates\SolarMonth.jpg" />
+    <Content Include="Images\Fremont\ImportantDates\Swati.png" />
+    <Content Include="Images\Fremont\Mahalakshmi.jpg" />
+    <Content Include="Images\Fremont\Navaratri_20211006_20211014.jpg" />
+    <Content Include="Images\Fremont\QRCodes\SrinivasaKalyanam_20220617_20220618.png" />
+    <Content Include="Images\Fremont\SmartPhone\%40Temp.txt" />
+    <Content Include="Images\Fremont\SmartPhone\Kiosk\%40Temp.txt" />
+    <Content Include="Images\Fremont\SrinivasaKalyanam_2022617_2022618_1.jpg" />
+    <Content Include="Images\Fremont\SrinivasaKalyanam_2022617_2022618_2.jpg" />
+    <Content Include="Images\Fremont\SrinivasaKalyanam_2022617_2022618_3.jpg" />
+    <Content Include="Images\Fremont\SrinivasaKalyanam_2022617_2022618_4.jpg" />
+    <Content Include="Images\Fremont\SrinivasaKalyanam_2022617_2022618_5.jpg" />
+    <Content Include="Images\Fremont\VasantPanchami_20220205.jpg" />
+    <Content Include="Images\GanapathyAbhishekam.png" />
+    <Content Include="Images\GaneshaClayModelByKids.jpg" />
+    <Content Include="Images\GaneshaPujaByKids.jpg" />
+    <Content Include="Images\GaneshaVisarjan.jpg" />
+    <Content Include="Images\GaneshChathurthi.jpg" />
+    <Content Include="Images\GaneshChathurthi21Days.jpg" />
+    <Content Include="Images\GaneshChathurthi21Days_2018.jpg" />
+    <Content Include="Images\GayathriJapam.jpg" />
+    <Content Include="Images\Gokulashtami.jpg" />
+    <Content Include="Images\GrahanaShanthi_20220516.jpg" />
+    <Content Include="Images\GujaratiNewYear.png" />
+    <Content Include="Images\GuruPeyarchi.jpg" />
+    <Content Include="Images\GuruPeyarchi_Ravi.jpg" />
+    <Content Include="Images\GuruPoornima.jpg" />
+    <Content Include="Images\GuruPoornima_Old.png" />
+    <Content Include="Images\GuruvayoorappanAbhishekam.png" />
+    <Content Include="Images\HanumadJayanthi.jpg" />
+    <Content Include="Images\HanumadJayanthi.png" />
+    <Content Include="Images\HanumanJayanthi.jpg" />
+    <Content Include="Images\HanumanJayanthi_1.jpg" />
+    <Content Include="Images\Holi.png" />
+    <Content Include="Images\HolikaDahan.jpg" />
+    <Content Include="Images\JasmineFlower.jpg" />
+    <Content Include="Images\KanumPongal.jpg" />
+    <Content Include="Images\KaradayanNombu.jpg" />
+    <Content Include="Images\KarthikaSomavara.jpg" />
+    <Content Include="Images\KartikaPurnima.jpg" />
+    <Content Include="Images\KarwaChauth.jpg" />
+    <Content Include="Images\KumbakonamAnanthanarayanaBhagavathar.png" />
+    <Content Include="Images\KumkumaArchanaByLadies.jpg" />
+    <Content Include="Images\LakshmiKubera_1.jpg" />
+    <Content Include="Images\LakshmiKubera_2.jpg" />
+    <Content Include="Images\LakshmiNarasimha.jpg" />
+    <Content Include="Images\LakshmiNarasimha.png" />
+    <Content Include="Images\Loading.gif" />
+    <Content Include="Images\Loading1.gif" />
+    <Content Include="Images\Loading2.gif" />
+    <Content Include="Images\Loading3.gif" />
+    <Content Include="Images\Lohri.jpg" />
+    <Content Include="Images\LunarEclipse.png" />
+    <Content Include="Images\LunarEclipseShanthi.png" />
+    <Content Include="Images\LunarEclipseShanti.png" />
+    <Content Include="Images\LunarMonth.jpg" />
+    <Content Include="Images\LunarSeason.jpg" />
+    <Content Include="Images\MaasiMagam.jpg" />
+    <Content Include="Images\MahalayaAmavasya.jpg" />
+    <Content Include="Images\MahalayaPaksha.jpg" />
+    <Content Include="Images\MahaPeriyava125.png" />
+    <Content Include="Images\MakaraSankaranti.jpg" />
+    <Content Include="Images\MakaraSankaranti_zzz.jpg" />
+    <Content Include="Images\MakeYourPayment.jpg" />
+    <Content Include="Images\MattuPongal.jpg" />
+    <Content Include="Images\MuruganAbhishekam.png" />
+    <Content Include="Images\NagaPanchami.jpg" />
+    <Content Include="Images\NarasimhaJayanthi.jpg" />
+    <Content Include="Images\Narayaneeyam.png" />
+    <Content Include="Images\Navagraha.jpg" />
+    <Content Include="Images\NavagrahaShanthiPuja.png" />
+    <Content Include="Images\Navaratri.jpg" />
+    <Content Include="Images\NewYear.jpg" />
+    <Content Include="Images\NewYear_20200101.jpg" />
+    <Content Include="Images\PanguniUthiram.jpg" />
+    <Content Include="Images\Parking.png" />
+    <Content Include="Images\PaypalDonate.png" />
+    <Content Include="Images\Poornima.jpg" />
+    <Content Include="Images\Fremont\QRCodes\Register.png" />
+    <Content Include="Images\PuriRathYatra.jpg" />
+    <Content Include="Images\RaghavendraSwamy.png" />
+    <Content Include="Images\RamanujaJayanthi.jpg" />
+    <Content Include="Images\RathaSaptami.png" />
+    <Content Include="Images\RigUpakarma.jpg" />
+    <Content Include="Images\RigUpakarma.png" />
+    <Content Include="Images\RigYajurUpakarma.jpg" />
+    <Content Include="Images\Sacramento\Aandal01.jpg" />
+    <Content Include="Images\Sacramento\Aanjaneya01.jpg" />
+    <Content Include="Images\Sacramento\AnnapoornaBloodDrive_20220122.jpg" />
+    <Content Include="Images\Sacramento\Balaji01.jpg" />
+    <Content Include="Images\Sacramento\Covid19Drive_20220122.jpg" />
+    <Content Include="Images\Sacramento\Facebook.jpg" />
+    <Content Include="Images\Sacramento\Facebook2.jpg" />
+    <Content Include="Images\Sacramento\Ganesha01.jpg" />
+    <Content Include="Images\Sacramento\HomePage\Light.jpg" />
+    <Content Include="Images\Sacramento\HomePage\MenuBackground.jpg" />
+    <Content Include="Images\Sacramento\HomePage\SVCC.bmp" />
+    <Content Include="Images\Sacramento\HomePage\SVCCAddress.bmp" />
+    <Content Include="Images\Sacramento\HomePage\SVCCBanner.jpg" />
+    <Content Include="Images\Sacramento\ImportantDates\Amavasya.jpg" />
+    <Content Include="Images\Sacramento\ImportantDates\Ekadashi.jpg" />
+    <Content Include="Images\Sacramento\ImportantDates\GanapathyAbhishekam.png" />
+    <Content Include="Images\Sacramento\ImportantDates\Poornima.jpg" />
+    <Content Include="Images\Sacramento\ImportantDates\Pradosham.jpg" />
+    <Content Include="Images\Sacramento\ImportantDates\Sashti.jpg" />
+    <Content Include="Images\Sacramento\Lakshmi01.jpg" />
+    <Content Include="Images\Sacramento\Muruga01.jpg" />
+    <Content Include="Images\Sacramento\Navaratri_20211006_20211014.jpg" />
+    <Content Include="Images\Sacramento\RataSaptami_20180123.jpg" />
+    <Content Include="Images\Sacramento\Saraswathi01.jpg" />
+    <Content Include="Images\Sacramento\VasanthPanchami_20180121.jpg" />
+    <Content Include="Documents\Templates\RegisterEmailTemplateBody.html" />
+    <Content Include="Images\SaintArulagirinathar.png" />
+    <Content Include="Images\SamaUpakarma.jpg" />
+    <Content Include="Images\SamaUpakarma.png" />
+    <Content Include="Images\SankaraJayanthi.jpg" />
+    <Content Include="Images\SaraswatiPuja.jpg" />
+    <Content Include="Images\SaraswatiPuja_Old.jpg" />
+    <Content Include="Images\SashtaGraha.jpg" />
+    <Content Include="Images\Satyanarayana.png" />
+    <Content Include="Images\ShaniPeyarchi.jpg" />
+    <Content Include="Images\ShivaAbhishekham.png" />
+    <Content Include="Images\SivaRatri.jpg" />
+    <Content Include="Images\SkandaSashti.jpg" />
+    <Content Include="Images\SolarMonth.jpg" />
+    <Content Include="Images\SowramanaUgadi.jpg" />
+    <Content Include="Images\SrinivasaKalyanam.jpg" />
+    <Content Include="Images\SrinivasaKalyanam1.jpg" />
+    <Content Include="Images\SriRamaNavami.jpg" />
+    <Content Include="Images\SriRamaNavami.png" />
+    <Content Include="Images\SriRamaNavamiCelebration_20210418.jpg" />
+    <Content Include="Images\SwarnaGowriVrata.jpg" />
+    <Content Include="Images\Swati.png" />
+    <Content Include="Images\ThaiPoosam.jpg" />
+    <Content Include="Images\ThaiPoosam_Old.jpg" />
+    <Content Include="Images\ThanksGiving.png" />
+    <Content Include="Images\Thiruvonam.jpg" />
+    <Content Include="Images\UnderConstruction.jpg" />
+    <Content Include="Images\VaikasiVisakam.jpg" />
+    <Content Include="Images\VaikasiVisakam_1.jpg" />
+    <Content Include="Images\VaikasiVisakam_NoText.jpg" />
+    <Content Include="Images\VaikasiVisakam_Text.jpg" />
+    <Content Include="Images\VaikuntaEkadasi.jpg" />
+    <Content Include="Images\VaralakshmiVratam.jpg" />
+    <Content Include="Images\VasantPanchami.jpg" />
+    <Content Include="Images\Vijayadashami.jpg" />
+    <Content Include="Images\VinaVenkatesam.png" />
+    <Content Include="Images\WatchOnlineFB.jpg" />
+    <Content Include="Images\WatchOnlineFB0.png" />
+    <Content Include="Images\WatchOnlineFB2.png" />
+    <Content Include="Images\YajurUpakarma.jpg" />
+    <Content Include="Images\YajurUpakarma.png" />
+    <Content Include="Include\javaScriptCode-1.1.1.js" />
+    <Content Include="Include\javaScriptCode-1.1.1.min.js" />
+    <Content Include="Include\StyleSheet1.min.css" />
+    <Content Include="Include\StyleSheet1.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Content Include="Files\Fremont\GSS_CA_RadhaKalyanam_20190308_20190310.pdf" />
+    <Content Include="Images\Fremont\SrinivasaKalyanam_2022617_2022618.pdf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.meanmenu.js" />
+    <Content Include="Scripts\jquery.meanmenu.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Images\DBD0.jpg" />
+    <Content Include="Snippets\Snippets2.html" />
+    <Content Include="Snippets\Snippets1.html" />
+    <Content Include="UpcomingFestivals\Fremont\%40Temp.txt" />
+    <Content Include="UpcomingFestivals\Fremont\BhishmaEkadashi_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\BhishmaEkadashi_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\SivaRatri_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\SivaRatri_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\ThaiPoosam_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\ThaiPoosam_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\RathaSapthami_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\RathaSapthami_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\VasanthPanchami_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\VasanthPanchami_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\Sankranti_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\Bhogi_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\Sankranti_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\DhanurMasam_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\ArudraDarshanam_Content_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\Bhogi_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\DhanurMasam_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Fremont\ArudraDarshanam_Nav_1.html" />
+    <Content Include="UpcomingFestivals\Sacramento\%40Temp.txt" />
+    <Content Include="Views\SVCCTempleSacramento\_Layout.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Index.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Bottom.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Copyright.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Left.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Right.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_TodaysInfo.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Top.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\RegisterUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Calendar.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\TempleServices.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\PoojaItems.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Sponsorship.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\AboutUs.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\LoginUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\ContactUs.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Unsubscribe.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Snippets.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\PicGallery.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\SankalpamInfo.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\ImportantDates.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\UpcomingEvents.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ImportantMessages.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Calendar.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Layout2.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ImportantDatesSave.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_RegisterUserProfBackup.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ResponseMessages.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_AboutUs.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_PoojaItems.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Sponsor.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Payment.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Sponsorship.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SponsorshipReceipt.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Forbidden.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Unauthorized.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_LoadingModal.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\AboutUs.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Calendar.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\ContactUs.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Forbidden.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\ImportantDates.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Index1.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\LoginUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\PicGallery.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\PoojaItems.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\RegisterUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\SankalpamInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Snippets.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Sponsorship.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\TempleServices.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Unauthorized.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Unsubscribe.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\TempleFestivals.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_AboutUs.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Bottom.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Calendar.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Copyright.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ImportantDates1.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ImportantMessages.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Layout.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Layout2.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Left.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_LoadingModal.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Payment.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_PoojaItems.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_RegisterUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ResponseMessages.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Right.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Sponsor.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Sponsorship.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SponsorshipReceipt.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_TodaysInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Top.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\UpdatePassword.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\UpdatePassword.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_UpdatePassword.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_UpdatePassword.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SankalpamInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SankalpamInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ImportantDates2.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\SponsorList.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SponsorList.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SankalpamInfoDetail.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SankalpamInfoDetail.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\APIJsonResult.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\APIJsonResult.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_APICalendarInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_APICalendarInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_APIDailyInfo.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_APIDailyInfo.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ContactUs.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ValidationSummary.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ContactUsData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ImportantMessages2.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ImportantMessages2.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\SponsorList.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SponsorList.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SponsorListData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SponsorListData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Index1.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ContactUs.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ContactUsData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_UpdatePasswordData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_UpdatePasswordData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Layout3.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Layout3.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Sponsorship1.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Sponsorship1.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Sponsor1.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\QRCodes.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\SponsorshipReport.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SponsorshipReport.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SponsorshipReportData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\SponsorshipReport.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SponsorshipReport.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SponsorshipReportData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\RegisterUserLoginUser.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_LoginUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ResetPassword.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_LoginUserProfData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ResponseObject.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ResetPasswordData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_RegisterUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_RegisterUserProfData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Error.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Error.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Error.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Error.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Dashboard.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\RegisterUserLoginUser.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_RegisterUserProfData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ResetPassword.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ResetPasswordData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ResponseObject.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_LoginUserProf.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_LoginUserProfData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_UpdatePasswordSuccess.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_UpdatePasswordSuccess.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Dashboard.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_UserProfile.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_SankalpamData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_DonationReport.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_UserProfile.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_DonationReport.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SankalpamData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Layout5.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_KioskOrder.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\KioskOrder.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\KioskCheckout.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_KioskCheckout.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\KioskCheckout.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\KioskOrder.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_KioskCheckout.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_KioskOrder.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Layout5.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_KioskReceipt.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_KioskReceipt.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ImportantDates.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_DailyInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_SankalpamInfoSummary.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_FestivalInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Layout6.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Index2.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Menu.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Layout6.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Menu.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\APIKioskOrder.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_APIKioskOrder.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\IndexGenerateTemplEventData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_TempleFestivals.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Layout7.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Index7.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Index.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\EventRegister.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_EventRegisterData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Snippets.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Snippets.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_DailyWeekly.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_APISankalpamInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Upcoming.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\IndexGenerateTempleEventData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_DailyInfo.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_DailyInfoData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\DailyInfoSankalpamInfo.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_DailyInfoDataEmail.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_DailyInfoSankalpamInfo.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\EmailBlast.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Upcoming_zzz.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_ImportantDates0.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_ImportantDates.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Index - Copy.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_UpcomingSchedule.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_DailyWeekly.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_FestivalInfo.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_DailyInfoSave.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_RituSeason.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_RituSeason.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_TempleServices.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\Index9.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Layout9.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\EventRegisterList.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_EventRegisterList.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\CalendarDataView.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_CalendarDataView.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_RiseSet.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Thithi.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Nakshatra.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_Rasi.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\IndexGenerateTempleScheduleData.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_TempleScheduleMasterList.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_TempleScheduleUploadList.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\_TempleFestivalUploadList.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\Booking.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_Booking.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_BookingData.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_BookingSuccess.cshtml" />
+    <Content Include="Views\SVCCTempleFremont\ImportantDates1.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_BookingEmailSubject.cshtml" />
+    <Content Include="Views\SVCCTempleSacramento\_BookingEmailBody.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Documents\SponsorshipReceipts\" />
+    <Folder Include="Documents\TempDownload\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArchitectureLibraryEmailUtility\ArchitectureLibraryEmailUtility.csproj">
+      <Project>{8D0A5272-B9E7-4201-9AD8-EB2E4A9B5B8B}</Project>
+      <Name>ArchitectureLibraryEmailUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchitectureLibraryException\ArchitectureLibraryException.csproj">
+      <Project>{9301EE9F-62F2-44FC-A4E4-B9FF39B25C85}</Project>
+      <Name>ArchitectureLibraryException</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchitectureLibraryPDFLibrary\ArchitectureLibraryPDFLibrary.csproj">
+      <Project>{10bc6488-6a90-4ff2-b362-fe09a91caa8f}</Project>
+      <Name>ArchitectureLibraryPDFLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchitectureLibraryShoppingCartService\ArchitectureLibraryShoppingCartService.csproj">
+      <Project>{17F2F91B-FABD-4A54-8CA2-344E550ABA5A}</Project>
+      <Name>ArchitectureLibraryShoppingCartService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchitectureLibraryUtility\ArchitectureLibraryUtility.csproj">
+      <Project>{9139FC20-6350-497F-9C4E-463DD5752967}</Project>
+      <Name>ArchitectureLibraryUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>21455</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:21455/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

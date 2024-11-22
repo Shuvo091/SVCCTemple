@@ -1,0 +1,214 @@
+﻿@model SVCCTempleWeb.Models.EventRegisterModel
+@{
+    List<string> orderItemIds = new List<string>
+    {
+        "845",
+        "846",
+        "847",
+        "848",
+        "904",
+        "905",
+        "906",
+        "907",
+        "908",
+        "909",
+        "910",
+        "911",
+        "912",
+    };
+    List<string> orderItems = new List<string>
+    {
+        "Jaangry",
+        "Dry Jammon",
+        "Badam Poori",
+        "Cashew, Almond Burfi",
+        "Laddu",
+        "Mysore Pak",
+        "Dry Fruit Burfi",
+        "Menapappu Laddu",
+        "Baadshah",
+        "Butter Murukku",
+        "Chekkalu",
+        "Spicy Mixture",
+        "Jantikallu",
+    };
+    List<float> orderItemPrices = new List<float>
+    {
+        9.00f,
+        9.09f,
+        9.18f,
+        9.27f,
+        9.36f,
+        9.45f,
+        9.54f,
+        9.63f,
+        9.72f,
+        9.81f,
+        9.89f,
+        10.08f,
+        10.17f,
+    };
+    List<SelectListItem> selectListItems = new List<SelectListItem>
+    {
+        new SelectListItem
+        {
+            Text = "--- Select ---",
+            Value = "",
+        },
+        new SelectListItem
+        {
+            Text = "Oct 27 2024",
+            Value = "1",
+        },
+        new SelectListItem
+        {
+            Text = "Oct 28 2024",
+            Value = "2",
+        },
+        new SelectListItem
+        {
+            Text = "Oct 29 2024",
+            Value = "3",
+        },
+        new SelectListItem
+        {
+            Text = "Oct 30 2024",
+            Value = "4",
+        },
+    };
+}
+<table style="margin-left: auto; margin-right: auto; width: 63%;">
+    <tr>
+        <td style="text-align: left;">
+            @if (Model != null && Model.ResponseObjectModel != null && !string.IsNullOrWhiteSpace(Model.ResponseObjectModel.ValidationSummaryMessage))
+            {
+                <div class="row validationSummaryMessage" id="divItemAttribValidationSummaryMessage">
+                    @Model.ResponseObjectModel.ValidationSummaryMessage
+                </div>
+            }
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="row" id="divItemAttribValidationSummary">
+                    @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationSummary(false, "", new { @class = "validationSummaryErrors", style = "-webkit-column-count: 2; -moz-column-count: 2; column-count: 2; font-size: 12px;" }).ToHtmlString()))
+                </div>
+            }
+            @if (Model != null && Model.ResponseObjectModel != null)
+            {
+                <div class="row" id="divItemAttribResponseObject">
+                    @Html.Partial("_ResponseObject", Model.ResponseObjectModel)
+                </div>
+            }
+        </td>
+    </tr>
+</table>
+<table class="table table-condensed" style="margin-left: auto; margin-right: auto; width: 81%;">
+    <colgroup>
+        <col style="width: 40%;" />
+        <col style="width: 60%;" />
+    </colgroup>
+    <tr>
+        <th style="text-align: right; vertical-align: top;">
+            @Html.LabelFor(m => m.EmailAddress)&nbsp;<span style="color: #0000ff; font-weight: bold;">(Required)</span>
+        </th>
+        <td style="text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => Model.EmailAddress, "", new { @class = "fielValidationError" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right; vertical-align: top;">
+            @Html.LabelFor(m => m.FirstName)&nbsp;<span style="color: #0000ff; font-weight: bold;">(Required)</span>
+        </th>
+        <td style="text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => Model.FirstName, "", new { @class = "fielValidationError" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right; vertical-align: top;">
+            @Html.LabelFor(m => m.LastName)&nbsp;<span style="color: #0000ff; font-weight: bold;">(Required)</span>
+        </th>
+        <td style="text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => Model.LastName, "", new { @class = "fielValidationError" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right; vertical-align: top;">
+            @Html.LabelFor(m => m.TelephoneNumber)&nbsp;<span style="color: #0000ff; font-weight: bold;">(Required)</span>
+        </th>
+        <td style="text-align: left; vertical-align: top;">
+            @Html.TextBoxFor(m => m.TelephoneNumber, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.TelephoneNumber), maxlength = "10", oninput = "javascript: return inputDecimal(this);", onkeydown = "javascript: return validateInteger(event);", style = "width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => Model.TelephoneNumber, "", new { @class = "fielValidationError" }).ToHtmlString()))
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right; vertical-align: top;">
+            Pickup Date&nbsp;<span style="color: #0000ff; font-weight: bold;">(Required)</span>
+        </th>
+        <td style="text-align: left; vertical-align: top;">
+            @Html.DropDownListFor(m => m.SessionId, new SelectList(selectListItems, "Value", "Text", Model.SessionId), null, new { @class = "form-control", style = "font-size: 12px; width: 81%;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => Model.SessionId, "", new { @class = "fielValidationError" }).ToHtmlString()))
+            @Html.HiddenFor(m => m.SessionDesc)
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="text-align: left;">
+            <table>
+                <tr>
+                    <th class="text-center" colspan="6">
+                        Please enter quantity for each item<br />
+                        Special Instructions if any and click SUBMIT<br />
+                        Please make donations at time of pickup
+                    </th>
+                </tr>
+                @for (int i = 0; i < orderItems.Count; i = i + 2)
+                {
+                <tr>
+                    <td style="padding-right: 9px;">
+                        @(i + 1).&nbsp;
+                        @orderItems[i]
+                        <input id="orderItemDesc@(i)" type="hidden" value="@orderItems[i]" />
+                        <input id="orderItemId@(i)" type="hidden" value="@orderItemIds[i]" />
+                    </td>
+                    <td style="padding-right: 9px;">
+                        @orderItemPrices[i].ToString("c")
+                    </td>
+                    <td style="padding-right: 9px;">
+                        <input class="form-control" id="orderItemQty@(i)" max="18" min="1" style="width: 63px;" type="number" />
+                    </td>
+                    @if ((i + 1) < orderItems.Count)
+                    {
+                    <td style="padding-right: 9px;">
+                        @(i + 2).&nbsp;
+                        @orderItems[i + 1]
+                        <input id="orderItemDesc@(i + 1)" type="hidden" value="@orderItems[i + 1]" />
+                        <input id="orderItemId@(i + 1)" type="hidden" value="@orderItemIds[i + 1]" />
+                    </td>
+                        <td style="padding-right: 9px;">
+                            @orderItemPrices[i + 1].ToString("c")
+                        </td>
+                        <td>
+                            <input class="form-control" id="orderItemQty@(i + 1)" max="18" min="1" style="width: 63px;" type="number" />
+                        </td>
+                    }
+                </tr>
+                    if (i >= orderItems.Count)
+                    {
+                        break;
+                    }
+                }
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right; vertical-align: top;">
+            Special Instructions
+        </th>
+        <td style="text-align: left; vertical-align: top;">
+            @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", placeholder = "Please enter special instructions", style = "width: 81%; height: 135px;" })
+            @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => Model.Comments, "", new { @class = "fielValidationError" }).ToHtmlString()))
+        </td>
+    </tr>
+</table>

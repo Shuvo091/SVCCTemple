@@ -1,0 +1,140 @@
+﻿@model List<SVCCTempleWeb.Models.TempleEventModel>
+@{
+    bool flag = true;
+    int index = 0;
+    StreamReader streamReader;
+}
+<table class="table table-striped" style="width: 81%;">
+    @foreach (var festival in Model)
+    {
+        if (flag && festival.QueryNum == 2)
+        {
+            flag = false;
+            <tr>
+                <th colspan="6" scope="row">
+                    Ummachi
+                    <hr style="background-color: #000000; display: block; font-size: 27px; font-weight: bold; height: 3px;">
+                </th>
+            </tr>
+        }
+        <tr>
+            <th scope="row" style="vertical-align: top;">
+                @(++index).
+            </th>
+            <th scope="row" style="vertical-align: top;">
+                <table>
+                    <tr>
+                        <th scope="row" style="vertical-align: top;">
+                            @DateTime.Parse(festival.StartDate).ToString("ddd M/d/yy")
+                            @if (festival.StartTime != "" && festival.StartTime != "00:00")
+                            {
+                                <br />
+                                @DateTime.Parse(festival.StartTime).ToString("h:mm tt")
+                            }
+                        </th>
+                        <th scope="row" style="vertical-align: top;">
+                            @if (!string.IsNullOrWhiteSpace(festival.FinishDate))
+                            {
+                                @DateTime.Parse(festival.FinishDate).ToString("ddd M/d/yy")
+                            }
+                            @if (!string.IsNullOrWhiteSpace(festival.FinishTime) && festival.FinishTime != "00:00")
+                            {
+                                <br />
+                                @DateTime.Parse(festival.FinishTime).ToString("h:mm tt")
+                            }
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2" scope="row">
+                            @if (festival.TempleEventMasterModel.FileName1 != "")
+                            {
+                                <a href="@(ApplicationInstance.Application["BaseURL"] + "Files/" + festival.TempleEventMasterModel.FileName1)" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to read more...">Read more...</a>
+                            }
+                            @if (festival.TempleEventMasterModel.FileName2 != "")
+                            {
+                                <br />
+                                <a href="@(ApplicationInstance.Application["BaseURL"] + "Files/" + festival.TempleEventMasterModel.FileName2)" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to read more...">Read more...</a>
+                            }
+                            @if (festival.TempleEventMasterModel.FileName3 != "")
+                            {
+                                <br />
+                                <a href="@(ApplicationInstance.Application["BaseURL"] + "Files/" + festival.TempleEventMasterModel.FileName3)" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to read more...">Read more...</a>
+                            }
+                        </th>
+                    </tr>
+                </table>
+            </th>
+            <td style="text-align: left; vertical-align: top;">
+                <b>@festival.EventName1</b>
+                @if (festival.EventName2 != "")
+                {
+                    <br />
+                    @festival.EventName2
+                }
+                @if (festival.EventName3 != "")
+                {
+                    <br />
+                    @festival.EventName3
+                }
+                @if (festival.EventDesc1 != "")
+                {
+                    <br />
+                    @festival.EventDesc1
+                }
+                @if (festival.EventDesc2 != "")
+                {
+                    <br />
+                    @festival.EventDesc2
+                }
+                @if (festival.EventDesc3 != "")
+                {
+                    <br />
+                    @festival.EventDesc3
+                }
+                @if (festival.TempleEventMasterId == 99998 || festival.TempleEventMasterId == 99999)
+                {
+                    if (festival.EventText1 != "")
+                    {
+                        <br />
+                        @festival.EventText1
+                    }
+                    if (festival.EventText2 != "")
+                    {
+                        <br />
+                        @festival.EventText2
+                    }
+                    if (festival.EventText3 != "")
+                    {
+                        <br />
+                        @festival.EventText3
+                    }
+                }
+                @if (festival.TempleEventMasterModel.KioskGroupId != -1)
+                {
+                    <br />
+                    <a href="@(ApplicationInstance.Application["FremontBaseURL"] + "KioskOrder?id=" + festival.TempleEventMasterModel.KioskGroupId)" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to enter Sankalpam...">Click here for Sankalpam</a>
+                }
+                else
+                {
+                    if (festival.TempleEventMasterModel.SponsorshipGroupId != -1)
+                    {
+                        <br />
+                        <a href="@(ApplicationInstance.Application["FremontBaseURL"] + "Sponsorship/" + festival.TempleEventMasterModel.SponsorshipGroupId)" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to enter Sankalpam...">Click here for Sankalpam</a>
+                    }
+                }
+                @if (!string.IsNullOrWhiteSpace(festival.TempleEventMasterModel.HtmlFileName1))
+                {
+                    streamReader = new StreamReader(Server.MapPath("~/HtmlFiles/" + festival.TempleEventMasterModel.HtmlFileName1));
+                    @Html.Raw(streamReader.ReadToEnd())
+                    streamReader.Close();
+                }
+            </td>
+            <td style="text-align: center;">
+                @if (!string.IsNullOrWhiteSpace(festival.TempleEventMasterModel.ImageFileName1))
+                {
+                    <img src="@(ApplicationInstance.Application["BaseURL"] + "Images/" + festival.TempleEventMasterModel.ImageFileName1)" style="height: 117px; width: 117px;" />
+                }
+            </td>
+        </tr>
+    }
+</table>

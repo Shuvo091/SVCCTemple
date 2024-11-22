@@ -1,0 +1,36 @@
+﻿@{
+    string[] actionNames = { "Index", "RegisterUserLoginUser", "Sponsorship", "SankalpamInfo", "ContactUs", "Calendar", "TempleServices", "PoojaItems", "Unsubscribe", "RegisterUserLoginUser", "Snippets", "PicGallery", "AboutUs", "ImportantDates", "UpcomingEvents" };
+    string[] controllerNames = { "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento", "SVCCTempleSacramento" };
+    string[] linkTexts = { "Home", "Register", "Sponsorship/<br />Donations", "Sankalpam", "Contact Us", "Calendar", "Services", "Pooja Items", "Unsubscribe", "Login", "Snippets", "Pic Gallery", "About Us", "Recurring<br />Schedule", "Festivals" };
+}
+<img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Ganesha01.jpg" alt="SVCC Temple Sacramento Ganesha Ganapathy Pillaiyar" style="height: 225px; width: 225px;" title="SVCC Temple Sacramento Ganesha Ganapathy Pillaiyar" /><br />
+<table style="background-image:url(@ApplicationInstance.Application["SacramentoImagesBaseURL"]HomePage/MenuBackground.jpg); background-repeat: no-repeat; height:688px; margin:0 auto; width:225px">
+    <tr>
+        <td align="left" style="height:55px;"></td>
+    </tr>
+    @{
+        for (int i = 0; i < controllerNames.Length; i++)
+        {
+            <tr>
+                <td align="left" valign="middle" style="padding-bottom: 11px; padding-left: 42px;">
+                    @{
+                        if (actionNames[i] == ViewData["ActionName"].ToString())
+                        {
+                            <span style="color:#ffffff; font-family:Verdana; font-size:14pt; font-weight:bold; text-decoration:none;">@Html.Raw(linkTexts[i])</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action(actionNames[i], controllerNames[i])" style="color:#fcc200; font-family: Verdana; font-size: 18px; font-weight: bold; text-decoration: none;">@Html.Raw(linkTexts[i])</a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+<img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Aandal01.jpg" alt="SVCC Temple Sacramento Aandal Andal Aandaal" style="height: 225px; width: 225px;" title="SVCC Temple Sacramento Aandal Andal Aandaal" /><br />
+<img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Balaji01.jpg" alt="SVCC Temple Sacramento Balaji Venkateshwara Venkateswara Venkatachalpathy" style="height: 225px; width: 225px;" title="SVCC Temple Sacramento Balaji Venkateshwara Venkateswara Venkatachalpathy" /><br />
+<img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Lakshmi01.jpg" alt="SVCC Temple Sacramento Lakshmi Laxmi Mahalaxmi Mahalakshmi" style="height: 225px; width: 225px;" title="SVCC Temple Sacramento Lakshmi Laxmi Mahalaxmi Mahalakshmi" />
+<img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Saraswathi01.jpg" alt="SVCC Temple Sacramento Saraswathi Saraswathy" style="height: 225px; width: 225px;" title="SVCC Temple Sacramento Saraswathi Saraswathy" /><br />
+<img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Muruga01.jpg" alt="SVCC Temple Sacramento Muruga Subhramanya Karthikeya" style="height: 225px; width: 225px;" title="SVCC Temple Sacramento Muruga Subhramanya Karthikeya" /><br />
+<img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Aanjaneya01.jpg" alt="SVCC Temple Sacramento Anjaneya Hanuman" style="height: 225px; width: 225px;" title="SVCC Temple Sacramento Anjaneya Hanuman" />

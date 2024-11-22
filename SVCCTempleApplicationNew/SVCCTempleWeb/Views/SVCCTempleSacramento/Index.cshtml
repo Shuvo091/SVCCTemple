@@ -1,0 +1,72 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@{
+    int i;
+    List<string> tabTexts = new List<string>
+{
+"Schedule"
+,"Sankalpam Info" + "<br />" + DateTime.Now.ToString("ddd M / d")
+,"Today's Info" + "<br />" + DateTime.Now.ToString("ddd M / d")
+,"Festivals"
+};
+    List<string> tabWidths = new List<string>
+{
+"108px"
+,"135px"
+,"135px"
+,"99px"
+};
+    List<string> tabIndexes = new List<string>
+{
+"0"
+,"1"
+,"2"
+,"3"
+};
+}
+@for (i = 0; i < tabTexts.Count; i++)
+{
+    <div style="background: #ddc385; border-top-left-radius: 25px; border-top-right-radius: 25px; float: left; height: 54px; margin-left: auto; margin-right: auto; padding: 8px; text-align: center; width: @tabWidths[i];">
+        <a id="divTabLink@(i)" href="javascript: void(0);" onclick="javascript: divTab_onclick(@(i))" style="color: #0000ff; font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 15px; font-weight: bold; text-decoration: underline;">@Html.Raw(tabTexts[i])</a>
+        <span id="spnTabLink@(i)" style="color: #000000; font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 15px; font-weight: bold;">@Html.Raw(tabTexts[i])</span>
+    </div>
+    if (i < tabTexts.Count - 1)
+    {
+        <div style="float: left; width: 9px;">&nbsp;</div>
+    }
+}
+<br style="clear: both;" />
+<div id="divTabData0" style="display: block;">
+    @Html.Partial("_UpcomingSchedule")
+    <hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+    @Html.Partial("_ImportantDates")
+    <hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+    @Html.Partial("_DailyWeekly")
+</div>
+<div id="divTabData1" style="display: none;">
+    @Html.Partial("_SankalpamInfo")
+</div>
+<div id="divTabData2" style="display: none;">
+    @Html.Partial("_DailyInfo")
+</div>
+<div id="divTabData3" style="display: none;">
+    @Html.Partial("_FestivalInfo")
+</div>
+<script type="text/javascript">
+    function window_onload() {
+        divTab_onclick(0);
+    }
+    function divTab_onclick(index) {
+        for (i = 0; i < 4; i++) {
+            document.getElementById("divTabData" + i).style.display = "none";
+            document.getElementById("divTabLink" + i).style.display = "none";
+            document.getElementById("spnTabLink" + i).style.display = "none";
+            if (i === index) {
+                document.getElementById("divTabData" + i).style.display = "block";
+                document.getElementById("spnTabLink" + i).style.display = "block";
+            }
+            else {
+                document.getElementById("divTabLink" + i).style.display = "block";
+            }
+        }
+    }
+</script>

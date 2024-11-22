@@ -1,0 +1,72 @@
+﻿@model List<SVCCTempleWeb.Models.KioskGroupModel>
+@{
+    ViewBag.Title = "KioskOrder";
+    Layout = "_Layout5.cshtml";
+}
+@Html.Partial("_KioskOrder", Model)
+<script type="text/javascript">
+    function window_onload() {
+        updateShoppingCart();
+    }
+    function updateShoppingCart() {
+        document.getElementById("kioskOrderedItemIds").value = "";
+        var prefixString = "";
+        var documentElementById, orderCount = 0, orderAmount = 0;
+        for (var i = 0; ; i++) {
+            try {
+                documentElementById = document.getElementById("kioskItemId" + i);
+                if (documentElementById.checked) {
+                    orderCount++;
+                    orderAmount += parseFloat(document.getElementById("itemRate" + i).innerHTML);
+                    document.getElementById("kioskOrderedItemIds").value += prefixString + documentElementById.value;
+                    prefixString = ",";
+                }
+            }
+            catch (err) {
+                break;
+            }
+        }
+        var generalDonationDescription, generalDonationAmount;
+        try {
+            generalDonationAmount = parseFloat(document.getElementById("GeneralDonationAmount").value);
+            if (isNaN(generalDonationAmount)) {
+                generalDonationAmount = 0;
+            }
+        }
+        catch (err) {
+            generalDonationAmount = 0;
+        }
+        try {
+            generalDonationDescription = document.getElementById("GeneralDonationDescription").value.trim();
+        }
+        catch (err) {
+            generalDonationDescription = "";
+        }
+        if (generalDonationDescription == "" && generalDonationAmount > 0) {
+            generalDonationDescription = "General Donation";
+        }
+        if (generalDonationDescription != "" && generalDonationAmount > 0) {
+            orderCount++;
+            orderAmount += parseFloat(generalDonationAmount);
+        }
+        document.getElementById("GeneralDonationDescription").value = generalDonationDescription;
+        document.getElementById("GeneralDonationAmount").value = generalDonationAmount;
+        document.getElementById("orderCount").innerHTML = orderCount;
+        document.getElementById("orderAmount").innerHTML = orderAmount;
+        if (orderCount == 0 || orderAmount == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function kioskCheckout_onclick() {
+        if (updateShoppingCart()) {
+            return true;
+        }
+        else {
+            alert("Please select an item to continue");
+            return false;
+        }
+    }
+</script>

@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "EmailBlast";
+    Layout = "~/Views/SVCCTempleFremont/_Layout3.cshtml";
+    string directoryName = Server.MapPath("/EmailBlast/Fremont/");
+    System.IO.StreamReader streamReader = new StreamReader(directoryName + "EmailBlastList.txt");
+    string inputRecord;
+}
+
+<h2>Email Blast</h2>
+@using (Html.BeginForm("EmailBlast", "SVCCTempleFremont", FormMethod.Post))
+{
+<table style="margin-left: auto; margin-right: auto; padding: 9px; width: 63%;">
+    <tr>
+        <td style="padding: 9px; text-align: right; vertical-align: top; width: 45%;">
+            Test Email
+        </td>
+        <td style="padding: 9px; text-align: left; vertical-align: top; width: 45%;">
+            <textarea name="TestEmailAddresss" style="height: 99px; width: 270px;">rramaswamy1@hotmail.com
+rramaswamy1@gmail.com
+rramaswamy1@yahoo.com</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 9px; text-align: right; vertical-align: top; width: 45%;">
+            Last successful Email
+        </td>
+        <td style="padding: 9px; text-align: left; vertical-align: top; width: 45%;">
+            <input name="LastSuccessfulEmail" />
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 9px; text-align: right; vertical-align: top; width: 45%;">
+            Email List
+        </td>
+        <td style="padding: 9px; text-align: left; vertical-align: top; width: 45%;">
+            <select name="EmailList" class="form-control" id="EmailBlastList">
+                <option value="">--- Select ---</option>
+                @{
+                    inputRecord = streamReader.ReadLine();
+                    while (inputRecord != null)
+                    {
+                        <option value="@inputRecord">@inputRecord</option>
+                        inputRecord = streamReader.ReadLine();
+                    }
+                }
+            </select>
+            @{
+                streamReader.Close();
+            }
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="padding: 9px; text-align: center;">
+            <input class="btn btn-primary" type="submit" value="Submit" />
+        </td>
+    </tr>
+</table>
+}
+<script type="text/javascript">
+    function window_onload() {
+
+    }
+</script>

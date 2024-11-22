@@ -1,0 +1,120 @@
+﻿@model List<SVCCTempleWeb.Models.ImportantDatesModel>
+@{
+    string width1 = "120px", width2 = "80px", width3 = "75px";
+}
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; font-weight: bold; padding: 5px; width: 1075px;">
+    <colgroup>
+        <col style="width: @width1;" />
+        <col style="width: @width1;" />
+        <col style="width: @width2;" />
+        <col style="width: @width2;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+        <col style="width: @width3;" />
+    </colgroup>
+    <tr>
+        <th colspan="16" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; font-size: 18px; padding: 5px;">
+            @DateTime.Parse(Model[0].BeginDate).ToString("MMMM yyyy")&nbsp;till&nbsp;@DateTime.Parse(Model[0].EndDate).ToString("MMMM yyyy")
+        </th>
+    </tr>
+    <tr>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px;"></th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px;"></th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #a00000; padding: 5px;">Start</th>
+        <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #a00000; padding: 5px;">Finish</th>
+        @{
+            DateTime tempDate = DateTime.Parse(Model[0].BeginDate);
+            while (tempDate < DateTime.Parse(Model[0].EndDate))
+            {
+                <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px;">@tempDate.ToString("MMM")</th>
+                tempDate = tempDate.AddMonths(1);
+            }
+        }
+    </tr>
+    @{
+        int index = 1, fontColorIndex = -1;
+        string importantDatesId, beginDate;
+        string[] fontColors = { "#000000", "#0000ff", "#ff0000", "#a40000" };
+        while (index < Model.Count)
+        {
+            fontColorIndex++;
+            if (fontColorIndex == fontColors.Length)
+            {
+                fontColorIndex = 0;
+            }
+            <tr>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: left;">
+                    @Model[index].EventName1
+                    @{
+                        if (Model[index].EventName2 != "")
+                        {
+                            <br /><br />
+                            @Model[index].EventName2
+                        }
+                    }
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: @fontColors[fontColorIndex]; padding: 5px; text-align: left;">
+                    @Model[index].EventDesc1
+                    @{
+                        if (Model[index].EventDesc2 != "")
+                        {
+                            <br /><br />@Html.Raw(Model[index].EventDesc2)
+                        }
+                    }
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                    @Model[index].StartTime
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; padding: 5px; text-align: center;">
+                    @Model[index].FinishTime
+                </td>
+                @{
+                    importantDatesId = Model[index].ImportantDatesId;
+                    while (index < Model.Count && Model[index].ImportantDatesId == importantDatesId)
+                    {
+                        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center;">
+                            @{
+                                beginDate = Model[index].BeginDate;
+                                while (index < Model.Count && Model[index].ImportantDatesId == importantDatesId && beginDate == Model[index].BeginDate)
+                                {
+                                    if (Model[index].EventDate != "")
+                                    {
+                                        @DateTime.Parse(Model[index].EventDate).ToString("ddd - d")
+                                        <br />
+                                    }
+                                    if (Model[index].EventTime != "")
+                                    {
+                                        <span style="color: #ff0000;">@Model[index].EventTime</span>
+                                        <br />
+                                    }
+                                    if (Model[index].EventText1 != "")
+                                    {
+                                        <span style="color: #0000ff;">@Model[index].EventText1</span>
+                                        <br />
+                                    }
+                                    if (Model[index].EventText2 != "")
+                                    {
+                                        <span style="color: #a40000;">@Model[index].EventText2</span>
+                                        <br />
+                                    }
+                                    if (Model[index].EventText3 != "")
+                                    {
+                                        <span style="color: #000000;">@Model[index].EventText3</span>
+                                        <br />
+                                    }
+                                    index++;
+                                }
+                            }
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    }
+</table>

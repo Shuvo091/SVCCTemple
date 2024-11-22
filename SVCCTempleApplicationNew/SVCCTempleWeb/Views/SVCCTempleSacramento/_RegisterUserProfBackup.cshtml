@@ -1,0 +1,54 @@
+﻿@model SVCCTempleWeb.Models.RegisterUserProfModel
+<style>
+    .validation-summary-errors ul {
+        color: #ff0000;
+        font-size: 18px;
+        font-weight: bold;
+        list-style: none;
+    }
+
+    .field-validation-error {
+        color: #ff0000;
+        font-weight: bold;
+    }
+</style>
+<table style="margin: auto;">
+    <tr>
+        <td colspan="2" style="padding: 9px; padding-bottom: 0px; text-align: center;">
+            <h2 style="font-weight: bold;">REGISTER (SUBSCRIBE)</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="padding: 9px; padding-bottom: 0px; text-align: center;" id="responseMessage">
+            @Html.Partial("_ResponseMessages", Model.ResponseObjectModel)
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 9px; padding-bottom: 0px; text-align: right; width: 45%;">
+            @Html.LabelFor(m => m.RegisterEmailAddress, new { @class = "col-form-label" })
+        </td>
+        <td style="padding: 9px; padding-bottom: 0px; text-align: left; width: 55%;">
+            @Html.TextBoxFor(m => m.RegisterEmailAddress, new { @class = "form-control validate", disabled = "disabled", placeholder = "Enter " + @Html.DisplayNameFor(m => m.RegisterEmailAddress), style = "width: 360px;" })
+            @Html.ValidationMessageFor(m => m.RegisterEmailAddress, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 9px; padding-bottom: 0px; text-align: right; width: 45%;">
+            @Html.LabelFor(m => m.ConfirmRegisterEmailAddress, new { @class = "col-form-label" })
+        </td>
+        <td style="padding: 9px; padding-bottom: 0px; text-align: left; width: 55%;">
+            @Html.TextBoxFor(m => m.ConfirmRegisterEmailAddress, new { @class = "form-control validate", disabled = "disabled", placeholder = "Enter " + @Html.DisplayNameFor(m => m.ConfirmRegisterEmailAddress), style = "width: 360px;" })
+            @Html.ValidationMessageFor(m => m.ConfirmRegisterEmailAddress, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td id="RegisterUserProfCaptchaQuestion" style="color: #ff0000; font-weight: bold; padding: 9px; padding-bottom: 0px; text-align: right; width: 45%;">
+            @Html.DisplayFor(m => m.CaptchaQuestion)
+        </td>
+        <td style="padding: 9px; padding-bottom: 0px; text-align: left; width: 45%;">
+            @Html.TextBoxFor(m => m.AnswerToCaptcha, new { @class = "form-control validate", placeholder = "Enter " + @Html.DisplayNameFor(m => m.AnswerToCaptcha), style = "width: 80.5%;" })
+            @Html.ValidationMessageFor(m => m.AnswerToCaptcha, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+</table>

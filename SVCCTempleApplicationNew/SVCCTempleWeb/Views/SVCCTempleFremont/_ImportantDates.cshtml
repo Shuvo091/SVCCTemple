@@ -1,0 +1,348 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@using ArchitectureLibraryUtility
+@{
+    int i1, j1, k1, count;
+    string beginDate1;
+}
+<div class="col-md-9">
+    <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 12px; padding: 5px;">
+        @{
+            for (i1 = 0; i1 < Model.TempleEventImportantDatesModels.Count; i1++)
+            {
+                <tr>
+                    <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;" title="@Model.TempleEventImportantDatesModels[i1].EventText1 @Model.TempleEventImportantDatesModels[i1].EventText2 @Model.TempleEventImportantDatesModels[i1].EventText3">
+                        <img src="@(ApplicationInstance.Application["BaseURL"] + "Images/Fremont/ImportantDates/" + Model.TempleEventImportantDatesModels[i1].ImageFileName1)" style="width: 145px;" />
+                    </th>
+                    <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 153px;" title="@Model.TempleEventImportantDatesModels[i1].EventText1 @Model.TempleEventImportantDatesModels[i1].EventText2 @Model.TempleEventImportantDatesModels[i1].EventText3">
+                        @Model.TempleEventImportantDatesModels[i1].EventText1<br />
+                        <span style="color: #ff0000;">@Model.TempleEventImportantDatesModels[i1].EventText2</span>
+                        <br />
+                        <span style="color: #0000ff;">@Model.TempleEventImportantDatesModels[i1].EventText3</span>
+                        <br /><br />
+                        <a href="@(ApplicationInstance.Application["BaseURL"] + "Files/" + Model.TempleEventImportantDatesModels[i1].FileName1)" style="background-color: #d3d3d3; color: #000000; text-decoration: underline;" target="_blank">Read more...</a>
+                        @if (Model.TempleEventImportantDatesModels[i1].SponsorshipGroupId != "")
+                        {
+                            <br />
+                            <br />
+                            <a href="@(ApplicationInstance.Application["FremontBaseURL"] + "Sponsorship/" + Model.TempleEventImportantDatesModels[i1].SponsorshipGroupId)" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank">Sankalpam</a>
+                        }
+                    </th>
+                    <td style="padding: 0px; vertical-align: top;" title="@Model.TempleEventImportantDatesModels[i1].EventText1 @Model.TempleEventImportantDatesModels[i1].EventText2 @Model.TempleEventImportantDatesModels[i1].EventText3">
+                        <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 12px; padding: 5px;">
+                            @{
+                                j1 = 0;
+                                while (j1 < Model.TempleEventImportantDatesModels[i1].StartDates.Count)
+                                {
+                                    <tr>
+                                        @{
+                                            k1 = 0;
+                                            while (j1 < Model.TempleEventImportantDatesModels[i1].StartDates.Count && k1 < 4)
+                                            {
+                                        <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 12px; padding: 5px; text-align: center; vertical-align: top; width: 135px;">
+                                            @{
+                                                beginDate1 = Model.TempleEventImportantDatesModels[i1].BeginDates[j1];
+                                                count = 0;
+                                                while (j1 < Model.TempleEventImportantDatesModels[i1].StartDates.Count && k1 < 4 && beginDate1 == Model.TempleEventImportantDatesModels[i1].BeginDates[j1])
+                                                {
+                                                    if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[i1].StartDates[j1]))
+                                                    {
+                                                        if (count > 0)
+                                                        {
+                                                            <br /><br />
+                                                        }
+                                                        count++;
+                                                        @DateTime.Parse(Model.TempleEventImportantDatesModels[i1].StartDates[j1]).ToString("ddd MMM-dd-yyyy")
+                                                        if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[i1].StartTimes[j1]) && Model.TempleEventImportantDatesModels[i1].StartTimes[j1] != "00:00")
+                                                        {
+                                                            <br />
+                                                            <span style="color: #ff0000;">@DateTime.Parse(Model.TempleEventImportantDatesModels[i1].StartTimes[j1]).ToString("h:mm tt")</span>
+                                                        }
+                                                        if (long.Parse(Model.TempleEventImportantDatesModels[i1].TempleEventMasterId) == 51 || long.Parse(Model.TempleEventImportantDatesModels[i1].TempleEventMasterId) >= 60 && long.Parse(Model.TempleEventImportantDatesModels[i1].TempleEventMasterId) <= 63)
+                                                        {
+                                                            <br />
+                                                            <span style="color: #0000ff;">@Model.TempleEventImportantDatesModels[i1].EventName1s[j1]</span>
+                                                            <br />
+                                                            <span style="color: #ff0000;">@Model.TempleEventImportantDatesModels[i1].EventName2s[j1]</span>
+                                                        }
+                                                        if (long.Parse(Model.TempleEventImportantDatesModels[i1].TempleEventMasterId) == 65)
+                                                        {
+                                                            <br />
+                                                            <span style="color: #0000ff;">@Model.TempleEventImportantDatesModels[i1].EventName3s[j1]</span>
+                                                        }
+                                                    }
+                                                    j1++;
+                                                }
+                                            }
+                                        </th>
+                                                k1++;
+                                            }
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </td>
+                    @{
+                        @*j1 = 0;
+                            while (j1 < Model.TempleEventImportantDatesModels[i1].StartDates.Count)
+                            {
+                                <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; text-align: center; vertical-align: top; width: 135px;">
+                                    @{
+                                        k1 = 0;
+                                        while (j1 < Model.TempleEventImportantDatesModels[i1].StartDates.Count && k1 < 3)
+                                        {
+                                            beginDate1 = Model.TempleEventImportantDatesModels[i1].BeginDates[j1];
+                                            while (j1 < Model.TempleEventImportantDatesModels[i1].StartDates.Count && k1 < 3 && beginDate1 == Model.TempleEventImportantDatesModels[i1].BeginDates[j1])
+                                            {
+                                                if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[i1].StartDates[j1]))
+                                                {
+                                                    @DateTime.Parse(Model.TempleEventImportantDatesModels[i1].StartDates[j1]).ToString("ddd MMM-dd-yyyy")<br />
+                                                    if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[i1].StartTimes[j1]) && Model.TempleEventImportantDatesModels[i1].StartTimes[j1] != "00:00")
+                                                    {
+                                                        <span style="color: #ff0000;">@DateTime.Parse(Model.TempleEventImportantDatesModels[i1].StartTimes[j1]).ToString("h:mm tt")</span>
+                                                        <br />
+                                                    }
+                                                    if (long.Parse(Model.TempleEventImportantDatesModels[i1].TempleEventMasterId) == 51 || long.Parse(Model.TempleEventImportantDatesModels[i1].TempleEventMasterId) >= 60 && long.Parse(Model.TempleEventImportantDatesModels[i1].TempleEventMasterId) <= 63)
+                                                    {
+                                                        <span style="color: #a55400;">@Model.TempleEventImportantDatesModels[i1].EventName1s[j1]</span>
+                                                        <br />
+                                                        <span style="color: #000000;">@Model.TempleEventImportantDatesModels[i1].EventName2s[j1]</span>
+                                                        <br />
+                                                    }
+                                                }
+                                                j1++;
+                                            }
+                                            k1++;
+                                            <hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+                                        }
+                                    }
+                                </th>
+                            }*@
+                    }
+                </tr>
+            }
+        }
+    </table>
+</div>
+@*
+        <div class="col-md-9">
+            <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 12px; padding: 5px;">
+                @{
+                    for (i1 = 0; i1 < Model.TempleEventImportantDatesModels.Count; i1++)
+                    {
+                        if (i1 > 1)
+                        {
+                            break;
+                        }
+                <tr>
+                    <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+                        <img src="@(ApplicationInstance.Application["BaseURL"] + "Images/" + Model.ImportantDates[i1].TempleEventMasterModel.ImageFileName1)" style="height: 144px; width: 153px;" />
+                    </th>
+                    <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+                        @Model.TempleEventImportantDatesModels[i1].EventText1<br />
+                        <span style="color: #ff0000;">@Model.TempleEventImportantDatesModels[i1].EventText2</span>
+                        <br />
+                        <span style="color: #0000ff;">@Model.TempleEventImportantDatesModels[i1].EventText3</span>
+                        <br /><br />
+                        <a href="@(ApplicationInstance.Application["BaseURL"] + "Files/" + Model.TempleEventImportantDatesModels[i1].FileName1)" style="background-color: #d3d3d3; color: #000000; text-decoration: underline;" target="_blank">Read more...</a>
+                        @if (Model.TempleEventImportantDatesModels[i1].SponsorshipGroupId != "-1")
+                        {
+                            <br />
+                            <br />
+                            <a href="@(ApplicationInstance.Application["FremontBaseURL"] + "Sponsorship/" + Model.TempleEventImportantDatesModels[i1].SponsorshipGroupId)" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank">Sankalpam</a>
+                        }
+                    </th>
+                    @{
+                        j1 = 0;
+                        while (j1 < Model.TempleEventImportantDatesModels[i1].StartDates.Count)
+                        {
+                            <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+                                @{
+                                    k1 = 0;
+                                    while (k1 < 3)
+                                    {
+                                        k1++;
+                                        j1++;
+                                    }
+                                }
+                            </th>
+                                    }
+                    }
+                    @for (j1 = 0; j1 < 4; j1++)
+                    {
+                        <th scope="row" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+                            @for (k1 = 0; k1 < 3; k1++)
+                            {
+                                if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[i1].StartDates[index1]))
+                                {
+                                    @DateTime.Parse(Model.TempleEventImportantDatesModels[i1].StartDates[index1]).ToString("ddd MMM-dd-yyyy")
+                                    if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[i1].StartTimes[index1]) && Model.TempleEventImportantDatesModels[i1].StartTimes[index1] != "00:00")
+                                    {
+                                        <br />
+                                        <span style="color: #ff0000;">@DateTime.Parse(Model.TempleEventImportantDatesModels[i1].StartTimes[index1]).ToString("h:mm tt")</span>
+                                    }
+                                    <hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+                                }
+                                index1++;
+                            }
+                        </th>
+                    }
+                </tr>
+                    }
+                }
+            </table>
+        </div>
+    <div class="col-md-9">
+        @{
+            var importantDatesModels = Model.MonthImportantDatesModels["9999-12-01"];
+            int i, index = 0;
+            string backgroundcolor;
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped" style="font-size: 12px; font-weight: bold;">
+                    @while (index < importantDatesModels.Count)
+                    {
+                        <tr>
+                            @for (i = 0; i < 5; i++)
+                            {
+                                if (!string.IsNullOrWhiteSpace(importantDatesModels[index].EventName1) && (importantDatesModels[index].EventName1.IndexOf(DateTime.Now.ToString("dddd")) > -1 || importantDatesModels[index].EventName1.IndexOf("Daily") > -1))
+                                {
+                                    backgroundcolor = "#d3d3d3";
+                                }
+                                else
+                                {
+                                    backgroundcolor = "#ffffff";
+                                }
+                                <td style="background-color: @backgroundcolor; border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #000000; padding: 5px; text-align: center;">
+                                    @importantDatesModels[index].EventName1<br />
+                                    <span style="color: #0000ff;">@importantDatesModels[index].EventDesc1</span><br />
+                                    <span style="color: #ff0000;">@importantDatesModels[index].StartTime</span>
+                                    @if (importantDatesModels[index].SponsorshipGroupId > 0)
+                                    {
+                                        <br /><br /><a href="@ApplicationInstance.Application["FremontBaseURL"]Sponsorship/@importantDatesModels[index].SponsorshipGroupId" style="color: #ff0000; text-decoration: underline;" target="_blank">Click here for<br />Sankalpam</a>
+                                    }
+                                </td>
+                                index++;
+                            }
+                        </tr>
+                    }
+                </table>
+                <table class="table table-striped table-bordered table-hover">
+                    @{
+                        int iTemp, count;
+                        long templeEventMasterId;
+                        string beginDate, backgroundColor;
+                        SVCCTempleWeb.Models.TempleEventModel importantDate, importantDate1;
+                        <colgroup>
+                            <col style="width: 63px;" />
+                            @for (i = 0, templeEventMasterId = -1, beginDate = Model.ImportantDates[i].BeginDate; i < Model.ImportantDates.Count && Model.ImportantDates[i].BeginDate == beginDate; i++)
+                            {
+                                if (templeEventMasterId != Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId)
+                                {
+                                    <col style="width: 72px;" />
+                                }
+                                templeEventMasterId = Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId;
+                            }
+                        </colgroup>
+                        <tr>
+                            <th scope="row" style="font-size: 12px;">
+                            </th>
+                            @for (i = 0, templeEventMasterId = -1, beginDate = Model.ImportantDates[i].BeginDate; i < Model.ImportantDates.Count && Model.ImportantDates[i].BeginDate == beginDate; i++)
+                            {
+                                if (templeEventMasterId != Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId)
+                                {
+                                    <th scope="row" style="font-size: 12px; width: 72px; text-align: center;">
+                                        @if (!string.IsNullOrWhiteSpace(Model.ImportantDates[i].TempleEventMasterModel.ImageFileName1))
+                                        {
+                                            <img src="@(ApplicationInstance.Application["BaseURL"] + "Images/" + Model.ImportantDates[i].TempleEventMasterModel.ImageFileName1)" style="height: 90px; width: 90px;" />
+                                        }
+                                    </th>
+                                }
+                                templeEventMasterId = Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId;
+                            }
+                        </tr>
+                        <tr>
+                            <th scope="row" style="font-size: 12px;">
+                                Month
+                            </th>
+                            @for (i = 0, templeEventMasterId = -1, beginDate = Model.ImportantDates[i].BeginDate; i < Model.ImportantDates.Count && Model.ImportantDates[i].BeginDate == beginDate; i++)
+                            {
+                                if (templeEventMasterId != Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId)
+                                {
+                                    <th scope="row" style="font-size: 12px; width: 72px; text-align: center;">
+                                        @Model.ImportantDates[i].EventText1<br />
+                                        <span style="color: #ff0000;">@Model.ImportantDates[i].EventText2</span><br />
+                                        <span style="color: #0000ff;">@Model.ImportantDates[i].EventText3</span>
+                                        @if (!string.IsNullOrWhiteSpace(Model.ImportantDates[i].TempleEventMasterModel.FileName1))
+                                        {
+                                            <br /><br />
+                                            <a href="@(ApplicationInstance.Application["BaseURL"] + "Files/" + Model.ImportantDates[i].TempleEventMasterModel.FileName1)" style="background-color: #d3d3d3; color: #000000; text-decoration: underline;" target="_blank">Read more...</a>
+                                        }
+                                    </th>
+                                }
+                                templeEventMasterId = Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId;
+                            }
+                        </tr>
+                        i = 0;
+                        while (i < Model.ImportantDates.Count)
+                        {
+                            importantDate = Model.ImportantDates[i];
+                            <tr>
+                                <th scope="row" style="font-size: 12px;">
+                                    @DateTime.Parse(importantDate.BeginDate).ToString("MMM yyyy")
+                                </th>
+                                @while (i < Model.ImportantDates.Count && importantDate.BeginDate == Model.ImportantDates[i].BeginDate)
+                                {
+                                    importantDate1 = Model.ImportantDates[i];
+                                    iTemp = i;
+                                    backgroundColor = "";
+                                    count = 0;
+                                    while (i < Model.ImportantDates.Count && importantDate.BeginDate == Model.ImportantDates[i].BeginDate && importantDate1.TempleEventMasterModel.TempleEventMasterId == Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId)
+                                    {
+                                        if (!string.IsNullOrWhiteSpace(Model.ImportantDates[i].StartDate))
+                                        {
+                                            count++;
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(Model.ImportantDates[i].StartDate) && DateTime.Parse(Model.ImportantDates[i].StartDate).ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd"))
+                                        {
+                                            backgroundColor = "background-color: #c3c3c3; ";
+                                        }
+                                        i++;
+                                    }
+                                    i = iTemp;
+                                    <th style="@(backgroundColor)font-size: 12px; text-align: center;">
+                                        @while (i < Model.ImportantDates.Count && importantDate.BeginDate == Model.ImportantDates[i].BeginDate && importantDate1.TempleEventMasterModel.TempleEventMasterId == Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(Model.ImportantDates[i].StartDate))
+                                            {
+                                                @DateTime.Parse(Model.ImportantDates[i].StartDate).ToString("ddd M/d")<br />
+                                                if (!string.IsNullOrWhiteSpace(Model.ImportantDates[i].StartTime) && Model.ImportantDates[i].StartTime != "00:00")
+                                                {
+                                                    <span style="color: #ff0000;">@DateTime.Parse(Model.ImportantDates[i].StartTime).ToString("h:mm tt")</span><br />
+                                                }
+                                                if (Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId >= 60 && Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId <= 63 || Model.ImportantDates[i].TempleEventMasterModel.TempleEventMasterId == 51)
+                                                {
+                                                    <span style="color: #a55400;">@Model.ImportantDates[i].EventName1</span>
+                                                    if (!string.IsNullOrWhiteSpace(Model.ImportantDates[i].EventName2))
+                                                    {
+                                                        <br />
+                                                        <span style="color: #000000;">@Model.ImportantDates[i].EventName2</span>
+                                                    }
+                                                }
+                                            }
+                                            i++;
+                                        }
+                                        @if (Model.ImportantDates[i - 1].TempleEventMasterModel.SponsorshipGroupId != -1)
+                                        {
+                                            <br />
+                                            <a href="@(ApplicationInstance.Application["FremontBaseURL"] + "Sponsorship/" + Model.ImportantDates[i - 1].TempleEventMasterModel.SponsorshipGroupId)" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank">Sankalpam</a>
+                                        }
+                                    </th>
+                                }
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+    </div>
+*@

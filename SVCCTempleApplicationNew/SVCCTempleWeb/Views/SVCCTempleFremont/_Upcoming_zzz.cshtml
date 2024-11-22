@@ -1,0 +1,69 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@{
+    int i, j, index, index1;
+    string textColor = "#ff0000";
+}
+<div class="col-md-9" id="divUpcomingLinks">
+    <table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin: auto 0; padding: 5px;">
+        @{
+            index = 0;
+            index1 = 0;
+            for (i = 0; i < Model.UpcomingFestivalsModels.Count; i++)
+            {
+                <tr>
+                    @for (j = 0; j < 3 && index < Model.UpcomingFestivalsModels.Count; j++)
+                    {
+                        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top; width: 33%;">
+                            @Html.Raw(Model.UpcomingFestivalsModels[index].NavigationHtml)
+                        </td>
+                        index++;
+                    }
+                </tr>
+            }
+            for (i = 0; i < Model.TempleEventImportantDatesModels.Count; i++)
+            {
+                <tr>
+                    @for (j = 0; j < 3 && index1 < Model.TempleEventImportantDatesModels.Count; j++)
+                    {
+                    <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-weight: bold; padding: 5px; vertical-align: top; width: 33%; color: @textColor;">
+                        @if (textColor == "#0000ff")
+                        {
+                            textColor = "#ff0000";
+                        }
+                        else
+                        {
+                            textColor = "#0000ff";
+                        }
+                        @DateTime.Parse(Model.TempleEventImportantDatesModels[index1].StartDate).ToString("ddd M/d")
+                        @if (Model.TempleEventImportantDatesModels[index1].StartTime != "00:00")
+                        {
+                            @DateTime.Parse(Model.TempleEventImportantDatesModels[index1].StartTime).ToString("h:mmtt").ToLower()
+                        }
+                        @Model.TempleEventImportantDatesModels[index1].EventText1
+                        @if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[index1].EventName3))
+                        {
+                            <br />
+                            <span style="color: #000000;">@Model.TempleEventImportantDatesModels[index1].EventName3</span>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.TempleEventImportantDatesModels[index1].EventDesc1))
+                        {
+                            <br />
+                            <span style="color: #a54000;">@Model.TempleEventImportantDatesModels[index1].EventDesc1</span>
+                        }
+                    </td>
+                        index1++;
+                    }
+                </tr>
+            }
+        }
+    </table>
+</div>
+@for (i = 0; i < Model.UpcomingFestivalsModels.Count; i++)
+{
+    if (i > 0)
+    {
+        <br style="clear: both;" />
+        <hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+    }
+    @Html.Raw(Model.UpcomingFestivalsModels[i].ContentHtml)
+}

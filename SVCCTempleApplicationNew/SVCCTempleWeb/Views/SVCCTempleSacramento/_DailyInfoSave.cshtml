@@ -1,0 +1,20 @@
+﻿@model SVCCTempleWeb.Models.TempleInfoDatesModel
+<h2>@DateTime.Parse(Model.StartDate).ToString("ddd MMM-dd-yyyy") till @DateTime.Parse(Model.FinishDate).ToString("ddd MMM-dd-yyyy")</h2>
+<table style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; margin-left: auto; margin-right: auto; padding: 0px;">
+    @foreach (var templeInfoDateModel in Model.TempleInfoDateModels)
+    {
+    <tr>
+        <td colspan="2" style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px;">
+            <b>@DateTime.Parse(templeInfoDateModel.TempleInfoDate).ToString("ddd MMM-dd-yyyy")</b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px;">
+            @Html.Partial("_DailyInfoData", templeInfoDateModel)
+        </td>
+        @*<td>
+            @Html.Partial("_DailyInfoData", templeInfoDateModel)
+        </td>*@
+    </tr>
+    }
+</table>

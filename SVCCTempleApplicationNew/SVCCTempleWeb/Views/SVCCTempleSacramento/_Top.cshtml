@@ -1,0 +1,22 @@
+﻿@{
+    string telNum = long.Parse(ApplicationInstance.Application["SacramentoTemplePhone1"].ToString()).ToString("1-###-###-####");
+    string imageTitle = ApplicationInstance.Application["SacramentoTempleFullName"].ToString()
+        + ", " + ApplicationInstance.Application["SacramentoTempleName"].ToString()
+        + ", " + ApplicationInstance.Application["SacramentoTempleAddressLine1"].ToString()
+        + ", " + ApplicationInstance.Application["SacramentoTempleCityName"].ToString()
+        + " " + ApplicationInstance.Application["SacramentoTempleStateAbbrev"].ToString()
+        + " " + ApplicationInstance.Application["SacramentoTempleZipCode"].ToString()
+        + ", " + long.Parse(ApplicationInstance.Application["SacramentoTemplePhone1"].ToString()).ToString("(###) ###-####")
+        + ", " + long.Parse(ApplicationInstance.Application["SacramentoTemplePhone2"].ToString()).ToString("(###) ###-####")
+        + ", " + long.Parse(ApplicationInstance.Application["SacramentoTemplePhone3"].ToString()).ToString("(###) ###-####")
+        + ", " + long.Parse(ApplicationInstance.Application["SacramentoTemplePhone4"].ToString()).ToString("(###) ###-####")
+        + ", Weekdays : " + ApplicationInstance.Application["SacramentoTempleTimingsWeekdays"].ToString()
+        + ", Weekends : " + ApplicationInstance.Application["SacramentoTempleTimingsWeekends"].ToString()
+        ;
+}
+<img alt="@imageTitle" style="height: auto; width: 1269px;" src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/HomePage/SVCCBanner.jpg" title="@imageTitle" usemap="#SVCCBanner_Map" />
+<map name="SVCCBanner_Map">
+    <area target="_blank" alt="@imageTitle" href="tel:@telNum" coords="458,107,577,124" shape="rect">
+    <area target="_blank" alt="@imageTitle" href="@Url.Action("ContactUs", "SVCCTempleSacramento")" coords="914,128,1128,146" shape="rect">
+    <area target="_blank" alt="@imageTitle" href="@ApplicationInstance.Application["SacramentoTempleFacebookUrl"].ToString()" coords="863,110,1201,127" shape="rect">
+</map>

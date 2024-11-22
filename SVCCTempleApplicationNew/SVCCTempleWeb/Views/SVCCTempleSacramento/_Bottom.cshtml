@@ -1,0 +1,39 @@
+﻿<span style="color:#000000; font-family: Arial; font-size: 9pt; font-weight: bold;">
+    @ApplicationInstance.Application["SacramentoTempleFullName"].ToString(),&nbsp;
+    @ApplicationInstance.Application["SacramentoTempleAddressLine1"].ToString(),&nbsp;
+    @ApplicationInstance.Application["SacramentoTempleCityName"].ToString(),&nbsp;
+    @ApplicationInstance.Application["SacramentoTempleStateAbbrev"].ToString()&nbsp;
+    @ApplicationInstance.Application["SacramentoTempleZipCode"].ToString()
+    <br />
+    Tel:&nbsp;
+    <a href="tel: @long.Parse(ApplicationInstance.Application["SacramentoTemplePhone1"].ToString()).ToString("1-###-###-####")" style="text-decoration: underline;">@long.Parse(ApplicationInstance.Application["SacramentoTemplePhone1"].ToString()).ToString("(###) ###-####")</a>&nbsp;/&nbsp;
+    <a href="tel: @long.Parse(ApplicationInstance.Application["SacramentoTemplePhone2"].ToString()).ToString("1-###-###-####")" style="text-decoration: underline;">@long.Parse(ApplicationInstance.Application["SacramentoTemplePhone2"].ToString()).ToString("(###) ###-####")</a>&nbsp;/&nbsp;
+    <a href="tel: @long.Parse(ApplicationInstance.Application["SacramentoTemplePhone3"].ToString()).ToString("1-###-###-####")" style="text-decoration: underline;">@long.Parse(ApplicationInstance.Application["SacramentoTemplePhone3"].ToString()).ToString("(###) ###-####")</a>&nbsp;/&nbsp;
+    <a href="tel: @long.Parse(ApplicationInstance.Application["SacramentoTemplePhone4"].ToString()).ToString("1-###-###-####")" style="text-decoration: underline;">@long.Parse(ApplicationInstance.Application["SacramentoTemplePhone4"].ToString()).ToString("(###) ###-####")</a>
+    <br />
+    Weekdays : @ApplicationInstance.Application["SacramentoTempleTimingsWeekdays"].ToString()&nbsp;/&nbsp;
+    Weekends : @ApplicationInstance.Application["SacramentoTempleTimingsWeekends"].ToString()
+    <br />
+</span>
+<a href="@ApplicationInstance.Application["SacramentoTempleWebUrl1"].ToString()" style="color:#0000ff; font-family: Arial; font-size: 9pt; text-decoration: underline;" target="_blank">@ApplicationInstance.Application["SacramentoTempleWebUrl1"].ToString()</a>&nbsp;/&nbsp;
+<a href="@ApplicationInstance.Application["SacramentoTempleWebUrl2"].ToString()" style="color:#0000ff; font-family: Arial; font-size: 9pt; text-decoration: underline;" target="_blank">@ApplicationInstance.Application["SacramentoTempleWebUrl2"].ToString()</a>&nbsp;/&nbsp;
+<a href="@ApplicationInstance.Application["SacramentoTempleWebUrl3"].ToString()" style="color:#0000ff; font-family: Arial; font-size: 9pt; text-decoration: underline;" target="_blank">@ApplicationInstance.Application["SacramentoTempleWebUrl3"].ToString()</a>
+<br />
+<a href="mailto:@ApplicationInstance.Application["SacramentoTempleEmailAddress1"].ToString()" style="color:#0000ff; font-family: Arial; font-size: 9pt; text-decoration: underline;" target="_blank">@ApplicationInstance.Application["SacramentoTempleEmailAddress1"].ToString()</a><br />
+Name: Siddhi Vinayaka Cultural Center Inc, A 501(C)(3) tax exempt organization - EIN: 68-0480175<br /><br />
+<div class="fb-like" data-href="@ApplicationInstance.Application["SacramentoTempleFacebookUrl"].ToString()" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" style="vertical-align:top;zoom:1;display:inline"></div>
+<a href="@ApplicationInstance.Application["SacramentoTempleFacebookUrl"].ToString()" target="_blank"><img src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/Facebook.jpg" alt="Find us on Facebook (@ApplicationInstance.Application["SacramentoTempleName"].ToString())" title="Find us on Facebook (@ApplicationInstance.Application["SacramentoTempleName"].ToString())" /></a>
+<div id="divFacebook" style="margin-left:auto;margin-right:auto;width:240px"></div>
+<script type="text/javascript">
+    (
+        function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+            (document, 'script', 'facebook-jssdk')
+    );
+</script>
+@Html.Partial("_Copyright")

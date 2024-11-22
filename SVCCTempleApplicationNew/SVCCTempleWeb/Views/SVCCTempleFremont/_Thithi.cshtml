@@ -1,0 +1,52 @@
+﻿@model List<SVCCTempleWeb.Models.CalendarDateDataModel>
+@{
+    int index = 0;
+    string paksha;
+}
+<table class="table table-bordered table-condensed table-responsive" style="width: 63%;">
+    <tr>
+        <th>
+            #
+        </th>
+        <th class="text-left">
+            Thithi
+        </th>
+        <th class="text-left">
+            Paksha
+        </th>
+        <th class="text-center" colspan="2">
+            Start
+        </th>
+        <th class="text-center" colspan="2">
+            Finish
+        </th>
+    </tr>
+    @foreach (var calendarDateDataModel in Model)
+    {
+        index++;
+        paksha = calendarDateDataModel.CodeDataModel.CodeDataNameDesc.IndexOf("_SHUKLA") > -1 ? "Shukla" : "Krishna";
+    <tr>
+        <td class="text-right">
+            @index
+        </td>
+        <td class="text-left">
+            @calendarDateDataModel.CodeDataModel.CodeDataDesc0
+        </td>
+        <td class="text-left">
+            @paksha
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.StartDate
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.StartTime
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.FinishDate
+        </td>
+        <td class="text-center">
+            @calendarDateDataModel.FinishTime
+        </td>
+    </tr>
+    }
+</table>

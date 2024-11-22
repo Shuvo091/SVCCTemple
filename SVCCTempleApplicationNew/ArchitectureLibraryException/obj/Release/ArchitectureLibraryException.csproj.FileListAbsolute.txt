@@ -1,0 +1,11 @@
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Release\ArchitectureLibraryException.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Release\ArchitectureLibraryException.pdb
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Release\log4net.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Release\Newtonsoft.Json.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Release\log4net.xml
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\bin\Release\Newtonsoft.Json.xml
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Release\ArchitectureLibraryException.csproj.CoreCompileInputs.cache
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Release\ArchitectureLibraryException.csproj.CopyComplete
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Release\ArchitectureLibraryException.dll
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Release\ArchitectureLibraryException.pdb
+C:\Code\Dev\SVCCTemple\SVCCTempleApplicationNew\ArchitectureLibraryException\obj\Release\ArchitectureLibraryException.csprojAssemblyReference.cache

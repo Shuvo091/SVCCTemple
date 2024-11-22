@@ -1,0 +1,271 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@*_FestivalInfo.cshtml*@
+@using System.Data
+@using System.Data.SqlClient
+@{
+    #region
+    string sqlStmt = "";
+    sqlStmt += "        SELECT " + Environment.NewLine;
+    sqlStmt += "               1 AS QueryNum" + Environment.NewLine;
+    sqlStmt += "              ,TempleEventMaster.TempleEventMasterId" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.StartTime, '') WHEN '' THEN TempleEventMaster.StartTime ELSE TempleEvent.StartTime END AS StartTime" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventName1, '') WHEN '' THEN TempleEventMaster.EventName1 ELSE TempleEvent.EventName1 END AS EventName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventName2, '') WHEN '' THEN TempleEventMaster.EventName2 ELSE TempleEvent.EventName2 END AS EventName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventName3, '') WHEN '' THEN TempleEventMaster.EventName3 ELSE TempleEvent.EventName3 END AS EventName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventDesc1, '') WHEN '' THEN TempleEventMaster.EventDesc1 ELSE TempleEvent.EventDesc1 END AS EventDesc1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventDesc2, '') WHEN '' THEN TempleEventMaster.EventDesc2 ELSE TempleEvent.EventDesc2 END AS EventDesc2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventDesc3, '') WHEN '' THEN TempleEventMaster.EventDesc3 ELSE TempleEvent.EventDesc3 END AS EventDesc3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventText1, '') WHEN '' THEN TempleEventMaster.EventText1 ELSE TempleEvent.EventText1 END AS EventText1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventText2, '') WHEN '' THEN TempleEventMaster.EventText2 ELSE TempleEvent.EventText2 END AS EventText2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventText3, '') WHEN '' THEN TempleEventMaster.EventText3 ELSE TempleEvent.EventText3 END AS EventText3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName1, '') WHEN '' THEN TempleEventMaster.FileName1 ELSE TempleEvent.FileName1 END AS FileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName2, '') WHEN '' THEN TempleEventMaster.FileName2 ELSE TempleEvent.FileName2 END AS FileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName3, '') WHEN '' THEN TempleEventMaster.FileName3 ELSE TempleEvent.FileName3 END AS FileName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName1, '') WHEN '' THEN TempleEventMaster.HtmlFileName1 ELSE TempleEvent.HtmlFileName1 END AS HtmlFileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName2, '') WHEN '' THEN TempleEventMaster.HtmlFileName2 ELSE TempleEvent.HtmlFileName2 END AS HtmlFileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName3, '') WHEN '' THEN TempleEventMaster.HtmlFileName3 ELSE TempleEvent.HtmlFileName3 END AS HtmlFileName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName1, '') WHEN '' THEN TempleEventMaster.ImageFileName1 ELSE TempleEvent.ImageFileName1 END AS ImageFileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName2, '') WHEN '' THEN TempleEventMaster.ImageFileName2 ELSE TempleEvent.ImageFileName2 END AS ImageFileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName3, '') WHEN '' THEN TempleEventMaster.ImageFileName3 ELSE TempleEvent.ImageFileName1 END AS ImageFileName3" + Environment.NewLine;
+    //sqlStmt += "              ,TempleEventMaster.SponsorshipGroupId" + Environment.NewLine;
+    sqlStmt += "              ,TempleEventMaster.SeqNum" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.FinishDate" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FinishTime, '') WHEN '' THEN TempleEventMaster.FinishTime ELSE TempleEvent.FinishTime END AS FinishTime" + Environment.NewLine;
+    sqlStmt += "              ,CASE WHEN TempleEvent.InfoOnly IS NULL THEN TempleEventMaster.InfoOnly ELSE TempleEvent.InfoOnly END AS InfoOnly" + Environment.NewLine;
+    sqlStmt += "              ,CASE WHEN TempleEvent.EventAtTemple IS NULL THEN TempleEventMaster.EventAtTemple ELSE TempleEvent.EventAtTemple END AS EventAtTemple" + Environment.NewLine;
+    sqlStmt += "              ,CASE WHEN TempleEvent.MoreInfo IS NULL THEN TempleEventMaster.MoreInfo ELSE TempleEvent.MoreInfo END AS MoreInfo" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.SponsorshipGroupId, -1) WHEN -1 THEN TempleEventMaster.SponsorshipGroupId ELSE TempleEvent.SponsorshipGroupId END AS SponsorshipGroupId" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.KioskGroupId, -1) WHEN -1 THEN TempleEventMaster.KioskGroupId ELSE TempleEvent.KioskGroupId END AS KioskGroupId" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartTime" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.SeqNum" + Environment.NewLine;
+    sqlStmt += "          FROM TempleEvent" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN TempleEventMaster" + Environment.NewLine;
+    sqlStmt += "            ON TempleEvent.TempleEventMasterId = TempleEventMaster.TempleEventMasterId" + Environment.NewLine;
+    sqlStmt += "           AND TempleEventMaster.TempleEventMasterId IN(99999)" + Environment.NewLine;
+    sqlStmt += "         WHERE TempleEvent.LocationNameDesc = @LocationNameDesc" + Environment.NewLine;
+    sqlStmt += "           AND " + Environment.NewLine;
+    sqlStmt += "              (" + Environment.NewLine;
+    sqlStmt += "               TempleEvent.StartDate >= @StartDate" + Environment.NewLine;
+    sqlStmt += "            OR @StartDate BETWEEN TempleEvent.StartDate AND TempleEvent.FinishDate" + Environment.NewLine;
+    sqlStmt += "              )" + Environment.NewLine;
+    sqlStmt += "UNION" + Environment.NewLine;
+    sqlStmt += "        SELECT " + Environment.NewLine;
+    sqlStmt += "               1 AS QueryNum" + Environment.NewLine;
+    sqlStmt += "              ,TempleEventMaster.TempleEventMasterId" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.StartTime, '') WHEN '' THEN TempleEventMaster.StartTime ELSE TempleEvent.StartTime END AS StartTime" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventName1, '') WHEN '' THEN TempleEventMaster.EventName1 ELSE TempleEvent.EventName1 END AS EventName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventName2, '') WHEN '' THEN TempleEventMaster.EventName2 ELSE TempleEvent.EventName2 END AS EventName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventName3, '') WHEN '' THEN TempleEventMaster.EventName3 ELSE TempleEvent.EventName3 END AS EventName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventDesc1, '') WHEN '' THEN TempleEventMaster.EventDesc1 ELSE TempleEvent.EventDesc1 END AS EventDesc1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventDesc2, '') WHEN '' THEN TempleEventMaster.EventDesc2 ELSE TempleEvent.EventDesc2 END AS EventDesc2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventDesc3, '') WHEN '' THEN TempleEventMaster.EventDesc3 ELSE TempleEvent.EventDesc3 END AS EventDesc3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventText1, '') WHEN '' THEN TempleEventMaster.EventText1 ELSE TempleEvent.EventText1 END AS EventText1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventText2, '') WHEN '' THEN TempleEventMaster.EventText2 ELSE TempleEvent.EventText2 END AS EventText2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventText3, '') WHEN '' THEN TempleEventMaster.EventText3 ELSE TempleEvent.EventText3 END AS EventText3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName1, '') WHEN '' THEN TempleEventMaster.FileName1 ELSE TempleEvent.FileName1 END AS FileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName2, '') WHEN '' THEN TempleEventMaster.FileName2 ELSE TempleEvent.FileName2 END AS FileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName3, '') WHEN '' THEN TempleEventMaster.FileName3 ELSE TempleEvent.FileName3 END AS FileName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName1, '') WHEN '' THEN TempleEventMaster.HtmlFileName1 ELSE TempleEvent.HtmlFileName1 END AS HtmlFileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName2, '') WHEN '' THEN TempleEventMaster.HtmlFileName2 ELSE TempleEvent.HtmlFileName2 END AS HtmlFileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName3, '') WHEN '' THEN TempleEventMaster.HtmlFileName3 ELSE TempleEvent.HtmlFileName3 END AS HtmlFileName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName1, '') WHEN '' THEN TempleEventMaster.ImageFileName1 ELSE TempleEvent.ImageFileName1 END AS ImageFileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName2, '') WHEN '' THEN TempleEventMaster.ImageFileName2 ELSE TempleEvent.ImageFileName2 END AS ImageFileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName3, '') WHEN '' THEN TempleEventMaster.ImageFileName3 ELSE TempleEvent.ImageFileName1 END AS ImageFileName3" + Environment.NewLine;
+    //sqlStmt += "              ,TempleEventMaster.SponsorshipGroupId" + Environment.NewLine;
+    sqlStmt += "              ,TempleEventMaster.SeqNum" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.FinishDate" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FinishTime, '') WHEN '' THEN TempleEventMaster.FinishTime ELSE TempleEvent.FinishTime END AS FinishTime" + Environment.NewLine;
+    sqlStmt += "              ,CASE WHEN TempleEvent.InfoOnly IS NULL THEN TempleEventMaster.InfoOnly ELSE TempleEvent.InfoOnly END AS InfoOnly" + Environment.NewLine;
+    sqlStmt += "              ,CASE WHEN TempleEvent.EventAtTemple IS NULL THEN TempleEventMaster.EventAtTemple ELSE TempleEvent.EventAtTemple END AS EventAtTemple" + Environment.NewLine;
+    sqlStmt += "              ,CASE WHEN TempleEvent.MoreInfo IS NULL THEN TempleEventMaster.MoreInfo ELSE TempleEvent.MoreInfo END AS MoreInfo" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.SponsorshipGroupId, -1) WHEN -1 THEN TempleEventMaster.SponsorshipGroupId ELSE TempleEvent.SponsorshipGroupId END AS SponsorshipGroupId" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.KioskGroupId, -1) WHEN -1 THEN TempleEventMaster.KioskGroupId ELSE TempleEvent.KioskGroupId END AS KioskGroupId" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartTime" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.SeqNum" + Environment.NewLine;
+    sqlStmt += "          FROM TempleEvent" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN TempleEventMaster" + Environment.NewLine;
+    sqlStmt += "            ON TempleEvent.TempleEventMasterId = TempleEventMaster.TempleEventMasterId" + Environment.NewLine;
+    sqlStmt += "           AND TempleEventMaster.TempleEventMasterId IN(99999)" + Environment.NewLine;
+    sqlStmt += "         WHERE TempleEvent.LocationNameDesc = @LocationNameDesc" + Environment.NewLine;
+    sqlStmt += "           AND " + Environment.NewLine;
+    sqlStmt += "              (" + Environment.NewLine;
+    sqlStmt += "               TempleEvent.StartDate >= @StartDate" + Environment.NewLine;
+    sqlStmt += "            OR @StartDate BETWEEN TempleEvent.StartDate AND TempleEvent.FinishDate" + Environment.NewLine;
+    sqlStmt += "              )" + Environment.NewLine;
+    sqlStmt += "      ORDER BY QueryNum" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.StartTime" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.SeqNum" + Environment.NewLine;
+    string databaseConnectionString = ApplicationInstance.Application["DatabaseConnectionString"].ToString();
+    SqlConnection sqlConnection = new SqlConnection(databaseConnectionString);
+    sqlConnection.Open();
+    SqlCommand sqlCommand = new SqlCommand(sqlStmt, sqlConnection);
+    sqlCommand.Parameters.Add("@LocationNameDesc", SqlDbType.VarChar, 50);
+    sqlCommand.Parameters.Add("@StartDate", SqlDbType.VarChar, 10);
+    sqlCommand.Parameters["@LocationNameDesc"].Value = "FREMONT";
+    sqlCommand.Parameters["@StartDate"].Value = DateTime.Now.ToString("yyyy-MM-dd");
+    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+    int index = 0;
+    string fileContent;
+    StreamReader streamReader;
+    #endregion
+}
+<table class="table table-responsive table-striped">
+    @{
+        while (sqlDataReader.Read())
+        {
+            <tr>
+                <th scope="row" style="vertical-align: top;">
+                    @(++index).
+                </th>
+                <th scope="row" style="vertical-align: top;">
+                    <table>
+                        <tr>
+                            <th scope="row" style="vertical-align: top;">
+                                @DateTime.Parse(sqlDataReader["StartDate"].ToString()).ToString("ddd M/d/yy")
+                                @if (sqlDataReader["StartTime"].ToString() != "" && sqlDataReader["StartTime"].ToString() != "00:00")
+                                {
+                                    <br />
+                                    if (!string.IsNullOrWhiteSpace(sqlDataReader["StartTime"].ToString()))
+                                    {
+                                        @DateTime.Parse(sqlDataReader["StartTime"].ToString()).ToString("h:mmtt").ToLower()
+                                    }
+                                }
+                            </th>
+                            <th scope="row" style="vertical-align: top;">
+                                @if (!string.IsNullOrWhiteSpace(sqlDataReader["FinishDate"].ToString()))
+                                {
+                                    @DateTime.Parse(sqlDataReader["FinishDate"].ToString()).ToString("ddd M/d/yy")
+                                }
+                                @if (!string.IsNullOrWhiteSpace(sqlDataReader["FinishTime"].ToString()) && sqlDataReader["FinishTime"].ToString() != "00:00")
+                                {
+                                    <br />
+                                    if (!string.IsNullOrWhiteSpace(sqlDataReader["FinishTime"].ToString()))
+                                    {
+                                        @DateTime.Parse(sqlDataReader["FinishTime"].ToString()).ToString("h:mmtt").ToLower()
+                                    }
+                                }
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" scope="row">
+                                @if (sqlDataReader["FileName1"].ToString() != "")
+                                {
+                                    <br />
+                                    <a href="~/Files/@sqlDataReader["FileName1"].ToString()" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to read more...">Read more...</a>
+                                }
+                                @if (sqlDataReader["FileName2"].ToString() != "")
+                                {
+                                    <br />
+                                    <a href="~/Files/@sqlDataReader["FileName2"].ToString()" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to read more...">Read more...</a>
+                                }
+                                @if (sqlDataReader["FileName3"].ToString() != "")
+                                {
+                                    <br />
+                                    <a href="~/Files/@sqlDataReader["FileName3"].ToString()" style="color: #ff0000; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to read more...">Read more...</a>
+                                }
+                            </th>
+                        </tr>
+                    </table>
+                </th>
+                <td style="text-align: left; vertical-align: top;">
+                    <b>@sqlDataReader["EventName1"].ToString()</b>
+                    @if (sqlDataReader["EventName2"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventName2"].ToString()
+                    }
+                    @if (sqlDataReader["EventName3"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventName3"].ToString()
+                    }
+                    @if (sqlDataReader["EventDesc1"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventDesc1"].ToString()
+                    }
+                    @if (sqlDataReader["EventDesc2"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventDesc2"].ToString()
+                    }
+                    @if (sqlDataReader["EventDesc3"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventDesc3"].ToString()
+                    }
+                    @if (sqlDataReader["EventText1"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventText1"].ToString()
+                    }
+                    @if (sqlDataReader["EventText2"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventText2"].ToString()
+                    }
+                    @if (sqlDataReader["EventText3"].ToString() != "")
+                    {
+                        <br />
+                        @sqlDataReader["EventText3"].ToString()
+                    }
+                    @if (sqlDataReader["InfoOnly"].ToString() == "True")
+                    {
+                        <br />
+                        <span style="color: #ff0000; font-weight: bold;">Info Only</span>
+                    }
+                    @if (sqlDataReader["EventAtTemple"].ToString() == "False")
+                    {
+                        <br />
+                        <span style="color: #0000ff; font-weight: bold;">No event at temple</span>
+                    }
+                    @if (sqlDataReader["MoreInfo"].ToString() == "True")
+                    {
+                        <br />
+                        <span style="color: #a54000; font-weight: bold;">More info to follow</span>
+                    }
+                    @if (sqlDataReader["KioskGroupId"].ToString() != "")
+                    {
+                        <br />
+                        <a href="~/SVCCTempleFremont/KioskOrder?id=@sqlDataReader["KioskGroupId"].ToString()" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to enter Sankalpam...">Click here for Sankalpam</a>
+                    }
+                    else
+                    {
+                        if (sqlDataReader["SponsorshipGroupId"].ToString() != "")
+                        {
+                            <br />
+                            <a href="~/SVCCTempleFremont/Sponsorship/@sqlDataReader["SponsorshipGroupId"].ToString()" style="color: #0000ff; font-weight: bold; text-decoration: underline;" target="_blank" title="Please click here to enter Sankalpam...">Click here for Sankalpam</a>
+                        }
+                    }
+                    @if (!string.IsNullOrWhiteSpace(sqlDataReader["HtmlFileName1"].ToString()))
+                    {
+                        try
+                        {
+                            streamReader = new StreamReader(Server.MapPath("~/HtmlFiles/" + sqlDataReader["HtmlFileName1"].ToString()));
+                            fileContent = streamReader.ReadToEnd();
+                            streamReader.Close();
+                        }
+                        catch
+                        {
+                            fileContent = "";
+                        }
+                        @Html.Raw(fileContent)
+                    }
+                </td>
+                <td style="text-align: center;">
+                    @if (!string.IsNullOrWhiteSpace(sqlDataReader["ImageFileName1"].ToString()))
+                    {
+                        <img src="~/Images/@sqlDataReader["ImageFileName1"].ToString()" style="height: 117px; width: 117px;" />
+                    }
+                </td>
+            </tr>
+        }
+        sqlDataReader.Close();
+        sqlConnection.Close();
+    }
+</table>

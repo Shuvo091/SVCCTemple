@@ -1,0 +1,16 @@
+﻿@model string
+<h3 style="color: #17552d; font-weight: bold;">
+    Your donation has been processed successfully!!!
+    <br />
+    <a href="/SVCCTempleSacramento/DownloadSponsorShipReciept?id=@TempData["DownloadFileName"]" style="color: #cd5c5c; font-weight: bold;">Please click here to download the reciept</a>
+</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            @Html.Raw(Model)
+        </div>
+        <div class="col-md-5">
+            <embed src="~/Documents/TempDownload/@(TempData["DownloadFileName"])" type="application/pdf" style="width: 100%; height: 900px;" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "_Layout3.cshtml";
+}
+<div style="float: left; font-size: 18px; font-weight: bold; padding: 0px; text-align: left;">
+    <a href="javascript: void(0);" onclick="javascript: ajaxGet('UserProfile', 'SVCCTempleFremont', 'divAjaxContentDashboard');" style="color: #0000ff; padding-right: 9px; text-decoration: underline;">Profile</a>
+    <a href="javascript: void(0);" onclick="javascript: ajaxGet('SankalpamData', 'SVCCTempleFremont', 'divAjaxContentDashboard');" style="color: #0000ff; padding-right: 9px; text-decoration: underline;">Sankalpam Data</a>
+    <a href="javascript: void(0);" onclick="javascript: ajaxGet('DonationReport', 'SVCCTempleFremont', 'divAjaxContentDashboard');" style="color: #0000ff; padding-right: 9px; text-decoration: underline;">Donation Report</a>
+    @{
+        string privateKey = HttpContext.Current.Application["PrivateKey"].ToString();
+        SVCCTempleWeb.Models.SessionObjectModel sessionObjectModel = (SVCCTempleWeb.Models.SessionObjectModel)Session["SessionObjectFremont"];
+        string userTypeNameId;
+        try
+        {
+            userTypeNameId = ArchitectureLibraryUtility.EncryptDecrypt.DecryptDataMd5(sessionObjectModel.UserTypeNameId, privateKey);
+        }
+        catch
+        {
+            userTypeNameId = "";
+        }
+        if (userTypeNameId == "10" || userTypeNameId == "20" || userTypeNameId == "30")
+        {
+            <a href="javascript: void(0);" onclick="javascript: ajaxGet('SponsorList', 'SVCCTempleFremont', 'divAjaxContentDashboard');" style="color: #0000ff; padding-right: 9px; text-decoration: underline;">Sponsor List</a>
+        }
+        if (userTypeNameId == "10" || userTypeNameId == "20")
+        {
+            <a href="javascript: void(0);" onclick="javascript: ajaxGet('SponsorshipReport', 'SVCCTempleFremont', 'divAjaxContentDashboard');" style="color: #0000ff; padding-right: 9px; text-decoration: underline;">Sponsorship Report</a>
+        }
+    }
+</div>
+<div style="float: left; font-size: 18px; font-weight: bold; padding-left: 81px; text-align: left;">
+    <a href="@Url.Action("", "SVCCTempleFremont")" style="color: #000000; padding-right: 9px; text-decoration: underline;" target="_blank">Home</a>
+    <a href="@Url.Action("Logout", "SVCCTempleFremont")" style="color: #000000; padding-right: 9px; text-decoration: underline;">Logout</a>
+</div>
+<br style="clear: both;" />
+<div id="divAjaxContentDashboard"></div>
+<script type="text/javascript">
+    function window_onload() {
+    }
+</script>

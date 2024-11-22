@@ -1,0 +1,74 @@
+﻿@model SVCCTempleWeb.Models.TempleScheduleUploadList
+<table class="table table-bordered table-condensed table-responsive" style="width: 90%;">
+    <colgroup>
+        <col style="width: 18px;" />
+        <col style="width: 99px;" />
+        <col style="width: 99px;" />
+        <col style="width: 99px;" />
+        @*<col style="width: 99px;" />*@
+    </colgroup>
+    <tr>
+        <th>
+            #
+        </th>
+        <th class="text-center">
+        </th>
+        <th class="text-center">
+            Scheduled Date
+        </th>
+        <th class="text-center" colspan="2">
+            Start Date
+        </th>
+        <th class="text-center" colspan="2">
+            Finish Date
+        </th>
+        <th>
+            Desc
+        </th>
+    </tr>
+    @for (var index = 0; index < Model.TempleScheduleUploadModels.Count; index++)
+    {
+        <tr>
+            <td class="text-right">
+                @(index + 1)
+            </td>
+            <td class="text-left">
+                @Model.TempleScheduleUploadModels[index].TempleScheduleMasterModel.EventDesc0
+            </td>
+            <td class="text-center">
+                @Html.HiddenFor(m => Model.TempleScheduleUploadModels[index].TempleScheduleUploadId)
+                @Html.TextBoxFor(m => Model.TempleScheduleUploadModels[index].StartDate, new { @class = "form-control", style = "width: 91%;", type = "date" })
+            </td>
+            <td class="text-center">
+                @Model.TempleScheduleUploadModels[index].CalendarDateDataModel.StartDate
+            </td>
+            <td class="text-center">
+                @Model.TempleScheduleUploadModels[index].CalendarDateDataModel.StartTime
+            </td>
+            <td class="text-center">
+                @Model.TempleScheduleUploadModels[index].CalendarDateDataModel.FinishDate
+            </td>
+            <td class="text-center">
+                @Model.TempleScheduleUploadModels[index].CalendarDateDataModel.FinishTime
+            </td>
+            <td class="text-left">
+                @Model.TempleScheduleUploadModels[index].CalendarDateDataModel.CodeDataModel.CodeDataNameDesc
+            </td>
+            <td class="text-left" style="display: none;">
+                @Model.TempleScheduleUploadModels[index].EventText1
+            </td>
+            <td class="text-left" style="display: none;">
+                @Model.TempleScheduleUploadModels[index].EventText2
+            </td>
+            <td class="text-left" style="display: none;">
+                @Model.TempleScheduleUploadModels[index].TempleScheduleMasterModel.EventDesc0
+            </td>
+            <td class="text-left" style="display: none;">
+                @Model.TempleScheduleUploadModels[index].TempleScheduleMasterModel.CalendarCodeId
+            </td>
+            <td class="text-left" style="display: none;">
+                @Model.TempleScheduleUploadModels[index].CalendarDateDataModel.CalendarCodeId
+            </td>
+        </tr>
+    }
+</table>

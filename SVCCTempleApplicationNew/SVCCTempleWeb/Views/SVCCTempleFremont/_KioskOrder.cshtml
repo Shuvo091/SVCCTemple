@@ -1,0 +1,121 @@
+﻿@model List<SVCCTempleWeb.Models.KioskGroupModel>
+<h2 style="font-weight: bold; letter-spacing: 7px; text-transform: uppercase;">SVCC KIOSK</h2>
+<form action="KioskCheckout" method="post">
+    <table style="margin: 0 auto;">
+        <tr>
+            <td style="margin: 0 auto; padding: 9px; text-align: center;">
+                <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left;">
+                    <label class="col-form-label">Description for general donation</label>
+                    <input class="form-control" id="GeneralDonationDescription" name="GeneralDonationDescription" onchange="javascript: updateShoppingCart();" onclick="javascript: updateShoppingCart();" placeholder="Enter description for general donation" style="width: 261px;" title="Description for general donation" />
+                </div>
+                <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left;">
+                    <label class="col-form-label">Amount</label>
+                    <input class="form-control" id="GeneralDonationAmount" max="99999" min="0" name="GeneralDonationAmount" onchange="javascript: updateShoppingCart();" onclick="javascript: updateShoppingCart();" onkeypress="javascript: return isInputNumber(event);" placeholder="Amount" step="1" style="width: 81px;" title="Amount for general donation" type="number" />
+                </div>
+                <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left;">
+                    <label class="col-form-label">Count#</label>
+                    <span class="form-control" id="orderCount" style="color: #ff0000; font-size: 18px; font-weight: bold;" title="Number of items"></span>
+                </div>
+                <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left; vertical-align: middle;">
+                    <label class="col-form-label">Amount</label>
+                    <span class="form-control" id="orderAmount" style="color: #0000ff; font-size: 18px; font-weight: bold; width: 81px;" title="Total amount"></span>
+                </div>
+                <div class="row" style="float: left; padding-left: 36px; padding-top: 18px; text-align: left;">
+                    <button class="btn bg-primary" id="btnCheckout" onclick="javascript: return kioskCheckout_onclick();" style="font-size: 18px; font-weight: bold; letter-spacing: 7px; text-transform: uppercase;" title="Click to proceed to checkout" type="submit">checkout</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <input id="kioskOrderedItemIds" name="kioskOrderedItemIds" type="hidden" />
+    <input id="kioskOrderedOrderQtys" name="kioskOrderedOrderQtys" type="hidden" />
+    @{
+        int rowCount = 0, index = 0;
+        foreach (var kioskGroupModel in Model)
+        {
+            <h3 id="divKioskGroup@(kioskGroupModel.KioskGroupId)" style="color: #a54000; font-size: 27px; font-weight: bold; letter-spacing: 7px; text-transform: uppercase;">@kioskGroupModel.KioskGroupDesc</h3>
+            if (kioskGroupModel.KioskGroupType == "")
+            {
+                foreach (var kioskItemModel in kioskGroupModel.KioskItemModels)
+                {
+                    <div class="col-md-3" style="float: left;">
+                        <a href="javascript: void(0);" onclick="javascript: document.getElementById('kioskItemId@(index)').checked = true;updateShoppingCart();">
+                            <img src="~/Images/Fremont/Dieties/@kioskItemModel.ItemImageName" style="height: @kioskItemModel.ItemImageHeight; width: @kioskItemModel.ItemImageWidth;" />
+                        </a>
+                        <br />
+                        <h4 style="font-weight: bold;">
+                            @kioskItemModel.ItemDesc<br />
+                            <span style="color: #0000ff;">@string.Format("{0:c}", kioskItemModel.ItemRate)</span>
+                            <span style="color: #ff0000; padding-left: 12px; padding-right: 12px;">Select</span>
+                            <input id="kioskItemId@(index)" onclick="javascript: updateShoppingCart();" type="checkbox" value="@kioskItemModel.KioskItemId" />
+                        </h4>
+                        <span id="itemRate@(index)" style="display: none;">@kioskItemModel.ItemRate</span>
+                    </div>
+                    index++;
+                    rowCount++;
+                    if (rowCount == 4)
+                    {
+                        <br style="clear: both;" />
+                    }
+                }
+                rowCount = 0;
+                <br style="clear: both;" />
+            }
+            else
+            {
+                <div class="col-md-2" style="float: left;">
+                    <img src="~/Images/Fremont/Dieties/@kioskGroupModel.ItemImageName" style="height: @kioskGroupModel.ItemImageHeight; width: @kioskGroupModel.ItemImageWidth;" />
+                </div>
+                <div class="col-md-2" style="float: left;">
+                    <button class="btn btn-primary" onclick="javascript: return kioskCheckout_onclick();" style="font-size: 15px; font-weight: bold;" title="Click to proceed to checkout" type="submit">Checkout</button>
+                </div>
+                <div class="col-md-6 text-left" style="float: left;">
+                    <table class="table table-striped table-responsive" style="font-weight: bold;">
+                        <tr>
+                            <th scope="row">
+                                Sel
+                            </th>
+                            <th scope="row">
+                                Qty
+                            </th>
+                            <th scope="row">
+                                Description
+                            </th>
+                            <th class="text-right" scope="row">
+                                Rate
+                            </th>
+                            <th class="text-right" scope="row">
+                                Amount
+                            </th>
+                        </tr>
+                        @foreach (var kioskItemModel in kioskGroupModel.KioskItemModels)
+                        {
+                        <tr>
+                            <td>
+                                <input id="kioskItemId@(index)" onclick="javascript: updateShoppingCart();" type="checkbox" value="@kioskItemModel.KioskItemId" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="kioskOrderQty@(index)" min="1" max="99" maxlength="2" oninput="javascript: return orderQty_input(@index);" onkeypress="javascript: return isInputNumber(event);" style="width: 63px;" type="text" value="" />
+                            </td>
+                            <td style="font-size: 18px;">
+                                <a href="javascript: void(0);" onclick="javascript: document.getElementById('kioskItemId@(index)').checked = true;updateShoppingCart();" style="color: #000000; text-decoration: underline;">
+                                    @kioskItemModel.ItemDesc
+                                </a>
+                            </td>
+                            <td class="text-right" style="font-size: 18px;">
+                                <a href="javascript: void(0);" onclick="javascript: document.getElementById('kioskItemId@(index)').checked = true;updateShoppingCart();" style="text-decoration: underline;">
+                                    <span style="color: #0000ff;">@string.Format("{0:c}", kioskItemModel.ItemRate)</span>
+                                </a>
+                                <span id="itemRate@(index)" style="display: none;">@kioskItemModel.ItemRate</span>
+                            </td>
+                            <td class="text-right" id="kioskOrderAmount@(index)" style="font-size: 18px; width: 81px;">
+                            </td>
+                        </tr>
+                            index++;
+                        }
+                    </table>
+                </div>
+                <br style="clear: both;" />
+            }
+        }
+    }
+</form>

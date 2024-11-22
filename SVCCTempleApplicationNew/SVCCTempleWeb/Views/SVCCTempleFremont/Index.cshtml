@@ -1,0 +1,108 @@
+﻿@model SVCCTempleWeb.Models.IndexModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "_Layout2.cshtml";
+    int i;
+    List<string> tabTexts = new List<string>
+{
+"Schedule"
+,"Sankalpam" + "<br />" + DateTime.Now.ToString("ddd M / d")
+,"Today's Info" + "<br />" + DateTime.Now.ToString("ddd M / d")
+//,"Daily" + "<br />" + "Weekly"
+//,"Recurring" + "<br />" + "Dates"
+,"Festivals"
+};
+    List<string> tabWidths = new List<string>
+{
+"108px"
+,"126px"
+,"126px"
+//,"99px"
+//,"99px"
+,"99px"
+};
+    List<string> tabIndexes = new List<string>
+{
+"0"
+,"1"
+,"2"
+//,"99px"
+//,"99px"
+,"5"
+};
+}
+@for (i = 0; i < tabTexts.Count; i++)
+{
+    <div style="background: #ddc385; border-top-left-radius: 25px; border-top-right-radius: 25px; float: left; height: 54px; margin-left: auto; margin-right: auto; padding: 8px; text-align: center; width: @tabWidths[i];">
+        @if (i == Model.TabIndex)
+        {
+            <span style="color: #000000; font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 15px; font-weight: bold;">@Html.Raw(tabTexts[i])</span>
+        }
+        else
+        {
+            <a id="divTab@(i)" href="@ApplicationInstance.Application["FremontBaseURL"]Index/@(tabIndexes[i])" style="color: #0000ff; font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 15px; font-weight: bold; text-decoration: underline;">@Html.Raw(tabTexts[i])</a>
+        }
+    </div>
+    if (i < tabTexts.Count - 1)
+    {
+        <div style="float: left; width: 9px;">&nbsp;</div>
+    }
+}
+<br style="clear: both;" />
+@switch (Model.TabIndex)
+{
+    case 0: //Upcoming Events
+        @Html.Partial("_Upcoming", Model)
+        <br style="clear: both;" />
+        break;
+    case 1: //Sankalpam
+        @Html.Partial("_SankalpamInfo")
+        break;
+    case 2: //Daily Info
+        @Html.Partial("_DailyInfo", Model)
+        break;
+    @*case 3: //Daily Weekly
+            @Html.Partial("_DailyWeekly", Model)
+            break;
+        case 4: //Important Dates
+            @Html.Partial("_ImportantDates", Model)
+            break; *@
+    case 5: //Festivals
+        @Html.Partial("_FestivalInfo", Model)
+        break;
+}
+<br style="clear: both;" />
+<script type="text/javascript">
+    function window_onload() {
+    }
+</script>
+@*
+    <hr style="border-color: #000000; border-style: solid; border-width: 1px;" />
+    <div class="col-md-9" style="font-size: 18px; font-weight: bold; text-align: left;">
+        <div class="col-md-6" style="float: left; font-size: 18px; font-weight: bold; text-align: left;">
+            Dear Devotees,
+            <br />
+            We have created 'WhatsApp Community' to bring all SVCC devotees together
+            <br />
+            The purpose of this group is to keep the devotees informed of the festivals at the temple
+            <br />
+            We kindly request you to join the group by clicking the below link
+            <br />
+            Appreciate, if you could share the link with other devotees, friends and family
+            <br />
+            <a alt="SVCC Temple Festivals WhatsApp Community" href="https://chat.whatsapp.com/CUUBER4bGWN7N6d1WQ9umE" target="_blank" style="text-decoration: underline;" title="SVCC Temple Festivals WhatsApp Community">https://chat.whatsapp.com/CUUBER4bGWN7N6d1WQ9umE</a>
+            <br />
+            <br />
+            Om Gam Ganapathaye Namaha🙏🙏🙏
+            <br />
+            Lokha Samastha Sukhino Bavanthu!!!
+            <br />
+            May Lord GANESHA Bless One And All!!!
+        </div>
+        <div class="col-md-6" style="float: left; font-size: 18px; font-weight: bold; text-align: left;">
+            <a alt="SVCC Temple Festivals WhatsApp Community" title="Scan QR code to join SVCC Temple Festivals WhatsApp Community" href="https://www.svcctemple.org/SVCCTempleFremont/KioskOrder?id=18" target="_blank">
+                <img src="~/Images/Fremont/QRCodes/WhatsAppCommunity_QRCode.jpg" alt="Scan QR code to join SVCC Temple Festivals WhatsApp Community" title="Scan QR code to join SVCC Temple Festivals WhatsApp Community" style="height: 252px; width: 252px;" />
+            </a>
+        </div>
+    </div>
+*@

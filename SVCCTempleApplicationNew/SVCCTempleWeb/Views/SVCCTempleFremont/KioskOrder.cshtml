@@ -1,0 +1,128 @@
+﻿@model List<SVCCTempleWeb.Models.KioskGroupModel>
+@{
+    ViewBag.Title = "KioskOrder";
+    Layout = "_Layout5.cshtml";
+}
+@Html.Partial("_KioskOrder", Model)
+<script type="text/javascript">
+    function window_onload() {
+        updateShoppingCart();
+        try {
+            var kioskGroupId = "";
+            const urlParams = new URLSearchParams(location.search);
+            console.log(urlParams);
+            for (const [key, value] of urlParams) {
+                console.log(`${key}:${value}`);
+                if (key.toUpperCase().trim() == "ID") {
+                    kioskGroupId = value;
+                }
+            }
+            if (kioskGroupId != "") {
+                document.getElementById("divKioskGroup" + kioskGroupId).scrollIntoView();
+            }
+        }
+        catch (err) {
+            ;
+        }
+    }
+    function updateShoppingCart() {
+        document.getElementById("kioskOrderedItemIds").value = "";
+        document.getElementById("kioskOrderedOrderQtys").value = "";
+        var prefixString = "";
+        var documentElementById, orderCount = 0, orderAmount = 0, orderAmountTemp;
+        var orderQty;
+        for (var i = 0; ; i++) {
+            try {
+                documentElementById = document.getElementById("kioskItemId" + i);
+                if (documentElementById.checked) {
+                    orderQty = parseInt(document.getElementById("kioskOrderQty" + i).value);
+                    if (isNaN(orderQty)) {
+                        orderQty = 1;
+                        document.getElementById("kioskOrderQty" + i).value = "1";
+                    }
+                    orderCount++;
+                    orderAmountTemp = parseFloat(document.getElementById("itemRate" + i).innerHTML) * orderQty
+                    orderAmount += orderAmountTemp;
+                    document.getElementById("kioskOrderedItemIds").value += prefixString + documentElementById.value;
+                    document.getElementById("kioskOrderedOrderQtys").value += prefixString + orderQty;
+                    document.getElementById("kioskOrderAmount" + i).innerHTML = "$" + orderAmountTemp;
+                    prefixString = ",";
+                }
+                else {
+                    document.getElementById("kioskOrderQty" + i).value = "";
+                    document.getElementById("kioskOrderAmount" + i).innerHTML = "";
+                    orderQty = 0;
+                }
+            }
+            catch (err) {
+                break;
+            }
+        }
+        var generalDonationDescription, generalDonationAmount;
+        try {
+            generalDonationAmount = parseFloat(document.getElementById("GeneralDonationAmount").value);
+            if (isNaN(generalDonationAmount)) {
+                generalDonationAmount = 0;
+            }
+        }
+        catch (err) {
+            generalDonationAmount = 0;
+        }
+        try {
+            generalDonationDescription = document.getElementById("GeneralDonationDescription").value.trim();
+        }
+        catch (err) {
+            generalDonationDescription = "";
+        }
+        if (generalDonationDescription == "" && generalDonationAmount > 0) {
+            generalDonationDescription = "General Donation";
+        }
+        if (generalDonationDescription != "" && generalDonationAmount > 0) {
+            orderCount++;
+            orderAmount += parseFloat(generalDonationAmount);
+        }
+        document.getElementById("GeneralDonationDescription").value = generalDonationDescription;
+        document.getElementById("GeneralDonationAmount").value = generalDonationAmount;
+        document.getElementById("orderCount").innerHTML = orderCount;
+        document.getElementById("orderAmount").innerHTML = orderAmount;
+        if (orderCount == 0 || orderAmount == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function orderQty_input(index) {
+        var orderQty;
+        //console.log(index, document.getElementById("kioskOrderQty" + index).value);
+        try {
+            orderQty = parseInt(document.getElementById("kioskOrderQty" + index).value);
+            if (isNaN(orderQty)) {
+                orderQty = 0;
+            }
+            //console.log(index, orderQty);
+        }
+        catch (err) {
+            orderQty = 0;
+            console.log(index, err);
+        }
+        //console.log(3, index, orderQty);
+        if (orderQty === 0) {
+            document.getElementById("kioskItemId" + index).checked = false;
+        }
+        else {
+            document.getElementById("kioskItemId" + index).checked = true;
+        }
+        updateShoppingCart();
+    }
+    function kioskCheckout_onclick() {
+        //alert(1);
+        if (updateShoppingCart()) {
+            return true;
+        }
+        else {
+            alert("Please select an item to continue");
+            return false;
+        }
+    }
+</script>

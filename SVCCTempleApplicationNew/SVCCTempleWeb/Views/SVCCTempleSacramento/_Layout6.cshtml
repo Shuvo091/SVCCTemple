@@ -1,0 +1,99 @@
+﻿@{ 
+    string templeFullName = @ApplicationInstance.Application["SacramentoTempleFullName"].ToString();
+    string templeName = @ApplicationInstance.Application["SacramentoTempleName"].ToString();
+    string telephoneNum1 = long.Parse(ApplicationInstance.Application["SacramentoTemplePhone1"].ToString()).ToString("1-###-###-####");
+    string telephoneNum2 = long.Parse(ApplicationInstance.Application["SacramentoTemplePhone2"].ToString()).ToString("1-###-###-####");
+    string telephoneNum6 = long.Parse(ApplicationInstance.Application["SacramentoTemplePhone1"].ToString()).ToString("(###) ###-####");
+    string telephoneNum7 = long.Parse(ApplicationInstance.Application["SacramentoTemplePhone2"].ToString()).ToString("(###) ###-####");
+    string addressLine1 = ApplicationInstance.Application["SacramentoTempleAddressLine1"].ToString();
+    string cityName = ApplicationInstance.Application["SacramentoTempleCityName"].ToString();
+    string stateAbbrev = ApplicationInstance.Application["SacramentoTempleStateAbbrev"].ToString();
+    string zipCode = ApplicationInstance.Application["SacramentoTempleZipCode"].ToString();
+    string webUrl1 = ApplicationInstance.Application["SacramentoTempleWebUrl1"].ToString();
+    string webUrl2 = ApplicationInstance.Application["SacramentoTempleWebUrl2"].ToString();
+    string emailAddress1 = ApplicationInstance.Application["SacramentoTempleEmailAddress1"].ToString();
+    string facebookUrl = ApplicationInstance.Application["SacramentoTempleFacebookUrl"].ToString();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@templeFullName</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css0")
+    @Scripts.Render("~/bundles/scripts0")
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patua+One|Open+Sans|Lato|Roboto" />
+
+    @RenderSection("scripts", required: false)
+</head>
+<body style="margin: 0px;">
+    <script>
+        $(document).ready
+            (
+            function () {
+                window_onload();
+            }
+            );
+        function window_onload() {
+            alert("This is appearing from window_onload in Shared/_Layout.cshtml - Please implement window_onload in your cshtml");
+        }
+        $.ajaxSetup({ cache: false });
+    </script>
+    <div class="col-md-12" style="margin: 0 auto; text-align: center;">
+        <table style="margin: 0 auto;">
+            <tr>
+                <td style="padding-left: 9px; padding-right: 9px;">
+                    <img alt="@templeFullName - @templeName @addressLine1, @cityName, @stateAbbrev @zipCode Ph : @telephoneNum6, @telephoneNum7 @webUrl1 @emailAddress1" class="img-responsive" src="@ApplicationInstance.Application["SacramentoImagesBaseURL"]/HomePage/SVCCBanner.jpg" style="height: auto; max-width: 1341px; width: 100%;" title="@templeFullName - @templeName @addressLine1, @cityName, @stateAbbrev @zipCode Ph : @telephoneNum6, @telephoneNum7 @webUrl1 @emailAddress1" />
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left: 9px; padding-right: 9px;">
+                    <span style="color: #000000; font-family: Arial; font-size: 14px; font-weight: bold;">@addressLine1, @cityName, @stateAbbrev @zipCode</span>&nbsp;
+                    <span style="color: #a54000; font-family: Arial; font-size: 14px; font-weight: bold;">Ph :</span>&nbsp;
+                    <span style="color: #0000ff; font-family: Arial; font-size: 14px; font-weight: bold;">@telephoneNum6,</span>&nbsp;
+                    <span style="color: #ff0000; font-family: Arial; font-size: 14px; font-weight: bold;">@telephoneNum7</span>&nbsp;
+                    &nbsp;<a href="@Url.Action("ContactUs", "SVCCTempleSacramento")" style="color: #0000ff; font-family: Arial; font-size: 14px; font-weight: bold; text-decoration: underline;" target="_blank">@emailAddress1</a>
+                </td>
+            </tr>
+        </table>
+        <div class="col-md-2" style="float: left; padding-right: 36px;">
+            @Html.Partial("_Menu")
+        </div>
+        <div class="col-md-10" style="float: left; padding-left: 36px;">
+            @RenderBody()
+            <br style="clear: both;" />
+            <span style="color:#000000; font-family: Arial; font-size: 12px;">
+                @templeFullName - @templeName, @addressLine1, @cityName, @stateAbbrev @zipCode Tel: <a href="tel:@telephoneNum1" style="text-decoration: underline;">@telephoneNum6</a> / <a href="tel:@telephoneNum2" style="text-decoration: underline;">@telephoneNum7</a><br />
+            </span>
+            <a href="@webUrl1" style="color:#0000ff; font-family: Arial; font-size: 12px; text-decoration: underline;">@webUrl1</a>
+            <span style="padding-left: 9px;">&nbsp;</span>
+            <a href="@webUrl2" style="color:#0000ff; font-family: Arial; font-size: 12px; text-decoration: underline;">@webUrl2</a>
+            <span style="padding-left: 9px;">&nbsp;</span>
+            <a href="mailto:@emailAddress1" style="color:#0000ff; font-family: Arial; font-size: 12px; text-decoration: underline;">@emailAddress1</a><br />
+            <div class="fb-like" data-href="@facebookUrl" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" style="vertical-align: top; zoom: 1; display: inline;"></div>
+            <a href="@facebookUrl" target="_blank"><img src="~/Images/Fremont/Facebook.jpg" alt="Find us on Facebook (@templeName)" title="Find us on Facebook (@templeName)" /></a>
+            <div id="divFacebook" style="margin-left: auto; margin-right: auto; width: 240px;"></div>
+            <span style="color:#000000; font-family: Arial; font-size: 12px;">Copyright &copy; @DateTime.Now.Year @templeFullName - @cityName @stateAbbrev (Non-Profit Organization). All rights reserved</span>
+        </div>
+    </div>
+    <div>
+        @Html.Partial("_LoadingModal")
+    </div>
+    <script type="text/javascript">
+        (
+            function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+                (document, 'script', 'facebook-jssdk')
+        );
+    </script>
+</body>
+</html>

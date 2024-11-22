@@ -1,0 +1,180 @@
+﻿@model SVCCTempleWeb.Models.CalendarDataViewModel
+@{
+    int i;
+    List<string> tabs = new List<string>
+{
+"Schedule", "Festival", "Schedule Master", "Rise / Set", "Thithi", "Nakshatra", "Rasi"
+};
+<div style="float: left; width: 27px;">
+    &nbsp;
+</div>
+for (i = 0; i < tabs.Count; i++)
+{
+    <div style="background: #e5e4e2; border-top-left-radius: 20px; border-top-right-radius: 20px; float: left; height: 45px; margin-bottom: 9px; margin-left: auto; margin-right: auto; padding: 9px; text-align: center; vertical-align: middle; ">
+        <a id="divTab@(i)" href="javascript: void(0);" onclick="javascript: return divTab_onclick('@i', '@tabs.Count')" style="color: #0000ff; font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 15px; font-weight: bold; text-decoration: underline;">@(i + 1). @tabs[i]</a>
+    </div>
+    <div style="float: left; width: 27px;">
+        &nbsp;
+    </div>
+}
+<br style="clear: both;" />
+<span style="color: #000000; font-family: Arial; font-size: 15px; font-weight: bold;">@(Model.StartDate + " " + Model.FinishDate)</span>
+<br style="clear: both;" />
+<div id="divErrorMessage"></div>
+<div id="divTabData3" class="col-md-12" style="padding-left: 27px; text-align: left;">
+    @Html.Partial("_RiseSet", Model.RiseSetModels)
+</div>
+<div id="divTabData4" class="col-md-12" style="padding-left: 27px; text-align: left;">
+    @Html.Partial("_Thithi", Model.ThithiDataModels)
+</div>
+<div id="divTabData5" class="col-md-12" style="padding-left: 27px; text-align: left;">
+    @Html.Partial("_Nakshatra", Model.NakshatraDataModels)
+</div>
+<div id="divTabData6" class="col-md-12" style="padding-left: 27px; text-align: left;">
+    @Html.Partial("_Rasi", Model.RasiDataModels)
+</div>
+<div id="divTabData0" class="col-md-12" style="padding-left: 27px; text-align: left;">
+    <div class="center" style="width: 36%;">
+        <button class="loginRegisterbtn" id="templeScheduleUploadSave1" onclick="javascript: return templeScheduleUploadSave_onclick();">SAVE</button>
+    </div>
+    <form id="formTempleScheduleUploadList">
+        @Html.Partial("_TempleScheduleUploadList", Model.TempleScheduleUploadList)
+    </form>
+    <div class="center" style="width: 36%;">
+        <button class="loginRegisterbtn" id="templeScheduleUploadSave2" onclick="javascript: return templeScheduleUploadSave_onclick();">SAVE</button>
+    </div>
+</div>
+<div id="divTabData1" class="col-md-12" style="padding-left: 27px; text-align: left;">
+    <div class="center" style="width: 36%;">
+        <button class="loginRegisterbtn" id="templeSFestivalUploadSave1" onclick="javascript: return templeFestivalUploadSave_onclick();">SAVE</button>
+    </div>
+    <form id="formTempleFestivalUploadList">
+        @Html.Partial("_TempleFestivalUploadList", Model.TempleFestivalUploadList)
+    </form>
+    <div class="center" style="width: 36%;">
+        <button class="loginRegisterbtn" id="templeFestivalUploadSave2" onclick="javascript: return templeFestivalUploadSave_onclick();">SAVE</button>
+    </div>
+</div>
+<div id="divTabData2" class="col-md-12" style="padding-left: 27px; text-align: left;">
+    @Html.Partial("_TempleScheduleMasterList", Model.TempleScheduleMasterList)
+</div>
+}
+<script type="text/javascript">
+    divTab_onclick(0, '@tabs.Count');
+    function divTab_onclick(index, count) {
+        for (var i = 0; i < count; i++) {
+            document.getElementById("divTabData" + i).style.display = "none";
+            document.getElementById("divTab" + i).style.textDecoration = "underline";
+            document.getElementById("divTab" + i).style.color = "#0000ff";
+        }
+        document.getElementById("divTabData" + index).style.display = "block";
+        document.getElementById("divTab" + index).style.textDecoration = "none";
+        document.getElementById("divTab" + index).style.color = "#000000";
+    }
+    function templeScheduleUploadSave_onclick() {
+        console.log("00000000", "templeScheduleUploadSave_onclick", "ENTER!!!");
+        $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+        document.getElementById("divErrorMessage").innerHTML = "";
+        var url = "/SVCCTempleFremont/TempleScheduleUploadList";
+        var jsonPostData = $("#formTempleScheduleUploadList").serialize();
+        //console.log(jsonPostData);
+        $.ajax({
+            url: url,
+            type: "POST",
+            //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            //dataType: "html",
+            data: jsonPostData,
+            success: function (responseData, textStatus, request) {
+                console.log("00000000", "templeScheduleUploadSave_onclick", "SUCCESS!!!");
+                $("#loadingModal").modal('hide');
+                document.getElementById("divErrorMessage").innerHTML = "<span style='color: #0000ff; font-family: Arial; font-size: 15px; font-weight: bold;'>Schedule updated successfully!!!</span>";
+                alert("Update Successful");
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                console.log("00000000", "templeScheduleUploadSave_onclick", "ERROR???");
+                console.log(xhr);
+                document.getElementById("divErrorMessage").innerHTML = "<span style='color: #ff0000; font-family: Arial; font-size: 15px; font-weight: bold;'>Error while updating schedule</span>";
+                alert("Error while updating");
+            }
+        });
+    }
+    function templeFestivalUploadSave_onclick() {
+        console.log("00000000", "templeScheduleUploadSave_onclick", "Enter");
+        var url = "/SVCCTempleFremont/TempleFestivalUploadList";
+        var jsonPostData = $("#formTempleFestivalUploadList").serialize();
+        //console.log(jsonPostData);
+        $.ajax({
+            url: url,
+            type: "POST",
+            //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            //dataType: "html",
+            data: jsonPostData,
+            success: function (responseData, textStatus, request) {
+                console.log("00000000", "templeFestivalUploadSave_onclick", "SUCCESS!!!");
+                $("#loadingModal").modal('hide');
+                document.getElementById("divErrorMessage").innerHTML = "<span style='color: #00ff00; font-family: Arial; font-size: 15px; font-weight: bold;'>Festival updated successfully!!!</span>";
+                alert("Update Successful");
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                console.log("00000000", "templeFestivalUploadSave_onclick", "ERROR???");
+                console.log(xhr);
+                document.getElementById("divErrorMessage").innerHTML = "<span style='color: #ff0000; font-family: Arial; font-size: 15px; font-weight: bold;'>Error while updating festival</span>";
+                alert("Error while updating");
+            }
+        });
+    }
+    @*function templeScheduleUploadSave_onclick_backup() {
+        console.log("00000000", "templeScheduleUploadSave_onclick", "Enter");
+        //var jsonPostObject = [];
+        //var jsonPost;
+        var templeScheduleUploadIds = [], startDates = [];
+        for (var i = 0; ; i++) {
+            if (document.getElementById("TempleScheduleUploadModels[" + i + "].TempleScheduleUploadId") == null) {
+                break;
+            }
+            if (document.getElementById("TempleScheduleUploadModels[" + i + "].StartDate").value != document.getElementById("StartDateSave" + i).value) {
+                templeScheduleUploadIds.push(document.getElementById("TempleScheduleUploadModels[" + i + "].TtempleScheduleUploadId"));
+                startDates.push(document.getElementById("TempleScheduleUploadModels[" + i + "].StartDate"));
+                //jsonPost = {};
+                //jsonPost.Index = i;
+                //jsonPost.TempleScheduleUploadId = parseInt(document.getElementById("TempleScheduleUploadId" + i).value);
+                //jsonPost.StartDate = document.getElementById("StartDate" + i).value;
+                //jsonPostObject.push(jsonPost);
+            }
+        }
+        //console.log(jsonPostObject, jsonPostObject.length);
+        //if (jsonPostObject.length === 0) {
+        //    alert("No changes made");
+        //    return false;
+        //}
+        //var jsonPostData = { };
+        //jsonPostData.ResponseObjectModel = null;
+        //jsonPostData.TempleScheduleUploadModels = jsonPostObject;
+        var url = "/SVCCTempleFremont/TempleScheduleUpload";
+        alert(1);
+        var jsonPostData = {};
+        jsonPostData.templeScheduleUploadIds = templeScheduleUploadIds;
+        jsonPostData.startDates = startDates;
+        console.log(jsonPostData);
+        alert(2);
+        $.ajax({
+            url: url,
+            type: "POST",
+            //contentType: "application/x-www-form-urlencoded; charset=UTF-8",//"application/x-www-form-urlencoded; charset=UTF-8",//"text/plain; charset=UTF-8", //false, //"application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(jsonPostData),
+            //async: false,
+            success: function (responseData, textStatus, request) {
+                $("#loadingModal").modal('hide');
+                alert(3);
+                console.log("00090000", "registerUserSave_onclick success", "Exit");
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                alert(4);
+            }
+        });
+    }*@
+</script>

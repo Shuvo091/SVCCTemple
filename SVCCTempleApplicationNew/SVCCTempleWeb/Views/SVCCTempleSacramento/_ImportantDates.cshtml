@@ -1,0 +1,310 @@
+﻿@using System.Data.SqlClient
+@{
+    string databaseConnectionString = ApplicationInstance.Application["DatabaseConnectionString"].ToString();
+    SqlConnection sqlConnection = new SqlConnection(databaseConnectionString);
+    sqlConnection.Open();
+    #region
+    string startDate = DateTime.Now.ToString("yyyy-MM-dd"), startTime;
+    string beginDateStart = DateTime.Now.ToString("yyyy-MM-01");
+    string beginDateFinish = DateTime.Parse(DateTime.Now.AddMonths(13).ToString("yyyy-MM-01")).AddDays(-1).ToString("yyyy-MM-dd");
+    string sqlStmt = "";
+    sqlStmt += "        SELECT " + Environment.NewLine;
+    sqlStmt += "               TempleEvent.StartDate" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.StartTime, '') WHEN '' THEN MonthList_TempleEventMaster.StartTime ELSE TempleEvent.StartTime END AS StartTime" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.EventMasterId" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.EventName1" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.EventName2" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.EventName3" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.EventDesc1" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.EventDesc2" + Environment.NewLine;
+    sqlStmt += "              ,TempleEvent.CalendarId" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.InfoOnly, '') WHEN '' THEN MonthList_TempleEventMaster.InfoOnly ELSE TempleEvent.InfoOnly END AS InfoOnly" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.EventAtTemple, '') WHEN '' THEN MonthList_TempleEventMaster.EventAtTemple ELSE TempleEvent.EventAtTemple END AS EventAtTemple" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.StartDate AS CalendarStartDate" + Environment.NewLine;
+    sqlStmt += "              ,Calendar.StartTime AS CalendarStartTime" + Environment.NewLine;
+    sqlStmt += "			  ,CodeData.CodeDataDesc0" + Environment.NewLine;
+    sqlStmt += "			  ,CodeData.CodeDataDesc1" + Environment.NewLine;
+    sqlStmt += "			  ,CodeData.CodeDataDesc2" + Environment.NewLine;
+    sqlStmt += "			  ,CodeData.CodeDataDesc3" + Environment.NewLine;
+    sqlStmt += "			  ,CodeData.CodeDataDesc4" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName1, '') WHEN '' THEN MonthList_TempleEventMaster.FileName1 ELSE TempleEvent.FileName1 END AS FileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName2, '') WHEN '' THEN MonthList_TempleEventMaster.FileName2 ELSE TempleEvent.FileName2 END AS FileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.FileName3, '') WHEN '' THEN MonthList_TempleEventMaster.FileName3 ELSE TempleEvent.FileName3 END AS FileName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName1, '') WHEN '' THEN MonthList_TempleEventMaster.ImageFileName1 ELSE TempleEvent.ImageFileName1 END AS ImageFileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName2, '') WHEN '' THEN MonthList_TempleEventMaster.ImageFileName2 ELSE TempleEvent.ImageFileName2 END AS ImageFileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.ImageFileName3, '') WHEN '' THEN MonthList_TempleEventMaster.ImageFileName3 ELSE TempleEvent.ImageFileName3 END AS ImageFileName3" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName1, '') WHEN '' THEN MonthList_TempleEventMaster.HtmlFileName1 ELSE TempleEvent.HtmlFileName1 END AS HtmlFileName1" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName2, '') WHEN '' THEN MonthList_TempleEventMaster.HtmlFileName2 ELSE TempleEvent.HtmlFileName2 END AS HtmlFileName2" + Environment.NewLine;
+    sqlStmt += "              ,CASE ISNULL(TempleEvent.HtmlFileName3, '') WHEN '' THEN MonthList_TempleEventMaster.HtmlFileName3 ELSE TempleEvent.HtmlFileName3 END AS HtmlFileName3" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.SponsorshipGroupId" + Environment.NewLine;
+    sqlStmt += "              ,MonthList_TempleEventMaster.KioskGroupId" + Environment.NewLine;
+    sqlStmt += "          FROM " + Environment.NewLine;
+    sqlStmt += "              (" + Environment.NewLine;
+    sqlStmt += "                 SELECT" + Environment.NewLine;
+    sqlStmt += "                        *" + Environment.NewLine;
+    sqlStmt += "                   FROM MonthList" + Environment.NewLine;
+    sqlStmt += "             CROSS JOIN TempleEventMaster" + Environment.NewLine;
+    sqlStmt += "                  WHERE MonthList.BeginDate BETWEEN '" + beginDateStart + "' AND '" + beginDateFinish + "'" + Environment.NewLine;
+    sqlStmt += "                    AND TempleEventMaster.LocationNameDesc = 'SACRAMENTO'" + Environment.NewLine;
+    sqlStmt += "                    AND TempleEventMaster.EventMasterId IN(90050, 90051, 90053, 90054, 90055, 90056, 90057, 90058)" + Environment.NewLine;
+    sqlStmt += "              ) AS MonthList_TempleEventMaster" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN TempleEvent" + Environment.NewLine;
+    sqlStmt += "            ON MonthList_TempleEventMaster.TempleEventMasterId = TempleEvent.TempleEventMasterId" + Environment.NewLine;
+    sqlStmt += "           AND TempleEvent.StartDate BETWEEN MonthList_TempleEventMaster.BeginDate AND MonthList_TempleEventMaster.EndDate" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN Calendar" + Environment.NewLine;
+    sqlStmt += "            ON TempleEvent.CalendarId = Calendar.CalendarId" + Environment.NewLine;
+    sqlStmt += "    INNER JOIN CodeData" + Environment.NewLine;
+    sqlStmt += "            ON Calendar.CalendarCodeId = CodeData.CodeDataId" + Environment.NewLine;
+    sqlStmt += "         WHERE MonthList_TempleEventMaster.LocationNameDesc = 'SACRAMENTO'" + Environment.NewLine;
+    sqlStmt += "           AND Calendar.LocationNameDesc = 'SACRAMENTO'" + Environment.NewLine;
+    sqlStmt += "           AND TempleEvent.StartDate >= '" + startDate + "'" + Environment.NewLine;
+    sqlStmt += "      ORDER BY 1, 2" + Environment.NewLine;
+    sqlStmt += "--" + Environment.NewLine;
+    #endregion
+    SqlCommand sqlCommand = new SqlCommand(sqlStmt, sqlConnection);
+    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+    string textColor, prefixChar;
+    Dictionary<string, Dictionary<long, Dictionary<string, string>>> templeEvents = new Dictionary<string, Dictionary<long, Dictionary<string, string>>>();
+    Dictionary<long, Dictionary<string, string>> templeEventRows;
+    Dictionary<string, string> templeEventCols;
+    List<string> eventDescs;
+    int i, rowIndex = -1;
+    while (sqlDataReader.Read())
+    {
+        try
+        {
+            templeEventRows = templeEvents[sqlDataReader["EventMasterId"].ToString()];
+            rowIndex = templeEventRows.Count;
+        }
+        catch
+        {
+            templeEventRows = new Dictionary<long, Dictionary<string, string>>();
+            templeEvents[sqlDataReader["EventMasterId"].ToString()] = templeEventRows;
+            rowIndex = 0;
+        }
+        templeEventCols = new Dictionary<string, string>();
+        templeEventRows[rowIndex] = templeEventCols;
+        for (i = 0; i < sqlDataReader.FieldCount; i++)
+        {
+            templeEventCols[sqlDataReader.GetName(i)] = sqlDataReader[i].ToString();
+        }
+        if (templeEventCols["StartTime"] == "00:00")
+        {
+            templeEventCols["StartTime"] = "";
+        }
+        else
+        {
+            templeEventCols["StartTime"] = DateTime.Parse(templeEventCols["StartTime"]).ToString("h:mmtt").ToLower();
+        }
+    }
+    sqlDataReader.Close();
+    sqlConnection.Close();
+<table id="divRecurringSchedule" class="table table-responsive" style="font-size: 0px;">
+    <tr>
+        <td colspan="5" style="background-color: #d3d3d3; border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; color: #0000ff; font-size: 18px; font-weight: bold; padding: 5px; text-align: left; vertical-align: top; width: 33%;">
+            Recurring Schedule<a href="javascript: void(0);" onclick="javascript: document.getElementById('divUpcomingLinks').scrollIntoView();" style="color: #a54000; padding-left: 18px; text-decoration: underline;">Back to Top</a>
+        </td>
+    </tr>
+    @{
+        foreach (var templeEvent in templeEvents)
+        {
+            startDate = DateTime.Parse(templeEvent.Value[0]["StartDate"]).ToString("ddd MMM-dd-yyyy");
+            startTime = templeEvent.Value[0]["StartTime"];
+            <tr>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 14px; font-weight: bold; padding: 5px; vertical-align: top;">
+                    @(startDate)
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 14px; font-weight: bold; padding: 5px; vertical-align: top;">
+                    @(startTime)
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-weight: bold; padding: 5px; vertical-align: top;">
+                    <img src="~/Images/Sacramento/ImportantDates/@templeEvent.Value[0]["ImageFileName1"]" style="height: 153px; width: 153px;" />
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 14px; font-weight: bold; padding: 5px; text-align: left; vertical-align: top;">
+                    @{
+                        eventDescs = new List<string>();
+                        switch (templeEvent.Value[0]["EventMasterId"])
+                        {
+                            case "90050": //Poornima
+                                eventDescs.Add(templeEvent.Value[0]["CodeDataDesc0"]);
+                                eventDescs.Add("Starts at " + DateTime.Parse(templeEvent.Value[0]["CalendarStartDate"] + " " + templeEvent.Value[0]["CalendarStartTime"]).ToString("M/dd h:mmtt").ToString().ToLower());
+                                eventDescs.Add(templeEvent.Value[0]["EventName2"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventName3"]);
+                                break;
+                            case "90051": //Sankatahara Chathurthi
+                                eventDescs.Add(templeEvent.Value[0]["EventName1"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventName2"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventName3"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventDesc1"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventDesc2"]);
+                                break;
+                            case "90053": //Sashti
+                                eventDescs.Add(templeEvent.Value[0]["CodeDataDesc0"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventName2"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventName3"]);
+                                break;
+                            case "90054": //Pradosham
+                                eventDescs.Add(templeEvent.Value[0]["CodeDataDesc0"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventName2"]);
+                                eventDescs.Add(templeEvent.Value[0]["EventName3"]);
+                                break;
+                            case "90055": //Ekaadashi
+                                eventDescs.Add(templeEvent.Value[0]["CodeDataDesc0"]);
+                                eventDescs.Add("Starts at " + DateTime.Parse(templeEvent.Value[0]["CalendarStartDate"] + " " + templeEvent.Value[0]["CalendarStartTime"]).ToString("M/d h:mmtt").ToString().ToLower());
+                                break;
+                            case "90056": //Amavasya
+                                eventDescs.Add(templeEvent.Value[0]["CodeDataDesc0"]);
+                                eventDescs.Add("Starts at " + DateTime.Parse(templeEvent.Value[0]["CalendarStartDate"] + " " + templeEvent.Value[0]["CalendarStartTime"]).ToString("M/d h:mmtt").ToString().ToLower());
+                                break;
+                            case "90057": //Start of Lunar Month
+                                eventDescs.Add(templeEvent.Value[0]["EventName1"]);
+                                eventDescs.Add(templeEvent.Value[0]["CodeDataDesc0"] + " Masa");
+                                eventDescs.Add(templeEvent.Value[0]["CodeDataDesc1"] + " Ruthu");
+                                break;
+                            case "90058": //Start of Solar Month
+                                eventDescs.Add(templeEvent.Value[0]["EventName1"]);
+                                eventDescs.Add("Start of " + templeEvent.Value[0]["CodeDataDesc0"] + " Rasi");
+                                eventDescs.Add("Start of " + templeEvent.Value[0]["CodeDataDesc1"] + " Masam");
+                                break;
+                            default:
+                                break;
+                        }
+                        textColor = "#0000ff";
+                        for (i = 0; i < eventDescs.Count; i++)
+                        {
+                            if (!string.IsNullOrWhiteSpace(eventDescs[i]))
+                            {
+                                if (i > 0)
+                                {
+                                    <br />
+                                }
+                                <span style="color: @textColor;">@eventDescs[i]</span>
+                                if (textColor == "#0000ff")
+                                {
+                                    textColor = "#ff0000";
+                                }
+                                else
+                                {
+                                    textColor = "#0000ff";
+                                }
+                            }
+                        }
+                        if (templeEvent.Value[0]["InfoOnly"] == "True")
+                        {
+                            <br />
+                            <span style="color: @textColor;">Info Only</span>
+                            if (textColor == "#0000ff")
+                            {
+                                textColor = "#ff0000";
+                            }
+                            else
+                            {
+                                textColor = "#0000ff";
+                            }
+                        }
+                        if (templeEvent.Value[0]["EventAtTemple"] == "False")
+                        {
+                            <br />
+                            <span style="color: @textColor;">No event at temple</span>
+                            if (textColor == "#0000ff")
+                            {
+                                textColor = "#ff0000";
+                            }
+                            else
+                            {
+                                textColor = "#0000ff";
+                            }
+                        }
+                        if (templeEvent.Value[0]["SponsorshipGroupId"] != "")
+                        {
+                            <br />
+                            <br />
+                            <a href="~/SVCCTempleSacramento/Sponsorship/@templeEvent.Value[0]["SponsorshipGroupId"].ToString()" style="color: #a54000; font-size: 16px; font-weight: bold; text-decoration: underline;" target="_blank">Click here to enter Sankalpam</a>
+                        }
+                        if (templeEvent.Value[0]["FileName1"] != "")
+                        {
+                            <br />
+                            <br />
+                            <a href="~/Files/@templeEvent.Value[0]["FileName1"].ToString()" style="background-color: #d3d3d3; color: #000000; font-size: 15px; font-weight: bold; text-decoration: underline;" target="_blank">Click to read more...</a>
+                        }
+                    }
+                </td>
+                <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 12px; font-weight: bold; padding: 5px; text-align: left; vertical-align: top; word-wrap: break-word; width: 279px;">
+                    @{
+                        switch (templeEvent.Value[0]["EventMasterId"])
+                        {
+                            case "61": //Start of Lunar Month
+                                prefixChar = "";
+                                for (i = 1; i < templeEvent.Value.Count; i++)
+                                {
+                                    @Html.Raw(prefixChar)
+                                    @(DateTime.Parse(templeEvent.Value[i]["StartDate"] + " " + templeEvent.Value[i]["StartTime"]).ToString("M/d h:mmtt").ToLower())
+                                    <span style="color: #0000ff; font-size: 12px;">
+                                        @(templeEvent.Value[i]["CodeDataDesc0"] + " Masa ")
+                                    </span>;
+                                    <span style="color: #ff0000; font-size: 12px;">
+                                        @("(" + templeEvent.Value[i]["CodeDataDesc1"] + " Ruthu)")
+                                    </span>;
+                                    prefixChar = "<br />";
+                                }
+                                break;
+                            case "63": //Start of Solar Month
+                                prefixChar = "";
+                                for (i = 1; i < templeEvent.Value.Count; i++)
+                                {
+                                    @Html.Raw(prefixChar)
+                                    @(DateTime.Parse(templeEvent.Value[i]["StartDate"] + " " + templeEvent.Value[i]["StartTime"]).ToString("M/d h:mmtt").ToLower());
+                                    <span style="color: #0000ff;">
+                                        @(templeEvent.Value[i]["CodeDataDesc0"] + " Rasi ")
+                                    </span>
+                                    <span style="color: #ff0000;">
+                                        @("(" + templeEvent.Value[i]["CodeDataDesc1"] + " Masam)")
+                                    </span>
+                                    prefixChar = "<br />";
+                                }
+                                break;
+                            case "90055": //Ekadasi
+                                @("Start of " + templeEvent.Value[i]["CodeDataDesc0"])
+                                <br />
+                                prefixChar = "";
+                                for (i = 1; i < templeEvent.Value.Count; i++)
+                                {
+                                    if (prefixChar != "")
+                                    {
+                                        <div style="float: left;">,&nbsp;</div>
+                                    }
+                                    <div style="color: #ff0000; float: left;">
+                                        @(DateTime.Parse(templeEvent.Value[i]["CalendarStartDate"]).ToString("ddd M/d"))
+                                        &nbsp;
+                                    </div>
+                                    <div style="color: #0000ff; float: left;">
+                                        @(DateTime.Parse(templeEvent.Value[i]["CalendarStartTime"]).ToString("h:mmtt").ToLower())
+                                    </div>
+                                    prefixChar = ", ";
+                                }
+                                <br style="clear: both;" />
+                                break;
+                            case "90051": //Sankatahara Chathurthi
+                                prefixChar = "";
+                                for (i = 1; i < templeEvent.Value.Count; i++)
+                                {
+                                    @(prefixChar + DateTime.Parse(templeEvent.Value[i]["StartDate"]).ToString("ddd M/d") + DateTime.Parse(templeEvent.Value[i]["StartTime"]).ToString(" h:mmtt").ToLower())
+                                    prefixChar = ", ";
+                                }
+                                break;
+                            default:
+                                prefixChar = "";
+                                for (i = 1; i < templeEvent.Value.Count; i++)
+                                {
+                                    @(prefixChar + DateTime.Parse(templeEvent.Value[i]["StartDate"]).ToString("ddd M/d"))
+                                    prefixChar = ", ";
+                                }
+                                break;
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+}

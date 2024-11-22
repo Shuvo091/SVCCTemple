@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sri Siddhi Vinayaka Cultural Center, 40155 Blacow Rd, Fremont, CA 94538, (510) 403-4256 (925) 301-0391, mailinglistfremont@svcctemple.org - SVCC Temple Fremont</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @*@Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryajax")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/meanmenu.css" rel="stylesheet" />
+    <link href="~/Content/Site0.css" rel="stylesheet" />
+    <link href="~/Include/StyleSheet1.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Scripts/jquery.validate.js"></script>
+    @*<script type="text/javascript">
+            $.validator.setDefaults({
+                ignore: []
+            });
+        </script>*@
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.meanmenu.js"></script>
+    <script src="~/Include/javaScriptCode-1.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patua+One|Open+Sans|Lato|Roboto" />
+</head>
+<body style="margin: 0px;">
+    <script>
+        $(document).ready
+            (
+                function () {
+                    window_onload();
+                }
+            );
+        function window_onload() {
+            alert("This is appearing from window_onload in Shared/_Layout.cshtml - Please implement window_onload in your cshtml");
+        }
+        $.ajaxSetup({ cache: false });
+    </script>
+    <div class="col-md-12" style="margin: auto; text-align: center;">
+        <img class="img-responsive" style="display: block; height: auto; max-width: 1328px; width: 100%;" alt="Sri Siddhi Vinayaka Cultural Center - SVCC Temple Fremont 40155 Blacow Rd, Fremont, CA 94538 Ph : (510) 403-4256, (925) 301-0391" src="~/Images/Fremont//HomePage/SVCCBanner2.jpg" title="Sri Siddhi Vinayaka Cultural Center - SVCC Temple Fremont 40155 Blacow Rd, Fremont, CA 94538 Ph : (510) 403-4256, (925) 301-0391" />
+        @Html.Partial("_TodaysInfo")
+        @RenderBody()
+        <br style="clear: both;" />
+        @Html.Partial("_Bottom")
+    </div>
+    <table style="border-spacing: 0px; margin: auto; padding: 0px; width: 1341px;">
+        <tr>
+            <td style="margin: 0px; text-align: center; vertical-align: top">
+            </td>
+        </tr>
+    </table>
+    <div>
+        @Html.Partial("_LoadingModal")
+    </div>
+</body>
+</html>

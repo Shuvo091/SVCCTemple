@@ -1,0 +1,79 @@
+﻿@model SVCCTempleWeb.Models.TempleScheduleMasterList
+@{
+    int index = 0;
+}
+<table class="table table-bordered table-condensed table-responsive" style="width: 99%;">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Desc 0
+        </th>
+        <th>
+            Desc 1
+        </th>
+        <th>
+            Desc 2
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>
+            Start<br />
+            Time
+        </th>
+        <th>
+        </th>
+        @*<th>
+            Start<br />
+            Date
+        </th>
+        <th>
+            Finish<br />
+            Date
+        </th>*@
+    </tr>
+    @foreach (var templeScheduleMasterModel in Model.TempleScheduleMasterModels)
+    {
+        index++;
+    <tr>
+        <td class="text-right">
+            @index
+        </td>
+        <td class="text-left">
+            @templeScheduleMasterModel.EventDesc0
+        </td>
+        <td class="text-left">
+            @templeScheduleMasterModel.EventDesc1
+        </td>
+        <td class="text-left">
+            @templeScheduleMasterModel.EventDesc2
+        </td>
+        <td class="text-left">
+            @templeScheduleMasterModel.EventDesc3
+        </td>
+        <td class="text-left">
+            @(templeScheduleMasterModel.InfoOnly == true ? "Info Only" : "")
+        </td>
+        <td class="text-left">
+            @(templeScheduleMasterModel.EventAtTemple == true ? "" : "No Event at Temple")
+        </td>
+        <td class="text-center">
+            @templeScheduleMasterModel.StartTime
+        </td>
+        <td class="text-left">
+            @templeScheduleMasterModel.CodeDataModel.CodeDataNameDesc
+        </td>
+        @*<td class="text-center">
+            @templeScheduleMasterModel.SampleDateStart
+        </td>
+        <td class="text-center">
+            @templeScheduleMasterModel.SampleDateFinish
+        </td>*@
+    </tr>
+    }
+</table>

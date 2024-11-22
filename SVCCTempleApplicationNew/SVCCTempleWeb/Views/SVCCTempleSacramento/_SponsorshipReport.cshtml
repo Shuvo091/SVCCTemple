@@ -1,0 +1,162 @@
+﻿@model SVCCTempleWeb.Models.SponsorshipReportModel
+@{
+    int i;
+    string selectedText;
+    DateTime fromDate = DateTime.Now.AddMonths(-1), toDate = DateTime.Now;
+    int fromYearSelected = fromDate.Year, fromMonthSelected = fromDate.Month, fromDaySelected = fromDate.Day;
+    int toYearSelected = toDate.Year, toMonthSelected = toDate.Month, toDaySelected = toDate.Day;
+}
+<div id="sponsorListMessage" style="font-family: Arial; font-size: 18px; font-weight: bold;"></div>
+<h2 style="color: #a54000; font-weight: bold; letter-spacing: 12px; text-transform: uppercase;">SPONSORship report</h2>
+<table style="margin: auto; padding: 5px;">
+    <tr>
+        <th style="padding: 5px;">
+            From :
+        </th>
+        <td style="padding: 5px;">
+            <div style="float: left; padding: 5px;">
+                <select id="fromYear" class="form-control">
+                    @for (i = DateTime.Now.Year - 3; i <= DateTime.Now.Year + 9; i++)
+                    {
+                        if (i == fromYearSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="fromMonth" class="form-control">
+                    @for (i = 1; i <= 12; i++)
+                    {
+                        if (i == fromMonthSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="fromDay" class="form-control">
+                    @for (i = 1; i <= 31; i++)
+                    {
+                        if (i == fromDaySelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+        </td>
+        <th style="padding: 5px;">
+            To :
+        </th>
+        <td style="padding: 5px;">
+            <div style="float: left; padding: 5px;">
+                <select id="toYear" class="form-control">
+                    @for (i = DateTime.Now.Year - 3; i <= DateTime.Now.Year + 9; i++)
+                    {
+                        if (i == toYearSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="toMonth" class="form-control">
+                    @for (i = 1; i <= 12; i++)
+                    {
+                        if (i == toMonthSelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+            <div style="float: left; padding: 5px;">
+                <select id="toDay" class="form-control">
+                    @for (i = 1; i <= 31; i++)
+                    {
+                        if (i == toDaySelected)
+                        {
+                            selectedText = "selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedText = "";
+                        }
+                        <option @selectedText value="@i.ToString().PadLeft(2, '0')">@i.ToString().PadLeft(2, '0')</option>
+                    }
+                </select>
+            </div>
+        </td>
+    </tr>
+</table>
+<table style="margin: auto; padding: 5px;">
+    <tr>
+        <th style="padding: 5px;">
+            Email Address :
+        </th>
+        <td style="padding: 5px;">
+            <input class="form-control" id="emailAddress" name="emailAddress" style="width: 315px;" type="text" />
+        </td>
+        <td style="padding: 5px;">
+            <input class="form-control btn-primary" onclick="javascript: return sponsorshipReportData_onclick();" type="button" value="Sponsorship Report" />
+        </td>
+    </tr>
+</table>
+<div id="divSponsorshipReportData">
+</div>
+<script type="text/javascript">
+    sponsorshipReportData_onclick();
+    function sponsorshipReportData_onclick() {
+        $("#loadingModal").modal({ backdrop: 'static', keyboard: false });
+        var fromDate = document.getElementById("fromYear").value + "-" + document.getElementById("fromMonth").value + "-" + document.getElementById("fromDay").value;
+        var toDate = document.getElementById("toYear").value + "-" + document.getElementById("toMonth").value + "-" + document.getElementById("toDay").value;
+        var emailAddress = document.getElementById("emailAddress").value
+        var url = "/SVCCTempleSacramento/SponsorshipReportData/?fromDate=" + fromDate + "&toDate=" + toDate + "&emailAddress=" + emailAddress;
+        console.log(url);
+        $.ajax({
+            url: url,
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (responseData, textStatus, request) {
+                $("#loadingModal").modal('hide');
+                $("#divSponsorshipReportData").html(responseData);
+                console.log("sponsorshipReportData_onclick SUCCESS!!!");
+            },
+            error: function (xhr, exception) {
+                $("#loadingModal").modal('hide');
+                console.log("sponsorshipReportData_onclick ERROR???", xhr, exception);
+            }
+        });
+        return false;
+    }
+</script>

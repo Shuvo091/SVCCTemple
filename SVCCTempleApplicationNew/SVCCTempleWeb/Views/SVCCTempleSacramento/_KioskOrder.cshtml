@@ -1,0 +1,61 @@
+﻿@model List<SVCCTempleWeb.Models.KioskGroupModel>
+<h2 style="font-weight: bold; letter-spacing: 7px; text-transform: uppercase;">SVCC KIOSK</h2>
+<form action="KioskCheckout" method="post">
+    <table style="margin: 0 auto;">
+    <tr>
+        <td style="margin: 0 auto; padding: 9px; text-align: center;">
+            <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left;">
+                <label class="col-form-label">Description for general donation</label>
+                <input class="form-control" id="GeneralDonationDescription" name="GeneralDonationDescription" onchange="javascript: updateShoppingCart();" onclick="javascript: updateShoppingCart();" placeholder="Enter description for general donation" style="width: 261px;" title="Description for general donation" />
+            </div>
+            <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left;">
+                <label class="col-form-label">Amount</label>
+                <input class="form-control" id="GeneralDonationAmount" max="99999" min="0" name="GeneralDonationAmount" onchange="javascript: updateShoppingCart();" onclick="javascript: updateShoppingCart();" onkeypress="javascript: return isInputNumber(event);" placeholder="Amount" step="1" style="width: 81px;" title="Amount for general donation" type="number" />
+            </div>
+            <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left;">
+                <label class="col-form-label">Count#</label>
+                <span class="form-control" id="orderCount" style="color: #ff0000; font-size: 18px; font-weight: bold;" title="Number of items"></span>
+            </div>
+            <div class="row" style="float: left; padding-left: 18px; padding-right: 18px; text-align: left;vertical-align: middle;">
+                <label class="col-form-label">Amount</label>
+                <span class="form-control" id="orderAmount" style="color: #0000ff; font-size: 18px; font-weight: bold;" title="Total amount"></span>
+            </div>
+            <div class="row" style="float: left; padding-left: 36px; padding-top: 18px; text-align: left;">
+                <button class="btn bg-primary" id="btnCheckout" onclick="javascript: return kioskCheckout_onclick();" style="font-size: 18px; font-weight: bold; letter-spacing: 7px; text-transform: uppercase;" title="Click to proceed to checkout" type="submit">checkout</button>
+            </div>
+        </td>
+    </tr>
+    </table>
+    <input id="kioskOrderedItemIds" name="kioskOrderedItemIds" type="hidden" />
+</form>
+@{
+    int rowCount = 0, index = 0;
+    foreach (var kioskGroupModel in Model)
+    {
+        <h3 style="color: #a54000; font-size: 27px; font-weight: bold; letter-spacing: 7px; text-transform: uppercase;">@kioskGroupModel.KioskGroupDesc</h3>
+        foreach (var kioskItemModel in kioskGroupModel.KioskItemModels)
+        {
+            <div class="col-md-3" style="float: left;">
+                <a href="javascript: void(0);" onclick="javascript: document.getElementById('kioskItemId@(index)').checked = true;updateShoppingCart();">
+                    <img src="~/Images/Sacramento/@kioskItemModel.ItemImageName" style="height: @kioskItemModel.ItemImageHeight; width: @kioskItemModel.ItemImageWidth;" />
+                </a>
+                <br />
+                <h4 style="font-weight: bold;">
+                    @kioskItemModel.ItemDesc<br />
+                    <span style="color: #0000ff;">@string.Format("{0:c}", kioskItemModel.ItemRate)</span>
+                    <span style="color: #ff0000; padding-left: 12px; padding-right: 12px;">Select</span>
+                    <input id="kioskItemId@(index)" onclick="javascript: updateShoppingCart();" type="checkbox" value="@kioskItemModel.KioskItemId" />
+                </h4>
+                <span id="itemRate@(index)" style="display: none;">@kioskItemModel.ItemRate</span>
+            </div>
+            index++;
+            rowCount++;
+            if (rowCount == 4)
+            {
+                <br style="clear: both;" />
+            }
+        }
+        rowCount = 0;
+        <br style="clear: both;" />
+    }
+}

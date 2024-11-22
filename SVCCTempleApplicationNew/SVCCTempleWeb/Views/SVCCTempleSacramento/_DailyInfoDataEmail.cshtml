@@ -1,0 +1,45 @@
+﻿@model SVCCTempleWeb.Models.TempleInfoDateModel
+<table style="padding: 5px;">
+    @foreach (var templeInfoModel in Model.TempleInfoModels)
+    {
+        <tr>
+            <th style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; padding: 5px; vertical-align: top;">
+                @if (templeInfoModel.StartTime != "99:99" && templeInfoModel.ImportantDatesId < 99000)
+                {
+
+                    @DateTime.Parse(templeInfoModel.StartTime).ToString("h:mmtt").ToLower()
+                }
+            </th>
+            <td style="border-collapse: collapse; border-color: #000000; border-style: solid; border-width: 1px; font-size: 14px; padding: 5px; text-align: left; vertical-align: top;">
+                @if (templeInfoModel.ImportantDatesId == 5000)
+                {
+                    <b>@templeInfoModel.InfoText1</b>
+                }
+                else
+                {
+                    @templeInfoModel.InfoText1
+                    if (templeInfoModel.ImportantDatesId >= 99000)
+                    {
+                        <span style="font-weight: bold;">&nbsp;@DateTime.Parse(templeInfoModel.StartTime).ToString("h:mmtt").ToLower() - @DateTime.Parse(templeInfoModel.FinishTime).ToString("h:mmtt").ToLower()</span>
+                    }
+                }
+                @if (!string.IsNullOrWhiteSpace(templeInfoModel.InfoText2))
+                {
+                    <br />
+                    @templeInfoModel.InfoText2
+                }
+                @if (!string.IsNullOrWhiteSpace(templeInfoModel.InfoText3))
+                {
+                    <br />
+                    @templeInfoModel.InfoText3
+                }
+                @if (!string.IsNullOrWhiteSpace(templeInfoModel.SponsorshipGroupId))
+                {
+                    <br />
+                    <a href="/SVCCTempleSacramento/Sponsorship/@templeInfoModel.SponsorshipGroupId" style="color: #0000ff; font-size: 12px; font-weight: bold; text-decoration: underline;" target="_blank">Click here to enter Sankalpam</a>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
